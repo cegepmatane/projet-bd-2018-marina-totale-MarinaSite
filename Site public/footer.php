@@ -6,5 +6,8 @@
  * Time: 14:33
  */
 ?>
+
+    </div>
 </body>
+<footer></footer>
 </html>
