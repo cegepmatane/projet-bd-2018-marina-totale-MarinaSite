@@ -12,7 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
+    <link rel="stylesheet" href="cssMatinaConnect.css">
 </head>
+<header> </header>
 
 <body>
+    <div class="container">
 

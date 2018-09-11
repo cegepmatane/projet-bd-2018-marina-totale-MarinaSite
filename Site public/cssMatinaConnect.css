@@ -1,0 +1,27 @@
+body {
+    background-color: #cfcbbf;
+}
+
+html{
+    margin: 0 0 0 0;
+}
+
+header{
+    height: 100px;
+    width: 100%;
+    background: darkslategrey;
+}
+
+footer{
+    height: 75px;
+    width: 100%;
+    background-color: #424242;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    height:100%;
+    width:800px;
+    background-color: white;
+}
