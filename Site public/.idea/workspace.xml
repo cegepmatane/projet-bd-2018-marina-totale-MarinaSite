@@ -25,7 +25,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cssMatinaConnect.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cssMatinaConnect.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cssMatinaConnect.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reserverEmplacement.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reserverEmplacement.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reserverEmplacement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+            <state relative-caret-position="167">
+              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -78,8 +78,8 @@
         <option value="$PROJECT_DIR$/footer.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/header.php" />
-        <option value="$PROJECT_DIR$/reserverEmplacement.php" />
         <option value="$PROJECT_DIR$/cssMatinaConnect.css" />
+        <option value="$PROJECT_DIR$/reserverEmplacement.php" />
       </list>
     </option>
   </component>
@@ -147,12 +147,12 @@
       <option name="presentableId" value="Default" />
       <updated>1536344734713</updated>
       <workItem from="1536344737286" duration="1697000" />
-      <workItem from="1536688884276" duration="1628000" />
+      <workItem from="1536688884276" duration="2517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3325000" />
+    <option name="totallyTimeSpent" value="4214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -249,17 +249,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reserverEmplacement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cssMatinaConnect.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reserverEmplacement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
         </state>
       </provider>
     </entry>
