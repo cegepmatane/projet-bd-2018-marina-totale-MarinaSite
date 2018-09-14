@@ -10,6 +10,6 @@ include 'header.php';
 
     <h1>Marina Connect</h1>
     <a href="reserverEmplacement.php">Réserver un emplacement</a>
-    <a href="connexion.php">Accéder a la gestion de la marina</a>
+
 
 <?php include "footer.php"; ?>

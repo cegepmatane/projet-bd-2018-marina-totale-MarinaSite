@@ -9,5 +9,7 @@
 
     </div>
 </body>
-<footer></footer>
+<footer>
+    <a href="connexion.php">Accéder a la gestion de la marina</a>
+</footer>
 </html>

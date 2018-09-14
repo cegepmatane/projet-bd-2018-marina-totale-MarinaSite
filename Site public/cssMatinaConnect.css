@@ -1,33 +1,56 @@
-body {
-    background-color: #cfcbbf;
-}
-
-html{
+body, html {
+    background-color: #e1f5fe;
+    overflow-x: hidden;
     margin: 0 0 0 0;
+    border: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
 }
-
+h1{
+    margin: 0;
+}
 header{
-    height: 100px;
+    height: 12%;
     width: 100%;
-    background: darkslategrey;
+    background: #01579b;
+    z-index: 10;
 }
 
 footer{
-    height: 75px;
+    height: 3%;
     width: 100%;
-    background-color: #424242;
+    background-color: #263238;
+    bottom: 0;
+    position: relative;
+    margin-bottom: 0;
+    z-index: 10;
+    color: white;
 }
 
 .container{
+    height: 85%;
+    width: 60%;
+    z-index: 0;
     margin-left: auto;
     margin-right: auto;
-    height:100%;
-    width:800px;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
     background-color: white;
+    box-shadow: 0px 0px 30px #424242;
 }
 
 .formulaireClient label{
     margin-left: 30px;
     margin-bottom: 10px;
     padding-bottom: 10px;
+}
+.formulaireClient {
+    width: 80%;
+    padding-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
 }
