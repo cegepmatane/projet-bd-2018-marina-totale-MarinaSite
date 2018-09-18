@@ -5,4 +5,6 @@ $dbname = "dbname = MarinaBateauDB";
 $credentials = "user=webMestre password=bdd2018Marina";
 
 $db = pg_connect("$host $port $dbname $credentials");
+
+echo $db;
 ?>
