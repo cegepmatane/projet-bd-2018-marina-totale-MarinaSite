@@ -123,5 +123,5 @@ class Service{
         $this->idemplacement = $idemplacement;
     }
 
-    
+
 }
