@@ -1,13 +1,8 @@
 <?php
-$host        = "host = 127.0.0.1";
-$port        = "port = 5432";
-$dbname      = "dbname = MarinaBateauDB";
-$credentials = "user = florian password=Thxflo2212";
+$host = "host = 158.69.113.110";
+$port = "port = 5432";
+$dbname = "dbname = MarinaBateauDB";
+$credentials = "user=webMestre password=bdd2018Marina";
 
-$db = pg_connect( "$host $port $dbname $credentials"  );
-if(!$db) {
-    echo "Error : Unable to open database\n";
-} else {
-    echo "Opened database successfully\n";
-}
+$db = pg_connect("$host $port $dbname $credentials");
 ?>
