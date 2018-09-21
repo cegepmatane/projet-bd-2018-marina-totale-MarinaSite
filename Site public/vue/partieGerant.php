@@ -1,6 +1,5 @@
 <?php include 'header.php';
-if (isset($_SESSION['pseudo'])){?>
-
+include '../fonctions/verifAdmin.php'?>
 <div class="partieGerant">
 
     <h1> Gestion de la marina</h1>
@@ -116,7 +115,6 @@ if (isset($_SESSION['pseudo'])){?>
 
 
 
-<?php }
-include "footer.php"; ?>
+<?php include "footer.php"; ?>
 
 

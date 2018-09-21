@@ -1,7 +1,6 @@
-<?php include 'header.php';
-
-$PSEUDO = null;
+<?php include 'headerIndex.php';
 $PASS = 0;
+$PSEUDO = null;
 $MDP = null;
 if ((isset($_POST['mot_de_passe']))){
     $MDP = $_POST['mot_de_passe'];
@@ -41,6 +40,7 @@ if (($PSEUDO == "user@user.com") &&($MDP ==  "user"))
 if (($PSEUDO == 'admin@admin.com')&&($MDP == 'admin'))
 {
     $PASS = 1;
+    $_SESSION['admin'] = 1;
     ?>
     Redirection en cours admin
     <?php

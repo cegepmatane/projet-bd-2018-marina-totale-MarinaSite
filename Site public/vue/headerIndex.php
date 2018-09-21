@@ -6,10 +6,6 @@ session_start();
  * Date: 07/09/2018
  * Time: 14:33
  */
-if (!(isset($_SESSION['pseudo']))){
-    header('Location: index.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +18,8 @@ if (!(isset($_SESSION['pseudo']))){
 </head>
 <header>
     <a href="index.php">ACCEUIL</a>
-    <a href="deconnexion.php">Se deconnecter</a>
 </header>
 
 <body>
-    <div class="container">
+<div class="container">
 
