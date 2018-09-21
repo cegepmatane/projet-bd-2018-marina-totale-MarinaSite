@@ -1,4 +1,5 @@
 <?php include 'header.php';
+session_start();
 $PSEUDO = null;
 $PASS = 0;
 $MDP = null;
@@ -15,8 +16,8 @@ if ((isset($_POST['pseudo']))){
         <legend>Connexion à MarinaConnect</legend>
 
         <form action="index.php" method="post">
-            <p> <label>Identifiant: </label>
-                <input type="text" name="pseudo" />
+            <p> <label>Mail: </label>
+                <input type="email" name="pseudo" />
                 <label>Mot de passe: </label>
                 <input type="password" name="mot_de_passe" />
                 <input type="submit" name="send" value="CONNECTION">
@@ -27,21 +28,23 @@ if ((isset($_POST['pseudo']))){
 
 <?php
 
-if (($PSEUDO == "user") &&($MDP ==  "user"))
+if (($PSEUDO == "user@user.com") &&($MDP ==  "user"))
 {
     $PASS = 1;
     ?>
     Redirection en cours user
     <?php
+    $_SESSION['pseudo'] = $PSEUDO;
     header('Location: reserverEmplacement.php');
     exit();
 }
-if (($PSEUDO == 'admin')&&($MDP == 'admin'))
+if (($PSEUDO == 'admin@admin.com')&&($MDP == 'admin'))
 {
     $PASS = 1;
     ?>
     Redirection en cours admin
     <?php
+    $_SESSION['pseudo'] = $PSEUDO;
     header('Location: partieGerant.php');
     exit();
 }

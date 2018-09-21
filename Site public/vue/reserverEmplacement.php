@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: Florent
@@ -9,6 +10,7 @@ include "header.php";
 ?>
 
 <div class="formulaireClient">
+    Bonjour, <?php echo  $_SESSION['pseudo']?>
     <fieldset>
         <legend>Réserver un emplacement</legend>
         <label>Nom :
