@@ -38,7 +38,7 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE public.bateau (
-    idbateau integer NOT NULL,
+    id integer NOT NULL,
     nom character varying(50) NOT NULL,
     longueur real NOT NULL,
     largeur real NOT NULL
@@ -48,10 +48,10 @@ CREATE TABLE public.bateau (
 ALTER TABLE public.bateau OWNER TO postgres;
 
 --
--- Name: bateau_idbateau_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: bateau_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.bateau_idbateau_seq
+CREATE SEQUENCE public.bateau_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -60,13 +60,13 @@ CREATE SEQUENCE public.bateau_idbateau_seq
     CACHE 1;
 
 
-ALTER TABLE public.bateau_idbateau_seq OWNER TO postgres;
+ALTER TABLE public.bateau_id_seq OWNER TO postgres;
 
 --
--- Name: bateau_idbateau_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: bateau_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.bateau_idbateau_seq OWNED BY public.bateau.idbateau;
+ALTER SEQUENCE public.bateau_id_seq OWNED BY public.bateau.id;
 
 
 --
@@ -74,7 +74,7 @@ ALTER SEQUENCE public.bateau_idbateau_seq OWNED BY public.bateau.idbateau;
 --
 
 CREATE TABLE public.client (
-    idclient integer NOT NULL,
+    id integer NOT NULL,
     nom character varying(50) NOT NULL,
     prenom character varying(50) NOT NULL,
     idbateau integer
@@ -84,10 +84,10 @@ CREATE TABLE public.client (
 ALTER TABLE public.client OWNER TO postgres;
 
 --
--- Name: client_idclient_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: client_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.client_idclient_seq
+CREATE SEQUENCE public.client_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -96,13 +96,13 @@ CREATE SEQUENCE public.client_idclient_seq
     CACHE 1;
 
 
-ALTER TABLE public.client_idclient_seq OWNER TO postgres;
+ALTER TABLE public.client_id_seq OWNER TO postgres;
 
 --
--- Name: client_idclient_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: client_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.client_idclient_seq OWNED BY public.client.idclient;
+ALTER SEQUENCE public.client_id_seq OWNED BY public.client.id;
 
 
 --
@@ -110,7 +110,7 @@ ALTER SEQUENCE public.client_idclient_seq OWNED BY public.client.idclient;
 --
 
 CREATE TABLE public.emplacement (
-    idemplacement integer NOT NULL,
+    id integer NOT NULL,
     idclient integer,
     idreservation integer,
     longueur double precision,
@@ -122,10 +122,10 @@ CREATE TABLE public.emplacement (
 ALTER TABLE public.emplacement OWNER TO postgres;
 
 --
--- Name: emplacement_idemplacement_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: emplacement_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.emplacement_idemplacement_seq
+CREATE SEQUENCE public.emplacement_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -134,13 +134,13 @@ CREATE SEQUENCE public.emplacement_idemplacement_seq
     CACHE 1;
 
 
-ALTER TABLE public.emplacement_idemplacement_seq OWNER TO postgres;
+ALTER TABLE public.emplacement_id_seq OWNER TO postgres;
 
 --
--- Name: emplacement_idemplacement_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: emplacement_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.emplacement_idemplacement_seq OWNED BY public.emplacement.idemplacement;
+ALTER SEQUENCE public.emplacement_id_seq OWNED BY public.emplacement.id;
 
 
 --
@@ -148,7 +148,7 @@ ALTER SEQUENCE public.emplacement_idemplacement_seq OWNED BY public.emplacement.
 --
 
 CREATE TABLE public.reservation (
-    idreservation integer NOT NULL,
+    id integer NOT NULL,
     datedebut date NOT NULL,
     datefin date NOT NULL,
     idclient integer
@@ -158,10 +158,10 @@ CREATE TABLE public.reservation (
 ALTER TABLE public.reservation OWNER TO postgres;
 
 --
--- Name: reservation_idreservation_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: reservation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.reservation_idreservation_seq
+CREATE SEQUENCE public.reservation_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -170,13 +170,13 @@ CREATE SEQUENCE public.reservation_idreservation_seq
     CACHE 1;
 
 
-ALTER TABLE public.reservation_idreservation_seq OWNER TO postgres;
+ALTER TABLE public.reservation_id_seq OWNER TO postgres;
 
 --
--- Name: reservation_idreservation_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: reservation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.reservation_idreservation_seq OWNED BY public.reservation.idreservation;
+ALTER SEQUENCE public.reservation_id_seq OWNED BY public.reservation.id;
 
 
 --
@@ -184,7 +184,7 @@ ALTER SEQUENCE public.reservation_idreservation_seq OWNED BY public.reservation.
 --
 
 CREATE TABLE public.service (
-    idservice integer NOT NULL,
+    id integer NOT NULL,
     contientelectricite boolean,
     contientvidange boolean,
     contientessence boolean,
@@ -196,10 +196,10 @@ CREATE TABLE public.service (
 ALTER TABLE public.service OWNER TO postgres;
 
 --
--- Name: service_idservice_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: service_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.service_idservice_seq
+CREATE SEQUENCE public.service_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -208,55 +208,57 @@ CREATE SEQUENCE public.service_idservice_seq
     CACHE 1;
 
 
-ALTER TABLE public.service_idservice_seq OWNER TO postgres;
+ALTER TABLE public.service_id_seq OWNER TO postgres;
 
 --
--- Name: service_idservice_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: service_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.service_idservice_seq OWNED BY public.service.idservice;
-
-
---
--- Name: bateau idbateau; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.bateau ALTER COLUMN idbateau SET DEFAULT nextval('public.bateau_idbateau_seq'::regclass);
+ALTER SEQUENCE public.service_id_seq OWNED BY public.service.id;
 
 
 --
--- Name: client idclient; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: bateau id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.client ALTER COLUMN idclient SET DEFAULT nextval('public.client_idclient_seq'::regclass);
-
-
---
--- Name: emplacement idemplacement; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.emplacement ALTER COLUMN idemplacement SET DEFAULT nextval('public.emplacement_idemplacement_seq'::regclass);
+ALTER TABLE ONLY public.bateau ALTER COLUMN id SET DEFAULT nextval('public.bateau_id_seq'::regclass);
 
 
 --
--- Name: reservation idreservation; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: client id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.reservation ALTER COLUMN idreservation SET DEFAULT nextval('public.reservation_idreservation_seq'::regclass);
+ALTER TABLE ONLY public.client ALTER COLUMN id SET DEFAULT nextval('public.client_id_seq'::regclass);
 
 
 --
--- Name: service idservice; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: emplacement id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.service ALTER COLUMN idservice SET DEFAULT nextval('public.service_idservice_seq'::regclass);
+ALTER TABLE ONLY public.emplacement ALTER COLUMN id SET DEFAULT nextval('public.emplacement_id_seq'::regclass);
+
+
+--
+-- Name: reservation id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reservation ALTER COLUMN id SET DEFAULT nextval('public.reservation_id_seq'::regclass);
+
+
+--
+-- Name: service id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.service ALTER COLUMN id SET DEFAULT nextval('public.service_id_seq'::regclass);
 
 
 --
 -- Data for Name: bateau; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.bateau (idbateau, nom, longueur, largeur) FROM stdin;
+COPY public.bateau (id, nom, longueur, largeur) FROM stdin;
+1	BATEAU1	45	18
+2	BATEAU2	45	18
 \.
 
 
@@ -264,7 +266,7 @@ COPY public.bateau (idbateau, nom, longueur, largeur) FROM stdin;
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.client (idclient, nom, prenom, idbateau) FROM stdin;
+COPY public.client (id, nom, prenom, idbateau) FROM stdin;
 \.
 
 
@@ -272,7 +274,7 @@ COPY public.client (idclient, nom, prenom, idbateau) FROM stdin;
 -- Data for Name: emplacement; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.emplacement (idemplacement, idclient, idreservation, longueur, largeur, estdisponible) FROM stdin;
+COPY public.emplacement (id, idclient, idreservation, longueur, largeur, estdisponible) FROM stdin;
 \.
 
 
@@ -280,7 +282,7 @@ COPY public.emplacement (idemplacement, idclient, idreservation, longueur, large
 -- Data for Name: reservation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.reservation (idreservation, datedebut, datefin, idclient) FROM stdin;
+COPY public.reservation (id, datedebut, datefin, idclient) FROM stdin;
 \.
 
 
@@ -288,43 +290,43 @@ COPY public.reservation (idreservation, datedebut, datefin, idclient) FROM stdin
 -- Data for Name: service; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.service (idservice, contientelectricite, contientvidange, contientessence, idreservation, idemplacement) FROM stdin;
+COPY public.service (id, contientelectricite, contientvidange, contientessence, idreservation, idemplacement) FROM stdin;
 \.
 
 
 --
--- Name: bateau_idbateau_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: bateau_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bateau_idbateau_seq', 1, false);
-
-
---
--- Name: client_idclient_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.client_idclient_seq', 1, false);
+SELECT pg_catalog.setval('public.bateau_id_seq', 2, true);
 
 
 --
--- Name: emplacement_idemplacement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.emplacement_idemplacement_seq', 1, false);
-
-
---
--- Name: reservation_idreservation_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.reservation_idreservation_seq', 1, false);
+SELECT pg_catalog.setval('public.client_id_seq', 1, false);
 
 
 --
--- Name: service_idservice_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: emplacement_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.service_idservice_seq', 1, false);
+SELECT pg_catalog.setval('public.emplacement_id_seq', 1, false);
+
+
+--
+-- Name: reservation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.reservation_id_seq', 1, false);
+
+
+--
+-- Name: service_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.service_id_seq', 1, false);
 
 
 --
@@ -332,7 +334,7 @@ SELECT pg_catalog.setval('public.service_idservice_seq', 1, false);
 --
 
 ALTER TABLE ONLY public.bateau
-    ADD CONSTRAINT bateau_pkey PRIMARY KEY (idbateau);
+    ADD CONSTRAINT bateau_pkey PRIMARY KEY (id);
 
 
 --
@@ -340,7 +342,7 @@ ALTER TABLE ONLY public.bateau
 --
 
 ALTER TABLE ONLY public.client
-    ADD CONSTRAINT client_pkey PRIMARY KEY (idclient);
+    ADD CONSTRAINT client_pkey PRIMARY KEY (id);
 
 
 --
@@ -348,7 +350,7 @@ ALTER TABLE ONLY public.client
 --
 
 ALTER TABLE ONLY public.emplacement
-    ADD CONSTRAINT emplacement_pkey PRIMARY KEY (idemplacement);
+    ADD CONSTRAINT emplacement_pkey PRIMARY KEY (id);
 
 
 --
@@ -356,7 +358,7 @@ ALTER TABLE ONLY public.emplacement
 --
 
 ALTER TABLE ONLY public.reservation
-    ADD CONSTRAINT reservation_pkey PRIMARY KEY (idreservation);
+    ADD CONSTRAINT reservation_pkey PRIMARY KEY (id);
 
 
 --
@@ -364,55 +366,42 @@ ALTER TABLE ONLY public.reservation
 --
 
 ALTER TABLE ONLY public.service
-    ADD CONSTRAINT service_pkey PRIMARY KEY (idservice);
+    ADD CONSTRAINT service_pkey PRIMARY KEY (id);
 
 
 --
--- Name: client client_idbateau_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: TABLE bateau; Type: ACL; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.client
-    ADD CONSTRAINT client_idbateau_fkey FOREIGN KEY (idbateau) REFERENCES public.bateau(idbateau);
-
-
---
--- Name: emplacement emplacement_idclient_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.emplacement
-    ADD CONSTRAINT emplacement_idclient_fkey FOREIGN KEY (idclient) REFERENCES public.client(idclient);
+GRANT ALL ON TABLE public.bateau TO webmestre;
 
 
 --
--- Name: emplacement emplacement_idreservation_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: TABLE client; Type: ACL; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.emplacement
-    ADD CONSTRAINT emplacement_idreservation_fkey FOREIGN KEY (idreservation) REFERENCES public.reservation(idreservation);
-
-
---
--- Name: reservation reservation_idclient_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.reservation
-    ADD CONSTRAINT reservation_idclient_fkey FOREIGN KEY (idclient) REFERENCES public.client(idclient);
+GRANT ALL ON TABLE public.client TO webmestre;
 
 
 --
--- Name: service service_idemplacement_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: TABLE emplacement; Type: ACL; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.service
-    ADD CONSTRAINT service_idemplacement_fkey FOREIGN KEY (idemplacement) REFERENCES public.emplacement(idemplacement);
+GRANT ALL ON TABLE public.emplacement TO webmestre;
 
 
 --
--- Name: service service_idreservation_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: TABLE reservation; Type: ACL; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.service
-    ADD CONSTRAINT service_idreservation_fkey FOREIGN KEY (idreservation) REFERENCES public.reservation(idreservation);
+GRANT ALL ON TABLE public.reservation TO webmestre;
+
+
+--
+-- Name: TABLE service; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT ALL ON TABLE public.service TO webmestre;
 
 
 --
