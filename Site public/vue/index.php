@@ -1,5 +1,5 @@
 <?php include 'header.php';
-session_start();
+
 $PSEUDO = null;
 $PASS = 0;
 $MDP = null;
@@ -35,7 +35,7 @@ if (($PSEUDO == "user@user.com") &&($MDP ==  "user"))
     Redirection en cours user
     <?php
     $_SESSION['pseudo'] = $PSEUDO;
-    header('Location: reserverEmplacement.php');
+    header('Location: partieClient.php');
     exit();
 }
 if (($PSEUDO == 'admin@admin.com')&&($MDP == 'admin'))

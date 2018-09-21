@@ -3,6 +3,7 @@
 <div class="partieGerant">
 
     <h1> Gestion de la marina</h1>
+    Bonjour, <?php echo  $_SESSION['pseudo']?>
 
     <div class="wb-tabs">
         <div class="tabpanels">
