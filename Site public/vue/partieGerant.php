@@ -1,4 +1,5 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+if (isset($_SESSION['pseudo'])){?>
 
 <div class="partieGerant">
 
@@ -115,6 +116,7 @@
 
 
 
-<?php include "footer.php"; ?>
+<?php }
+include "footer.php"; ?>
 
 
