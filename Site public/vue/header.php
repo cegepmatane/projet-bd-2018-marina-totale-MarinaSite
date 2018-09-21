@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
-    <link rel="stylesheet" href="cssMatinaConnect.css">
+    <link rel="stylesheet" href="cssMarinaConnect.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <header>

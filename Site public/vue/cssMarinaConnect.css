@@ -9,6 +9,7 @@ body, html {
 }
 h1{
     margin: 0;
+    margin-bottom: 30px;
 }
 header{
     height: 12%;
@@ -54,3 +55,21 @@ footer{
     margin-right: auto;
     font-size: 1.5em;
 }
+
+.partieGerant{
+
+}
+
+.tableau_gerant{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+td, th{
+    border: 1px solid black;
+}
+#details-panel1{
+    margin-bottom: 30px;
+}
+
