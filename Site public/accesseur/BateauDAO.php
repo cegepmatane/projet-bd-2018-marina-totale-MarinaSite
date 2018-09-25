@@ -9,6 +9,19 @@ Class BateauDAO{
 
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function ajouterBateau(Bateau $bateau){
+        $AJOUTER_BATEAU = "INSERT INTO bateau (nom, longeur, largeur) VALUES (:name, :longueur, :largeur)";
+        global $basededonnees;
+
+        $requeteAjouterBateau = $basededonnees->prepare($AJOUTER_BATEAU);
+
+        $requeteAjouterBateau->bindParam(':nom',$bateau->getNom());
+        $requeteAjouterBateau->bindParam(':longeur',$bateau->getLongeur());
+        $requeteAjouterBateau->bindParam(':largeur',$bateau->getLargeur());
+
+        $requeteAjouterBateau->execute();
+    }
 }
 /*
 $bateau = new BateauDAO();

@@ -41,12 +41,12 @@ Bonjour, <?php echo  $_SESSION['pseudo']?>
             </tbody>
         <?php else: ?>
             <tr>
-                <td>Pas d'auteur dans la base de données</td>
+                <td>Pas de bateau</td>
             </tr>
         <?php endif; ?>
     </table>
 
-    <a href="ajouterBateau.php">Ajouter un bateau</a>
+    <a href="vueAjouterBateau.php">Ajouter un bateau</a>
 </div>
 
 <?php include "footer.php"; ?>

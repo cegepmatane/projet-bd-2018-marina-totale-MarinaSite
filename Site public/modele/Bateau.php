@@ -15,14 +15,12 @@ class Bateau{
 
     /**
      * Bateau constructor.
-     * @param $idbateau
      * @param $nom
      * @param $longeur
      * @param $largeur
      */
-    public function __construct($idbateau, $nom, $longeur, $largeur)
+    public function __construct($nom, $longeur, $largeur)
     {
-        $this->idbateau = $idbateau;
         $this->nom = $nom;
         $this->longeur = $longeur;
         $this->largeur = $largeur;
