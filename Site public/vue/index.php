@@ -19,7 +19,7 @@ if ((isset($_POST['pseudo']))){
                 <input type="email" name="pseudo" />
                 <label>Mot de passe: </label>
                 <input type="password" name="mot_de_passe" />
-                <input type="submit" name="send" value="CONNECTION">
+                <input type="submit" name="send" value="CONNEXION">
             </p>
         </form>
         <a href="ajouterUtilisateur.php">Creer un compte</a>
