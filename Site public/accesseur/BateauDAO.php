@@ -10,10 +10,10 @@ Class BateauDAO{
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);
     }
 }
-
+/*
 $bateau = new BateauDAO();
 
 foreach($bateau->listerBateau() as $row ) {
     echo $row->nom;
     echo '<br>';
-}
+}*/
