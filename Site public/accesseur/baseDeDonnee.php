@@ -1,10 +1,10 @@
 <?php
-$host = "host = 158.69.113.110";
-$port = "port = 5432";
-$dbname = "dbname = MarinaBateauDB";
-$credentials = "user=webmestre password=bdd2018Marina";
+$port = "5432";
+$host = "158.69.113.110";
+$dbname = "MarinaBateauDB";
+$utilisateur = 'webmestre';
+$mdp = "bdd2018Marina";
 
-$db = pg_connect("$host $port $dbname $credentials");
-
-echo $db;
+$dsn = 'pgsql:host=localhost;port=5432;dbname=MarinaBateauDB';
+$basededonnees = new PDO($dsn, $utilisateur, $mdp);
 ?>
