@@ -26,29 +26,31 @@ if ((isset($_POST['pseudo']))){
 </div>
 
 <?php
+function connexion($PSEUDO, $MDP){
 
-if (($PSEUDO == "user@user.com") &&($MDP ==  "user"))
-{
-    $PASS = 1;
-    ?>
-    Redirection en cours user
-    <?php
-    $_SESSION['pseudo'] = $PSEUDO;
-    header('Location: partieClient.php');
-    exit();
+    include '../modele/Client.php';
+    include '../accesseur/ClientDAO.php';
+    $ClientDAO = new ClientDAO();
+    if ($ClientDAO ->clientExiste($PSEUDO)){
+        $clientCourant = $ClientDAO ->trouverClientMail($PSEUDO);
+        if(motDePasseJuste($clientCourant, $MDP)){
+            $_SESSION['pseudo'] = $PSEUDO;
+            if($clientCourant->getBoolGerant()){
+                header('Location: partieGerant.php');
+                exit();
+            }
+            header('Location: partieClient.php');
+            exit();
+
+        }
+    }
 }
-if (($PSEUDO == 'admin@admin.com')&&($MDP == 'admin'))
-{
-    $PASS = 1;
-    $_SESSION['admin'] = 1;
-    ?>
-    Redirection en cours admin
-    <?php
-    $_SESSION['pseudo'] = $PSEUDO;
-    header('Location: partieGerant.php');
-    exit();
+function motDePasseJuste(Client $client, $MDP){
+    return ($client -> getMotDePasse() === md5($MDP));
 }
-else if(($PSEUDO != null)&&($MDP != null)&&($PASS ==0))
+
+
+if(($PSEUDO != null)&&($MDP != null))
 {
     ?>
     Mot de passe incorrect

@@ -64,6 +64,21 @@ Class ClientDAO{
 
         return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
     }
+    public function clientExiste($mail){
+        $result = mysql_query('SELECT EXISTS (SELECT * FROM news WHERE mail="' . $mail . '" ) AS compte_existe');
+        $req = mysql_fetch_array($result);
+        return  $req['compte_existe'];
+    }
+    public function trouverClientMail($mail)
+    {
+        global $basededonnees;
+        $TROUVER_CLIENT = 'SELECT * FROM client WHERE mail = :mail';
+        $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
+        $requeteTrouverClient->bindValue(':mail', $mail);
+        $requeteTrouverClient->execute();
+
+        return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
+    }
 
     public function supprimerClient($idclient)
     {
