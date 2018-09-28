@@ -23,7 +23,7 @@ Class ClientDAO{
 
     public function ajouterClient(Client $client)
     {
-        $AJOUTER_CLIENT = "INSERT INTO client(nom, prenom, motDePasse, mail, numero, bool_gerant) VALUES (:nom, :prenom, :motdepasse, :mail, :numero, :boolGerant)";
+        $AJOUTER_CLIENT = "INSERT INTO client(nom, prenom, mot_de_passe, mail, numero, bool_gerant) VALUES (:nom, :prenom, :motdepasse, :mail, :numero, FALSE)";
 
         global $basededonnees;
 
@@ -34,7 +34,7 @@ Class ClientDAO{
         $requeteAjouterClient->bindValue(':motdepasse', $client->getMotDePasse());
         $requeteAjouterClient->bindValue(':mail', $client->getMail());
         $requeteAjouterClient->bindValue(':numero', $client->getNumero());
-        $requeteAjouterClient->bindValue(':boolGerant', $client->getBoolGerant());
+        //$requeteAjouterClient->bindValue(':boolGerant', $client->getBoolGerant());
 
         $requeteAjouterClient->execute();
     }

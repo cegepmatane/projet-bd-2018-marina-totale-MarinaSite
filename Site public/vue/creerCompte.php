@@ -66,12 +66,13 @@ function verifMDP($motDePasse, $password2){
 if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
     && (isset($numero)) && (isset($password2))
     && verifMDP($motDePasse, $password2)){
-    echo 'merci';
     include '../accesseur/ClientDAO.php';
     $clientDAO = new ClientDAO();
     include '../modele/Client.php';
+
     $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero);
     $clientDAO ->ajouterClient($client);
+    
     header('Location: index.php');
     exit();
 }

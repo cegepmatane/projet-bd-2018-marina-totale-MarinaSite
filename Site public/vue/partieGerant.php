@@ -2,7 +2,7 @@
 include '../fonctions/verifAdmin.php';
 include '../accesseur/ClientDAO.php';
 $clientDAO = new ClientDAO();
-$donnees = $clientDAO->listerClient();
+$donnees = $clientDAO->listerClientAyantReservationEnCours();
 ?>
 
 

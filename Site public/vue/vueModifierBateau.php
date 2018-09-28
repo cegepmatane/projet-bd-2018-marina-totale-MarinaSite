@@ -28,7 +28,7 @@ if ((isset($_POST['type_bateau']))) {
 
 if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($largeur))) {
     include '../modele/Bateau.php';
-    $bateau = new Bateau($nom,$type_bateau,$longueur,$largeur);
+    $bateau = new Bateau($nom, $type_bateau, $longueur, $largeur);
 
     $bateauDAO->modifierBateau($bateau);
 
@@ -44,19 +44,19 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 
             <form action="vueModifierBateau.php" method="post">
                 <label>Nom:
-                    <input type="text" name="nom" value="<?php echo $bateauAModifier->nom?>"/>
+                    <input type="text" name="nom" value="<?php echo $bateauAModifier->nom ?>"/>
                 </label>
                 </br>
                 <label>Type:
-                    <input type="text" name="type_bateau" value="<?php echo $bateauAModifier->type_bateau?>"/>
+                    <input type="text" name="type_bateau" value="<?php echo $bateauAModifier->type_bateau ?>"/>
                 </label>
                 </br>
                 <label>Longueur:
-                    <input type="text" name="longueur" value="<?php echo $bateauAModifier->longueur?>"/>
+                    <input type="text" name="longueur" value="<?php echo $bateauAModifier->longueur ?>"/>
                 </label>
                 </br>
                 <label>Largeur:
-                    <input type="text" name="largeur" value="<?php echo $bateauAModifier->largeur?>"/>
+                    <input type="text" name="largeur" value="<?php echo $bateauAModifier->largeur ?>"/>
                 </label>
                 </br>
 

@@ -16,7 +16,7 @@ Bonjour, <?php echo  $_SESSION['pseudo']?>
         <caption>Recapitulatifs des Bateaux</caption>
         <?php if(isset($donnees[0])): ?>
             <thead>
-            <tr><th>ID auteur</th><th>Nom</th><th>Type</th><th>Longueur</th><th>Largeur</th><th>Action...</th></tr>
+            <tr><th>ID bateau</th><th>Nom</th><th>Type</th><th>Longueur</th><th>Largeur</th><th>Action...</th></tr>
             </thead>
             <tbody>
             <?php foreach ($donnees as $bateau) :?>
