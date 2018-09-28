@@ -22,7 +22,7 @@ if ((isset($_POST['pseudo']))){
                 <input type="submit" name="send" value="CONNEXION">
             </p>
         </form>
-        <a href="ajouterUtilisateur.php">Creer un compte</a>
+        <a href="creerCompte.php">Creer un compte</a>
 </div>
 
 <?php

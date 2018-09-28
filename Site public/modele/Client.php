@@ -3,7 +3,10 @@ class Client{
     var $idclient;
     var $nom;
     var $prenom;
-    var $idbateau;
+    var $boolGerant;
+    var $motDePasse;
+    var $mail;
+    var $numero;
 
     /**
      * Client constructor.
@@ -12,12 +15,15 @@ class Client{
      * @param $prenom
      * @param $idbateau
      */
-    public function __construct($idclient, $nom, $prenom, $idbateau)
+    public function __construct( $nom, $prenom, $motDePasse, $mail, $numero)
     {
-        $this->idclient = $idclient;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->idbateau = $idbateau;
+        $this->boolGerant = false;
+        $this->motDePasse = $motDePasse;
+        $this->mail = $mail;
+        $this->numero = $numero;
+
     }
 
 
@@ -83,6 +89,70 @@ class Client{
     public function setIdbateau($idbateau)
     {
         $this->idbateau = $idbateau;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBoolGerant()
+    {
+        return $this->boolGerant;
+    }
+
+    /**
+     * @param mixed $boolGerant
+     */
+    public function setBoolGerant($boolGerant)
+    {
+        $this->boolGerant = $boolGerant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMotDePasse()
+    {
+        return $this->motDePasse;
+    }
+
+    /**
+     * @param mixed $motDePasse
+     */
+    public function setMotDePasse($motDePasse)
+    {
+        $this->motDePasse = $motDePasse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param mixed $mail
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * @param mixed $numero
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
     }
 
 

@@ -2,10 +2,14 @@
 $prenom = null;
 $nom = null;
 $mail = null;
-$password = null;
+$motDePasse = null;
+$password2 = null;
 $mobile = null;
-if ((isset($_POST['password']))){
-    $password = $_POST['password'];
+if ((isset($_POST['motDePasse']))){
+    $motDePasse = $_POST['motDePasse'];
+}
+if ((isset($_POST['password2']))){
+    $password2 = $_POST['password2'];
 }
 if ((isset($_POST['mail']))){
     $mail = $_POST['mail'];
@@ -16,8 +20,8 @@ if ((isset($_POST['prenom']))){
 if ((isset($_POST['nom']))){
     $nom = $_POST['nom'];
 }
-if ((isset($_POST['mobile']))){
-    $mobile = $_POST['mobile'];
+if ((isset($_POST['numero']))){
+    $numero = $_POST['numero'];
 }?>
 
     <div class="creerCompte">
@@ -37,8 +41,12 @@ if ((isset($_POST['mobile']))){
                     <input type="text" name="prenom"/>
                 </label>
                 </br>
+                <label>Mobile :
+                    <input type="number" name="numero"/>
+                </label>
+                </br>
                 <label>Mot de passe:
-                    <input type="password" name="password"/>
+                    <input type="password" name="motDePasse"/>
                 </label>
                 </br>
                 <label>Confirmer mot de passe :
@@ -52,8 +60,18 @@ if ((isset($_POST['mobile']))){
     </div>
 
 <?php
-if ((isset($mail)) && (isset($password)) && (isset($nom)) &&(isset($prenom))){
+function verifMDP($motDePasse, $password2){
+    return $motDePasse === $password2;
+}
+if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
+    && (isset($numero)) && (isset($password2))
+    && verifMDP($motDePasse, $password2)){
     echo 'merci';
+    include '../accesseur/ClientDAO.php';
+    $clientDAO = new ClientDAO();
+    include '../modele/Client.php';
+    $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero);
+    $clientDAO ->ajouterClient($client);
     header('Location: index.php');
     exit();
 }
