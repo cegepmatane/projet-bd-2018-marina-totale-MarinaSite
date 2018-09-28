@@ -1,6 +1,6 @@
 <?php
 include_once "baseDeDonnee.php";
-
+session_start();
 Class BateauDAO
 {
     public function listerBateau()

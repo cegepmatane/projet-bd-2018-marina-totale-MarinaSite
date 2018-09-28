@@ -120,9 +120,4 @@ class Bateau{
     {
         $this->id_client = $id_client;
     }
-
-
-
-
-
 }
