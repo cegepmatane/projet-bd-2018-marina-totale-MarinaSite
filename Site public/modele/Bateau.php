@@ -1,27 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 1832527
- * Date: 18/09/2018
- * Time: 16:05
- */
-
 class Bateau{
 
     var $idbateau;
     var $nom;
+    var $type_bateau;
+    var $id_client;
     var $longeur;
     var $largeur;
 
     /**
      * Bateau constructor.
      * @param $nom
+     * @param $type_bateau
      * @param $longeur
      * @param $largeur
      */
-    public function __construct($nom, $longeur, $largeur)
+    public function __construct($nom, $type_bateau, $longeur, $largeur)
     {
         $this->nom = $nom;
+        $this->type_bateau = $type_bateau;
         $this->longeur = $longeur;
         $this->largeur = $largeur;
     }
@@ -89,6 +86,41 @@ class Bateau{
     {
         $this->largeur = $largeur;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeBateau()
+    {
+        return $this->type_bateau;
+    }
+
+    /**
+     * @param mixed $type_bateau
+     */
+    public function setTypeBateau($type_bateau)
+    {
+        $this->type_bateau = $type_bateau;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdClient()
+    {
+        return $this->id_client;
+    }
+
+    /**
+     * @param mixed $id_client
+     */
+    public function setIdClient($id_client)
+    {
+        $this->id_client = $id_client;
+    }
+
 
 
 
