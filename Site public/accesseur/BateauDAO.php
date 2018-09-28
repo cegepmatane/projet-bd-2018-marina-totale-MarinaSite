@@ -1,8 +1,10 @@
 <?php
 include_once "baseDeDonnee.php";
 
-Class BateauDAO{
-    public function listerBateau(){
+Class BateauDAO
+{
+    public function listerBateau()
+    {
         $LISTER_BATEAU = "SELECT * FROM bateau";
         global $basededonnees;
         $requeteListerBateau = $basededonnees->prepare($LISTER_BATEAU);
@@ -11,38 +13,41 @@ Class BateauDAO{
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function ajouterBateau(Bateau $bateau){
+    public function ajouterBateau(Bateau $bateau)
+    {
         $AJOUTER_BATEAU = "INSERT INTO bateau (nom,type_bateau, longueur, largeur) VALUES (:nom, :type_bateau, :longueur, :largeur)";
 
         global $basededonnees;
 
         $requeteAjouterBateau = $basededonnees->prepare($AJOUTER_BATEAU);
 
-        $requeteAjouterBateau->bindValue(':nom',$bateau->getNom());
-        $requeteAjouterBateau->bindValue(':type_bateau',$bateau->getTypeBateau());
-        $requeteAjouterBateau->bindValue(':longueur',$bateau->getLongeur());
-        $requeteAjouterBateau->bindValue(':largeur',$bateau->getLargeur());
+        $requeteAjouterBateau->bindValue(':nom', $bateau->getNom());
+        $requeteAjouterBateau->bindValue(':type_bateau', $bateau->getTypeBateau());
+        $requeteAjouterBateau->bindValue(':longueur', $bateau->getLongueur());
+        $requeteAjouterBateau->bindValue(':largeur', $bateau->getLargeur());
 
         $requeteAjouterBateau->execute();
     }
 
-    public function modifierBateau(Bateau $bateau){
-        $MODIDIER_BATEAU = "UDPDATE bateau SET nom = :nom, type_bateau = :type_bateau, longueur = :longueur, largeur = :largeur";
-        //$AJOUTER_BATEAU = "INSERT INTO bateau (nom,type_bateau, longeur, largeur) VALUES (".$bateau->getNom().",".$bateau->getTypeBateau().",".$bateau->getLongeur().",".$bateau->getLargeur().")";
+    public function modifierBateau(Bateau $bateau)
+    {
+        $MODIFIER_BATEAU = "UPDATE bateau SET nom = :nom, type_bateau = :type_bateau, longueur = :longueur, largeur = :largeur WHERE id = :id";
 
         global $basededonnees;
 
-        $requeteAjouterBateau = $basededonnees->prepare($MODIDIER_BATEAU);
+        $requeteModifierBateau = $basededonnees->prepare($MODIFIER_BATEAU);
 
-        $requeteAjouterBateau->bindValue(':nom',$bateau->getNom());
-        $requeteAjouterBateau->bindValue(':type_bateau',$bateau->getTypeBateau());
-        $requeteAjouterBateau->bindValue(':longueur',$bateau->getLongeur());
-        $requeteAjouterBateau->bindValue(':largeur',$bateau->getLargeur());
+        $requeteModifierBateau->bindValue(':nom', $bateau->getNom());
+        $requeteModifierBateau->bindValue(':type_bateau', $bateau->getTypeBateau());
+        $requeteModifierBateau->bindValue(':longueur', $bateau->getLongueur());
+        $requeteModifierBateau->bindValue(':largeur', $bateau->getLargeur());
+        $requeteModifierBateau->bindValue(':id', $bateau->getIdbateau());
 
-        $requeteAjouterBateau->execute();
+        $requeteModifierBateau->execute();
     }
 
-    public function trouverBateau($id){
+    public function trouverBateau($id)
+    {
         global $basededonnees;
         $TROUVER_BATEAU = 'SELECT * FROM bateau WHERE id = :id';
         $requeteTrouverBateau = $basededonnees->prepare($TROUVER_BATEAU);
@@ -50,6 +55,15 @@ Class BateauDAO{
         $requeteTrouverBateau->execute();
 
         return $requeteTrouverBateau->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function supprimerBateau($id)
+    {
+        global $basededonnees;
+        $SUPPRIMER_BATEAU = 'DELETE FROM bateau WHERE id = :id';
+        $requeteSupprimerBateau = $basededonnees->prepare($SUPPRIMER_BATEAU);
+        $requeteSupprimerBateau->bindValue(':id', $id);
+        $requeteSupprimerBateau->execute();
     }
 }
 /*

@@ -37,7 +37,7 @@ Bonjour, <?php echo  $_SESSION['pseudo']?>
                     </td>
                     <td>
                         <a href="vueModifierBateau.php?id=<?=$bateau->id; ?>">modifier</a>
-                        <a href="supprimerBateau.php?id=<?=$bateau->id; ?>">supprimer</a>
+                        <a href="../fonctions/supprimerBateau.php?id=<?=$bateau->id; ?>">supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

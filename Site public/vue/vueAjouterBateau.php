@@ -3,14 +3,14 @@ include 'headerIndex.php';
 
 $nom = null;
 $type_bateau = null;
-$longeur = null;
+$longueur = null;
 $largeur = null;
 
 if ((isset($_POST['largeur']))) {
     $largeur = $_POST['largeur'];
 }
-if ((isset($_POST['longeur']))) {
-    $longeur = $_POST['longeur'];
+if ((isset($_POST['longueur']))) {
+    $longueur = $_POST['longueur'];
 }
 if ((isset($_POST['nom']))) {
     $nom = $_POST['nom'];
@@ -19,9 +19,9 @@ if ((isset($_POST['type_bateau']))) {
     $type_bateau = $_POST['type_bateau'];
 }
 
-if ((isset($nom)) && (isset($type_bateau)) && (isset($longeur)) && (isset($largeur))) {
+if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($largeur))) {
     include '../modele/Bateau.php';
-    $bateau = new Bateau($nom,$type_bateau,$longeur,$largeur);
+    $bateau = new Bateau($nom,$type_bateau,$longueur,$largeur);
 
     include '../accesseur/BateauDAO.php';
     $bateauDAO = new BateauDAO();
@@ -47,7 +47,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longeur)) && (isset($large
                 </label>
                 </br>
                 <label>Longueur:
-                    <input type="text" name="longeur"/>
+                    <input type="text" name="longueur"/>
                 </label>
                 </br>
                 <label>Largeur:

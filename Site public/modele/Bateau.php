@@ -1,11 +1,11 @@
 <?php
 class Bateau{
 
-    var $idbateau;
+    var $id_bateau;
     var $nom;
     var $type_bateau;
     var $id_client;
-    var $longeur;
+    var $longueur;
     var $largeur;
 
     /**
@@ -19,7 +19,7 @@ class Bateau{
     {
         $this->nom = $nom;
         $this->type_bateau = $type_bateau;
-        $this->longeur = $longeur;
+        $this->longueur = $longeur;
         $this->largeur = $largeur;
     }
 
@@ -28,7 +28,7 @@ class Bateau{
      */
     public function getIdbateau()
     {
-        return $this->idbateau;
+        return $this->id_bateau;
     }
 
     /**
@@ -36,7 +36,7 @@ class Bateau{
      */
     public function setIdbateau($idbateau)
     {
-        $this->idbateau = $idbateau;
+        $this->id_bateau = $idbateau;
     }
 
     /**
@@ -58,17 +58,17 @@ class Bateau{
     /**
      * @return mixed
      */
-    public function getLongeur()
+    public function getLongueur()
     {
-        return $this->longeur;
+        return $this->longueur;
     }
 
     /**
-     * @param mixed $longeur
+     * @param mixed $longueur
      */
-    public function setLongeur($longeur)
+    public function setLongueur($longueur)
     {
-        $this->longeur = $longeur;
+        $this->longueur = $longueur;
     }
 
     /**
