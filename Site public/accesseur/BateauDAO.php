@@ -2,11 +2,12 @@
 include_once "baseDeDonnee.php";
 Class BateauDAO
 {
-    public function listerBateau()
+    public function listerBateau($id)
     {
-        $LISTER_BATEAU = "SELECT * FROM bateau";
+        $LISTER_BATEAU = "SELECT * FROM bateau WHERE id = :id";
         global $basededonnees;
         $requeteListerBateau = $basededonnees->prepare($LISTER_BATEAU);
+        $requeteListerBateau->bindValue(':id', $id);
         $requeteListerBateau->execute();
 
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);

@@ -2,7 +2,7 @@
 include 'header.php';
 include '../accesseur/BateauDAO.php';
 $bateauDAO = new BateauDAO();
-$donnees = $bateauDAO->listerBateau();
+$donnees = $bateauDAO->listerBateau($_SESSION['id']);
 ?>
 Bonjour, <?php echo  $_SESSION['pseudo']?>
 
