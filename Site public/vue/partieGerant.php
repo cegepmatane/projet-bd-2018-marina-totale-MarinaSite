@@ -18,24 +18,21 @@ $donnees = $clientDAO->listerClientAyantReservationEnCours();
 
                 <div class="row">
                     <table border="2">
-                        <caption>Recapitulatifs des clients en cours</caption>
+                        <caption>Récapitulatifs des clients ayant des réservations en cours</caption>
                             <?php if(isset($donnees[0])): ?>
                             <thead>
-                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>idbateau</th><th>Action...</th></tr>
+                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Action...</th></tr>
                             </thead>
                             <tbody>
                             <?php foreach ($donnees as $client) :?>
                                 <tr><td>
-                                        <?php echo $client->idclient; ?>
+                                        <?php echo $client->id; ?>
                                     </td>
                                     <td>
                                         <?php echo $client->nom; ?>
                                     </td>
                                     <td>
                                         <?php echo $client->prenom; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $client->idbateau; ?>
                                     </td>
                                     <td>
                                         <a href="modifierReservation.php?id=<?=$client->id; ?>">Modifier</a>
@@ -62,24 +59,21 @@ $donnees = $clientDAO->listerClientAyantReservationEnCours();
 
                     <div class="row">
                         <table border="2">
-                            <caption>Recapitulatifs des clients en cours</caption>
+                            <caption>Récapitulatif des clients ayant des réservations archivées</caption>
                             <?php if(isset($donnees[0])): ?>
                                 <thead>
-                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>idbateau</th><th>Action...</th></tr>
+                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Action...</th></tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($donnees as $client) :?>
                                     <tr><td>
-                                            <?php echo $client->idclient; ?>
+                                            <?php echo $client->id; ?>
                                         </td>
                                         <td>
                                             <?php echo $client->nom; ?>
                                         </td>
                                         <td>
                                             <?php echo $client->prenom; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $client->idbateau; ?>
                                         </td>
                                         <td>
                                             <a href="modifierReservation.php?id=<?=$client->id; ?>">Modifier</a>
@@ -95,7 +89,6 @@ $donnees = $clientDAO->listerClientAyantReservationEnCours();
                             <?php endif; ?>
                         </table>
 
-                        <a href="ajouterReservation.php">Ajouter une réservation</a>
                     </div>
             </details>
 
