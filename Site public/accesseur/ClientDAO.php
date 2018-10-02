@@ -57,7 +57,7 @@ Class ClientDAO{
     public function trouverClientId($idclient)
     {
         global $basededonnees;
-        $TROUVER_CLIENT = 'SELECT * FROM client WHERE idclient = :idclient';
+        $TROUVER_CLIENT = 'SELECT * FROM client WHERE id = :idclient';
         $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
         $requeteTrouverClient->bindValue(':idclient', $idclient);
         $requeteTrouverClient->execute();

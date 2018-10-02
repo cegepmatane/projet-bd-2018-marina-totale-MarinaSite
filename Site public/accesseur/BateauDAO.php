@@ -68,10 +68,3 @@ Class BateauDAO
         $requeteSupprimerBateau->execute();
     }
 }
-/*
-$bateau = new BateauDAO();
-
-foreach($bateau->listerBateau() as $row ) {
-    echo $row->nom;
-    echo '<br>';
-}*/

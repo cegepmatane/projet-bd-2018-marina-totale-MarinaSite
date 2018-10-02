@@ -1,28 +1,40 @@
 <?php
 include 'header.php';
+
 include '../accesseur/BateauDAO.php';
 $bateauDAO = new BateauDAO();
-$donnees = $bateauDAO->listerBateau($_SESSION['id']);
+$donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
+
+include '../accesseur/ClientDAO.php';
+$clientDAO = new ClientDAO();
+$donneesClient = $clientDAO->trouverClientId($_SESSION['id']);
 ?>
-Bonjour, <?php echo  $_SESSION['pseudo']?>
+Bonjour, <?php echo  $_SESSION['pseudo'].', id_client='.$_SESSION['id']?>
 
 <h1>Ma page client</h1>
 
-<h2>Mes bateaux :</h2>
+<h2>Mes information :</h2>
 
+<fieldset>
+    <p>Nom : <?php echo $donneesClient->nom ?></p>
+    <p>Prenom : <?php echo $donneesClient->prenom ?></p>
+    <p>Mail : <?php echo $donneesClient->mail ?></p>
+    <p>Numero : <?php echo $donneesClient->numero ?></p>
+</fieldset>
+
+
+<h2>Mes bateaux :</h2>
 
 <div class="row">
     <table border="2">
         <caption>Recapitulatifs des Bateaux</caption>
-        <?php if(isset($donnees[0])): ?>
+        <?php if(isset($donneesBateaux[0])): ?>
             <thead>
-            <tr><th>ID bateau</th><th>Nom</th><th>Type</th><th>Longueur</th><th>Largeur</th><th>Action...</th></tr>
+            <tr><th>Nom</th><th>Type</th><th>Longueur</th><th>Largeur</th><th>Action...</th></tr>
             </thead>
             <tbody>
-            <?php foreach ($donnees as $bateau) :?>
-                <tr><td>
-                        <?php echo $bateau->id; ?>
-                    </td>
+            <?php foreach ($donneesBateaux as $bateau) :?>
+                <tr>
                     <td>
                         <?php echo $bateau->nom; ?>
                     </td>
