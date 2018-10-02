@@ -1,12 +1,19 @@
 <?php include 'headerIndex.php';
+include '../modele/Client.php';
+include '../accesseur/ClientDAO.php';
+
 $PASS = 0;
 $PSEUDO = null;
 $MDP = null;
-if ((isset($_POST['mot_de_passe']))){
+if ((isset($_POST['mot_de_passe']))) {
     $MDP = $_POST['mot_de_passe'];
 }
-if ((isset($_POST['pseudo']))){
+if ((isset($_POST['pseudo']))) {
     $PSEUDO = $_POST['pseudo'];
+}
+
+if (isset($PSEUDO) && isset($MDP)) {
+    connexion($PSEUDO, $MDP);
 }
 ?>
 
@@ -15,10 +22,10 @@ if ((isset($_POST['pseudo']))){
         <legend>Connexion à MarinaConnect</legend>
 
         <form action="index.php" method="post">
-            <p> <label>Mail: </label>
-                <input type="email" name="pseudo" />
+            <p><label>Mail: </label>
+                <input type="email" name="pseudo"/>
                 <label>Mot de passe: </label>
-                <input type="password" name="mot_de_passe" />
+                <input type="password" name="mot_de_passe"/>
                 <input type="submit" name="send" value="CONNEXION">
             </p>
         </form>
@@ -26,16 +33,17 @@ if ((isset($_POST['pseudo']))){
 </div>
 
 <?php
-function connexion($PSEUDO, $MDP){
+function connexion($PSEUDO, $MDP)
+{
 
-    include '../modele/Client.php';
-    include '../accesseur/ClientDAO.php';
     $ClientDAO = new ClientDAO();
-    if ($ClientDAO ->clientExiste($PSEUDO)){
-        $clientCourant = $ClientDAO ->trouverClientMail($PSEUDO);
-        if(motDePasseJuste($clientCourant, $MDP)){
+
+    if ($ClientDAO->clientExiste($PSEUDO)) {
+        $clientCourant = $ClientDAO->trouverClientMail($PSEUDO);
+        $clientCourantObj = new Client($clientCourant->nom, $clientCourant->prenom, $clientCourant->mot_de_passe, $clientCourant->mail, $clientCourant->numero);
+        if (motDePasseJuste($clientCourantObj, $MDP)) {
             $_SESSION['pseudo'] = $PSEUDO;
-            if($clientCourant->getBoolGerant()){
+            if ($clientCourantObj->getBoolGerant()) {
                 header('Location: partieGerant.php');
                 exit();
             }
@@ -45,13 +53,14 @@ function connexion($PSEUDO, $MDP){
         }
     }
 }
-function motDePasseJuste(Client $client, $MDP){
-    return ($client -> getMotDePasse() === md5($MDP));
+
+function motDePasseJuste(Client $client, $MDP)
+{
+    return ($client->getMotDePasse() === md5($MDP));
 }
 
 
-if(($PSEUDO != null)&&($MDP != null))
-{
+if (($PSEUDO != null) && ($MDP != null)) {
     ?>
     Mot de passe incorrect
     <?php

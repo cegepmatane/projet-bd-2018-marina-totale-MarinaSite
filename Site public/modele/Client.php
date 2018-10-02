@@ -23,7 +23,6 @@ class Client{
         $this->motDePasse = $motDePasse;
         $this->mail = $mail;
         $this->numero = $numero;
-
     }
 
 

@@ -7,4 +7,5 @@ $mdp = "bdd2018Marina";
 
 $dsn = 'pgsql:host=localhost;port=5432;dbname=MarinaBateauDB';
 $basededonnees = new PDO($dsn, $utilisateur, $mdp);
+print_r($basededonnees);
 ?>

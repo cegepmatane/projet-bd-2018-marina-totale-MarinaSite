@@ -1,5 +1,5 @@
 <?php
-include_once "baseDeDonnee.php";
+include "baseDeDonnee.php";
 
 Class ClientDAO{
 
@@ -65,9 +65,38 @@ Class ClientDAO{
         return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
     }
     public function clientExiste($mail){
-        $result = mysql_query('SELECT EXISTS (SELECT * FROM news WHERE mail="' . $mail . '" ) AS compte_existe');
+        //test1
+        /*$result = mysql_query('SELECT EXISTS (SELECT * FROM client WHERE mail="' . $mail . '" ) AS compte_existe');
         $req = mysql_fetch_array($result);
-        return  $req['compte_existe'];
+        return  $req['compte_existe'];*/
+
+        //test2
+        /*global $basededonnees;
+        $sql = "select * from client where mail=?";
+        $row = $this->$basededonnees->fetchAssoc($sql, array($mail));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No user matching id " . $mail);*/
+
+        $TROUVER_CLIENT = 'SELECT * FROM client WHERE mail = :mail';
+
+        global $basededonnees;
+
+        print_r($basededonnees);
+
+        $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
+        $requeteTrouverClient->bindValue(':mail', $mail);
+        $requeteTrouverClient->execute();
+        $res = $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            echo 'true';
+            return true;
+        }
+        echo 'false';
+        return false;
     }
     public function trouverClientMail($mail)
     {

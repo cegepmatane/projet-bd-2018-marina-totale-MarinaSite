@@ -72,7 +72,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
 
     $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero);
     $clientDAO ->ajouterClient($client);
-    
+
     header('Location: index.php');
     exit();
 }

@@ -2,7 +2,9 @@
 include 'headerIndex.php';
 include '../accesseur/BateauDAO.php';
 
-$id = $_GET['id'];
+if (!isset($id)) {
+    $id = $_GET['id'];
+}
 
 $bateauDAO = new BateauDAO();
 
@@ -30,10 +32,11 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
     include '../modele/Bateau.php';
     $bateau = new Bateau($nom, $type_bateau, $longueur, $largeur);
 
-    $bateauDAO->modifierBateau($bateau);
+    $bateauDAO->modifierBateau($bateau, $bateauAModifier->id);
 
-    header('Location: partieClient.php');
-    exit();
+
+    /* header('Location: partieClient.php');
+     exit();*/
 }
 
 ?>

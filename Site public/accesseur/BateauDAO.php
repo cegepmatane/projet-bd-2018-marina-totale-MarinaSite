@@ -1,6 +1,5 @@
 <?php
 include_once "baseDeDonnee.php";
-session_start();
 Class BateauDAO
 {
     public function listerBateau()
@@ -29,7 +28,7 @@ Class BateauDAO
         $requeteAjouterBateau->execute();
     }
 
-    public function modifierBateau(Bateau $bateau)
+    public function modifierBateau(Bateau $bateau, $id)
     {
         $MODIFIER_BATEAU = "UPDATE bateau SET nom = :nom, type_bateau = :type_bateau, longueur = :longueur, largeur = :largeur WHERE id = :id";
 
@@ -41,7 +40,14 @@ Class BateauDAO
         $requeteModifierBateau->bindValue(':type_bateau', $bateau->getTypeBateau());
         $requeteModifierBateau->bindValue(':longueur', $bateau->getLongueur());
         $requeteModifierBateau->bindValue(':largeur', $bateau->getLargeur());
-        $requeteModifierBateau->bindValue(':id', $bateau->getIdbateau());
+        $requeteModifierBateau->bindValue(':id', $id);
+
+        echo $requeteModifierBateau->queryString();
+        echo '<br>'.$bateau->getNom();
+        echo '<br>'.$bateau->getTypeBateau();
+        echo '<br>'.$bateau->getLargeur();
+        echo '<br>'.$bateau->getLongueur();
+        echo '<br>'.$bateau->getIdbateau();
 
         $requeteModifierBateau->execute();
     }
