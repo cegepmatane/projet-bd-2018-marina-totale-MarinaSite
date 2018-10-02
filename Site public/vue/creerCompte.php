@@ -63,18 +63,20 @@ if ((isset($_POST['numero']))){
 function verifMDP($motDePasse, $password2){
     return $motDePasse === $password2;
 }
+
 if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
     && (isset($numero)) && (isset($password2))
     && verifMDP($motDePasse, $password2)){
     include '../accesseur/ClientDAO.php';
     $clientDAO = new ClientDAO();
     include '../modele/Client.php';
+    if (!($clientDAO->clientExiste($mail))) {
+        $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero);
+        $clientDAO->ajouterClient($client);
 
-    $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero);
-    $clientDAO ->ajouterClient($client);
-
-    header('Location: index.php');
-    exit();
+        header('Location: index.php');
+        exit();
+    }
 }
 
 
