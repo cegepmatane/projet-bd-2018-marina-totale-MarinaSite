@@ -4,10 +4,10 @@ Class BateauDAO
 {
     public function listerBateau($id)
     {
-        $LISTER_BATEAU = "SELECT * FROM bateau WHERE id = :id";
+        $LISTER_BATEAU = "SELECT * FROM bateau WHERE id_client = :id_client";
         global $basededonnees;
         $requeteListerBateau = $basededonnees->prepare($LISTER_BATEAU);
-        $requeteListerBateau->bindValue(':id', $id);
+        $requeteListerBateau->bindValue(':id_client',$id);
         $requeteListerBateau->execute();
 
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);
@@ -15,7 +15,7 @@ Class BateauDAO
 
     public function ajouterBateau(Bateau $bateau)
     {
-        $AJOUTER_BATEAU = "INSERT INTO bateau (nom,type_bateau, longueur, largeur) VALUES (:nom, :type_bateau, :longueur, :largeur)";
+        $AJOUTER_BATEAU = "INSERT INTO bateau (nom,type_bateau, longueur, largeur, id_client) VALUES (:nom, :type_bateau, :longueur, :largeur, :id_client)";
 
         global $basededonnees;
 
@@ -25,6 +25,7 @@ Class BateauDAO
         $requeteAjouterBateau->bindValue(':type_bateau', $bateau->getTypeBateau());
         $requeteAjouterBateau->bindValue(':longueur', $bateau->getLongueur());
         $requeteAjouterBateau->bindValue(':largeur', $bateau->getLargeur());
+        $requeteAjouterBateau->bindValue(':id_client', $bateau->getIdClient());
 
         $requeteAjouterBateau->execute();
     }
