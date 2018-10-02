@@ -8,6 +8,7 @@ Class BateauDAO
         global $basededonnees;
         $requeteListerBateau = $basededonnees->prepare($LISTER_BATEAU);
         $requeteListerBateau->bindValue(':id_client',$id);
+
         $requeteListerBateau->execute();
 
         return $requeteListerBateau->fetchAll(PDO::FETCH_OBJ);
@@ -43,13 +44,6 @@ Class BateauDAO
         $requeteModifierBateau->bindValue(':longueur', $bateau->getLongueur());
         $requeteModifierBateau->bindValue(':largeur', $bateau->getLargeur());
         $requeteModifierBateau->bindValue(':id', $id);
-
-        echo $requeteModifierBateau->queryString();
-        echo '<br>'.$bateau->getNom();
-        echo '<br>'.$bateau->getTypeBateau();
-        echo '<br>'.$bateau->getLargeur();
-        echo '<br>'.$bateau->getLongueur();
-        echo '<br>'.$bateau->getIdbateau();
 
         $requeteModifierBateau->execute();
     }
