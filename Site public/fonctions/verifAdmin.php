@@ -1,5 +1,11 @@
 <?php
-if (!(isset($_SESSION['admin']))){
-header('Location: partieClient.php');
-exit();
-}?>
+
+$clientDAO = new ClientDAO();
+$client = $clientDAO->trouverClientMail($_SESSION['pseudo']);;
+
+if (!$client->bool_gerant) {
+    header('Location: partieClient.php');
+    exit();
+}
+
+?>

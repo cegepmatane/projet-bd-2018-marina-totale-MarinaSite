@@ -40,23 +40,25 @@ function connexion($PSEUDO, $MDP)
 
     if ($ClientDAO->clientExiste($PSEUDO)) {
         $clientCourant = $ClientDAO->trouverClientMail($PSEUDO);
-        $clientCourantObj = new Client($clientCourant->nom, $clientCourant->prenom, $clientCourant->mot_de_passe, $clientCourant->mail, $clientCourant->numero);
-        if (motDePasseJuste($clientCourantObj, $MDP)) {
+
+        if (motDePasseJuste($clientCourant->mot_de_passe, $MDP)) {
             $_SESSION['pseudo'] = $PSEUDO;
-            if ($clientCourantObj->getBoolGerant()) {
+            $_SESSION['id'] = $clientCourant->id;
+
+            if ($clientCourant->bool_gerant) {
                 header('Location: partieGerant.php');
                 exit();
+            } else {
+                header('Location: partieClient.php');
+                exit();
             }
-            header('Location: partieClient.php');
-            exit();
-
         }
     }
 }
 
-function motDePasseJuste(Client $client, $MDP)
+function motDePasseJuste($motDePasseActuel, $MDP)
 {
-    return ($client->getMotDePasse() === md5($MDP));
+    return ($motDePasseActuel === md5($MDP));
 }
 
 

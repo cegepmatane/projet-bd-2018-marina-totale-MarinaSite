@@ -8,23 +8,24 @@ class Client{
     var $mail;
     var $numero;
 
+
     /**
      * Client constructor.
      * @param $idclient
      * @param $nom
      * @param $prenom
      * @param $idbateau
+     * @param $bool_gerant
      */
-    public function __construct( $nom, $prenom, $motDePasse, $mail, $numero)
+    public function __construct( $nom, $prenom, $motDePasse, $mail, $numero,$boolGerant)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->boolGerant = false;
+        $this->boolGerant = $boolGerant;
         $this->motDePasse = $motDePasse;
         $this->mail = $mail;
         $this->numero = $numero;
     }
-
 
     /**
      * @return mixed

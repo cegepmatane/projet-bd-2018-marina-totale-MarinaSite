@@ -54,12 +54,23 @@ Class ClientDAO{
         $requeteModifierClient->execute();
     }
 
-    public function trouverClient($idclient)
+    public function trouverClientId($idclient)
     {
         global $basededonnees;
         $TROUVER_CLIENT = 'SELECT * FROM client WHERE idclient = :idclient';
         $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
         $requeteTrouverClient->bindValue(':idclient', $idclient);
+        $requeteTrouverClient->execute();
+
+        return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function trouverClientMail($mail)
+    {
+        global $basededonnees;
+        $TROUVER_CLIENT = 'SELECT * FROM client WHERE mail = :mail';
+        $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
+        $requeteTrouverClient->bindValue(':mail', $mail);
         $requeteTrouverClient->execute();
 
         return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
@@ -84,30 +95,17 @@ Class ClientDAO{
 
         global $basededonnees;
 
-        print_r($basededonnees);
-
         $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
         $requeteTrouverClient->bindValue(':mail', $mail);
         $requeteTrouverClient->execute();
         $res = $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
 
         if($res !== false) {
-            echo 'true';
             return true;
         }
-        echo 'false';
         return false;
     }
-    public function trouverClientMail($mail)
-    {
-        global $basededonnees;
-        $TROUVER_CLIENT = 'SELECT * FROM client WHERE mail = :mail';
-        $requeteTrouverClient = $basededonnees->prepare($TROUVER_CLIENT);
-        $requeteTrouverClient->bindValue(':mail', $mail);
-        $requeteTrouverClient->execute();
 
-        return $requeteTrouverClient->fetch(PDO::FETCH_OBJ);
-    }
 
     public function supprimerClient($idclient)
     {

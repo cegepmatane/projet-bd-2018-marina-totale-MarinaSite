@@ -1,12 +1,9 @@
 <?php include 'header.php';
-include '../fonctions/verifAdmin.php';
 include '../accesseur/ClientDAO.php';
+include '../fonctions/verifAdmin.php';
 $clientDAO = new ClientDAO();
 $donnees = $clientDAO->listerClientAyantReservationEnCours();
 ?>
-
-
-
 
 <div class="partieGerant">
 
