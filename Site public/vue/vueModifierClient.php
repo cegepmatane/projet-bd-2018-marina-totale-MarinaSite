@@ -36,10 +36,11 @@ if ((isset($_POST['prenom']))) {
 
 if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail)) && (isset($mot_de_passe))) {
     include '../modele/Client.php';
-    $client = new Bateau($nom, $prenom, $numero, $mail,$_SESSION['id_client_a_modifier']);
+    $client = new Client($nom, $prenom, MD5($mot_de_passe),$mail, $numero,false);
 
     $clientDAO->modifierClient($client, $_SESSION['id_client_a_modifier']);
     $_SESSION['id_client_a_modifier'] = null;
+
     header('Location: partieClient.php');
     exit();
 }
@@ -50,7 +51,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail)) && (
         <fieldset>
             <legend>Modifier mes informations</legend>
 
-            <form action="vueModifierBateau.php" method="post">
+            <form action="vueModifierClient.php" method="post">
                 <label>Nom:
                     <input type="text" name="nom" value="<?php echo $clientAModifier->nom ?>"/>
                 </label>
@@ -66,14 +67,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail)) && (
                 <label>Mail:
                     <input type="email" name="mail" value="<?php echo $clientAModifier->mail ?>"/>
                 </label>
-                </br>
-                <label>Mot de passe:
-                    <input type="password" name="mot_de_passe" value=""/>
-                </label>
-                </br>
-                <label>Confirmer mot de passe:
-                    <input type="password" name="mot_de_passeConfirmer" value=""/>
-                </label>
+               <a href="vueModifierMotDePasse.php?id=<?php echo $_SESSION['id']?>">Modifier mon mot de passe</a>
                 </br>
 
                 <input type="submit" name="modiferClient" value="Modifier mes informations"/>

@@ -39,9 +39,9 @@ Class ClientDAO{
         $requeteAjouterClient->execute();
     }
 
-    public function modifierClient(Client $client)
+    public function modifierClient(Client $client, $id)
     {
-        $MODIFIER_CLIENT = "UPDATE client SET nom = :nom, prenom = :prenom WHERE idclient = :idclient";
+        $MODIFIER_CLIENT = "UPDATE client SET nom = :nom, prenom = :prenom, mail = :mail, numero = :numero, mot_de_passe = :motdepasse WHERE id = :idclient";
 
         global $basededonnees;
 
@@ -49,7 +49,10 @@ Class ClientDAO{
 
         $requeteModifierClient->bindValue(':nom', $client->getNom());
         $requeteModifierClient->bindValue(':prenom', $client->getPrenom());
-        $requeteModifierClient->bindValue(':idclient', $client->getIdclient());
+        $requeteModifierClient->bindValue(':numero', $client->getNumero());
+        $requeteModifierClient->bindValue(':mail', $client->getMail());
+        $requeteModifierClient->bindValue(':motdepasse', $client->getMotDePasse());
+        $requeteModifierClient->bindValue(':idclient', $id);
 
         $requeteModifierClient->execute();
     }
