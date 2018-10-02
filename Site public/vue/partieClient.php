@@ -20,6 +20,7 @@ Bonjour, <?php echo  $_SESSION['pseudo'].', id_client='.$_SESSION['id']?>
     <p>Prenom : <?php echo $donneesClient->prenom ?></p>
     <p>Mail : <?php echo $donneesClient->mail ?></p>
     <p>Numero : <?php echo $donneesClient->numero ?></p>
+    <a href="vueModifierClient.php?id=<?php echo $_SESSION['id'] ?>">Modifier mes informations</a>
 </fieldset>
 
 
