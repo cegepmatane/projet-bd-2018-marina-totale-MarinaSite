@@ -12,7 +12,7 @@ $donneesClient = $clientDAO->trouverClientId($_SESSION['id']);
 Bonjour, <?php echo  $_SESSION['pseudo'].', id_client='.$_SESSION['id']?>
 
 <h1>Ma page client</h1>
-
+    <h3><a href="vueReservationClient.php?id=<?php echo $_SESSION['id']?>">Mes reservations</a></h3>
 <h2>Mes information :</h2>
 
 <fieldset>

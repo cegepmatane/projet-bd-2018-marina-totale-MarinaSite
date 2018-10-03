@@ -37,7 +37,7 @@ if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (i
     $prenom = $clientAModifier->prenom;
     $numero = $clientAModifier->numero;
     $mail = $clientAModifier->mail;
-    
+
     if (ancienMotDePasseCorrect($ancien_mot_de_passe, MD5($ancien_mot_de_passe_test))) {
         if ($nouveau_mot_de_passe === $confirmer_mot_de_passe) {
 

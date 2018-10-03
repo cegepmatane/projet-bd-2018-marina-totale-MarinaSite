@@ -3,10 +3,11 @@ include_once "baseDeDonnee.php";
 
 Class ReservationDAO{
 
-    public function listerReservation(){
-        $LISTER_RESERVATION = "SELECT * FROM reservation";
+    public function listerReservation($id){
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id = :id";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
+        $requeteListerReservation->bindValue(':id', $id);
         $requeteListerReservation->execute();
 
         return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
