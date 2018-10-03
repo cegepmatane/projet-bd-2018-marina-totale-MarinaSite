@@ -6,7 +6,7 @@ Class ReservationDAO
 
     public function listerReservation($id)
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id = :id";
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id_client = :id";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->bindValue(':id', $id);

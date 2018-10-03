@@ -21,8 +21,8 @@ if (!(isset($_SESSION['pseudo']))){
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <header>
-    <a href="index.php">ACCEUIL</a>
-    <a href="deconnexion.php">Se deconnecter</a>
+    <a href="partieClient.php">ACCEUIL CLIENT</a><br>
+    <a href="deconnexion.php">Se deconnecter..</a>
 </header>
 
 <body>

@@ -64,4 +64,15 @@ Class EmplacementDAO{
         $requeteSupprimerEmplacement->execute();
     }
 
+    public function emplacementSelonDate($dateDebut,$dateFin){
+        $LISTER_EMPLACEMENT = "SELECT id_emplacement FROM reservation WHERE NOT (:dateFin <= datedebut or datefin >= :dateDebut)";
+        global $basededonnees;
+        $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
+        $requeteListerEmplacement->bindValue(':dateDebut', $dateDebut);
+        $requeteListerEmplacement->bindValue(':dateFin', $dateFin);
+        $requeteListerEmplacement->execute();
+
+        return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

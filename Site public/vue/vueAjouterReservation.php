@@ -1,7 +1,13 @@
 <?php
 include 'headerIndex.php';
-
 include '../accesseur/BateauDAO.php';
+include '../accesseur/ServiceDAO.php';
+include '../accesseur/EmplacementDAO.php';
+include '../accesseur/ReservationDAO.php';
+
+include '../modele/Reservation.php';
+include '../modele/Service.php';
+
 $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 
@@ -38,26 +44,35 @@ if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default'){
     $id_bateau = $_POST['select_bateau'];
 }
 
-if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)) {
+//TODO gestion erreurs
+if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin) && dateCompare($dateDebut,$dateFin)) {
     $id_service = creerService($electricite,$vidange,$essence);
 
-    include '../modele/Reservation.php';
+
+
+
+    emplacementValide($dateDebut,$dateFin,$id_bateau);
+
+
+
+
+
     $reservation = new Reservation($dateDebut,$dateFin,$_SESSION['id'],$id_bateau,$id_service);
 
-    include '../accesseur/ReservationDAO.php';
+
     $reservationDAO = new ReservationDAO();
     $reservationDAO->ajouterReservation($reservation);
 
-    /*header('Location: vueReservationClient.php');
+    /*header('Location: vueReservationClient.php?id='.$_SESSION['id'] .'');
     exit();*/
 }
 
 
 function creerService($electricite,$vidange,$essence){
-    include '../modele/Service.php';
+
     $service = new Service($essence,$electricite,$vidange);
 
-    include '../accesseur/ServiceDAO.php';
+
     $serviceDAO = new ServiceDAO();
 
     return $serviceDAO->ajouterService($service);
@@ -68,9 +83,30 @@ function checkDateAAAAMMDD($date){
     return ctype_digit("$y$m$d") && checkdate($m, $d, $y);
 }
 
+function dateCompare($dateDebut, $dateFin){
+    $dateTimeDebut = new DateTime($dateDebut);
+    $dateTimeFin = new DateTime($dateFin);
+
+    return $dateTimeDebut < $dateTimeFin;
+}
+function emplacementValide($dateDebut, $dateFin, $idbateau){
+
+    $reservationDAO = new ReservationDAO();
+
+    $emplacementDAO = new EmplacementDAO();
+    $donnees = $emplacementDAO->emplacementSelonDate($dateDebut,$dateFin);
+    foreach ($donnees as $donne){
+        print_r($donne);
+        echo '<br>';
+    }
+
+    return;
+}
+
+
 ?>
 
-    <div class="ajouterbateau">
+    <div class="ajouterreservation">
         <fieldset>
             <legend>Effectuer une nouvelle réservation</legend>
 
