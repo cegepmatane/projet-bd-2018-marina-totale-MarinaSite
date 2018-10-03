@@ -5,34 +5,61 @@ include '../accesseur/BateauDAO.php';
 $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 
-$nom = null;
-$type_bateau = null;
-$longueur = null;
-$largeur = null;
+$dateDebut = null;
+$dateFin = null;
+$id_bateau = null;
+$electricite = null;
+$vidange = null;
+$essence = null;
+$id_service = null;
 
-if ((isset($_POST['largeur']))) {
-    $largeur = $_POST['largeur'];
+if ((isset($_POST['dateDebut']))) {
+    $dateDebut = $_POST['dateDebut'];
 }
-if ((isset($_POST['longueur']))) {
-    $longueur = $_POST['longueur'];
+if ((isset($_POST['dateFin']))) {
+    $dateFin = $_POST['dateFin'];
 }
-if ((isset($_POST['nom']))) {
-    $nom = $_POST['nom'];
+if ((isset($_POST['electricite']))) {
+    $electricite = true;
+}else{
+    $electricite = false;
 }
-if ((isset($_POST['type_bateau']))) {
-    $type_bateau = $_POST['type_bateau'];
+if ((isset($_POST['vidange']))) {
+    $vidange = true;
+}else{
+    $vidange = false;
+}
+if ((isset($_POST['essence']))) {
+    $essence = true;
+}else{
+    $essence = false;
 }
 
-if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($largeur))) {
-    include '../modele/Bateau.php';
-    $bateau = new Bateau($nom, $type_bateau, $longueur, $largeur, $_SESSION['id']);
 
-    include '../accesseur/BateauDAO.php';
-    $bateauDAO = new BateauDAO();
-    $bateauDAO->ajouterBateau($bateau);
+
+if ((isset($dateDebut)) && (isset($dateFin)) /*&& (isset($id_bateau))*/) {
+    echo 'test service';
+    $id_service = creerService($electricite,$vidange,$essence);
+    /*include '../modele/Reservation.php.php';
+    $reservation = new Reservation();
+
+    include '../accesseur/ReservationDAO.php.php';
+    $reservationDAO = new ReservationDAO();
+    $reservationDAO->ajouterReservation($reservation);
 
     header('Location: partieClient.php');
-    exit();
+    exit();*/
+}
+
+
+function creerService($electricite,$vidange,$essence){
+    include '../modele/Service.php';
+    $service = new Service($essence,$electricite,$vidange);
+
+    include '../accesseur/ServiceDAO.php';
+    $serviceDAO = new ServiceDAO();
+
+    return $serviceDAO->ajouterService($service);
 }
 
 ?>
@@ -43,11 +70,11 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 
             <form action="vueAjouterReservation.php" method="post">
                 <label>Date d'arrivé:
-                    <input type="date" name="nom"/>
+                    <input type="date" name="dateDebut"/>
                 </label>
                 </br>
                 <label>Date de départ:
-                    <input type="date" name="type_bateau"/>
+                    <input type="date" name="dateFin"/>
                 </label>
                 </br>
                 <label>Bateau:

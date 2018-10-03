@@ -1,30 +1,23 @@
 <?php
 
-class Service{
+class Service
+{
     var $idservice;
     var $contientessence;
     var $contientelectricite;
     var $contientvidange;
-    var $idreservation;
-    var $idemplacement;
 
     /**
      * Service constructor.
-     * @param $idservice
      * @param $contientessence
      * @param $contientelectricite
      * @param $contientvidange
-     * @param $idreservation
-     * @param $idemplacement
      */
-    public function __construct($idservice, $contientessence, $contientelectricite, $contientvidange, $idreservation, $idemplacement)
+    public function __construct($contientessence, $contientelectricite, $contientvidange)
     {
-        $this->idservice = $idservice;
-        $this->contientessence = $contientessence;
-        $this->contientelectricite = $contientelectricite;
-        $this->contientvidange = $contientvidange;
-        $this->idreservation = $idreservation;
-        $this->idemplacement = $idemplacement;
+        $this->contientessence = (bool)$contientessence;
+        $this->contientelectricite = (bool)$contientelectricite;
+        $this->contientvidange = (bool)$contientvidange;
     }
 
     /**
@@ -48,7 +41,7 @@ class Service{
      */
     public function getContientessence()
     {
-        return $this->contientessence;
+        return (int)$this->contientessence;
     }
 
     /**
@@ -64,7 +57,7 @@ class Service{
      */
     public function getContientelectricite()
     {
-        return $this->contientelectricite;
+        return (int)$this->contientelectricite;
     }
 
     /**
@@ -80,7 +73,7 @@ class Service{
      */
     public function getContientvidange()
     {
-        return $this->contientvidange;
+        return (int)$this->contientvidange;
     }
 
     /**
@@ -90,38 +83,4 @@ class Service{
     {
         $this->contientvidange = $contientvidange;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getIdreservation()
-    {
-        return $this->idreservation;
-    }
-
-    /**
-     * @param mixed $idreservation
-     */
-    public function setIdreservation($idreservation)
-    {
-        $this->idreservation = $idreservation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdemplacement()
-    {
-        return $this->idemplacement;
-    }
-
-    /**
-     * @param mixed $idemplacement
-     */
-    public function setIdemplacement($idemplacement)
-    {
-        $this->idemplacement = $idemplacement;
-    }
-
-
 }
