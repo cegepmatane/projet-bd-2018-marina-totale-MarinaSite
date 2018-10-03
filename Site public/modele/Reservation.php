@@ -12,21 +12,40 @@ class Reservation{
     var $datedebut;
     var $datefin;
     var $idclient;
+    var $idbateau;
+    var $idservice;
 
     /**
      * Reservation constructor.
-     * @param $idreservation
      * @param $datedebut
      * @param $datefin
      * @param $idclient
      */
-    public function __construct($idreservation, $datedebut, $datefin, $idclient)
+    public function __construct($datedebut, $datefin, $idclient,$idbateau,$idservice)
     {
-        $this->idreservation = $idreservation;
         $this->datedebut = $datedebut;
         $this->datefin = $datefin;
         $this->idclient = $idclient;
+        $this->idbateau = $idbateau;
+        $this->idservice = $idservice;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdbateau()
+    {
+        return $this->idbateau;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdservice()
+    {
+        return $this->idservice;
+    }
+
 
     /**
      * @return mixed

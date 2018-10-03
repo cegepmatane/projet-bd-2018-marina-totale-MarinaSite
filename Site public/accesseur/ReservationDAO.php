@@ -1,9 +1,11 @@
 <?php
 include_once "baseDeDonnee.php";
 
-Class ReservationDAO{
+Class ReservationDAO
+{
 
-    public function listerReservation($id){
+    public function listerReservation($id)
+    {
         $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id = :id";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
@@ -15,7 +17,7 @@ Class ReservationDAO{
 
     public function ajouterReservation(Reservation $reservation)
     {
-        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin) VALUES (:datedebut, :datefin)";
+        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau,id_service) VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_service)";
 
         global $basededonnees;
 
@@ -23,6 +25,9 @@ Class ReservationDAO{
 
         $requeteAjouterReservation->bindValue(':datedebut', $reservation->getDatedebut());
         $requeteAjouterReservation->bindValue(':datefin', $reservation->getDatefin());
+        $requeteAjouterReservation->bindValue(':id_client', $reservation->getIdclient());
+        $requeteAjouterReservation->bindValue(':id_bateau', $reservation->getIdbateau());
+        $requeteAjouterReservation->bindValue(':id_service', $reservation->getIdservice());
 
         $requeteAjouterReservation->execute();
     }

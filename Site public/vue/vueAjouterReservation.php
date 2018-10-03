@@ -34,20 +34,21 @@ if ((isset($_POST['essence']))) {
 }else{
     $essence = false;
 }
+if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default'){
+    $id_bateau = $_POST['select_bateau'];
+}
 
-
-
-if ((isset($dateDebut)) && (isset($dateFin)) /*&& (isset($id_bateau))*/) {
-    echo 'test service';
+if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)) {
     $id_service = creerService($electricite,$vidange,$essence);
-    /*include '../modele/Reservation.php.php';
-    $reservation = new Reservation();
 
-    include '../accesseur/ReservationDAO.php.php';
+    include '../modele/Reservation.php';
+    $reservation = new Reservation($dateDebut,$dateFin,$_SESSION['id'],$id_bateau,$id_service);
+
+    include '../accesseur/ReservationDAO.php';
     $reservationDAO = new ReservationDAO();
     $reservationDAO->ajouterReservation($reservation);
 
-    header('Location: partieClient.php');
+    /*header('Location: vueReservationClient.php');
     exit();*/
 }
 
@@ -60,6 +61,11 @@ function creerService($electricite,$vidange,$essence){
     $serviceDAO = new ServiceDAO();
 
     return $serviceDAO->ajouterService($service);
+}
+
+function checkDateAAAAMMDD($date){
+    list($y, $m, $d) = array_pad(explode('-', $date, 3), 3, 0);
+    return ctype_digit("$y$m$d") && checkdate($m, $d, $y);
 }
 
 ?>
@@ -78,11 +84,11 @@ function creerService($electricite,$vidange,$essence){
                 </label>
                 </br>
                 <label>Bateau:
-                    <select required>
+                    <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
-                            <option selected="selected">-SELECTIONNEZ VOTRE BATEAU-</option>
+                            <option selected="selected" value="default">-SELECTIONNEZ VOTRE BATEAU-</option>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
-                                <option value="<?php $bateau->id?>"><?php echo $bateau->nom?></option>
+                                <option value="<?php echo $bateau->id ?>"><?php echo $bateau->nom?></option>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <option value="">Pas de bateaux</option>

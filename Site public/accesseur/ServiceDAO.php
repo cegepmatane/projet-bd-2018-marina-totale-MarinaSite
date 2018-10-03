@@ -20,16 +20,9 @@ Class ServiceDAO{
 
         $requeteAjouterService = $basededonnees->prepare($AJOUTER_SERVICE);
 
-        if ($service->getContientessence() === true) echo '<br>essence true';
-        else echo '<br>essence false';
-
         $requeteAjouterService->bindValue(':contientessence', $service->getContientessence());
         $requeteAjouterService->bindValue(':contientelectricite', $service->getContientelectricite());
         $requeteAjouterService->bindValue(':contientvidange', $service->getContientvidange());
-
-        /*$requeteAjouterService->bindValue(':contientessence', true);
-        $requeteAjouterService->bindValue(':contientelectricite', false);
-        $requeteAjouterService->bindValue(':contientvidange', true);*/
 
         $requeteAjouterService->execute();
 
