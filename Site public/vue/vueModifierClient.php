@@ -4,25 +4,20 @@ include '../accesseur/ClientDAO.php';
 
 $id;
 $clientDAO = new ClientDAO();
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $clientAModifier = $clientDAO->trouverClientId($id);
-
     $_SESSION['id_client_a_modifier'] = $id;
+    $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
 }
 
 $nom = null;
-$mot_de_passe = null;
 $prenom = null;
 $numero = null;
 $mail = null;
 
 if ((isset($_POST['mail']))) {
     $mail = $_POST['mail'];
-}
-
-if ((isset($_POST['mot_de_passe']))) {
-    $mot_de_passe = $_POST['mot_de_passe'];
 }
 if ((isset($_POST['numero']))) {
     $numero = $_POST['numero'];
@@ -34,11 +29,15 @@ if ((isset($_POST['prenom']))) {
     $prenom = $_POST['prenom'];
 }
 
-if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail)) && (isset($mot_de_passe))) {
+if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
+    $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
+    $mot_de_passe = $clientAModifier->mot_de_passe;
+
     include '../modele/Client.php';
-    $client = new Client($nom, $prenom, MD5($mot_de_passe),$mail, $numero,false);
+    $client = new Client($nom, $prenom, $mot_de_passe,$mail, $numero,false);
 
     $clientDAO->modifierClient($client, $_SESSION['id_client_a_modifier']);
+
     $_SESSION['id_client_a_modifier'] = null;
 
     header('Location: partieClient.php');
@@ -67,6 +66,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail)) && (
                 <label>Mail:
                     <input type="email" name="mail" value="<?php echo $clientAModifier->mail ?>"/>
                 </label>
+                </br>
                <a href="vueModifierMotDePasse.php?id=<?php echo $_SESSION['id']?>">Modifier mon mot de passe</a>
                 </br>
 
