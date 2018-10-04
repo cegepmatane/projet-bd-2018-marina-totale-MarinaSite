@@ -76,7 +76,7 @@ Class EmplacementDAO
 
         $LISTER_EMPLACEMENT = "SELECT * FROM emplacement WHERE id NOT IN 
                                 (SELECT id_emplacement FROM reservation 
-                                WHERE :datefin > datefin OR :datefin < datedebut 
+                                WHERE :datedebut > datefin OR :datefin < datedebut 
                                 AND id_emplacement IS NOT NULL)";
 
         global $basededonnees;
