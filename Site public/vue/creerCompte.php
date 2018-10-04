@@ -75,7 +75,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
         $clientDAO->ajouterClient($client);
 
 
-        header('Location: index.php');
+        header('Location: connexion.php');
         exit();
     }else{
         echo 'Un compte existe deja avec cet email.';

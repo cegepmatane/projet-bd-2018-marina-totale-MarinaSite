@@ -7,7 +7,7 @@ session_start();
  * Time: 14:33
  */
 if (!(isset($_SESSION['pseudo']))){
-    header('Location: index.php');
+    header('Location: connexion.php');
     exit();
 }
 ?>

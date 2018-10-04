@@ -17,7 +17,7 @@ session_start();
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <header>
-    <a href="index.php">ACCEUIL</a>
+    <a href="connexion.php">ACCEUIL</a>
 </header>
 
 <body>

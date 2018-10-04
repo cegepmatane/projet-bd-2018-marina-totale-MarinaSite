@@ -6,6 +6,6 @@ if (isset($_GET['id'])){
     $clientDAO = new ClientDAO();
     $clientDAO->supprimerClient($id);
 
-    header('Location: ../vue/index.php');
+    header('Location: ../vue/connexion.php');
     exit();
 }
