@@ -84,8 +84,28 @@ Class EmplacementDAO
         $requeteListerEmplacement->bindValue(':datedebut', $dateDebut);
         $requeteListerEmplacement->bindValue(':datefin', $dateFin);
         $requeteListerEmplacement->execute();
-        print_r($requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ));
+
         return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function checkTailleEmplacementSelonBateau($idbateau, $emplacement)
+    {
+        $LISTER_EMPLACEMENT_DISPONIBLE_SELON_BATEAU = "SELECT * FROM bateau WHERE id=:idbateau 
+                                                      AND largeur < :largeurEmplacement 
+                                                      AND longueur < :longueurEmplacement";
+
+        global $basededonnees;
+        $requeteListerBateauPlusPetitQueEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT_DISPONIBLE_SELON_BATEAU);
+        $requeteListerBateauPlusPetitQueEmplacement->bindValue(':idbateau', $idbateau);
+        $requeteListerBateauPlusPetitQueEmplacement->bindValue(':largeurEmplacement', $emplacement->largeur);
+        $requeteListerBateauPlusPetitQueEmplacement->bindValue(':longueurEmplacement', $emplacement->longueur);
+        $requeteListerBateauPlusPetitQueEmplacement->execute();
+
+        $res = $requeteListerBateauPlusPetitQueEmplacement->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            return true;
+        }
+        return false;
+    }
 }

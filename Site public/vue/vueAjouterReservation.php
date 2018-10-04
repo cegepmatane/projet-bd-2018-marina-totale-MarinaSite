@@ -95,8 +95,14 @@ function emplacementValide($dateDebut, $dateFin, $idbateau){
 
     $emplacementDAO = new EmplacementDAO();
     $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut,$dateFin);
-    foreach ($donnees as $donnees){
-
+    foreach ($donnees as $emplacement){
+        // LISTE DES EMPLACEMENT DISPO SELON DATE
+        if($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)){
+            echo 'TRUE bateau bonne taille';
+            return;
+        }else{
+            echo 'FALSE bateau trop grand wesh';
+        }
     }
 
     return;
