@@ -57,11 +57,11 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDate
 
 
 
-    $reservation = new Reservation($dateDebut,$dateFin,$_SESSION['id'],$id_bateau,$id_service);
+    //$reservation = new Reservation($dateDebut,$dateFin,$_SESSION['id'],$id_bateau,$id_service);
 
 
-    $reservationDAO = new ReservationDAO();
-    $reservationDAO->ajouterReservation($reservation);
+   /* $reservationDAO = new ReservationDAO();
+    $reservationDAO->ajouterReservation($reservation);*/
 
     /*header('Location: vueReservationClient.php?id='.$_SESSION['id'] .'');
     exit();*/
@@ -95,8 +95,8 @@ function emplacementValide($dateDebut, $dateFin, $idbateau){
 
     $emplacementDAO = new EmplacementDAO();
     $donnees = $emplacementDAO->emplacementSelonDate($dateDebut,$dateFin);
-    foreach ($donnees as $donne){
-        print_r($donne);
+    foreach ($donnees as $donnee){
+        print_r($donnee);
         echo '<br>';
     }
 

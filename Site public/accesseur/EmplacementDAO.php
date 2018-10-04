@@ -65,12 +65,19 @@ Class EmplacementDAO{
     }
 
     public function emplacementSelonDate($dateDebut,$dateFin){
-        $LISTER_EMPLACEMENT = "SELECT id_emplacement FROM reservation WHERE NOT (:dateFin <= datedebut or datefin >= :dateDebut)";
+        //REQUETE DATE OVERLAPING OK 
+        $LISTER_EMPLACEMENT = "SELECT datedebut,datefin 
+                                FROM reservation 
+                                WHERE :datedebut > datefin OR :datefin < datedebut";
         global $basededonnees;
         $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
-        $requeteListerEmplacement->bindValue(':dateDebut', $dateDebut);
-        $requeteListerEmplacement->bindValue(':dateFin', $dateFin);
+        $requeteListerEmplacement->bindValue(':datedebut', $dateDebut);
+        $requeteListerEmplacement->bindValue(':datefin', $dateFin);
         $requeteListerEmplacement->execute();
+
+        echo 'RESULTS : DATE DEBUT = '.$dateDebut.' / DATE FIN = '.$dateFin.'<br>';
+
+        //print_r($requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ));
 
         return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
     }

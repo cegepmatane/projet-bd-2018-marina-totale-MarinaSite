@@ -13,7 +13,7 @@ $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
     <table border="2">
         <?php if(isset($donneesReservation[0])): ?>
             <thead>
-            <tr><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>ID bateau</th><th>ID emplacement</th><th>ID Service</th><th>Action...</th></tr>
+            <tr><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>ID bateau</th><th>ID emplacement</th><th>ID Service</th></tr>
             </thead>
             <tbody>
             <?php foreach ($donneesReservation as $reservation) :?>
@@ -32,11 +32,6 @@ $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
                     </td>
                     <td>
                         <?php echo $reservation->id_service; ?>
-                    </td>
-                    <td>
-                        <!--TODO //\\//\\//\\-->
-                        <a href="vueModifierBateau.php?id=<?=$reservation->id; ?>">modifier</a>
-                        <a href="../fonctions/supprimerBateau.php?id=<?=$reservation->id; ?>">supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
