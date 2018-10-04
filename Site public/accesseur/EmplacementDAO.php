@@ -1,9 +1,11 @@
 <?php
 include_once "baseDeDonnee.php";
 
-Class EmplacementDAO{
+Class EmplacementDAO
+{
 
-    public function listerEmplacement(){
+    public function listerEmplacement()
+    {
         $LISTER_EMPLACEMENT = "SELECT * FROM emplacement";
         global $basededonnees;
         $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
@@ -64,21 +66,25 @@ Class EmplacementDAO{
         $requeteSupprimerEmplacement->execute();
     }
 
-    public function emplacementSelonDate($dateDebut,$dateFin){
-        //REQUETE DATE OVERLAPING OK 
-        $LISTER_EMPLACEMENT = "SELECT datedebut,datefin 
+    public function idEmplacementSelonDate($dateDebut, $dateFin)
+    {
+        //REQUETE DATE OVERLAPING OK
+
+        /*$LISTER_EMPLACEMENT = "SELECT id_emplacement
                                 FROM reservation 
-                                WHERE :datedebut > datefin OR :datefin < datedebut";
+                                WHERE :datedebut > datefin OR :datefin < datedebut";*/
+
+        $LISTER_EMPLACEMENT = "SELECT * FROM emplacement WHERE id NOT IN 
+                                (SELECT id_emplacement FROM reservation 
+                                WHERE :datefin > datefin OR :datefin < datedebut 
+                                AND id_emplacement IS NOT NULL)";
+
         global $basededonnees;
         $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
         $requeteListerEmplacement->bindValue(':datedebut', $dateDebut);
         $requeteListerEmplacement->bindValue(':datefin', $dateFin);
         $requeteListerEmplacement->execute();
-
-        echo 'RESULTS : DATE DEBUT = '.$dateDebut.' / DATE FIN = '.$dateFin.'<br>';
-
-        //print_r($requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ));
-
+        print_r($requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ));
         return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
     }
 

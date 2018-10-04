@@ -94,10 +94,9 @@ function emplacementValide($dateDebut, $dateFin, $idbateau){
     $reservationDAO = new ReservationDAO();
 
     $emplacementDAO = new EmplacementDAO();
-    $donnees = $emplacementDAO->emplacementSelonDate($dateDebut,$dateFin);
-    foreach ($donnees as $donnee){
-        print_r($donnee);
-        echo '<br>';
+    $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut,$dateFin);
+    foreach ($donnees as $donnees){
+
     }
 
     return;
