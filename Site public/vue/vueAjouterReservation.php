@@ -1,5 +1,5 @@
 <?php
-include 'headerIndex.php';
+include 'headerConnexion.php';
 include '../accesseur/BateauDAO.php';
 include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';

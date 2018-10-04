@@ -1,4 +1,4 @@
-<?php include 'headerIndex.php';
+<?php include 'headerConnexion.php';
 include '../modele/Client.php';
 include '../accesseur/ClientDAO.php';
 

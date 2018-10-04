@@ -1,4 +1,4 @@
-<?php include 'headerIndex.php';
+<?php include 'headerConnexion.php';
 $prenom = null;
 $nom = null;
 $mail = null;
