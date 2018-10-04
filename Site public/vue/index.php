@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
+<body style="background-color: #e1f5fe;">
 
 <div class="w3-display-container" style="margin-bottom:50px">
   <img src="../img/pierre_morel_30_aout_2015_012.jpg" style="width:100%">
