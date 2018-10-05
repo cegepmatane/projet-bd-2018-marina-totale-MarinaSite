@@ -34,5 +34,5 @@ if (!(isset($_SESSION['pseudo']))){
 </div>
 
 <body>
-    <div class="container">
+    <div class="container w3-padding-64">
 
