@@ -14,6 +14,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
     <h1> Gestion de la marina</h1>
     Bonjour, <?php echo  $_SESSION['pseudo']?>
 
+    <br><br>
     <div class="wb-tabs">
         <div class="tabpanels">
             <details id="details-panel1" open="open">
@@ -22,6 +23,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 
                 <div class="row">
                     <table border="2">
+                        <br>
                         <caption>Récapitulatif des clients ayant des réservations en cours</caption>
                             <?php if(isset($donneesReservationEnCours[0])): ?>
                             <thead>
@@ -57,6 +59,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                             </tr>
                         <?php endif; ?>
                     </table>
+                    <br><br>
 
                     <a href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
                 </div>
@@ -69,6 +72,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 
                     <div class="row">
                         <table border="2">
+                            <br>
                             <caption>Récapitulatif des clients ayant des réservations archivées</caption>
                             <?php if(isset($donneesReservationArchivees[0])): ?>
                                 <thead>
