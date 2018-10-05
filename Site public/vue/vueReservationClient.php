@@ -2,7 +2,6 @@
 include 'header.php';
 
 include '../accesseur/ReservationDAO.php';
-
 include '../accesseur/ClientDAO.php';
 include '../accesseur/BateauDAO.php';
 include '../accesseur/ServiceDAO.php';
@@ -14,10 +13,11 @@ $clientDAO = new ClientDAO();
 $serviceDAO = new ServiceDAO();
 $emplacementDAO = new EmplacementDAO();
 
-$donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
+$donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 // FAIRE VUE SANS IDs
 ?>
-<h1>Recapitulatifs de me réservations :</h1>
+
+<h1>Recapitulatifs de mes réservations :</h1>
 
 <div class="row">
     <table border="2">
@@ -41,7 +41,7 @@ $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
                         <?php echo $reservation->datefin; ?>
                     </td>
                     <td>
-                        <?php echo $bateauDAO->trouverBateau($reservation->id_bateau)->nom ?>
+                        <?php echo $bateauDAO->trouverBateau($reservation->id_bateau)->nom?>
                     </td>
                     <td>
                         <?php echo $emplacementDAO->trouverEmplacement($reservation->id_emplacement)->label ?>
