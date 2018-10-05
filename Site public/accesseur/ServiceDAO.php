@@ -29,7 +29,7 @@ Class ServiceDAO{
         return $basededonnees->lastInsertId();
     }
 
-    public function modifierService(Service $service)
+    public function modifierService(Service $service, $id)
     {
         $MODIFIER_SERVICE = "UPDATE service SET contientessence = :contientessence, contientelectricite = :contientelectricite, contientvidange = :contientvidange WHERE id = :idservice";
 
@@ -37,20 +37,20 @@ Class ServiceDAO{
 
         $requeteModifierService = $basededonnees->prepare($MODIFIER_SERVICE);
 
-        $requeteModifierService->bindValue(':contientessence', $service->getContientessence());
-        $requeteModifierService->bindValue(':contientelectricite', $service->getContientelectricite());
-        $requeteModifierService->bindValue(':contientvidange', $service->getContientvidange());
-        $requeteModifierService->bindValue(':idservice', $service->getIdservice());
+        $requeteModifierService->bindValue(':contientessence', (bool)$service->getContientessence());
+        $requeteModifierService->bindValue(':contientelectricite', (bool)$service->getContientelectricite());
+        $requeteModifierService->bindValue(':contientvidange', (bool)$service->getContientvidange());
+        $requeteModifierService->bindValue(':idservice', $id);
 
         $requeteModifierService->execute();
     }
 
-    public function trouverService($idservice)
+    public function trouverService($id)
     {
         global $basededonnees;
-        $TROUVER_SERVICE = 'SELECT * FROM service WHERE id = :idservice';
+        $TROUVER_SERVICE = 'SELECT * FROM service WHERE id = :id';
         $requeteTrouverService = $basededonnees->prepare($TROUVER_SERVICE);
-        $requeteTrouverService->bindValue(':idservice', $idservice);
+        $requeteTrouverService->bindValue(':id', $id);
         $requeteTrouverService->execute();
 
         return $requeteTrouverService->fetch(PDO::FETCH_OBJ);
