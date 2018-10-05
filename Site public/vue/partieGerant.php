@@ -6,6 +6,7 @@ include '../fonctions/verifAdmin.php';
 $clientDAO = new ClientDAO();
 $reservationDAO = new ReservationDAO();
 $donneesReservationEnCours = $reservationDAO->listerReservationEnCours();
+$donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 ?>
 
 <div class="partieGerant">
@@ -69,20 +70,26 @@ $donneesReservationEnCours = $reservationDAO->listerReservationEnCours();
                     <div class="row">
                         <table border="2">
                             <caption>Récapitulatif des clients ayant des réservations archivées</caption>
-                            <?php if(isset($donneesSansReservationActuelle[0])): ?>
+                            <?php if(isset($donneesReservationArchivees[0])): ?>
                                 <thead>
-                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Action...</th></tr>
+                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action...</th></tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($donneesSansReservationActuelle as $reservation) :?>
+                                <?php foreach ($donneesReservationArchivees as $reservation) :?>
                                     <tr><td>
                                             <?php echo $reservation->id; ?>
                                         </td>
                                         <td>
-                                            <?php echo $reservation->nom; ?>
+                                            <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                                         </td>
                                         <td>
-                                            <?php echo $reservation->prenom; ?>
+                                            <?php echo $clientDAO->trouverClientId($reservation->id_client)->prenom; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $reservation->datedebut; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $reservation->datefin; ?>
                                         </td>
                                         <td>
                                             <a href="modifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
