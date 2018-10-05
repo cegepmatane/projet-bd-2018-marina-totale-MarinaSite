@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'headerAdmin.php';
 
 include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
