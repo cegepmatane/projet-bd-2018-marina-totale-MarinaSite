@@ -4,9 +4,9 @@ include_once "baseDeDonnee.php";
 Class ReservationDAO
 {
 
-    public function listerReservation($id)
+    public function listerReservationId($id)
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id_client = :id";
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id_client = :id ";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->bindValue(':id', $id);
@@ -14,6 +14,39 @@ Class ReservationDAO
 
         return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
     }
+
+
+    public function listerReservation()
+    {
+        $LISTER_RESERVATION = "SELECT * FROM reservation";
+        global $basededonnees;
+        $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
+        $requeteListerReservation->execute();
+
+        return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+    public function listerReservationEnCours()
+    {
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin >= current_date ";
+        global $basededonnees;
+        $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
+        $requeteListerReservation->execute();
+
+        return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function listerReservationArchivees()
+    {
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin < current_date ";
+        global $basededonnees;
+        $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
+        $requeteListerReservation->execute();
+
+        return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
+    }
+
 
     public function ajouterReservation(Reservation $reservation)
     {

@@ -1,8 +1,12 @@
 <?php include 'header.php';
 include '../accesseur/ClientDAO.php';
+include '../accesseur/ReservationDAO.php';
 include '../fonctions/verifAdmin.php';
+
 $clientDAO = new ClientDAO();
-$donnees = $clientDAO->listerClientAyantReservationEnCours();
+$reservationDAO = new ReservationDAO();
+$donneesReservationEnCours = $reservationDAO->listerReservationEnCours();
+$donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 ?>
 
 <div class="partieGerant">
@@ -19,24 +23,30 @@ $donnees = $clientDAO->listerClientAyantReservationEnCours();
                 <div class="row">
                     <table border="2">
                         <caption>Récapitulatifs des clients ayant des réservations en cours</caption>
-                            <?php if(isset($donnees[0])): ?>
+                            <?php if(isset($donneesReservationEnCours[0])): ?>
                             <thead>
-                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Action...</th></tr>
+                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Action...</th></tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($donnees as $client) :?>
+                            <?php foreach ($donneesReservationEnCours as $reservation) :?>
                                 <tr><td>
-                                        <?php echo $client->id; ?>
+                                        <?php echo $reservation->id; ?>
                                     </td>
                                     <td>
-                                        <?php echo $client->nom; ?>
+                                        <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                                     </td>
                                     <td>
-                                        <?php echo $client->prenom; ?>
+                                        <?php echo $clientDAO->trouverClientId($reservation->id_client)->prenom; ?>
                                     </td>
                                     <td>
-                                        <a href="modifierReservation.php?id=<?=$client->id; ?>">Modifier</a>
-                                        <a href="supprimerReservation.php?id=<?=$client->id; ?>">Supprimer</a>
+                                        <?php echo $reservation->datedebut; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $reservation->datefin; ?>
+                                    </td>
+                                    <td>
+                                        <a href="modifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
+                                        <a href="supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -60,24 +70,30 @@ $donnees = $clientDAO->listerClientAyantReservationEnCours();
                     <div class="row">
                         <table border="2">
                             <caption>Récapitulatif des clients ayant des réservations archivées</caption>
-                            <?php if(isset($donnees[0])): ?>
+                            <?php if(isset($donneesReservationArchivees[0])): ?>
                                 <thead>
-                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Action...</th></tr>
+                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action...</th></tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($donnees as $client) :?>
+                                <?php foreach ($donneesReservationArchivees as $reservation) :?>
                                     <tr><td>
-                                            <?php echo $client->id; ?>
+                                            <?php echo $reservation->id; ?>
                                         </td>
                                         <td>
-                                            <?php echo $client->nom; ?>
+                                            <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                                         </td>
                                         <td>
-                                            <?php echo $client->prenom; ?>
+                                            <?php echo $clientDAO->trouverClientId($reservation->id_client)->prenom; ?>
                                         </td>
                                         <td>
-                                            <a href="modifierReservation.php?id=<?=$client->id; ?>">Modifier</a>
-                                            <a href="supprimerReservation.php?id=<?=$client->id; ?>">Supprimer</a>
+                                            <?php echo $reservation->datedebut; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $reservation->datefin; ?>
+                                        </td>
+                                        <td>
+                                            <a href="modifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
+                                            <a href="supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
