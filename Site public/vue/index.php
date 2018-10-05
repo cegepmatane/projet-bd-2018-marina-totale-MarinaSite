@@ -7,7 +7,7 @@
  */?>
 <!DOCTYPE html>
 <html>
-<title>Accueil de MarinaConnect</title>
+<title>MarinaConnect</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,33 +22,33 @@
 </div>
 
 <div class="w3-row w3-container" style="margin:50px 0">
-    <a href="">
+    <a href="prezPeche.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/lamarina.jpg" style="width:100%">
-    <h2>De multiples services</h2>
-    <p>Electricité, vidange ou gaz</p>
+    <h2>Pêcher à Matane</h2>
+    <p>Découvrez la pêche du saumon</p>
   </div>
 </div>
 </a>
-<a href="">
+<a href="prezTraversee.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/approchemarinamatane.jpg" style="width:100%">
-    <h2>Un environnement paisible</h2>
-    <p>Découvrez la magnifique région de la Matanie</p>
+    <h2>Traversée du St-Laurent</h2>
+    <p>Naviguez et découvrez de nouveaux horizons! </p>
   </div>
 </div>
 </a>
 </div>
 
 <div class="w3-row w3-container" style="margin:50px 0">
-    <a href="">
+    <a href="prezSecurite.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/plage_matane.png" style="width:100%">
-    <h2>Une équipe accueillante</h2>
-    <p>Pierre, Paul et jacques se feront un plaisir de vous accueilir</p>
+    <h2>Mesures de sécurité</h2>
+    <p>Toutes les informations pour naviguer sereinement! </p>
   </div>
 </div>
     </a>
@@ -58,7 +58,7 @@
     <img src="../img/lamarina2.jpg" style="width:100%">
     <h2>Reservez dès maintenant !</h2>
 
-    <p>Faire sa demande sur MarinaConnect&trade;</p>
+    <p>Verifiez les disponibilités et organisez votre voyage! </p>
 
     </div>
 
