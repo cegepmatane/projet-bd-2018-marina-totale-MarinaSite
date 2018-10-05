@@ -14,20 +14,19 @@ class Reservation{
     var $idclient;
     var $idbateau;
     var $idservice;
+    var $idemplacement;
 
     /**
      * Reservation constructor.
-     * @param $datedebut
-     * @param $datefin
-     * @param $idclient
      */
-    public function __construct($datedebut, $datefin, $idclient,$idbateau,$idservice)
+    public function __construct($datedebut, $datefin, $idclient,$idbateau,$idservice,$idemplacement)
     {
         $this->datedebut = $datedebut;
         $this->datefin = $datefin;
         $this->idclient = $idclient;
         $this->idbateau = $idbateau;
         $this->idservice = $idservice;
+        $this->idemplacement = $idemplacement;
     }
 
     /**
@@ -109,6 +108,14 @@ class Reservation{
     public function setIdclient($idclient)
     {
         $this->idclient = $idclient;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdemplacement()
+    {
+        return $this->idemplacement;
     }
 
 

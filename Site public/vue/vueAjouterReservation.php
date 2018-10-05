@@ -19,6 +19,8 @@ $vidange = null;
 $essence = null;
 $id_service = null;
 
+$erreurs = array();
+
 if ((isset($_POST['dateDebut']))) {
     $dateDebut = $_POST['dateDebut'];
 }
@@ -27,54 +29,52 @@ if ((isset($_POST['dateFin']))) {
 }
 if ((isset($_POST['electricite']))) {
     $electricite = true;
-}else{
+} else {
     $electricite = false;
 }
 if ((isset($_POST['vidange']))) {
     $vidange = true;
-}else{
+} else {
     $vidange = false;
 }
 if ((isset($_POST['essence']))) {
     $essence = true;
-}else{
+} else {
     $essence = false;
 }
-if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default'){
+if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default') {
     $id_bateau = $_POST['select_bateau'];
 }
 
 //TODO gestion erreurs
-if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin) && dateCompare($dateDebut,$dateFin)) {
-    $id_service = creerService($electricite,$vidange,$essence);
 
 
+if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin) && dateCompare($dateDebut, $dateFin)) {
 
 
-    emplacementValide($dateDebut,$dateFin,$id_bateau);
+    if (empty($erreurs)) {
+        $id_service = creerService($electricite, $vidange, $essence);
 
+        $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
+        if ($id_emplacement != 0) {
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $id_service, $id_emplacement);
+            $reservationDAO = new ReservationDAO();
+            $reservationDAO->ajouterReservation($reservation);
 
-
-
-    //$reservation = new Reservation($dateDebut,$dateFin,$_SESSION['id'],$id_bateau,$id_service);
-
-
-   /* $reservationDAO = new ReservationDAO();
-    $reservationDAO->ajouterReservation($reservation);*/
-
-    /*header('Location: vueReservationClient.php?id='.$_SESSION['id'] .'');
-    exit();*/
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            exit();
+        }
+    }
+}else{
+    $erreurs['oui']='oui';
 }
 
 
-function creerService($electricite,$vidange,$essence){
-
-    $service = new Service($essence,$electricite,$vidange);
-
-
+function creerService($electricite, $vidange, $essence)
+{
+    $service = new Service($essence, $electricite, $vidange);
     $serviceDAO = new ServiceDAO();
-
     return $serviceDAO->ajouterService($service);
 }
 
@@ -83,29 +83,35 @@ function checkDateAAAAMMDD($date){
     return ctype_digit("$y$m$d") && checkdate($m, $d, $y);
 }
 
-function dateCompare($dateDebut, $dateFin){
+function dateCompare($dateDebut, $dateFin)
+{
     $dateTimeDebut = new DateTime($dateDebut);
     $dateTimeFin = new DateTime($dateFin);
 
     return $dateTimeDebut < $dateTimeFin;
 }
-function emplacementValide($dateDebut, $dateFin, $idbateau){
 
-    $reservationDAO = new ReservationDAO();
-
+function emplacementValide($dateDebut, $dateFin, $idbateau)
+{
     $emplacementDAO = new EmplacementDAO();
-    $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut,$dateFin);
-    foreach ($donnees as $emplacement){
+    // PROBELEME REQUETE ICI
+    $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut, $dateFin);
+
+    print_r($donnees);
+    echo '<br><br>';
+
+    foreach ($donnees as $emplacement) {
+        print_r($emplacement);
         // LISTE DES EMPLACEMENT DISPO SELON DATE
-        if($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)){
-            echo 'TRUE bateau bonne taille';
-            return;
-        }else{
-            echo 'FALSE bateau trop grand wesh';
+
+        echo 'foreach';
+
+        //TODO inverser
+        if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
+            return $emplacement->id;
         }
     }
-
-    return;
+    return 0;
 }
 
 
@@ -117,19 +123,21 @@ function emplacementValide($dateDebut, $dateFin, $idbateau){
 
             <form action="vueAjouterReservation.php" method="post">
                 <label>Date d'arrivé:
-                    <input type="date" name="dateDebut"/>
+                    <input type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>
                 </br>
                 <label>Date de départ:
-                    <input type="date" name="dateFin"/>
+                    <input type="date" name="dateFin"
+                           value="<?php if (isset($_POST['dateFin'])) echo $_POST['dateFin'] ?>"/>
                 </label>
+
                 </br>
                 <label>Bateau:
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
-                            <option selected="selected" value="default">-SELECTIONNEZ VOTRE BATEAU-</option>
+                            <option selected="selected" value="">-SELECTIONNEZ BATEAU-</option>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
-                                <option value="<?php echo $bateau->id ?>"><?php echo $bateau->nom?></option>
+                                <option value="<?php echo $bateau->id ?>"><?php echo $bateau->nom ?></option>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <option value="">Pas de bateaux</option>
@@ -140,15 +148,15 @@ function emplacementValide($dateDebut, $dateFin, $idbateau){
                 <label><u>Services</u></label><br>
 
                 <label>Electricité:
-                    <input type="checkbox" name="electricite"/>
+                    <input type="checkbox" name="electricite" <?php if ($electricite) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange"/>
+                    <input type="checkbox" name="vidange" <?php if ($vidange) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Essence:
-                    <input type="checkbox" name="essence"/>
+                    <input type="checkbox" name="essence" <?php if ($essence) echo ' checked' ?>/>
                 </label>
                 </br>
 

@@ -17,7 +17,7 @@ Class ReservationDAO
 
     public function ajouterReservation(Reservation $reservation)
     {
-        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau,id_service) VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_service)";
+        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau,id_service, id_emplacement) VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_service, :id_emplacement)";
 
         global $basededonnees;
 
@@ -28,6 +28,7 @@ Class ReservationDAO
         $requeteAjouterReservation->bindValue(':id_client', $reservation->getIdclient());
         $requeteAjouterReservation->bindValue(':id_bateau', $reservation->getIdbateau());
         $requeteAjouterReservation->bindValue(':id_service', $reservation->getIdservice());
+        $requeteAjouterReservation->bindValue(':id_emplacement', $reservation->getIdemplacement());
 
         $requeteAjouterReservation->execute();
     }

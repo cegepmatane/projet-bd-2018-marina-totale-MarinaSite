@@ -76,10 +76,11 @@ Class EmplacementDAO
 
         $LISTER_EMPLACEMENT = "SELECT * FROM emplacement WHERE id NOT IN 
                                 (SELECT id_emplacement FROM reservation 
-                                WHERE :datedebut > datefin OR :datefin < datedebut 
+                                WHERE :datedebut < datefin AND :datefin > datedebut 
                                 AND id_emplacement IS NOT NULL)";
 
         global $basededonnees;
+
         $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
         $requeteListerEmplacement->bindValue(':datedebut', $dateDebut);
         $requeteListerEmplacement->bindValue(':datefin', $dateFin);
@@ -95,6 +96,7 @@ Class EmplacementDAO
                                                       AND longueur < :longueurEmplacement";
 
         global $basededonnees;
+
         $requeteListerBateauPlusPetitQueEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT_DISPONIBLE_SELON_BATEAU);
         $requeteListerBateauPlusPetitQueEmplacement->bindValue(':idbateau', $idbateau);
         $requeteListerBateauPlusPetitQueEmplacement->bindValue(':largeurEmplacement', $emplacement->largeur);
