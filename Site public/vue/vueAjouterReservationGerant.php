@@ -49,16 +49,17 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
     if (empty($erreurs)) {
         $id_service = creerService($electricite, $vidange, $essence);
 
-        //$id_emplacement = emplacementValide($dateDebut, $dateFin);
+        $id_emplacement = emplacementValide($dateDebut, $dateFin);
 
-       // if ($id_emplacement != 0) {
-            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_service, $id_emplacement);
+       if ($id_emplacement != 0) {
+           // id_bateau à 0 : le gerant peut reserver sans bateau, donc id spécial
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], 0, $id_service, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             $reservationDAO->ajouterReservation($reservation);
 
             header('Location: partieGerant.php?id=' . $_SESSION['id'] . '');
             exit();
-        //}
+        }
     }
 }else{
     $erreurs['oui']='oui';
@@ -85,19 +86,19 @@ function dateCompare($dateDebut, $dateFin)
     return $dateTimeDebut < $dateTimeFin;
 }
 
-/*function emplacementValide($dateDebut, $dateFin)
+function emplacementValide($dateDebut, $dateFin)
 {
     $emplacementDAO = new EmplacementDAO();
     $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut, $dateFin);
 
     foreach ($donnees as $emplacement) {
         // LISTE DES EMPLACEMENT DISPO SELON DATE
-        if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
+        //if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
             return $emplacement->id;
-        }
+        //}
     }
     return 0;
-}*/
+}
 
 
 ?>
