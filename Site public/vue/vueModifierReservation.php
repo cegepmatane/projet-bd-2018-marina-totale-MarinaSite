@@ -54,7 +54,7 @@ if (isset($_GET['id'])) {
     $id_client = $reservationAModifier->id_client;
     $id_service = $reservationAModifier->id_service;
     $_SESSION['id_service_a_modifier'] = $id_service;
-    $service = $serviceDAO->trouverService( $_SESSION['id_service_a_modifier']);
+    $service = $serviceDAO->trouverService($_SESSION['id_service_a_modifier']);
     echo $id_service;
 }
 
@@ -75,7 +75,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
             $reservationDAO->modifierReservation($reservation, $_SESSION['id_reservation_a_modifier']);
 
             echo $id_service;
-           //header('Location: partieGerant.php');
+            header('Location: partieGerant.php');
             exit();
         }
     }
