@@ -12,7 +12,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 <div class="partieGerant">
 
     <h1> Gestion de la marina</h1>
-    Bonjour, <?php echo  $_SESSION['pseudo']?>
+    Bonjour, <?php echo  $clientDAO->trouverClientId($_SESSION['id'])->nom.' '.$clientDAO->trouverClientId($_SESSION['id'])->prenom?>
 
     <br><br>
     <div class="wb-tabs">
