@@ -62,6 +62,7 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 }
 
 ?>
+    <h1>Modifier mon mot de passe :</h1>
 
     <div class="modifiermotdepasse">
         <fieldset>

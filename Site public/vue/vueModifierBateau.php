@@ -40,6 +40,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 }
 
 ?>
+    <h1>Modifier mon bateau :</h1>
 
     <div class="modifierbateau">
         <fieldset>

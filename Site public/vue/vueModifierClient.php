@@ -46,6 +46,8 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
 ?>
 
+    <h1>Modifier mes informations :</h1>
+
     <div class="modifierclient">
         <fieldset>
             <legend>Modifier mes informations</legend>

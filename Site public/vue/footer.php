@@ -1,7 +1,7 @@
 <?php
 ?>
 
-    </div>
+</div>
 </body>
 <footer id="myFooter">
     <div class="w3-container w3-theme-l2 w3-padding-25">

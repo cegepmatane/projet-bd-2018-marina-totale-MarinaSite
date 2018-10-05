@@ -108,7 +108,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
 
 
 ?>
-
+    <h1>Ajouter une réservation :</h1>
     <div class="ajouterreservation">
         <fieldset>
             <legend>Effectuer une nouvelle réservation</legend>

@@ -17,7 +17,7 @@ $emplacementDAO = new EmplacementDAO();
 $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
 // FAIRE VUE SANS IDs
 ?>
-<h2>Recapitulatifs de me réservations :</h2>
+<h1>Recapitulatifs de me réservations :</h1>
 
 <div class="row">
     <table border="2">

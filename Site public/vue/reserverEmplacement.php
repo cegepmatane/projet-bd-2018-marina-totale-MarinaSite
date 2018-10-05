@@ -2,6 +2,8 @@
 include "header.php";
 ?>
 
+<h1>Effectuer une nouvelle reservation :</h1>
+
 <div class="formulaireClient">
 
     <fieldset>
