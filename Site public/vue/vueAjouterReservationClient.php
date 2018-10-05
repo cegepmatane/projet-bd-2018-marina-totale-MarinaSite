@@ -94,19 +94,10 @@ function dateCompare($dateDebut, $dateFin)
 function emplacementValide($dateDebut, $dateFin, $idbateau)
 {
     $emplacementDAO = new EmplacementDAO();
-    // PROBELEME REQUETE ICI
     $donnees = $emplacementDAO->idEmplacementSelonDate($dateDebut, $dateFin);
 
-    print_r($donnees);
-    echo '<br><br>';
-
     foreach ($donnees as $emplacement) {
-        print_r($emplacement);
         // LISTE DES EMPLACEMENT DISPO SELON DATE
-
-        echo 'foreach';
-
-        //TODO inverser
         if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
             return $emplacement->id;
         }
@@ -121,7 +112,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
         <fieldset>
             <legend>Effectuer une nouvelle réservation</legend>
 
-            <form action="vueAjouterReservation.php" method="post">
+            <form action="vueAjouterReservationClient.php" method="post">
                 <label>Date d'arrivé:
                     <input type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>

@@ -1,11 +1,21 @@
 <?php
-
 include 'header.php';
 
 include '../accesseur/ReservationDAO.php';
-$reservationDAO = new ReservationDAO();
-$donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
+include '../accesseur/ClientDAO.php';
+include '../accesseur/BateauDAO.php';
+include '../accesseur/ServiceDAO.php';
+include '../accesseur/EmplacementDAO.php';
+
+$reservationDAO = new ReservationDAO();
+$bateauDAO = new BateauDAO();
+$client = new ClientDAO();
+$serviceDAO = new ServiceDAO();
+$emplacementDAO = new EmplacementDAO();
+
+$donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
+// FAIRE VUE SANS IDs
 ?>
 <h2>Recapitulatifs de me réservations :</h2>
 
@@ -13,11 +23,17 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
     <table border="2">
         <?php if(isset($donneesReservation[0])): ?>
             <thead>
-            <tr><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>ID bateau</th><th>ID emplacement</th><th>ID Service</th></tr>
+            <tr><th>Nom</th><th>Prenom</th><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>Bateau</th><th>Emplacement</th><th>Services</th></tr>
             </thead>
             <tbody>
             <?php foreach ($donneesReservation as $reservation) :?>
                 <tr>
+                    <td>
+                        <?php echo $clientDAI; ?>
+                    </td>
+                    <td>
+                        <?php echo $reservation->datedebut; ?>
+                    </td>
                     <td>
                         <?php echo $reservation->datedebut; ?>
                     </td>
@@ -25,7 +41,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                         <?php echo $reservation->datefin; ?>
                     </td>
                     <td>
-                        <?php echo $reservation->id_bateau ?>
+                        <?php echo $bateauDAO->trouverBateau($reservation->id_bateau)->nom ?>
                     </td>
                     <td>
                         <?php echo $reservation->id_emplacement ?>
@@ -43,5 +59,5 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         <?php endif; ?>
     </table>
 
-    <a href="vueAjouterReservation.php?id=<?php echo $_SESSION['id']?>">Effectuer une demande de réservation</a>
+    <a href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id']?>">Effectuer une demande de réservation</a>
 </div>
