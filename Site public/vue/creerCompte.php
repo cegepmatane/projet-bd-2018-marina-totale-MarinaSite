@@ -23,6 +23,7 @@ if ((isset($_POST['nom']))){
 if ((isset($_POST['numero']))){
     $numero = $_POST['numero'];
 }?>
+    <h1>Créer mon compte :</h1>
 
     <div class="creerCompte">
         <fieldset>
@@ -81,7 +82,5 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) &&(isset($prenom))
         echo 'Un compte existe deja avec cet email.';
     }
 }
-
-
 
 include "footer.php"; ?>
