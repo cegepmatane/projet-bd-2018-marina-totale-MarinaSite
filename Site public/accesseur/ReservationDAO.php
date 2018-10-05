@@ -84,7 +84,7 @@ Class ReservationDAO
     public function trouverReservation($idreservation)
     {
         global $basededonnees;
-        $TROUVER_RESERVATION = 'SELECT * FROM reservation WHERE idreservation = :idreservation';
+        $TROUVER_RESERVATION = 'SELECT * FROM reservation WHERE id = :idreservation';
         $requeteTrouverReservation = $basededonnees->prepare($TROUVER_RESERVATION);
         $requeteTrouverReservation->bindValue(':idreservation', $idreservation);
         $requeteTrouverReservation->execute();
@@ -95,7 +95,7 @@ Class ReservationDAO
     public function supprimerReservation($idreservation)
     {
         global $basededonnees;
-        $SUPPRIMER_RESERVATION = 'DELETE FROM reservation WHERE idreservation = :idreservation';
+        $SUPPRIMER_RESERVATION = 'DELETE FROM reservation WHERE id = :idreservation';
         $requeteSupprimerReservation = $basededonnees->prepare($SUPPRIMER_RESERVATION);
         $requeteSupprimerReservation->bindValue(':idreservation', $idreservation);
         $requeteSupprimerReservation->execute();

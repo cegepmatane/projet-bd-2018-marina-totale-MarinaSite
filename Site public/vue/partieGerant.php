@@ -25,7 +25,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                         <caption>Récapitulatif des clients ayant des réservations en cours</caption>
                             <?php if(isset($donneesReservationEnCours[0])): ?>
                             <thead>
-                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Actions</th></tr>
+                            <tr><th>id reservation</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
                             <?php foreach ($donneesReservationEnCours as $reservation) :?>
@@ -58,7 +58,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                         <?php endif; ?>
                     </table>
 
-                    <a href="ajouterReservation.php">Ajouter une réservation</a>
+                    <a href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
                 </div>
 
 
