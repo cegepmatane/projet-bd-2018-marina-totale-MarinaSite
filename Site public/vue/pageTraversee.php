@@ -33,9 +33,9 @@
         <i class="fa fa-remove"></i>
     </a>
     <h4 class="w3-bar-item"><b>Menu</b></h4>
-    <a class="w3-bar-item w3-button w3-hover-black" href="prezPeche.php">Pêche</a>
-    <a class="w3-bar-item w3-button w3-hover-black" href="prezTraversee.php">Traversée</a>
-    <a class="w3-bar-item w3-button w3-hover-black" href="prezSecurite.php">Sécurité</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="pagePeche.php">Pêche</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="pageTraversee.php">Traversée</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="pageSecurite.php">Sécurité</a>
     <a class="w3-bar-item w3-button w3-hover-black" href="connexion.php">Marina Connect &trade;</a>
 </nav>
 

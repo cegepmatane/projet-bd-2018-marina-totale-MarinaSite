@@ -15,7 +15,7 @@
 </div>
 
 <div class="w3-row w3-container" style="margin:50px 0">
-    <a href="prezPeche.php">
+    <a href="pagePeche.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/lamarina.jpg" style="width:100%">
@@ -24,7 +24,7 @@
   </div>
 </div>
 </a>
-<a href="prezTraversee.php">
+<a href="pageTraversee.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/approchemarinamatane.jpg" style="width:100%">
@@ -36,7 +36,7 @@
 </div>
 
 <div class="w3-row w3-container" style="margin:50px 0">
-    <a href="prezSecurite.php">
+    <a href="pageSecurite.php">
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/plage_matane.png" style="width:100%">
