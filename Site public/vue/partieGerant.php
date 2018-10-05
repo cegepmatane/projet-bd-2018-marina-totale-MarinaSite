@@ -22,10 +22,10 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 
                 <div class="row">
                     <table border="2">
-                        <caption>Récapitulatifs des clients ayant des réservations en cours</caption>
+                        <caption>Récapitulatif des clients ayant des réservations en cours</caption>
                             <?php if(isset($donneesReservationEnCours[0])): ?>
                             <thead>
-                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Action...</th></tr>
+                            <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
                             <?php foreach ($donneesReservationEnCours as $reservation) :?>
@@ -45,8 +45,8 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                                         <?php echo $reservation->datefin; ?>
                                     </td>
                                     <td>
-                                        <a href="modifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
-                                        <a href="supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
+                                        <a href="vueModifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
+                                        <a href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -72,7 +72,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                             <caption>Récapitulatif des clients ayant des réservations archivées</caption>
                             <?php if(isset($donneesReservationArchivees[0])): ?>
                                 <thead>
-                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action...</th></tr>
+                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action</th></tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($donneesReservationArchivees as $reservation) :?>
@@ -92,7 +92,6 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                                             <?php echo $reservation->datefin; ?>
                                         </td>
                                         <td>
-                                            <a href="modifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
                                             <a href="supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                         </td>
                                     </tr>
