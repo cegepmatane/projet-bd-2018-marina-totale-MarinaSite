@@ -1,5 +1,5 @@
 <?php
-include 'headerConnexion.php';
+include 'header.php';
 include '../accesseur/ClientDAO.php';
 
 

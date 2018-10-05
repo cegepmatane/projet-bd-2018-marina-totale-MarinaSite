@@ -1,10 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: zatur
- * Date: 03/10/2018
- * Time: 22:58
- */?>
 <!DOCTYPE html>
 <html>
 <title>MarinaConnect</title>
