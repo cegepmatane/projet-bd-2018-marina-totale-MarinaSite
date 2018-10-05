@@ -1,4 +1,4 @@
-<?php include 'header.php';
+<?php include 'headerAdmin.php';
 include '../accesseur/ClientDAO.php';
 include '../accesseur/ReservationDAO.php';
 include '../fonctions/verifAdmin.php';
