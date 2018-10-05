@@ -10,7 +10,7 @@ include '../accesseur/EmplacementDAO.php';
 
 $reservationDAO = new ReservationDAO();
 $bateauDAO = new BateauDAO();
-$client = new ClientDAO();
+$clientDAO = new ClientDAO();
 $serviceDAO = new ServiceDAO();
 $emplacementDAO = new EmplacementDAO();
 
@@ -23,16 +23,16 @@ $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
     <table border="2">
         <?php if(isset($donneesReservation[0])): ?>
             <thead>
-            <tr><th>Nom</th><th>Prenom</th><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>Bateau</th><th>Emplacement</th><th>Services</th></tr>
+            <tr><th>Nom</th><th>Prenom</th><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>Bateau</th><th>Emplacement</th><th>Electricité</th><th>Essence</th><th>Vidange</th></tr>
             </thead>
             <tbody>
             <?php foreach ($donneesReservation as $reservation) :?>
                 <tr>
                     <td>
-                        <?php echo $clientDAI; ?>
+                        <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                     </td>
                     <td>
-                        <?php echo $reservation->datedebut; ?>
+                        <?php echo $clientDAO->trouverClientId($reservation->id_client)->prenom; ?>
                     </td>
                     <td>
                         <?php echo $reservation->datedebut; ?>
@@ -44,10 +44,16 @@ $donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
                         <?php echo $bateauDAO->trouverBateau($reservation->id_bateau)->nom ?>
                     </td>
                     <td>
-                        <?php echo $reservation->id_emplacement ?>
+                        <?php echo $emplacementDAO->trouverEmplacement($reservation->id_emplacement)->label ?>
                     </td>
                     <td>
-                        <?php echo $reservation->id_service; ?>
+                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientelectricite){echo 'X';}else echo 'O'; ?>
+                    </td>
+                    <td>
+                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientessence){echo 'X';}else echo 'O'; ?>
+                    </td>
+                    <td>
+                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientvidange){echo 'X';}else echo 'O'; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
