@@ -92,7 +92,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                                             <?php echo $reservation->datefin; ?>
                                         </td>
                                         <td>
-                                            <a href="supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
+                                            <a href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
