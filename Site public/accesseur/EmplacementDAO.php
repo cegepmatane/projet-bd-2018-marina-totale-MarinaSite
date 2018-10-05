@@ -32,7 +32,7 @@ Class EmplacementDAO
 
     public function modifierEplacement(Emplacement $emplacement)
     {
-        $MODIFIER_EMPLACEMENT = "UPDATE emplacement SET longueur = :longueur, largeur = :largeur WHERE idemplacement = :idemplacement";
+        $MODIFIER_EMPLACEMENT = "UPDATE emplacement SET longueur = :longueur, largeur = :largeur WHERE id = :idemplacement";
 
         global $basededonnees;
 
@@ -49,7 +49,7 @@ Class EmplacementDAO
     public function trouverEmplacement($idemplacement)
     {
         global $basededonnees;
-        $TROUVER_EMPLACEMENT = 'SELECT * FROM emplacement WHERE idemplacement = :idemplacement';
+        $TROUVER_EMPLACEMENT = 'SELECT * FROM emplacement WHERE id = :idemplacement';
         $requeteTrouverEmplacement = $basededonnees->prepare($TROUVER_EMPLACEMENT);
         $requeteTrouverEmplacement->bindValue(':idemplacement', $idemplacement);
         $requeteTrouverEmplacement->execute();
@@ -60,7 +60,7 @@ Class EmplacementDAO
     public function supprimerEmplacement($idemplacement)
     {
         global $basededonnees;
-        $SUPPRIMER_EMPLACEMENT = 'DELETE FROM emplacement WHERE idemplacement = :idemplacement';
+        $SUPPRIMER_EMPLACEMENT = 'DELETE FROM emplacement WHERE id = :idemplacement';
         $requeteSupprimerEmplacement = $basededonnees->prepare($SUPPRIMER_EMPLACEMENT);
         $requeteSupprimerEmplacement->bindValue(':idemplacement', $idemplacement);
         $requeteSupprimerEmplacement->execute();

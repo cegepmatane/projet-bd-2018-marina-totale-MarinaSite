@@ -31,7 +31,7 @@ Class ServiceDAO{
 
     public function modifierService(Service $service)
     {
-        $MODIFIER_SERVICE = "UPDATE service SET contientessence = :contientessence, contientelectricite = :contientelectricite, contientvidange = :contientvidange WHERE idservice = :idservice";
+        $MODIFIER_SERVICE = "UPDATE service SET contientessence = :contientessence, contientelectricite = :contientelectricite, contientvidange = :contientvidange WHERE id = :idservice";
 
         global $basededonnees;
 
@@ -48,7 +48,7 @@ Class ServiceDAO{
     public function trouverService($idservice)
     {
         global $basededonnees;
-        $TROUVER_SERVICE = 'SELECT * FROM service WHERE idservice = :idservice';
+        $TROUVER_SERVICE = 'SELECT * FROM service WHERE id = :idservice';
         $requeteTrouverService = $basededonnees->prepare($TROUVER_SERVICE);
         $requeteTrouverService->bindValue(':idservice', $idservice);
         $requeteTrouverService->execute();
@@ -59,7 +59,7 @@ Class ServiceDAO{
     public function supprimerService($idservice)
     {
         global $basededonnees;
-        $SUPPRIMER_SERVICE = 'DELETE FROM service WHERE idservice = :idservice';
+        $SUPPRIMER_SERVICE = 'DELETE FROM service WHERE id = :idservice';
         $requeteSupprimerReservation = $basededonnees->prepare($SUPPRIMER_SERVICE);
         $requeteSupprimerReservation->bindValue(':idservice', $idservice);
         $requeteSupprimerReservation->execute();
