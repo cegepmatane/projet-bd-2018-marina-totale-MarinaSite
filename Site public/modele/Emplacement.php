@@ -1,9 +1,7 @@
 <?php
 
 class Emplacement{
-    var $idemplacement;
-    var $idclient;
-    var $idreservation;
+    
     var $longueur;
     var $largeur;
     var $estdisponible;
