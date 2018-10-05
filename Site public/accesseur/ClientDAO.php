@@ -3,30 +3,6 @@ include "baseDeDonnee.php";
 
 Class ClientDAO{
 
-    public function listerClientAyantReservationEnCours(){
-
-        $LISTER_CLIENT = "SELECT * FROM client 
-                          INNER JOIN reservation ON client.id = reservation.id_client
-                          WHERE client.id = reservation.id_client
-                          AND CURRENT_DATE >= reservation.datedebut
-                          AND CURRENT_DATE <= reservation.datefin;";
-
-        global $basededonnees;
-        $requeteListerClient = $basededonnees->prepare($LISTER_CLIENT);
-        $requeteListerClient->execute();
-
-        return $requeteListerClient->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function listerClientSansReservationActuelle(){
-        $LISTER_CLIENT = "SELECT * FROM client";
-        global $basededonnees;
-        $requeteListerClient = $basededonnees->prepare($LISTER_CLIENT);
-        $requeteListerClient->execute();
-
-        return $requeteListerClient->fetchAll(PDO::FETCH_OBJ);
-    }
-
     public function ajouterClient(Client $client){
 
         $AJOUTER_CLIENT = "INSERT INTO client(nom, prenom, mot_de_passe, mail, numero, bool_gerant) VALUES (:nom, :prenom, :motdepasse, :mail, :numero, FALSE)";

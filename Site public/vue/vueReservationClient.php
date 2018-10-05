@@ -4,7 +4,7 @@ include 'header.php';
 
 include '../accesseur/ReservationDAO.php';
 $reservationDAO = new ReservationDAO();
-$donneesReservation = $reservationDAO->listerReservation($_SESSION['id']);
+$donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
 ?>
 <h2>Recapitulatifs de me réservations :</h2>
