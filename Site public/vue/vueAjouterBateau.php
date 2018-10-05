@@ -1,5 +1,5 @@
 <?php
-include 'headerConnexion.php';
+include 'header.php';
 
 $nom = null;
 $type_bateau = null;

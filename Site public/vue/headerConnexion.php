@@ -1,11 +1,5 @@
 <?php
 session_start();
-/**
- * Created by PhpStorm.
- * User: Florent
- * Date: 07/09/2018
- * Time: 14:33
- */
 ?>
 
 <!DOCTYPE html>
@@ -28,5 +22,5 @@ session_start();
 </div>
 
 <body>
-<div class="container">
+<div class="container w3-padding-64">
 
