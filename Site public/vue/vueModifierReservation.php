@@ -7,7 +7,6 @@ include '../accesseur/EmplacementDAO.php';
 include '../modele/Reservation.php';
 $id;
 $reservationDAO = new ReservationDAO();
-$serviceDAO = new ServiceDAO();
 
 
 $dateDebut = null;
@@ -15,7 +14,6 @@ $dateFin = null;
 $electricite = null;
 $vidange = null;
 $essence = null;
-$id_service = null;
 $id_client = null;
 
 $erreurs = array();
@@ -27,51 +25,39 @@ if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
 }
 if ((isset($_POST['electricite']))) {
-    $electricite = true;
+    $electricite = 1;
 } else {
-    $electricite = false;
+    $electricite = 0;
 }
 if ((isset($_POST['vidange']))) {
-    $vidange = true;
+    $vidange = 1;
 } else {
-    $vidange = false;
+    $vidange = 0;
 }
 if ((isset($_POST['essence']))) {
-    $essence = true;
+    $essence = 1;
 } else {
-    $essence = false;
+    $essence = 0;
 }
-
-
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $_SESSION['id_reservation_a_modifier'] = $id;
-    $reservationAModifier = $reservationDAO->trouverReservation($_SESSION['id_reservation_a_modifier']);
+    $reservationAModifier = $reservationDAO->trouverReservation($id);
     $id_client = $reservationAModifier->id_client;
-    $id_service = $reservationAModifier->id_service;
-    $_SESSION['id_service_a_modifier'] = $id_service;
-    $service = $serviceDAO->trouverService($_SESSION['id_service_a_modifier']);
-    echo $id_service;
 }
 
 if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin) && dateCompare($dateDebut, $dateFin)) {
 
 
     if (empty($erreurs)) {
-        //echo $electricite.''.$vidange.''.$essence;
-        $service = $serviceDAO->trouverService( $_SESSION['id_service_a_modifier']);
-        modifierService($electricite, $vidange, $essence,  $_SESSION['id_service_a_modifier']);
-        //echo $electricite.''.$vidange.''.$essence;
+
         $id_emplacement = emplacementValide($dateDebut, $dateFin);
 
         if ($id_emplacement != 0) {
             // id_bateau à 0 : le gerant peut reserver sans bateau, donc id spécial
-            $reservation = new Reservation($dateDebut, $dateFin, $id_client, 0, $id_service, $id_emplacement);
+            $reservation = new Reservation($dateDebut, $dateFin, $id_client, null, $electricite,$essence,$vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
-            $reservationDAO->modifierReservation($reservation, $_SESSION['id_reservation_a_modifier']);
-
-            echo $id_service;
+            $reservationDAO->modifierReservation($reservation, $id);
             header('Location: partieGerant.php');
             exit();
         }
@@ -80,14 +66,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
     $erreurs['oui']='oui';
 }
 
-function modifierService($electricite, $vidange, $essence, $id_service)
-{
-    echo $electricite.''.$vidange.''.$essence;
-    $service = new Service($essence, $electricite, $vidange);
 
-    $serviceDAO = new ServiceDAO();
-    $serviceDAO->modifierService($service, $id_service);
-}
 
 function checkDateAAAAMMDD($date){
     list($y, $m, $d) = array_pad(explode('-', $date, 3), 3, 0);
@@ -126,7 +105,7 @@ function emplacementValide($dateDebut, $dateFin)
         <fieldset>
             <legend>Modifier une réservation</legend>
 
-            <form action="vueModifierReservation.php" method="post">
+            <form action="vueModifierReservation.php?id=<?php echo $id ?>" method="post">
                 <label>Date d'arrivée:
                     <input type="date" name="dateDebut" value="<?php echo $reservationAModifier->datedebut; ?>"/>
                 </label>
@@ -142,15 +121,15 @@ function emplacementValide($dateDebut, $dateFin)
                 <label><u>Services</u></label><br>
 
                 <label>Electricité:
-                    <input type="checkbox" name="electricite" <?php if ($service->contientelectricite) echo ' checked' ?>/>
+                    <input type="checkbox" name="electricite" <?php if ($reservationAModifier->electricite == 1) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange" <?php if ($service->contientvidange) echo ' checked' ?>/>
+                    <input type="checkbox" name="vidange" <?php if ($reservationAModifier->vidangese == 1) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Essence:
-                    <input type="checkbox" name="essence" <?php if ($service->contientessence) echo ' checked' ?>/>
+                    <input type="checkbox" name="essence" <?php if ($reservationAModifier->essence == 1) echo ' checked' ?>/>
                 </label>
                 </br>
 
