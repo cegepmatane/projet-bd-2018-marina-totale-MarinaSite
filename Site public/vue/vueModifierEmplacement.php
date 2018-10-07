@@ -38,30 +38,29 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
 
 ?>
 
-<div class="ModifierEmplacement">
-    <fieldset>
-        <legend>Modifier un emplacement</legend>
+
+<h1>Modifier un emplacement</h1>
+<div class="modifierEmplacement">
 
         <form action="vueModifierEmplacement.php" method="post">
             <label>Label:
-                <input type="text" name="label" value="<?php echo $emplacementAModifier->label ?>"/>
+                <input class="form-control" type="text" name="label" value="<?php echo $emplacementAModifier->label ?>"/>
             </label>
             </br>
             <label>Longueur:
-                <input type="text" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
+                <input class="form-control" type="text" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
             </label>
             </br>
             <label>Largeur:
-                <input type="text" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
+                <input class="form-control" type="text" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
             </label>
 
             </br>
 
-            <input type="submit" name="modifierEmplacement" value="Modifier emplacement"/>
+            <input class="btn btn-primary" type="submit" name="modifierEmplacement" value="Modifier emplacement"/>
 
         </form>
 
-    </fieldset>
 </div>
 
 <?php include 'footer.php';

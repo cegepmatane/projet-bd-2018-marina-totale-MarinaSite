@@ -107,11 +107,11 @@ function emplacementValide($dateDebut, $dateFin)
 
             <form action="vueModifierReservation.php?id=<?php echo $id ?>" method="post">
                 <label>Date d'arrivée:
-                    <input type="date" name="dateDebut" value="<?php echo $reservationAModifier->datedebut; ?>"/>
+                    <input class="form-control" type="date" name="dateDebut" value="<?php echo $reservationAModifier->datedebut; ?>"/>
                 </label>
                 </br>
                 <label>Date de départ:
-                    <input type="date" name="dateFin"
+                    <input class="form-control" type="date" name="dateFin"
                            value="<?php echo $reservationAModifier->datefin; ?>"/>
                 </label>
 
@@ -133,7 +133,7 @@ function emplacementValide($dateDebut, $dateFin)
                 </label>
                 </br>
 
-                <input type="submit" name="modifierReservation" value="Modifier la réservation"/>
+                <input class="btn btn-primary" type="submit" name="modifierReservation" value="Modifier la réservation"/>
 
             </form>
 

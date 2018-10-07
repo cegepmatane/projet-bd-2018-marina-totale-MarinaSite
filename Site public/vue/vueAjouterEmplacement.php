@@ -38,20 +38,20 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
 
             <form action="vueAjouterEmplacement.php" method="post">
                 <label>Label:
-                    <input type="text" name="label" value="<?php if (isset($_POST['label'])) echo $_POST['label'] ?>"/>
+                    <input class="form-control" type="text" name="label" value="<?php if (isset($_POST['label'])) echo $_POST['label'] ?>"/>
                 </label>
                 </br>
                 <label>Longueur:
-                    <input type="text" name="longueur" value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur'] ?>"/>
+                    <input class="form-control" type="text" name="longueur" value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur'] ?>"/>
                 </label>
                 </br>
                 <label>Largeur:
-                    <input type="text" name="largeur" value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
+                    <input class="form-control" type="text" name="largeur" value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
                 </label>
 
                 </br>
 
-                <input type="submit" name="ajouterEmplacement" value="Ajouter emplacement"/>
+                <input class="btn btn-primary" type="submit" name="ajouterEmplacement" value="Ajouter emplacement"/>
 
             </form>
 

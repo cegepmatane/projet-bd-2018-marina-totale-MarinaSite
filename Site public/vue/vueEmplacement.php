@@ -7,10 +7,10 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
 
 ?>
 
+<h1>Récapitulatif des emplacements</h1>
 
 <div class="row">
-    <table border="2">
-        <caption>Récapitulatif des emplacements</caption>
+    <table class="table table-hover"  border="2">
         <?php if(isset($donneesEmplacement[0])): ?>
             <thead>
             <tr><th>Label</th><th>Longueur</th><th>Largeur</th><th>Actions</th></tr>
@@ -28,8 +28,8 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
                         <?php echo $emplacement->largeur; ?>
                     </td>
                     <td>
-                        <a href="vueModifierEmplacement.php?id=<?=$emplacement->id; ?>">Modifier</a>
-                        <a href="../fonctions/supprimerEmplacement.php?id=<?=$emplacement->id; ?>">Supprimer</a>
+                        <a class="btn btn-primary" href="vueModifierEmplacement.php?id=<?=$emplacement->id; ?>">Modifier</a>
+                        <a class="btn btn-primary" href="../fonctions/supprimerEmplacement.php?id=<?=$emplacement->id; ?>">Supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -41,7 +41,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
         <?php endif; ?>
     </table>
 
-    <a href="vueAjouterEmplacement.php">Ajouter un emplacement</a>
+    <a class="btn btn-primary" href="vueAjouterEmplacement.php">Ajouter un emplacement</a>
 </div>
 
 <?php include "footer.php"; ?>
