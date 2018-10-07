@@ -125,7 +125,7 @@ function emplacementValide($dateDebut, $dateFin)
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange" <?php if ($reservationAModifier->vidangese == 1) echo ' checked' ?>/>
+                    <input type="checkbox" name="vidange" <?php if ($reservationAModifier->vidange == 1) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Essence:
