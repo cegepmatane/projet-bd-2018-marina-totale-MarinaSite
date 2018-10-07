@@ -4,7 +4,6 @@ include 'header.php';
 include '../accesseur/ReservationDAO.php';
 include '../accesseur/ClientDAO.php';
 include '../accesseur/BateauDAO.php';
-include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
 
 $reservationDAO = new ReservationDAO();

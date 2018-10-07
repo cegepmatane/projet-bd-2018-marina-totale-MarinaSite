@@ -2,12 +2,9 @@
 
 include 'header.php';
 include '../accesseur/ReservationDAO.php';
-include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
 
 include '../modele/Reservation.php';
-include '../modele/Service.php';
-
 $id;
 $reservationDAO = new ReservationDAO();
 $serviceDAO = new ServiceDAO();

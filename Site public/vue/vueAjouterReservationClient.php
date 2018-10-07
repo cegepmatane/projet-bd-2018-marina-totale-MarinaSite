@@ -2,12 +2,10 @@
 include 'header.php';
 
 include '../accesseur/BateauDAO.php';
-include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
 include '../accesseur/ReservationDAO.php';
 
 include '../modele/Reservation.php';
-include '../modele/Service.php';
 
 $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
@@ -18,7 +16,6 @@ $id_bateau = null;
 $electricite = null;
 $vidange = null;
 $essence = null;
-$id_service = null;
 
 $erreurs = array();
 
@@ -29,24 +26,25 @@ if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
 }
 if ((isset($_POST['electricite']))) {
-    $electricite = true;
+    $electricite = 1;
 } else {
-    $electricite = false;
+    $electricite = 0;
 }
 if ((isset($_POST['vidange']))) {
-    $vidange = true;
+    $vidange = 1;
 } else {
-    $vidange = false;
+    $vidange = 0;
 }
 if ((isset($_POST['essence']))) {
-    $essence = true;
+    $essence = 1;
 } else {
-    $essence = false;
+    $essence = 0;
 }
 if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default') {
     $id_bateau = $_POST['select_bateau'];
+    echo 'id bateau '.$id_bateau;
 }
-
+echo 'id bateau '.$id_bateau;
 //TODO gestion erreurs
 
 
@@ -54,29 +52,21 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDate
 
 
     if (empty($erreurs)) {
-        $id_service = creerService($electricite, $vidange, $essence);
-
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
         if ($id_emplacement != 0) {
-            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $id_service, $id_emplacement);
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $electricite,$essence,$vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
+            var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            //header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
             exit();
         }
     }
 }else{
-    $erreurs['oui']='oui';
-}
-
-
-function creerService($electricite, $vidange, $essence)
-{
-    $service = new Service($essence, $electricite, $vidange);
-    $serviceDAO = new ServiceDAO();
-    return $serviceDAO->ajouterService($service);
+    $erreurs['erreur']='ERREUR';
+    print_r($erreurs);
 }
 
 function checkDateAAAAMMDD($date){
@@ -113,7 +103,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
         <fieldset>
             <legend>Effectuer une nouvelle réservation</legend>
 
-            <form action="vueAjouterReservationClient.php" method="post">
+            <form action="vueAjouterReservationClient.php?id=<?php echo $id_reservation?>" method="post">
                 <label>Date d'arrivé:
                     <input type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>
@@ -127,7 +117,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
                 <label>Bateau:
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
-                            <option selected="selected" value="">-SELECTIONNEZ BATEAU-</option>
+                            <option selected="selected" value="default">-SELECTIONNEZ BATEAU-</option>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
                                 <option value="<?php echo $bateau->id ?>"><?php echo $bateau->nom ?></option>
                             <?php endforeach; ?>

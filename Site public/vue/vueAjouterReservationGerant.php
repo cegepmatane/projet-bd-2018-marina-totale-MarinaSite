@@ -1,12 +1,10 @@
 <?php
 include 'headerAdmin.php';
 
-include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
 include '../accesseur/ReservationDAO.php';
 
 include '../modele/Reservation.php';
-include '../modele/Service.php';
 
 
 $dateDebut = null;
@@ -14,7 +12,6 @@ $dateFin = null;
 $electricite = null;
 $vidange = null;
 $essence = null;
-$id_service = null;
 
 $erreurs = array();
 
@@ -25,19 +22,19 @@ if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
 }
 if ((isset($_POST['electricite']))) {
-    $electricite = true;
+    $electricite = 1;
 } else {
-    $electricite = false;
+    $electricite = 0;
 }
 if ((isset($_POST['vidange']))) {
-    $vidange = true;
+    $vidange = 1;
 } else {
-    $vidange = false;
+    $vidange = 0;
 }
 if ((isset($_POST['essence']))) {
-    $essence = true;
+    $essence = 1;
 } else {
-    $essence = false;
+    $essence = 0;
 }
 
 //TODO gestion erreurs
@@ -47,30 +44,21 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
 
 
     if (empty($erreurs)) {
-        $id_service = creerService($electricite, $vidange, $essence);
-
         $id_emplacement = emplacementValide($dateDebut, $dateFin);
 
        if ($id_emplacement != 0) {
            // id_bateau à 0 : le gerant peut reserver sans bateau, donc id spécial
-            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], 0, $id_service, $id_emplacement);
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], null, $electricite,$essence,$vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: partieGerant.php?id=' . $_SESSION['id'] . '');
+            header('Location: partieGerant.php');
             exit();
         }
     }
 }else{
     $erreurs['oui']='oui';
-}
-
-
-function creerService($electricite, $vidange, $essence)
-{
-    $service = new Service($essence, $electricite, $vidange);
-    $serviceDAO = new ServiceDAO();
-    return $serviceDAO->ajouterService($service);
+    print_r($erreurs);
 }
 
 function checkDateAAAAMMDD($date){

@@ -50,7 +50,8 @@ Class ReservationDAO
 
     public function ajouterReservation(Reservation $reservation)
     {
-        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau,id_service, id_emplacement) VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_service, :id_emplacement)";
+        $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau, id_emplacement, electricite, essence, vidange) 
+                                VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_emplacement,:electricite, :essence, :vidange)";
 
         global $basededonnees;
 
@@ -60,15 +61,17 @@ Class ReservationDAO
         $requeteAjouterReservation->bindValue(':datefin', $reservation->getDatefin());
         $requeteAjouterReservation->bindValue(':id_client', $reservation->getIdclient());
         $requeteAjouterReservation->bindValue(':id_bateau', $reservation->getIdbateau());
-        $requeteAjouterReservation->bindValue(':id_service', $reservation->getIdservice());
         $requeteAjouterReservation->bindValue(':id_emplacement', $reservation->getIdemplacement());
+        $requeteAjouterReservation->bindValue(':essence', $reservation->getEssence());
+        $requeteAjouterReservation->bindValue(':electricite', $reservation->getElectricite());
+        $requeteAjouterReservation->bindValue(':vidange', $reservation->getVidange());
 
         $requeteAjouterReservation->execute();
     }
 
     public function modifierReservation(Reservation $reservation, $idreservation)
     {
-        $MODIFIER_RESERVATION = "UPDATE reservation SET datedebut = :datedebut, datefin = :datefin, id_service = :id_service WHERE id = :idreservation";
+        $MODIFIER_RESERVATION = "UPDATE reservation SET datedebut = :datedebut, datefin = :datefin, electricite = :electricite, vidange = :vidange, essence = :essence WHERE id = :idreservation";
 
         global $basededonnees;
 
@@ -76,6 +79,9 @@ Class ReservationDAO
 
         $requeteModifierReservation->bindValue(':datedebut', $reservation->getDatedebut());
         $requeteModifierReservation->bindValue(':datefin', $reservation->getDatefin());
+        $requeteModifierReservation->bindValue(':essence', $reservation->getEssence());
+        $requeteModifierReservation->bindValue(':electricite', $reservation->getElectricite());
+        $requeteModifierReservation->bindValue(':vidange', $reservation->getVidange());
         $requeteModifierReservation->bindValue(':idreservation', $idreservation);
 
         $requeteModifierReservation->execute();
