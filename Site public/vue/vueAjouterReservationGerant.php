@@ -58,7 +58,6 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
     }
 }else{
     $erreurs['oui']='oui';
-    print_r($erreurs);
 }
 
 function checkDateAAAAMMDD($date){
