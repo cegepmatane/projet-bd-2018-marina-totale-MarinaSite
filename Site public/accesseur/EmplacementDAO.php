@@ -29,7 +29,7 @@ Class EmplacementDAO
         $requeteAjouterEmplacement->execute();
     }
 
-    public function modifierEplacement(Emplacement $emplacement)
+    public function modifierEmplacement(Emplacement $emplacement, $id)
     {
         $MODIFIER_EMPLACEMENT = "UPDATE emplacement SET longueur = :longueur, largeur = :largeur, label = :label WHERE id = :id";
 
@@ -40,7 +40,7 @@ Class EmplacementDAO
         $requeteModifierEmplacement->bindValue(':longueur', $emplacement->getLongueur());
         $requeteModifierEmplacement->bindValue(':largeur', $emplacement->getLargeur());
         $requeteModifierEmplacement->bindValue(':label', $emplacement->getLabel());
-        $requeteModifierEmplacement->bindValue(':id', $emplacement->getId());
+        $requeteModifierEmplacement->bindValue(':id', $id);
 
         $requeteModifierEmplacement->execute();
     }
