@@ -54,11 +54,9 @@ h1{
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    width: 600px;
+    width: 75%;
 }
-td, th{
-    border: 1px solid black;
-}
+
 #details-panel1{
     margin-bottom: 30px;
 }

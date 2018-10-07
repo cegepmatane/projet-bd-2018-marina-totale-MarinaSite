@@ -22,18 +22,16 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 
 
                 <div class="row">
-                    <table border="2">
+                    <table class="table table-hover" border="2">
                         <br>
                         <caption>Récapitulatif des clients ayant des réservations en cours</caption>
                             <?php if(isset($donneesReservationEnCours[0])): ?>
                             <thead>
-                            <tr><th>id reservation</th><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Actions</th></tr>
+                            <tr><th>Nom</th><th>Prénom</th><th>Date début</th><th>Date fin</th><th>Actions</th></tr>
                             </thead>
                             <tbody>
                             <?php foreach ($donneesReservationEnCours as $reservation) :?>
-                                <tr><td>
-                                        <?php echo $reservation->id; ?>
-                                    </td>
+                                <tr>
                                     <td>
                                         <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                                     </td>
@@ -47,8 +45,8 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                                         <?php echo $reservation->datefin; ?>
                                     </td>
                                     <td>
-                                        <a href="vueModifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
-                                        <a href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
+                                        <a class="btn btn-primary" href="vueModifierReservation.php?id=<?=$reservation->id; ?>">Modifier</a>
+                                        <a class="btn btn-primary" href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -61,9 +59,9 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                     </table>
                     <br><br>
 
-                    <a href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
+                    <a class="btn btn-primary" href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
                     <br><br>
-                    <a href="vueEmplacement.php">Gérer les emplacements</a>
+                    <a class="btn btn-primary" href="vueEmplacement.php">Gérer les emplacements</a>
                 </div>
 
 
@@ -73,18 +71,16 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                 <summary>Réservations archivées</summary>
 
                     <div class="row">
-                        <table border="2">
+                        <table class="table table-hover" border="2">
                             <br>
                             <caption>Récapitulatif des clients ayant des réservations archivées</caption>
                             <?php if(isset($donneesReservationArchivees[0])): ?>
                                 <thead>
-                                <tr><th>idclient</th><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action</th></tr>
+                                <tr><th>Nom</th><th>Prénom</th><th>Date debut</th><th>Date fin</th><th>Action</th></tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($donneesReservationArchivees as $reservation) :?>
-                                    <tr><td>
-                                            <?php echo $reservation->id; ?>
-                                        </td>
+                                    <tr>
                                         <td>
                                             <?php echo $clientDAO->trouverClientId($reservation->id_client)->nom; ?>
                                         </td>
@@ -98,7 +94,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                                             <?php echo $reservation->datefin; ?>
                                         </td>
                                         <td>
-                                            <a href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
+                                            <a class="btn btn-primary" href="../fonctions/supprimerReservation.php?id=<?=$reservation->id; ?>">Supprimer</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
