@@ -59,7 +59,7 @@ Class EmplacementDAO
     public function supprimerEmplacement($id)
     {
         global $basededonnees;
-        $SUPPRIMER_EMPLACEMENT = 'DELETE FROM emplacement WHERE id = :idemplacement';
+        $SUPPRIMER_EMPLACEMENT = 'DELETE FROM emplacement WHERE id = :id';
         $requeteSupprimerEmplacement = $basededonnees->prepare($SUPPRIMER_EMPLACEMENT);
         $requeteSupprimerEmplacement->bindValue(':id', $id);
         $requeteSupprimerEmplacement->execute();
