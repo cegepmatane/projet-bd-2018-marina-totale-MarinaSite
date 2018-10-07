@@ -27,7 +27,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
     $bateauDAO = new BateauDAO();
     $bateauDAO->ajouterBateau($bateau);
 
-    header('Location: partieClient.php');
+   header('Location: partieClient.php');
     exit();
 }
 

@@ -16,7 +16,7 @@ Class EmplacementDAO
 
     public function ajouterEmplacement(Emplacement $emplacement)
     {
-        $AJOUTER_EMPLACEMENT = "INSERT INTO emplacement(longueur, largeur, label) VALUES (:longueur, :largeur; :label)";
+        $AJOUTER_EMPLACEMENT = "INSERT INTO emplacement(longueur, largeur, label) VALUES (:longueur, :largeur, :label)";
 
         global $basededonnees;
 
@@ -25,7 +25,6 @@ Class EmplacementDAO
         $requeteAjouterEmplacement->bindValue(':longueur', $emplacement->getLongueur());
         $requeteAjouterEmplacement->bindValue(':largeur', $emplacement->getLargeur());
         $requeteAjouterEmplacement->bindValue(':label', $emplacement->getLabel());
-
 
         $requeteAjouterEmplacement->execute();
     }

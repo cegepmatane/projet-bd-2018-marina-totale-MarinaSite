@@ -10,7 +10,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
 
 <div class="row">
     <table border="2">
-        <caption>Recapitulatif des emplacements</caption>
+        <caption>Récapitulatif des emplacements</caption>
         <?php if(isset($donneesEmplacement[0])): ?>
             <thead>
             <tr><th>Label</th><th>Longueur</th><th>Largeur</th><th>Actions</th></tr>
