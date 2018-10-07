@@ -62,6 +62,8 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                     <br><br>
 
                     <a href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
+                    <br><br>
+                    <a href="vueEmplacement.php">Gérer les emplacements</a>
                 </div>
 
 

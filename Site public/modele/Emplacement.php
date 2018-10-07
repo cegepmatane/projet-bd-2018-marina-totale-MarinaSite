@@ -1,76 +1,40 @@
 <?php
 
 class Emplacement{
-    
+
+    var $id;
     var $longueur;
     var $largeur;
-    var $estdisponible;
+    var $label;
 
     /**
      * Emplacement constructor.
-     * @param $idemplacement
-     * @param $idclient
-     * @param $idreservation
+     * @param $id
      * @param $longueur
      * @param $largeur
-     * @param $estdisponible
+     * @param $label
      */
-    public function __construct($idemplacement, $idclient, $idreservation, $longueur, $largeur, $estdisponible)
+    public function __construct($longueur, $largeur, $label)
     {
-        $this->idemplacement = $idemplacement;
-        $this->idclient = $idclient;
-        $this->idreservation = $idreservation;
         $this->longueur = $longueur;
         $this->largeur = $largeur;
-        $this->estdisponible = $estdisponible;
+        $this->label = $label;
     }
 
     /**
      * @return mixed
      */
-    public function getIdemplacement()
+    public function getId()
     {
-        return $this->idemplacement;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idemplacement
+     * @param mixed $id
      */
-    public function setIdemplacement($idemplacement)
+    public function setId($id)
     {
-        $this->idemplacement = $idemplacement;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdclient()
-    {
-        return $this->idclient;
-    }
-
-    /**
-     * @param mixed $idclient
-     */
-    public function setIdclient($idclient)
-    {
-        $this->idclient = $idclient;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdreservation()
-    {
-        return $this->idreservation;
-    }
-
-    /**
-     * @param mixed $idreservation
-     */
-    public function setIdreservation($idreservation)
-    {
-        $this->idreservation = $idreservation;
+        $this->id = $id;
     }
 
     /**
@@ -108,18 +72,20 @@ class Emplacement{
     /**
      * @return mixed
      */
-    public function getEstdisponible()
+    public function getLabel()
     {
-        return $this->estdisponible;
+        return $this->label;
     }
 
     /**
-     * @param mixed $estdisponible
+     * @param mixed $label
      */
-    public function setEstdisponible($estdisponible)
+    public function setLabel($label)
     {
-        $this->estdisponible = $estdisponible;
+        $this->label = $label;
     }
+
+
 
 
 }
