@@ -2,6 +2,20 @@
 include '../modele/Client.php';
 include '../accesseur/ClientDAO.php';
 
+// REDIRECION SI DEJA CONNECTÉ
+
+$ClientDAO = new ClientDAO();
+
+if (isset($_SESSION['id'])){
+    if($ClientDAO->trouverClientId($_SESSION['id']->bool_gerant)){
+        header('Location: partieGerant.php');
+        exit();
+    } else {
+        header('Location: partieClient.php');
+        exit();
+    }
+}
+
 $PASS = 0;
 $PSEUDO = null;
 $MDP = null;
@@ -35,9 +49,7 @@ if (isset($PSEUDO) && isset($MDP)) {
 <?php
 function connexion($PSEUDO, $MDP)
 {
-
     $ClientDAO = new ClientDAO();
-
     if ($ClientDAO->clientExiste($PSEUDO)) {
         $clientCourant = $ClientDAO->trouverClientMail($PSEUDO);
 
