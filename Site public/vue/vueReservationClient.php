@@ -12,13 +12,13 @@ $clientDAO = new ClientDAO();
 $emplacementDAO = new EmplacementDAO();
 
 $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
-// FAIRE VUE SANS IDs
+
 ?>
 
 <h1>Recapitulatifs de mes réservations :</h1>
 
-<div class="row">
-    <table border="2">
+<div class="table-responsive">
+    <table border="2" class="table table-striped table-hover">
         <?php if(isset($donneesReservation[0])): ?>
             <thead>
             <tr><th>Nom</th><th>Prenom</th><th>Date de début de réservation</th><th>Date de fin de réservation</th><th>Bateau</th><th>Emplacement</th><th>Electricité</th><th>Essence</th><th>Vidange</th></tr>
@@ -62,8 +62,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
             </tr>
         <?php endif; ?>
     </table>
-
-    <a href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id']?>">Effectuer une demande de réservation</a>
 </div>
+    <a href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id']?>">Effectuer une demande de réservation</a>
 
 <?php include 'footer.php';?>

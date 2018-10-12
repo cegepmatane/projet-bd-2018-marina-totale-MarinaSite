@@ -26,8 +26,8 @@ Bonjour, <?php echo $donneesClient->nom.' '.$donneesClient->prenom; ?>
 
 <h2>Mes bateaux :</h2>
 
-<div class="row">
-    <table border="2">
+<div class="table-responsive">
+    <table border="2" class="table table-striped table-hover">
         <caption>Recapitulatifs des Bateaux</caption>
         <?php if(isset($donneesBateaux[0])): ?>
             <thead>

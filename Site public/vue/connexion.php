@@ -6,8 +6,8 @@ include '../accesseur/ClientDAO.php';
 
 $ClientDAO = new ClientDAO();
 
-if (isset($_SESSION['id'])){
-    if($ClientDAO->trouverClientId($_SESSION['id']->bool_gerant)){
+if (isset($_SESSION['id'])) {
+    if ($ClientDAO->trouverClientId($_SESSION['id']->bool_gerant)) {
         header('Location: partieGerant.php');
         exit();
     } else {
@@ -35,15 +35,20 @@ if (isset($PSEUDO) && isset($MDP)) {
     <fieldset>
         <legend>Connexion à MarinaConnect</legend>
 
-        <form action="connexion.php" method="post">
-            <p><label>Mail: </label>
-                <input type="email" name="pseudo"/>
-                <label>Mot de passe: </label>
-                <input type="password" name="mot_de_passe"/>
-                <input type="submit" name="send" value="CONNEXION">
-            </p>
+        <form class="form-horizontal" action="connexion.php" method="post">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Mail: </label><br>
+                <input class="form-control" type="email" name="pseudo"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Mot de passe: </label><br>
+                <input class="form-control" type="password" name="mot_de_passe"/>
+            </div>
+            <input class="btn btn-default" type="submit" name="send" value="CONNEXION">
         </form>
-        <a href="creerCompte.php">Creer un compte</a>
+    </fieldset>
+
+    <a href="creerCompte.php">Creer un compte...</a>
 </div>
 
 <?php

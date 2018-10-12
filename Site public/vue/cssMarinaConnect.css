@@ -19,6 +19,11 @@ h1{
     z-index: 10;
 }*/
 
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+
 .container{
     height: 93%;
     width: 60%;
