@@ -6,7 +6,7 @@ Class ReservationDAO
 
     public function listerReservationId($id)
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id_client = :id ";
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE id_client = :id ORDER BY datedebut";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->bindValue(':id', $id);
@@ -18,7 +18,7 @@ Class ReservationDAO
 
     public function listerReservation()
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation";
+        $LISTER_RESERVATION = "SELECT * FROM reservation ORDER BY datedebut";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->execute();
@@ -29,7 +29,7 @@ Class ReservationDAO
 
     public function listerReservationEnCours()
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin >= current_date ";
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin >= current_date ORDER BY datedebut ";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->execute();
@@ -39,7 +39,7 @@ Class ReservationDAO
 
     public function listerReservationArchivees()
     {
-        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin < current_date ";
+        $LISTER_RESERVATION = "SELECT * FROM reservation WHERE datefin < current_date ORDER BY datedebut";
         global $basededonnees;
         $requeteListerReservation = $basededonnees->prepare($LISTER_RESERVATION);
         $requeteListerReservation->execute();
