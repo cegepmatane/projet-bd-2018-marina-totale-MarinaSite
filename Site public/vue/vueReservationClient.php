@@ -9,7 +9,6 @@ include '../accesseur/EmplacementDAO.php';
 $reservationDAO = new ReservationDAO();
 $bateauDAO = new BateauDAO();
 $clientDAO = new ClientDAO();
-$serviceDAO = new ServiceDAO();
 $emplacementDAO = new EmplacementDAO();
 
 $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
@@ -46,13 +45,13 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                         <?php echo $emplacementDAO->trouverEmplacement($reservation->id_emplacement)->label ?>
                     </td>
                     <td>
-                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientelectricite){echo 'X';}else echo 'O'; ?>
+                        <?php if($reservation->electricite){echo 'X';}else echo 'O'; ?>
                     </td>
                     <td>
-                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientessence){echo 'X';}else echo 'O'; ?>
+                        <?php if($reservation->essence){echo 'X';}else echo 'O'; ?>
                     </td>
                     <td>
-                        <?php if($serviceDAO->trouverService($reservation->id_service)->contientvidange){echo 'X';}else echo 'O'; ?>
+                        <?php if($reservation->vidange){echo 'X';}else echo 'O'; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

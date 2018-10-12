@@ -13,6 +13,7 @@ $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 $dateDebut = null;
 $dateFin = null;
 $id_bateau = null;
+$id_reservation = null;
 $electricite = null;
 $vidange = null;
 $essence = null;
@@ -44,7 +45,8 @@ if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default') {
     $id_bateau = $_POST['select_bateau'];
     echo 'id bateau '.$id_bateau;
 }
-echo 'id bateau '.$id_bateau;
+
+
 //TODO gestion erreurs
 
 
@@ -60,7 +62,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDate
             var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            //header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
             exit();
         }
     }
@@ -103,7 +105,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
         <fieldset>
             <legend>Effectuer une nouvelle réservation</legend>
 
-            <form action="vueAjouterReservationClient.php?id=<?php echo $id_reservation?>" method="post">
+            <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id']?>" method="post">
                 <label>Date d'arrivé:
                     <input type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>
@@ -130,15 +132,15 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
                 <label><u>Services</u></label><br>
 
                 <label>Electricité:
-                    <input type="checkbox" name="electricite" <?php if ($electricite) echo ' checked' ?>/>
+                    <input type="checkbox" name="electricite" <?php if ($electricite == 1) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange" <?php if ($vidange) echo ' checked' ?>/>
+                    <input type="checkbox" name="vidange" <?php if ($vidange == 1) echo ' checked' ?>/>
                 </label>
                 </br>
                 <label>Essence:
-                    <input type="checkbox" name="essence" <?php if ($essence) echo ' checked' ?>/>
+                    <input type="checkbox" name="essence" <?php if ($essence == 1) echo ' checked' ?>/>
                 </label>
                 </br>
 
