@@ -54,8 +54,11 @@ if (!dateCompareAujourdhui($dateDebut)) {
     $erreurs['dateCompareAujourdhui'] = 'Date ne peu pas etre avant aujourdhui';
 }
 
-if ()
-
+if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
+    if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
+        $erreurs['bateau_indisponible'] = 'Votre bateau est deja réserver sur un emplacement entre ces dates là';
+    }
+}
 
 if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
     && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)

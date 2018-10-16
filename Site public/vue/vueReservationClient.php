@@ -63,6 +63,8 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         <?php endif; ?>
     </table>
 </div>
+
     <a href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id']?>">Effectuer une demande de réservation</a>
+
 
 <?php include 'footer.php';?>
