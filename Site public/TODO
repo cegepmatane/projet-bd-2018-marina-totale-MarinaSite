@@ -1,6 +1,6 @@
 //TODO
 
-- TOUTE LES VERIFS ET AFFICHAGE DES ERREURS DE FORMULAIRES
+- TOUTES LES VERIFS ET AFFICHAGE DES ERREURS DE FORMULAIRES (FLO)
 -Redirection partie client/gerant quand connecté sur page connexion
 
 marinaquebec.qc.ca
@@ -11,9 +11,9 @@ marinaquebec.qc.ca
 
 issue securite doc
 bouton retour en arrier
-PHP filters
+PHP filters (FLO)
 mail
-facture
+facture(MARC)
 confirmation avant suppression
 notification par mail a la modification d'une reservation
 proposition d'alternative au cli
