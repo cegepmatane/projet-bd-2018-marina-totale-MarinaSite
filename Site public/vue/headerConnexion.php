@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100" >
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
@@ -21,6 +21,6 @@ session_start();
     </div>
 </div>
 
-<body class="h-100" style="background-color: #E1F5FE;">
+<body class="h-100" style="background-color: #E1F5FE; font-family: 'Roboto', sans-serif;">
 <div class="container w3-padding-64 shadow" style="min-height: 95.2%; background-color: white;">
 

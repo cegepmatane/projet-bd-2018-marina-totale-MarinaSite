@@ -14,7 +14,7 @@ if (!(isset($_SESSION['pseudo']))){
 
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100" style="font-family: 'Roboto', sans-serif;">
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
@@ -36,6 +36,6 @@ if (!(isset($_SESSION['pseudo']))){
     </div>
 </div>
 
-<body class="h-100" style="background-color: #E1F5FE;">
+<body class="h-100" style="background-color: #E1F5FE;font-family: 'Roboto', sans-serif;">
 <div class="container w3-padding-64 shadow" style="min-height: 95.2%; background-color: white;">
 
