@@ -123,14 +123,9 @@ Class ReservationDAO
         $requeteBateauDejaReserverSelondate->execute();
         $res = $requeteBateauDejaReserverSelondate->fetch(PDO::FETCH_OBJ);
 
-        var_dump($res);
-
         if($res !== false) {
-            //echo '<br>BATEAU DEJA RESERVER<br>';
             return true;
         }
-        //echo '<br>PAS DE BATEAU DEJA RESERVER<br>';
-
         return false;
     }
 

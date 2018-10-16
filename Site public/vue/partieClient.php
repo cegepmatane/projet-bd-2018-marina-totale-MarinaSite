@@ -18,8 +18,8 @@ function possedeBateau()
 
 ?>
     <h2>Ma page client</h2>
-    <br>
-    <div class="span12 text-center">
+
+    <div class="span12 text-center w3-padding-16">
         <?php if (possedeBateau()): ?>
             <h4><a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>">Consulter
                     mes reservations</a></h4>
@@ -28,26 +28,25 @@ function possedeBateau()
             <a href="vueAjouterBateau.php?id=<?php echo $_SESSION['id'] ?>">Cliquer ici pour ajouter un bateau...</a>
         <?php endif; ?>
     </div>
-    <br>
+
     <h3>Mes information :</h3>
 
-    <div class="border">
-        <p>Nom : <?php echo $donneesClient->nom ?></p>
-        <p>Prenom : <?php echo $donneesClient->prenom ?></p>
-        <p>Mail : <?php echo $donneesClient->mail ?></p>
-        <p>Numero : <?php echo $donneesClient->numero ?></p>
+    <div class="border w3-padding-24">
+        <p class="p-l-md">Nom : <?php echo $donneesClient->nom ?></p>
+        <p class="p-l-md">Prenom : <?php echo $donneesClient->prenom ?></p>
+        <p class="p-l-md">Mail : <?php echo $donneesClient->mail ?></p>
+        <p class="p-l-md">Numero : <?php echo $donneesClient->numero ?></p>
 
     </div>
     <br>
-    <div class="span12 text-center">
+    <div class="span12 text-center w3-padding-16">
         <a class="btn btn-primary btn-lg" href="vueModifierClient.php?id=<?php echo $_SESSION['id'] ?>">Modifier mes
             informations</a>
     </div>
-    <br>
 
     <h3>Gestion de mes bateaux :</h3>
 
-    <div class="table-responsive">
+    <div class="table-responsive w3-padding-16">
         <table border="2" class="table table-striped table-hover">
             <?php if (isset($donneesBateaux[0])): ?>
 
@@ -77,8 +76,8 @@ function possedeBateau()
                             <?php echo $bateau->largeur; ?>
                         </td>
                         <td>
-                            <a href="vueModifierBateau.php?id=<?= $bateau->id; ?>">modifier</a>
-                            <a href="../fonctions/supprimerBateau.php?id=<?= $bateau->id; ?>">supprimer</a>
+                            <a class="btn btn-outline-secondary" href="vueModifierBateau.php?id=<?= $bateau->id; ?>">modifier</a>
+                            <a class="btn btn-outline-secondary" href="../fonctions/supprimerBateau.php?id=<?= $bateau->id; ?>">supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

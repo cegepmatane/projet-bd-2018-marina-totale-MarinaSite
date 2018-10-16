@@ -43,22 +43,31 @@ if ((isset($_POST['essence']))) {
 }
 if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default') {
     $id_bateau = $_POST['select_bateau'];
-    echo 'id bateau ' . $id_bateau;
 }
 
 
 //TODO gestion erreurs
 
-if (!dateCompareAujourdhui($dateDebut)) {
-    echo 'DATE ANTERIEUR';
-    $erreurs['dateCompareAujourdhui'] = 'Date ne peu pas etre avant aujourdhui';
-}
-
 if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
     if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
-        $erreurs['bateau_indisponible'] = 'Votre bateau est deja réserver sur un emplacement entre ces dates là';
+        $erreurs['bateau_indisponible'] = "Votre bateau est deja réserver sur un emplacement entre ces dates là<br>";
     }
+
+    if (!dateCompareAujourdhui($dateDebut)) {
+        $erreurs['dateCompareAujourdhui'] = "La date ne peu pas etre avant la date d'aujourdhui<br>";
+    }
+
+    if (!dateCompare($dateDebut,$dateFin)){
+        $erreurs['date_compare'] = "La date d'arrivé doit être posterieur de la date de départ<br>";
+    }
+
+    if($_POST['select_bateau'] == 'default'){
+
+    }
+
 }
+
+
 
 if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
     && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)
@@ -75,11 +84,13 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
         if ($id_emplacement != 0) {
             $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $electricite, $essence, $vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
-            var_dump($reservation);
+            //var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            //header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
             exit();
+        }else{
+            $erreurs['emplacement_indisponible'] = 'Aucun emplacement de libre selon vos critères...<br>';
         }
     }
 } else {
@@ -127,11 +138,10 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau){
 
 
 ?>
-    <h1>Ajouter une réservation :</h1>
+    <h2>Effectuer une nouvelle demande de réservation :</h2>
 
     <div class="ajouterreservation">
         <fieldset>
-            <legend>Effectuer une nouvelle réservation</legend>
 
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
 
@@ -140,14 +150,14 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau){
                     <input type="date" name="dateDebut"
                            value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </div>
-                <?php if (isset($erreurs['dateCompareAujourdhui'])){echo $erreurs['dateCompareAujourdhui'];} ?>
-
 
                 <div class="form-group">
                     <label>Date de départ:</label>
                     <input type="date" name="dateFin"
                            value="<?php if (isset($_POST['dateFin'])) echo $_POST['dateFin'] ?>"/>
                 </div>
+                <?php if (isset($erreurs['dateCompareAujourdhui'])){echo $erreurs['dateCompareAujourdhui'];} ?>
+                <?php if (isset($erreurs['date_compare'])){echo $erreurs['date_compare'];} ?>
 
                 <div class="form-group">
                     <label>Bateau : </label>
@@ -162,6 +172,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau){
                         <?php endif; ?>
                     </select>
                 </div>
+                <?php if (isset($erreurs['bateau_indisponible'])){echo $erreurs['bateau_indisponible'];} ?>
 
                 <label><u><b>Services</b></u></label><br>
 
@@ -178,7 +189,9 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau){
                     <input type="checkbox" name="essence" <?php if ($essence == 1) echo ' checked' ?>/>
                 </div>
 
-                <input type="submit" name="ajouterReservation" value="Effectuer une demande de réservation"/>
+                <input type="submit" class="btn btn-primary" name="ajouterReservation" value="Effectuer une demande de réservation"/>
+
+                <?php if (isset($erreurs['emplacement_indisponible'])){echo $erreurs['emplacement_indisponible'];} ?>
 
             </form>
 
