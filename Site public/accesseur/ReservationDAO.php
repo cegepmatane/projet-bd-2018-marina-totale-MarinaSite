@@ -107,4 +107,26 @@ Class ReservationDAO
         $requeteSupprimerReservation->execute();
     }
 
+    public function checkBateauSelonDate($dateDebut, $dateFin, $id_bateau)
+    {
+        global $basededonnees;
+
+        $CHECK_BATEAU_RESERVER = 'SELECT * FROM reservation WHERE :datedebut <= datefin AND :datefin >= datedebut 
+                                AND id_bateau = :idbateau';
+
+        $requeteBateauDejaReserverSelondate = $basededonnees->prepare($CHECK_BATEAU_RESERVER);
+
+        $requeteBateauDejaReserverSelondate->bindValue(':datedebut', $dateDebut);
+        $requeteBateauDejaReserverSelondate->bindValue(':datefin', $dateFin);
+        $requeteBateauDejaReserverSelondate->bindValue(':idbateau', $id_bateau);
+
+        $requeteBateauDejaReserverSelondate->execute();
+        $res = $requeteBateauDejaReserverSelondate->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            return true;
+        }
+        return false;
+    }
+
 }

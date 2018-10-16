@@ -1,6 +1,6 @@
 <?php
 
-include 'header.php';
+include 'headerAdmin.php';
 include '../accesseur/ReservationDAO.php';
 include '../accesseur/EmplacementDAO.php';
 
