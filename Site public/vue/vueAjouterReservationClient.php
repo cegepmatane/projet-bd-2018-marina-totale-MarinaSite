@@ -54,15 +54,20 @@ if (!dateCompareAujourdhui($dateDebut)) {
     $erreurs['dateCompareAujourdhui'] = 'Date ne peu pas etre avant aujourdhui';
 }
 
+if ()
 
-if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau)) && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin) && dateCompare($dateDebut, $dateFin) && dateCompareAujourdhui($dateDebut) && dateCompareAujourdhui($dateFin)) {
+
+if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
+    && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)
+    && dateCompare($dateDebut, $dateFin)
+    && dateCompareAujourdhui($dateDebut) && dateCompareAujourdhui($dateFin)
+    && !bateauEstDejaReserverSelonDate($dateDebut,$dateFin,$id_bateau)) {
 
 
     if (empty($erreurs)) {
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
         //verif si bateau deja reserver entre date
-        bateauPasReserverSelonDate($dateDebut, $dateFin, $id_bateau);
 
         if ($id_emplacement != 0) {
             $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $electricite, $essence, $vidange, $id_emplacement);
@@ -112,14 +117,9 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
     return 0;
 }
 
-function bateauPasReserverSelonDate($dateDebut, $dateFin, $id_bateau){
+function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau){
     $reservationDAO = new ReservationDAO();
-    if ($reservationDAO->checkBateauSelonDate($dateDebut, $dateFin, $id_bateau)){
-        echo 'BATEAU ESERVER';
-    }else{
-        echo 'BATEAU DEJA ESERVER';
-
-    }
+    return $reservationDAO->checkBateauSelonDate($dateDebut, $dateFin, $id_bateau);
 }
 
 
