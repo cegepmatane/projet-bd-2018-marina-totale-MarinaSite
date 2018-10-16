@@ -14,7 +14,7 @@ if (!(isset($_SESSION['pseudo']))){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
@@ -37,6 +37,6 @@ if (!(isset($_SESSION['pseudo']))){
     </div>
 </div>
 
-<body>
-<div class="container w3-padding-64">
+<body class="h-100" style="background-color: #E1F5FE;">
+<div class="container w3-padding-64 shadow" style="min-height: 96.5%; background-color: white;">
 
