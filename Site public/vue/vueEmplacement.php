@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'headerAdmin.php';
 
 include '../accesseur/EmplacementDAO.php';
 $emplacementDAO = new EmplacementDAO();
@@ -9,8 +9,8 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
 
 <h1>Récapitulatif des emplacements</h1>
 
-<div class="row">
-    <table class="table table-hover"  border="2">
+<div class="table-responsive">
+    <table class="table table-striped table-hover"  border="2">
         <?php if(isset($donneesEmplacement[0])): ?>
             <thead>
             <tr><th>Label</th><th>Longueur</th><th>Largeur</th><th>Actions</th></tr>

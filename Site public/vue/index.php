@@ -49,7 +49,7 @@
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-blue">
     <img src="../img/lamarina2.jpg" style="width:100%">
-    <h2>Réservez dès maintenant !</h2>
+    <h2>Réservez dès maintenant</h2>
 
     <p>Vérifiez les disponibilités et organisez votre voyage! </p>
 

@@ -30,14 +30,51 @@ if (!(isset($_SESSION['pseudo']))){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+<body class="h-100" style="background-color: #E1F5FE;font-family: 'Roboto', sans-serif;">
+
 <div class="w3-top">
     <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
         <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Marina Connect&trade;</a>
-        <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right">Se déconnecter</a>
+        <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small">Se déconnecter</a>
+        <a class="w3-bar-item w3-button w3-right w3-hide-large  w3-hide-medium w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 
     </div>
 </div>
+<div class=" w3-hide-large">
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"  id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+            <i class="fa fa-remove"></i>
+        </a>
+        <h4 class="w3-bar-item"><b>Menu</b></h4>
+        <a class="w3-bar-item w3-button w3-hover-black" href="deconnexion.php">Se déconnecter</a>
+    </nav>
+</div>
+<div class=" w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<body class="h-100" style="background-color: #E1F5FE;font-family: 'Roboto', sans-serif;">
+<script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+</script>
+
 <div class="container w3-padding-64 shadow w3-mobile" style="min-height:95.2%;background-color: white;">
 

@@ -21,23 +21,23 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 <div class="partieGerant">
 
     <h1> Gestion de la marina</h1>
-    Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
-
-    <br><br>
+    Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?><br>
+<div style="text-align: center;">
+    <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Ajouter une réservation</a>    &nbsp;
+    <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
+</div>
     <div class="wb-tabs">
         <div class="tabpanels">
             <details id="details-panel1" open="open">
                 <summary>Réservations en cours</summary>
 
 
-                <div class="row">
-                    <table class="table table-hover" border="2">
-                        <br>
-                        <caption>Récapitulatif des clients ayant des réservations en cours</caption>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" border="2" style="text-align: center;">
                         <?php if (isset($donneesReservationEnCours[0])): ?>
                             <thead>
                             <tr>
-                                <th>Prénomm</th>
+                                <th>Prénom</th>
                                 <th>Nom</th>
                                 <th>Date début</th>
                                 <th>Date fin</th>
@@ -60,9 +60,9 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                         <?php echo $reservation->datefin; ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary"
+                                        <a class="btn btn-outline-secondary"
                                            href="vueModifierReservation.php?id=<?= $reservation->id; ?>">Modifier</a>
-                                        <a class="btn btn-primary"
+                                        <a class="btn btn-outline-secondary"
                                            href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>">Supprimer</a>
                                     </td>
                                 </tr>
@@ -74,28 +74,20 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             </tr>
                         <?php endif; ?>
                     </table>
-                    <br><br>
-
-                    <a class="btn btn-primary" href="vueAjouterReservationGerant.php">Ajouter une réservation</a>
-                    &nbsp;
-                    <a class="btn btn-primary" href="vueEmplacement.php">Gérer les emplacements</a>
                 </div>
-
 
             </details>
 
             <details id="details-panel2">
                 <summary>Réservations archivées</summary>
 
-                <div class="row">
-                    <table class="table table-hover" border="2">
-                        <br>
-                        <caption>Récapitulatif des clients ayant des réservations archivées</caption>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" border="2" style="text-align: center;">
                         <?php if (isset($donneesReservationArchivees[0])): ?>
                             <thead>
                             <tr>
-                                <th>Nom</th>
                                 <th>Prénom</th>
+                                <th>Nom</th>
                                 <th>Date debut</th>
                                 <th>Date fin</th>
                                 <th>Action</th>
@@ -117,7 +109,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                         <?php echo $reservation->datefin; ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary"
+                                        <a class="btn btn-outline-secondary"
                                            href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>">Supprimer</a>
                                     </td>
                                 </tr>
@@ -131,10 +123,10 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                     </table>
 
                 </div>
-            </details>
-            <form action="partieGerant.php" method="post">
+            </details><br>
+            <form action="partieGerant.php" method="post" style="text-align: center;">
                 <input type="date" name="date" value="<?php echo date('Y-m-d');?>">
-                <input type="submit" name="submit" value="choisirDate">
+                <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit" value="Actualiser la carte">
             </form>
             <div id="map" style="height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */">
@@ -146,6 +138,8 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             document.getElementById('map'), {
                                 zoom: 18,
                                 center: marina,
+                                mapTypeControl: false,
+                                streetViewControl: false,
                                 mapTypeId: 'satellite',
                             });
                         var pinColorVert = "009900";
