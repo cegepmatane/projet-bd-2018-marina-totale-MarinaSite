@@ -17,3 +17,11 @@ facture(MARC)
 confirmation avant suppression
 notification par mail a la modification d'une reservation
 proposition d'alternative au client quand suppression reservation
+
+    barre de recherche réservation avec nom personne
+	Details reservation page
+	Ajouter emplacement avec carte pour coordonnées
+	inverser nom prenom gerant tableau
+	ameillorer css
+	Taille des bateaux unité
+	bouton menu deco et compte responsive
