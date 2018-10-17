@@ -17,6 +17,9 @@ function possedeBateau()
 }
 
 ?>
+
+
+
     <h2>Ma page client</h2>
 
     <div class="span12 text-center w3-padding-16">
@@ -29,7 +32,7 @@ function possedeBateau()
         <?php endif; ?>
     </div>
 
-    <h3>Mes information :</h3>
+    <h3>Mes informations :</h3>
 
     <div class="border w3-padding-24">
         <p class="p-l-md">Nom : <?php echo $donneesClient->nom ?></p>
@@ -92,5 +95,8 @@ function possedeBateau()
             <a class="btn btn-primary btn-lg" href="vueAjouterBateau.php">Ajouter un bateau</a>
         </div>
     </div>
+        </div>
+    </section>
+
 
 <?php include "footer.php"; ?>
