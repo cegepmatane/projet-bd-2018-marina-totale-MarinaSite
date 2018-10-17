@@ -37,8 +37,8 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         <?php if (isset($donneesReservationEnCours[0])): ?>
                             <thead>
                             <tr>
+                                <th>Prénomm</th>
                                 <th>Nom</th>
-                                <th>Prénom</th>
                                 <th>Date début</th>
                                 <th>Date fin</th>
                                 <th>Actions</th>

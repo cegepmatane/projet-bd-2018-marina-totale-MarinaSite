@@ -35,8 +35,8 @@ function possedeBateau()
     <h3>Mes informations :</h3>
 
     <div class="border w3-padding-24">
-        <p class="p-l-md">Nom : <?php echo $donneesClient->nom ?></p>
-        <p class="p-l-md">Prenom : <?php echo $donneesClient->prenom ?></p>
+        <p class="p-l-md">Prénom : <?php echo $donneesClient->nom ?></p>
+        <p class="p-l-md">Nom : <?php echo $donneesClient->prenom ?></p>
         <p class="p-l-md">Mail : <?php echo $donneesClient->mail ?></p>
         <p class="p-l-md">Numero : <?php echo $donneesClient->numero ?></p>
 

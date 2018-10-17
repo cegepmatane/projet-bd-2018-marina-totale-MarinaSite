@@ -22,8 +22,8 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
             <?php if (isset($donneesReservation[0])): ?>
                 <thead>
                 <tr>
+                    <th>Prénom</th>
                     <th>Nom</th>
-                    <th>Prenom</th>
                     <th>Date de début de réservation</th>
                     <th>Date de fin de réservation</th>
                     <th>Bateau</th>
