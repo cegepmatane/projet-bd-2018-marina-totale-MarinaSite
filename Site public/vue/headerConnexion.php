@@ -22,5 +22,5 @@ session_start();
 
 <body class="h-100" style="background-color: #E1F5FE; font-family: 'Roboto', sans-serif;">
 
-<div class="container w3-padding-64 shadow" style="min-height: 95.2%; background-color: white;">
+<div class="container w3-padding-64 shadow w3-mobile" style="min-height: 95.2%; background-color: white;">
 
