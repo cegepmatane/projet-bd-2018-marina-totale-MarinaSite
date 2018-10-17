@@ -18,7 +18,7 @@ $emplacementDAO = new EmplacementDAO();
 $donneesEmplacements = $emplacementDAO->listerEmplacement();
 ?>
 
-<div class="partieGerant">
+<div class="partieGerant p-lg-5 p-md-3">
 
     <h1> Gestion de la marina</h1>
 
@@ -65,7 +65,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                         <a class="btn btn-outline-secondary"
                                            href="vueModifierReservation.php?id=<?= $reservation->id; ?>">Modifier</a>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="exampleModal<?=$reservation->id;?>" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
@@ -88,7 +88,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                             </div>
                                         </div>
                                         <a class="btn btn-outline-danger" data-toggle="modal"
-                                           data-target="#exampleModal">Supprimer</a>
+                                           data-target="#exampleModal<?=$reservation->id;?>">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -135,7 +135,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                     </td>
                                     <td>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="exampleModal<?=$reservation->id;?>" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
@@ -158,7 +158,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                             </div>
                                         </div>
                                         <a class="btn btn-outline-danger" data-toggle="modal"
-                                           data-target="#exampleModal">Supprimer</a>
+                                           data-target="#exampleModal<?=$reservation->id;?>">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

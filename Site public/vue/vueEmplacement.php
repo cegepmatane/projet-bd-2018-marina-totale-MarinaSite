@@ -30,7 +30,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
                     <td>
                         <a class="btn btn-outline-secondary" href="vueModifierEmplacement.php?id=<?=$emplacement->id; ?>">Modifier</a>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="exampleModal<?=$emplacement->id;?>" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -53,7 +53,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
                             </div>
                         </div>
                         <a class="btn btn-outline-danger" data-toggle="modal"
-                           data-target="#exampleModal">Supprimer</a>
+                           data-target="#exampleModal<?=$emplacement->id;?>">Supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
