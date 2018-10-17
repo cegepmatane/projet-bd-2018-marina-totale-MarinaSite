@@ -25,6 +25,15 @@ Class ReservationDAO
 
         return $requeteListerReservation->fetchAll(PDO::FETCH_OBJ);
     }
+    public function listerReservationSelonDate($date)
+    {
+        $LISTER_RESERVATION_SELON_DATE = "SELECT * FROM reservation WHERE datedebut <= :datevar AND datefin >= :datevar ORDER BY datedebut";
+        global $basededonnees;
+        $requeteListerReservationSelonDate = $basededonnees->prepare($LISTER_RESERVATION_SELON_DATE);
+        $requeteListerReservationSelonDate->bindValue(':datevar', $date);
+        $requeteListerReservationSelonDate->execute();
+        return $requeteListerReservationSelonDate->fetchAll(PDO::FETCH_OBJ);
+    }
 
 
     public function listerReservationEnCours()
