@@ -21,11 +21,13 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 <div class="partieGerant">
 
     <h1> Gestion de la marina</h1>
-    Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?><br>
-<div style="text-align: center;">
-    <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Ajouter une réservation</a>    &nbsp;
-    <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
-</div>
+
+    Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
+    <br>
+    <div style="text-align: center;">
+        <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Ajouter une réservation</a> &nbsp;
+        <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
+    </div>
     <div class="wb-tabs">
         <div class="tabpanels">
             <details id="details-panel1" open="open">
@@ -62,8 +64,31 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                     <td>
                                         <a class="btn btn-outline-secondary"
                                            href="vueModifierReservation.php?id=<?= $reservation->id; ?>">Modifier</a>
-                                        <a class="btn btn-outline-secondary"
-                                           href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>">Supprimer</a>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes vous sur de vouloir supprimer?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
+                                                           class="btn btn-danger">Supprimer
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-outline-danger" data-toggle="modal"
+                                           data-target="#exampleModal">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -109,8 +134,31 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                         <?php echo $reservation->datefin; ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-secondary"
-                                           href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>">Supprimer</a>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes vous sur de vouloir supprimer?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
+                                                           class="btn btn-danger">Supprimer
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-outline-danger" data-toggle="modal"
+                                           data-target="#exampleModal">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -123,11 +171,22 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                     </table>
 
                 </div>
-            </details><br>
-            <form action="partieGerant.php" method="post" style="text-align: center;">
-                <input type="date" name="date" value="<?php echo date('Y-m-d');?>">
-                <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit" value="Actualiser la carte">
-            </form>
+            </details>
+            <br>
+            <h3>Carte des réservations de la marina:</h3>
+            <div class="container">
+                <form action="partieGerant.php" method="post">
+                    <div class="row justify-content-start">
+                        <div class="col-sm-4">
+                            <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="date">
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit"
+                                   value="Actualiser la carte">
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div id="map" style="height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */">
                 <script>
@@ -203,11 +262,9 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
         </div>
     </div>
-
-
 </div>
 
 
-<?php include "footer.php"; ?>
+    <?php include "footer.php"; ?>
 
 

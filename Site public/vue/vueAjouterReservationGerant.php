@@ -9,9 +9,6 @@ include '../modele/Reservation.php';
 
 $dateDebut = null;
 $dateFin = null;
-$electricite = null;
-$vidange = null;
-$essence = null;
 
 $erreurs = array();
 
@@ -20,21 +17,6 @@ if ((isset($_POST['dateDebut']))) {
 }
 if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
-}
-if ((isset($_POST['electricite']))) {
-    $electricite = 1;
-} else {
-    $electricite = 0;
-}
-if ((isset($_POST['vidange']))) {
-    $vidange = 1;
-} else {
-    $vidange = 0;
-}
-if ((isset($_POST['essence']))) {
-    $essence = 1;
-} else {
-    $essence = 0;
 }
 
 //TODO gestion erreurs
@@ -48,7 +30,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
 
        if ($id_emplacement != 0) {
            // id_bateau à 0 : le gerant peut reserver sans bateau, donc id spécial
-            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], null, $electricite,$essence,$vidange, $id_emplacement);
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], null,0,0,0, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             $reservationDAO->ajouterReservation($reservation);
 
@@ -89,17 +71,16 @@ function emplacementValide($dateDebut, $dateFin)
 
 
 ?>
-    <h1>Ajouter une réservation :</h1>
+    <h1>Fermer un emplacement :</h1>
     <div class="ajouterreservation">
         <fieldset>
-            <legend>Effectuer une nouvelle réservation</legend>
 
             <form action="vueAjouterReservationGerant.php" method="post">
-                <label>Date d'arrivée:
+                <label>Date de début:
                     <input class="form-control" type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>
                 </br>
-                <label>Date de départ:
+                <label>Date de fin:
                     <input class="form-control" type="date" name="dateFin"
                            value="<?php if (isset($_POST['dateFin'])) echo $_POST['dateFin'] ?>"/>
                 </label>
@@ -107,22 +88,24 @@ function emplacementValide($dateDebut, $dateFin)
                 </br>
 
                 </br>
-                <label><u>Services</u></label><br>
+               <!-- <label><u>Services</u></label><br>
 
                 <label>Electricité:
-                    <input type="checkbox" name="electricite" <?php if ($electricite) echo ' checked' ?>/>
+                    <input type="checkbox" name="electricite" <?php /*if ($electricite) echo ' checked' */?>/>
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange" <?php if ($vidange) echo ' checked' ?>/>
+                    <input type="checkbox" name="vidange" <?php /*if ($vidange) echo ' checked' */?>/>
                 </label>
                 </br>
                 <label>Essence:
-                    <input type="checkbox" name="essence" <?php if ($essence) echo ' checked' ?>/>
+                    <input type="checkbox" name="essence" <?php /*if ($essence) echo ' checked' */?>/>
                 </label>
-                </br>
+                </br>-->
 
-                <input class="btn btn-primary" type="submit" name="ajouterReservation" value="Effectuer une demande de réservation"/>
+                <input class="btn btn-primary" type="submit" name="ajouterReservation" value="Fermer l'emplacement"/>
+                <a class="btn btn-outline-secondary" href="partieGerant.php">Retour</a>
+
 
             </form>
 
