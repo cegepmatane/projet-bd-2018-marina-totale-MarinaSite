@@ -1,12 +1,15 @@
 <?php include 'headerAdmin.php';
 include '../accesseur/ClientDAO.php';
 include '../accesseur/ReservationDAO.php';
+include '../accesseur/EmplacementDAO.php';
 include '../fonctions/verifAdmin.php';
 
 $clientDAO = new ClientDAO();
 $reservationDAO = new ReservationDAO();
 $donneesReservationEnCours = $reservationDAO->listerReservationEnCours();
 $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
+$emplacementDAO = new EmplacementDAO();
+$donneesEmplacements = $emplacementDAO->listerEmplacement();
 ?>
 
 <div class="partieGerant">
@@ -119,12 +122,6 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                             center: marina,
                             mapTypeId: 'satellite',
                         });
-                    var marina1 = {lat: 48.852399, lng: -67.530745};
-                    var marina2 = {lat: 48.852451, lng: -67.530578};
-                    var marina3 = {lat: 48.852503, lng: -67.530441};
-                    var marina4 = {lat: 48.852541, lng: -67.530260};
-                    var marina5 = {lat: 48.852557, lng: -67.530106};
-                    var marina6 = {lat: 48.852618, lng: -67.529936};
                     var pinColorVert = "009900";
                     var pinImageVert = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorVert,
                         new google.maps.Size(21, 34),
@@ -137,7 +134,7 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                         new google.maps.Point(0,0),
                         new google.maps.Point(10, 34));
 
-                    var contentString = '<h1 >Emplacement 1</h1>'+
+                    /*var contentString = '<h1 >Emplacement 1</h1>'+
                     '<p>Présentation de l emplacement 1 avec les differents services proposés</p>';
 
                     var infowindow = new google.maps.InfoWindow({
@@ -147,12 +144,45 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
                     var marker = new google.maps.Marker({position: marina1, map: map, icon: pinImageVert});
                     marker.addListener('click', function() {
                         infowindow.open(map, marker);
-                    });
-                    var marker1 = new google.maps.Marker({position: marina2, map: map, icon: pinImageRouge});
-                    var marker2 = new google.maps.Marker({position: marina3, map: map, icon: pinImageVert});
-                    var marker3 = new google.maps.Marker({position: marina4, map: map, icon: pinImageRouge});
-                    var marker4 = new google.maps.Marker({position: marina5, map: map, icon: pinImageRouge});
-                    var marker5 = new google.maps.Marker({position: marina6, map: map, icon: pinImageVert});
+                    });*/
+                    <?php foreach ($donneesEmplacements as $emplacement){
+                        $estReserve = false;
+                        foreach($donneesReservationEnCours as $reservation){
+
+
+
+                            $lat = $emplacement->latitude;
+                            $long = $emplacement->longitude;
+                            echo "var marina".$emplacement->id." = {lat: ".$lat.", lng: ".$long."};";
+
+                            if($reservation->id_emplacement == $emplacement->id){
+                                echo "var contentString".$emplacement->id." = '<h1 >Emplacement ".$emplacement->label."</h1>'+
+                                    '<p>Reservé depuis: ".$reservation->datedebut."</p></br>'+
+                                    '<p>Jusqu au: ".$reservation->datefin."</p></br>'+
+                                    '<p>Services:</p></br>'+
+                                    '<p>Electricité: ". ($reservation->electricite == 1 ? "oui" : "non")."</p></br>'+
+                                    '<p>Vidange: ". ($reservation->vidange == 1 ? "oui" : "non")."</p></br>'+
+                                    '<p>Essence: ". ($reservation->essence == 1 ? "oui" : "non")."</p></br>';
+                                    var infowindow".$emplacement->id." = new google.maps.InfoWindow({
+                                    content: contentString".$emplacement->id."
+                                    });";
+
+                                echo "var marker".$emplacement->id." = new google.maps.Marker({position: marina".$emplacement->id.", map: map, icon: pinImageRouge});";
+
+                                echo "marker".$emplacement->id.".addListener('click', function() {
+                                    infowindow".$emplacement->id.".open(map, marker".$emplacement->id.");
+                                });";
+
+                                $estReserve = true;
+                            }
+                        }
+                        if ($estReserve== false) {
+                            echo "var marker".$emplacement->id." = new google.maps.Marker({position: marina".$emplacement->id.", map: map, icon: pinImageVert});";
+                        }
+                    }
+
+
+                    ?>
                     //recuperer liste emplacements ->liste emplacement[]
                     //for i allant de 0 au nombre d'emplacements-1:
                         //recuperer emplacement[i]
