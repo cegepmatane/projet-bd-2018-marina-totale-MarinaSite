@@ -65,7 +65,7 @@
                <p> Pêcher sur la rivière Matane, c'est un plaisir facilement accessible!</p>
         </div>
         <div class="w3-third w3-container">
-            <img class="w3-border w3-padding-large w3-padding-32 w3-center" src="../img/peche.png">
+            <img class="w3-border w3-padding-32 w3-center" src="../img/peche.png">
         </div>
     </div>
     <div class="w3-row w3-padding-64">

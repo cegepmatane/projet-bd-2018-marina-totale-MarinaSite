@@ -12,7 +12,6 @@ $donneesReservationSelonDate = null;
 if (isset($_POST["date"])) {
     $donneesReservationSelonDate = $reservationDAO->listerReservationSelonDate($_POST["date"]);
 } else {
-    echo date('Y-m-d');
     $donneesReservationSelonDate = $reservationDAO->listerReservationSelonDate(date('Y-m-d'));
 }
 $emplacementDAO = new EmplacementDAO();

@@ -55,7 +55,7 @@
                 L’opérateur d’une embarcation de plaisance se doit d’effectuer un entretien périodique de tout son équipement nautique de façon à ce que tout fonctionne adéquatement réduisant ainsi la probabilité de défaillance.</p>
         </div>
         <div class="w3-third w3-container">
-            <img class="w3-border w3-padding-large w3-padding-32 w3-center" src="../img/secu.jpg">
+            <img class="w3-border w3-padding-32 w3-center" src="../img/secu.jpg">
         </div>
     </div>
     <div class="w3-row w3-padding-64 w3-margin-bottom">

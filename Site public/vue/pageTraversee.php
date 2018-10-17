@@ -59,7 +59,7 @@
             </p>
         </div>
         <div class="w3-third w3-container">
-            <img class="w3-border w3-padding-large w3-padding-32 w3-center" src="../img/bato.png">
+            <img class="w3-border w3-padding-32 w3-center" src="../img/bato.png">
         </div>
     </div>
     <div class="w3-row w3-padding-64 w3-margin-bottom">
