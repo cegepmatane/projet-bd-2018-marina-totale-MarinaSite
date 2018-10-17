@@ -14,7 +14,6 @@ bouton retour en arrier
 PHP filters (FLO)
 mail
 facture(MARC)
-confirmation avant suppression
 notification par mail a la modification d'une reservation
 proposition d'alternative au client quand suppression reservation
 
@@ -24,4 +23,4 @@ proposition d'alternative au client quand suppression reservation
 	ameillorer css
 	embellir fomulaires
 	Taille des bateaux unité
-	bouton menu deco et compte responsive(hugo)
+	gerant pas ajouter reservation mais plutot fermer emplacement
