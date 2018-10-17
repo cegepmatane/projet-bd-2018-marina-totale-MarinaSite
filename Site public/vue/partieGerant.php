@@ -108,6 +108,71 @@ $donneesReservationArchivees = $reservationDAO->listerReservationArchivees();
 
                     </div>
             </details>
+<div id="map" style="height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */">
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    var marina = {lat: 48.852543, lng: -67.529140};
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 18,
+                            center: marina,
+                            mapTypeId: 'satellite',
+                        });
+                    var marina1 = {lat: 48.852399, lng: -67.530745};
+                    var marina2 = {lat: 48.852451, lng: -67.530578};
+                    var marina3 = {lat: 48.852503, lng: -67.530441};
+                    var marina4 = {lat: 48.852541, lng: -67.530260};
+                    var marina5 = {lat: 48.852557, lng: -67.530106};
+                    var marina6 = {lat: 48.852618, lng: -67.529936};
+                    var pinColorVert = "009900";
+                    var pinImageVert = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorVert,
+                        new google.maps.Size(21, 34),
+                        new google.maps.Point(0,0),
+                        new google.maps.Point(10, 34));
+
+                    var pinColorRouge = "BE4A47";
+                    var pinImageRouge = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorRouge,
+                        new google.maps.Size(21, 34),
+                        new google.maps.Point(0,0),
+                        new google.maps.Point(10, 34));
+
+                    var contentString = '<h1 >Emplacement 1</h1>'+
+                    '<p>Présentation de l emplacement 1 avec les differents services proposés</p>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    var marker = new google.maps.Marker({position: marina1, map: map, icon: pinImageVert});
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                    var marker1 = new google.maps.Marker({position: marina2, map: map, icon: pinImageRouge});
+                    var marker2 = new google.maps.Marker({position: marina3, map: map, icon: pinImageVert});
+                    var marker3 = new google.maps.Marker({position: marina4, map: map, icon: pinImageRouge});
+                    var marker4 = new google.maps.Marker({position: marina5, map: map, icon: pinImageRouge});
+                    var marker5 = new google.maps.Marker({position: marina6, map: map, icon: pinImageVert});
+                    //recuperer liste emplacements ->liste emplacement[]
+                    //for i allant de 0 au nombre d'emplacements-1:
+                        //recuperer emplacement[i]
+                        //creer content string: Emplacement i
+                                            //  Services: emplacement[i].getservices()
+                                            //  Disponibilité: emplacement[i].isDisponible()
+                       //if emplacement[i].isDisponible:
+                                //marker vert à emplacement[i].getcoordonnées
+                                //setlistener avec le content string
+                         //else:
+                                 //marker rouge à emplacement[i].getcoordonnées avec Content String
+                                //setlistener avec le content string
+
+                }
+
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQCiTsS2QS1Brpn12EeiUmiNZZoxj60o&callback=initMap">
+            </script>
+</div>
 
 
         </div>
