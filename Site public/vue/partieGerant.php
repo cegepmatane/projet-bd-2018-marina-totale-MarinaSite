@@ -156,13 +156,12 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             echo "var marina".$emplacement->id." = {lat: ".$lat.", lng: ".$long."};";
 
                             if($reservation->id_emplacement == $emplacement->id){
-                                echo "var contentString".$emplacement->id." = '<h1 >Emplacement ".$emplacement->label."</h1>'+
-                                    '<p>Reservé depuis: ".$reservation->datedebut."</p></br>'+
-                                    '<p>Jusqu au: ".$reservation->datefin."</p></br>'+
-                                    '<p>Services:</p></br>'+
-                                    '<p>Electricité: ". ($reservation->electricite == 1 ? "oui" : "non")."</p></br>'+
-                                    '<p>Vidange: ". ($reservation->vidange == 1 ? "oui" : "non")."</p></br>'+
-                                    '<p>Essence: ". ($reservation->essence == 1 ? "oui" : "non")."</p></br>';
+                                echo "var contentString".$emplacement->id." = '<a href=".'VueDetailReservation.php?id='.$reservation->id."><h3>Emplacement ".$emplacement->label."</h3></a>'+
+                                    '<p>Reservé depuis: ".$reservation->datedebut."</p>'+
+                                    '<p>Jusqu au: ".$reservation->datefin."</p>'+
+                                    '<p>Electricité: ". ($reservation->electricite == 1 ? "oui" : "non")."</p>'+
+                                    '<p>Vidange: ". ($reservation->vidange == 1 ? "oui" : "non")."</p>'+
+                                    '<p>Essence: ". ($reservation->essence == 1 ? "oui" : "non")."</p>';
                                     var infowindow".$emplacement->id." = new google.maps.InfoWindow({
                                     content: contentString".$emplacement->id."
                                     });";
@@ -177,7 +176,15 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             }
                         }
                         if ($estReserve== false) {
+                            echo "var contentString".$emplacement->id." = '<h3 >Emplacement ".$emplacement->label."</h3>'+
+                                    '<p>Disponible!</p>';
+                                    var infowindow".$emplacement->id." = new google.maps.InfoWindow({
+                                    content: contentString".$emplacement->id."
+                                    });";
                             echo "var marker".$emplacement->id." = new google.maps.Marker({position: marina".$emplacement->id.", map: map, icon: pinImageVert});";
+                            echo "marker".$emplacement->id.".addListener('click', function() {
+                                    infowindow".$emplacement->id.".open(map, marker".$emplacement->id.");
+                                });";
                         }
                     }
 
