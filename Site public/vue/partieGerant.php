@@ -25,7 +25,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
     Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
     <br>
     <div style="text-align: center;">
-        <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Ajouter une réservation</a> &nbsp;
+        <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Fermer un emplacement</a> &nbsp;
         <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
     </div>
     <div class="wb-tabs">

@@ -56,6 +56,47 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
             </form>
 
         </fieldset>
+        <div id="map" style="height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */">
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    var marina = {lat: 48.852543, lng: -67.529140};
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {
+                            zoom: 18,
+                            center: marina,
+                            mapTypeControl: false,
+                            streetViewControl: false,
+                            mapTypeId: 'satellite',
+                        });
+                    var marker = new google.maps.Marker({
+                        position: null,
+                        map: map,
+                        title: 'Position choisie'
+                    });
+
+                    google.maps.event.addListener(map, 'click', function (event) {
+                        displayCoordinates(event.latLng);
+                        marker.setPosition(event.latLng);
+                    });
+
+                    function displayCoordinates(pnt) {
+
+                        var lat = pnt.lat();
+                        lat = lat.toFixed(4);
+                        var lng = pnt.lng();
+                        lng = lng.toFixed(4);
+                        console.log("Latitude: " + lat + "  Longitude: " + lng);
+                    }
+                }
+
+
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQCiTsS2QS1Brpn12EeiUmiNZZoxj60o&callback=initMap">
+            </script>
+        </div>
     </div>
 
 <?php include 'footer.php';
