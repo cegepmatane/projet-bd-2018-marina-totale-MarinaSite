@@ -38,18 +38,14 @@ if ((isset($_POST['lng']))) {
 }
 
 
-if ((isset($_POST['label'])) && (isset($_POST['label'])) && (isset($_POST['label'])) && (isset($_POST['label'])) && (isset($_POST['label']))) {
+if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST['largeur'])) && (!empty($_POST['lat'])) && (!empty($_POST['lng']))) {
+
     include '../modele/Emplacement.php';
-    $emplacement = new Emplacement($longueur, $largeur, $latitude, $longitude, $label);
+    $emplacement = new Emplacement($longueur, $largeur,$latitude,$longitude,$label);
+    $emplacementDAO = new EmplacementDAO();
 
-    print_r($emplacement);
-    /*
-        include '../accesseur/EmplacementDAO.php';
-        $emplacementDAO = new EmplacementDAO();*/
-
-    //$emplacementDAO->ajouterEmplacement($emplacement);
-    echo 'pk t la twa?..';
-    //header('Location: vueEmplacement.php');
+    $emplacementDAO->ajouterEmplacement($emplacement);
+    header('Location: vueEmplacement.php');
     exit();
 }
 
@@ -73,8 +69,8 @@ if ((isset($_POST['label'])) && (isset($_POST['label'])) && (isset($_POST['label
                     <input class="form-control" type="text" name="largeur"
                            value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
                 </label>
-                <input type="hidden" id="lat" name="lat">
-                <input type="hidden" id="lng" name="lng">
+                    <input type="hidden" id="lat" name="lat">
+                    <input type="hidden" id="lng" name="lng">
                 </br>
 
                 <input class="btn btn-primary" type="submit" name="ajouterEmplacement" value="Ajouter emplacement"/>
@@ -121,7 +117,7 @@ if ((isset($_POST['label'])) && (isset($_POST['label'])) && (isset($_POST['label
 
 
 
-                    <?php foreach ($donneesEmplacements as $emplacement) {
+            <?php foreach ($donneesEmplacements as $emplacement) {
                     $lat = $emplacement->latitude;
                     $long = $emplacement->longitude;
                     echo "var marina" . $emplacement->id . " = {lat: " . $lat . ", lng: " . $long . "};";
