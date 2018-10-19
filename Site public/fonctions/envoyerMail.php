@@ -12,9 +12,9 @@ $mail->Port = 465; // or 587
 $mail->IsHTML(true);
 $mail->Username = "aherkens@gmail.com";
 $mail->Password = "sportextreme";
-$mail->SetFrom("aherkens@gmail.com");
-$mail->Subject = "Test";
-$mail->Body = "hello";
+$mail->SetFrom("marinaconnect@gmail.com");
+$mail->Subject = "Réservation confirmée";
+$mail->Body = "Bonjour, Votre réservation a bien été prise en compte sur notre site marina connect ! Au plaisir, L'équipe Marina Connect";
 $mail->AddAddress("aherkens@gmail.com");
 
 if(!$mail->Send()) {
