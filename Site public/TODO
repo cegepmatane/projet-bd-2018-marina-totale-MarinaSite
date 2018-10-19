@@ -13,13 +13,11 @@ issue securite doc
 bouton retour en arrier
 PHP filters (FLO)
 facture(MARC)
-notification par mail a l'ajout, modification et suppression d'une reservation (ANTOINE)
+notification par mail a la modification d'une reservation
 proposition d'alternative au client quand suppression reservation
 
     barre de recherche réservation avec nom personne
 	Details reservation page
-	Ajouter emplacement avec carte pour coordonnées(hugo)
 	ameillorer css
 	embellir fomulaires
 	Taille des bateaux unité
-	gerant pas ajouter reservation mais plutot fermer emplacement

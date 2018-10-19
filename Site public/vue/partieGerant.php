@@ -95,7 +95,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td>Pas de clients dans la base de données</td>
+                                <td>Pas de réservation en cours</td>
                             </tr>
                         <?php endif; ?>
                     </table>
@@ -165,7 +165,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td>Pas de clients dans la base de données</td>
+                                <td>Pas de réservation dans la base de données</td>
                             </tr>
                         <?php endif; ?>
                     </table>

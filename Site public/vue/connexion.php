@@ -7,7 +7,7 @@ include '../accesseur/ClientDAO.php';
 $ClientDAO = new ClientDAO();
 
 if (isset($_SESSION['id'])) {
-    if ($ClientDAO->trouverClientId($_SESSION['id']->bool_gerant)) {
+    if ($ClientDAO->trouverClientId($_SESSION['id'])->bool_gerant) {
         header('Location: partieGerant.php');
         exit();
     } else {
