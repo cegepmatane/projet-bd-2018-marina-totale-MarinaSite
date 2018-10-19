@@ -1,5 +1,7 @@
 <?php
 
+include '../accesseur/ClientDAO.php';
+
 require '../lib/PHPMailer-5.2-stable/PHPMailerAutoload.php';
 
 $mail = new PHPMailer(); // create a new object
@@ -13,9 +15,11 @@ $mail->IsHTML(true);
 $mail->Username = "aherkens@gmail.com";
 $mail->Password = "sportextreme";
 $mail->SetFrom("marinaconnect@gmail.com");
-$mail->Subject = "Réservation confirmée";
+$mail->Subject = "Reservation confirmee";
 $mail->Body = "Bonjour, Votre réservation a bien été prise en compte sur notre site marina connect ! Au plaisir, L'équipe Marina Connect";
-$mail->AddAddress("aherkens@gmail.com");
+
+$adresse = $_SESSION['pseudo'];
+$mail->AddAddress($adresse);
 
 if(!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
