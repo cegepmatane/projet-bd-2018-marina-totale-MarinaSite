@@ -14,6 +14,28 @@ $emplacementDAO = new EmplacementDAO();
 $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
 ?>
+    <!-- Modal -->
+    <div class="modal fade" id="success" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Un mail de confirmation vous a été envoyé!
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="p-lg-5 p-md-3">
         <h1>Recapitulatifs de mes réservations :</h1>
 
@@ -79,6 +101,22 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                 <?php endif; ?>
             </table>
         </div>
+
+        <?php if (isset($_GET['success'])) {
+            if ($_GET['success'] == 1) echo "<script type='text/javascript'>
+   $(document).ready(function () {
+
+    $('#success').modal('show');
+
+});
+
+  </script>";
+        else
+            echo "Il y a eu un problème avec l'envoi du mail de confirmation.";
+
+
+        } ?>
+
         <div class="span12">
             <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php">Retour</a>
 

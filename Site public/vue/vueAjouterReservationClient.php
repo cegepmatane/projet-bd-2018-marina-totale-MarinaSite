@@ -85,7 +85,12 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             //var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            include '../fonctions/envoyerMail.php';
+            ?>
+
+            <?php
+
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] .'&'. 'success='.$mail_envoye.'');
             exit();
         } else {
             $erreurs['emplacement_indisponible'] = 'Aucun emplacement de libre selon vos critères...<br>';
@@ -143,6 +148,8 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
         <fieldset>
 
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
+
+
 
                 <div class="form-group">
                     <label>Date d'arrivé:</label>
