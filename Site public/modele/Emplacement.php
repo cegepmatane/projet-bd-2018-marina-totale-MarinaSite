@@ -5,21 +5,27 @@ class Emplacement{
     var $id;
     var $longueur;
     var $largeur;
+    var $latitude;
+    var $longitude;
     var $label;
 
     /**
      * Emplacement constructor.
-     * @param $id
      * @param $longueur
      * @param $largeur
+     * @param $latitude
+     * @param $longitude
      * @param $label
      */
-    public function __construct($longueur, $largeur, $label)
+    public function __construct($longueur, $largeur, $latitude, $longitude, $label)
     {
         $this->longueur = $longueur;
         $this->largeur = $largeur;
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
         $this->label = $label;
     }
+
 
     /**
      * @return mixed
@@ -83,6 +89,22 @@ class Emplacement{
     public function setLabel($label)
     {
         $this->label = $label;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
 
