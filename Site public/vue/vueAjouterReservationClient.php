@@ -77,6 +77,9 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
     if (empty($erreurs)) {
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
+        if ($id_emplacement == -1){
+            $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">Votre bateau est trop grand pour les emplacements disponibles a cette date.</div>";
+        }
         //verif si bateau deja reserver entre date
 
         if ($id_emplacement != 0) {
@@ -85,7 +88,12 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             //var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '');
+            include '../fonctions/envoyerMail.php';
+            ?>
+
+            <?php
+
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] .'&'. 'success='.$mail_envoye.'');
             exit();
         } else {
             $erreurs['emplacement_indisponible'] = 'Aucun emplacement de libre selon vos critères...<br>';
@@ -124,6 +132,8 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
         // LISTE DES EMPLACEMENT DISPO SELON DATE
         if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
             return $emplacement->id;
+        }else{
+            return -1;
         }
     }
     return 0;
@@ -143,6 +153,8 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
         <fieldset>
 
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
+
+
 
                 <div class="form-group">
                     <label>Date d'arrivé:</label>
@@ -207,7 +219,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
                        value="Effectuer une demande de réservation"/>
 
                 <?php if (isset($erreurs['emplacement_indisponible'])) {
-                    echo $erreurs['emplacement_indisponible'];
+                    echo '<br>'.$erreurs['emplacement_indisponible'];
                 } ?>
 
             </form>

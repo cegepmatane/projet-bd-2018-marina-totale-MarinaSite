@@ -12,9 +12,8 @@ marinaquebec.qc.ca
 issue securite doc
 bouton retour en arrier
 PHP filters (FLO)
-mail
 facture(MARC)
-notification par mail a la modification d'une reservation
+notification par mail a l'ajout, modification et suppression d'une reservation (ANTOINE)
 proposition d'alternative au client quand suppression reservation
 
     barre de recherche réservation avec nom personne
