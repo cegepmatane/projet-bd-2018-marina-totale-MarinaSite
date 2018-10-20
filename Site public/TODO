@@ -5,7 +5,6 @@
 
 marinaquebec.qc.ca
 
--Logo
 -lien contact dans footer avec page contact
 
 
@@ -21,3 +20,10 @@ proposition d'alternative au client quand suppression reservation
 	ameillorer css
 	embellir fomulaires
 	Taille des bateaux unité
+
+Envoie mail avec bonne info quand
+ - créer un compte
+ - modifie mot de passe
+ - supprime reservation
+ - fait une reservation
+ - modifier un reservation
