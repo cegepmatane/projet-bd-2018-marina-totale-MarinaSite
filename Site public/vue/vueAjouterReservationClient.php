@@ -41,14 +41,17 @@ if ((isset($_POST['essence']))) {
 } else {
     $essence = 0;
 }
-if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 'default') {
+if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 0) {
     $id_bateau = $_POST['select_bateau'];
+}else{
+    $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
 }
 
 
 //TODO gestion erreurs
 
 if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
+
     if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
         $erreurs['bateau_indisponible'] = "<div class=\"alert alert-danger\">Votre bateau est deja réserver sur un emplacement entre ces dates là</div>";
     }
@@ -63,7 +66,7 @@ if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
 
 
 }
-if (isset($_POST['select_bateau']) && $_POST['select_bateau'] === 'default') {
+if (isset($_POST['select_bateau']) && $_POST['select_bateau'] == 0) {
     $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
 }
 
@@ -80,9 +83,11 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
         if ($id_emplacement == -1){
             $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">Votre bateau est trop grand pour les emplacements disponibles a cette date.</div>";
         }
-        //verif si bateau deja reserver entre date
+        if ($id_emplacement == 0){
+            $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">Aucun emplacement ne corespond a vos critères</div>";
+        }
 
-        if ($id_emplacement != 0) {
+        if (empty($erreurs)) {
             $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $electricite, $essence, $vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             //var_dump($reservation);
@@ -95,8 +100,6 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
 
             header('Location: vueReservationClient.php?id=' . $_SESSION['id'] .'&'. 'success='.$mail_envoye.'');
             exit();
-        } else {
-            $erreurs['emplacement_indisponible'] = 'Aucun emplacement de libre selon vos critères...<br>';
         }
     }
 } else {
@@ -180,7 +183,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
                         <?php if (isset($donneesBateaux[0])): ?>
                             <option <?php if (!isset($id_bateau)) {
                                 echo ' selected="selected"';
-                            } ?> value="default" disabled selected value>- SELECTIONNEZ BATEAU -
+                            } ?> value="0" disabled selected value>- SELECTIONNEZ BATEAU -
                             </option>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
                                 <option <?php echo(isset($id_bateau) && ($id_bateau == $bateau->id) ? ' selected="selected"' : ''); ?>
@@ -198,6 +201,10 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
 
                 <?php if (isset($erreurs['select_bateau'])) {
                     echo $erreurs['select_bateau'];
+                } ?>
+
+                <?php if (isset($erreurs['bateau_taille'])) {
+                    echo $erreurs['bateau_taille'];
                 } ?>
 
                 <label><u><b>Services</b></u></label><br>
