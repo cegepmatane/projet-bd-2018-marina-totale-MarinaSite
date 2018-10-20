@@ -10,6 +10,11 @@ include '../modele/Reservation.php';
 $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 
+$dejaPost = 0;
+if (!empty($_POST)){
+    $dejaPost = 1;
+}
+
 $dateDebut = null;
 $dateFin = null;
 $id_bateau = null;
@@ -41,16 +46,32 @@ if ((isset($_POST['essence']))) {
 } else {
     $essence = 0;
 }
-if (isset($_POST['select_bateau']) && $_POST['select_bateau'] != 0) {
-    $id_bateau = $_POST['select_bateau'];
-}else{
+
+
+//gestion erreurs
+
+
+if (isset($_POST['select_bateau'])) {
+    if ($_POST['select_bateau'] != 0) {
+        $id_bateau = $_POST['select_bateau'];
+    }
+}
+
+if ($dejaPost == 1 && !isset($_POST['select_bateau'])){
     $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
 }
 
 
-//TODO gestion erreurs
+if (isset($dateDebut) && !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)) {
+    $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer la date d\'arrivé au format YYY-MM-DD</div>';
+}
+if (isset($dateFin) && !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
+    $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer la date de départ au format YYY-MM-DD</div>';
+}
 
-if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
+if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
 
     if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
         $erreurs['bateau_indisponible'] = "<div class=\"alert alert-danger\">Votre bateau est deja réserver sur un emplacement entre ces dates là</div>";
@@ -63,8 +84,6 @@ if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)) {
     if (!dateCompare($dateDebut, $dateFin)) {
         $erreurs['date_compare'] = "<div class=\"alert alert-danger\">La date d'arrivé doit être posterieur de la date de départ</div>";
     }
-
-
 }
 if (isset($_POST['select_bateau']) && $_POST['select_bateau'] == 0) {
     $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
@@ -74,7 +93,9 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
     && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)
     && dateCompare($dateDebut, $dateFin)
     && dateCompareAujourdhui($dateDebut) && dateCompareAujourdhui($dateFin)
-    && !bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
+    && !bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
 
 
     if (empty($erreurs)) {
@@ -164,12 +185,18 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
                     <input type="date" name="dateDebut"
                            value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </div>
-
+                <?php if (isset($erreurs['format_date_debut'])) {
+                    echo $erreurs['format_date_debut'];
+                } ?>
                 <div class="form-group">
                     <label>Date de départ:</label>
                     <input type="date" name="dateFin"
                            value="<?php if (isset($_POST['dateFin'])) echo $_POST['dateFin'] ?>"/>
                 </div>
+
+                <?php if (isset($erreurs['format_date_fin'])) {
+                    echo $erreurs['format_date_fin'];
+                } ?>
                 <?php if (isset($erreurs['dateCompareAujourdhui'])) {
                     echo $erreurs['dateCompareAujourdhui'];
                 } ?>
@@ -181,10 +208,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
                     <label>Bateau : </label>
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
-                            <option <?php if (!isset($id_bateau)) {
-                                echo ' selected="selected"';
-                            } ?> value="0" disabled selected value>- SELECTIONNEZ BATEAU -
-                            </option>
+                            <option value="0" disabled selected>- SELECTIONNEZ BATEAU -</option>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
                                 <option <?php echo(isset($id_bateau) && ($id_bateau == $bateau->id) ? ' selected="selected"' : ''); ?>
                                         value="<?php echo $bateau->id ?>"><?php echo $bateau->nom . ' (' . $bateau->type_bateau . ')' ?></option>
