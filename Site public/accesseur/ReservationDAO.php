@@ -80,7 +80,7 @@ Class ReservationDAO
 
     public function modifierReservation(Reservation $reservation, $idreservation)
     {
-        $MODIFIER_RESERVATION = "UPDATE reservation SET datedebut = :datedebut, datefin = :datefin, electricite = :electricite, vidange = :vidange, essence = :essence WHERE id = :idreservation";
+        $MODIFIER_RESERVATION = "UPDATE reservation SET datedebut = :datedebut, datefin = :datefin, id_bateau = :id_bateau, electricite = :electricite, vidange = :vidange, essence = :essence WHERE id = :idreservation";
 
         global $basededonnees;
 
@@ -88,6 +88,7 @@ Class ReservationDAO
 
         $requeteModifierReservation->bindValue(':datedebut', $reservation->getDatedebut());
         $requeteModifierReservation->bindValue(':datefin', $reservation->getDatefin());
+        $requeteModifierReservation->bindValue(':id_bateau', $reservation->getIdbateau());
         $requeteModifierReservation->bindValue(':essence', $reservation->getEssence());
         $requeteModifierReservation->bindValue(':electricite', $reservation->getElectricite());
         $requeteModifierReservation->bindValue(':vidange', $reservation->getVidange());

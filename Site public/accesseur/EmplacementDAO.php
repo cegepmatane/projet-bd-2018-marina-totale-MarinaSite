@@ -111,4 +111,24 @@ Class EmplacementDAO
         }
         return false;
     }
+
+    public function idEmplacementSelonDateSelonReservation($dateDebut, $dateFin, $idreservation)
+    {
+
+        $LISTER_EMPLACEMENT = "SELECT * FROM emplacement WHERE id NOT IN 
+                                (SELECT id_emplacement FROM reservation 
+                                WHERE :datedebut < datefin AND :datefin > datedebut 
+                                AND id_emplacement IS NOT NULL)
+                                OR id = :idreservation";
+
+        global $basededonnees;
+
+        $requeteListerEmplacement = $basededonnees->prepare($LISTER_EMPLACEMENT);
+        $requeteListerEmplacement->bindValue(':datedebut', $dateDebut);
+        $requeteListerEmplacement->bindValue(':datefin', $dateFin);
+        $requeteListerEmplacement->bindValue(':idreservation', $idreservation);
+        $requeteListerEmplacement->execute();
+
+        return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
+    }
 }

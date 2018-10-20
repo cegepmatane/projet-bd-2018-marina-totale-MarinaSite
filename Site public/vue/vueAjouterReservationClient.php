@@ -11,7 +11,7 @@ $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 
 $dejaPost = 0;
-if (!empty($_POST)){
+if (!empty($_POST)) {
     $dejaPost = 1;
 }
 
@@ -46,32 +46,31 @@ if ((isset($_POST['essence']))) {
 } else {
     $essence = 0;
 }
-
-
-//gestion erreurs
-
-
 if (isset($_POST['select_bateau'])) {
     if ($_POST['select_bateau'] != 0) {
         $id_bateau = $_POST['select_bateau'];
     }
 }
 
-if ($dejaPost == 1 && !isset($_POST['select_bateau'])){
+
+//gestion erreurs
+
+
+if ($dejaPost == 1 && !isset($_POST['select_bateau'])) {
     $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
 }
 
 
-if (isset($dateDebut) && !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)) {
-    $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer la date d\'arrivé au format YYY-MM-DD</div>';
+if (isset($dateDebut) && !checkDateAAAAMMDD($dateDebut)) {
+    $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer une date d\'arrivé valide au format YYY-MM-DD</div>';
 }
-if (isset($dateFin) && !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
-    $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer la date de départ au format YYY-MM-DD</div>';
+if (isset($dateFin) && !checkDateAAAAMMDD($dateFin)) {
+    $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer une date de départ valide au format YYY-MM-DD</div>';
 }
 
 if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)
-    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)
-    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateDebut)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
 
     if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
         $erreurs['bateau_indisponible'] = "<div class=\"alert alert-danger\">Votre bateau est deja réserver sur un emplacement entre ces dates là</div>";
@@ -85,26 +84,23 @@ if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)
         $erreurs['date_compare'] = "<div class=\"alert alert-danger\">La date d'arrivé doit être posterieur de la date de départ</div>";
     }
 }
-if (isset($_POST['select_bateau']) && $_POST['select_bateau'] == 0) {
-    $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
-}
 
 if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
     && checkDateAAAAMMDD($dateDebut) && checkDateAAAAMMDD($dateFin)
     && dateCompare($dateDebut, $dateFin)
     && dateCompareAujourdhui($dateDebut) && dateCompareAujourdhui($dateFin)
     && !bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
-    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateDebut)
-    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dateFin)) {
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateDebut)
+    && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
 
 
     if (empty($erreurs)) {
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
-        if ($id_emplacement == -1){
+        if ($id_emplacement == -1) {
             $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">Votre bateau est trop grand pour les emplacements disponibles a cette date.</div>";
         }
-        if ($id_emplacement == 0){
+        if ($id_emplacement == 0) {
             $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">Aucun emplacement ne corespond a vos critères</div>";
         }
 
@@ -119,7 +115,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
 
             <?php
 
-            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] .'&'. 'success='.$mail_envoye.'');
+            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '&' . 'success=' . $mail_envoye . '');
             exit();
         }
     }
@@ -156,7 +152,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau)
         // LISTE DES EMPLACEMENT DISPO SELON DATE
         if ($emplacementDAO->checkTailleEmplacementSelonBateau($idbateau, $emplacement)) {
             return $emplacement->id;
-        }else{
+        } else {
             return -1;
         }
     }
@@ -178,16 +174,16 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
 
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
 
-
-
                 <div class="form-group">
                     <label>Date d'arrivé:</label>
                     <input type="date" name="dateDebut"
                            value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </div>
+
                 <?php if (isset($erreurs['format_date_debut'])) {
                     echo $erreurs['format_date_debut'];
                 } ?>
+
                 <div class="form-group">
                     <label>Date de départ:</label>
                     <input type="date" name="dateFin"
@@ -250,7 +246,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
                        value="Effectuer une demande de réservation"/>
 
                 <?php if (isset($erreurs['emplacement_indisponible'])) {
-                    echo '<br>'.$erreurs['emplacement_indisponible'];
+                    echo '<br>' . $erreurs['emplacement_indisponible'];
                 } ?>
 
             </form>
