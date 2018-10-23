@@ -23,7 +23,7 @@ function envoyerMail($subject, $body){
     $nom = $clientDAO->trouverClientId($_SESSION['id'])->nom;
 
     $mail->Subject = $subject;
-    $mail->Body = "Bonjour ".$nom.", ".$body." Au plaisir, L'équipe Marina Connect";
+    $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
     $adresse = $_SESSION['pseudo'];
     $mail->AddAddress($adresse);
