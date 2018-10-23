@@ -26,11 +26,26 @@ if (!empty($_POST)) {
 
 $erreurs = array();
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $reservationAModifier = $reservationDAO->trouverReservation($id);
+    $id_client = $reservationAModifier->id_client;
+    $id_bateau = $reservationAModifier->id_bateau;
+
+    $donneesBateaux = $bateauDAO->listerBateau($id_client);
+}
+
 if ((isset($_POST['dateDebut']))) {
     $dateDebut = $_POST['dateDebut'];
 }
 if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
+}
+if (isset($_POST['select_bateau'])) {
+    if ($_POST['select_bateau'] != 0) {
+        $id_bateau = $_POST['select_bateau'];
+    }
 }
 if ((isset($_POST['electricite']))) {
     $electricite = 1;
@@ -48,15 +63,7 @@ if ((isset($_POST['essence']))) {
     $essence = 0;
 }
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
 
-    $reservationAModifier = $reservationDAO->trouverReservation($id);
-    $id_client = $reservationAModifier->id_client;
-    $id_bateau = $reservationAModifier->id_bateau;
-
-    $donneesBateaux = $bateauDAO->listerBateau($id_client);
-}
 
 //gestion erreurs
 
