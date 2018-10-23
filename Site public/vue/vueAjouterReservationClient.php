@@ -175,8 +175,29 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
             // page is now ready, initialize the calendar...
 
             $('#calendar').fullCalendar({
-                // put your options and callbacks here
-            })
+
+                events: [
+                    {
+                        title  : 'event2',
+                        start  : '2018-10-23',
+                        end    : '2018-10-30',
+                        rendering: 'background'
+                    }
+                ],
+                selectable: true,
+                header: {
+                    center: 'title',
+                },
+                dayClick: function(date) {
+                    // alert('clicked ' + date.format());
+                },
+                select: function(startDate, endDate) {
+                    alert('selected ' + startDate.format() + ' to ' + endDate.format());
+                },
+                selectOverlap: function(event) {
+                    return !(event.rendering === 'background');
+                }
+            });
 
         });
 
