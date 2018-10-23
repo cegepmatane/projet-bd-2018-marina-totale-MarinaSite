@@ -6,6 +6,17 @@ include '../accesseur/ClientDAO.php';
 
 $ClientDAO = new ClientDAO();
 
+$PASS = 0;
+$PSEUDO = null;
+$MDP = null;
+
+$erreurs = array();
+$dejaPost = 0;
+if (!empty($_POST)) {
+    $dejaPost = 1;
+}
+
+
 if (isset($_SESSION['id'])) {
     if ($ClientDAO->trouverClientId($_SESSION['id'])->bool_gerant) {
         header('Location: partieGerant.php');
@@ -16,9 +27,6 @@ if (isset($_SESSION['id'])) {
     }
 }
 
-$PASS = 0;
-$PSEUDO = null;
-$MDP = null;
 if ((isset($_POST['mot_de_passe']))) {
     $MDP = $_POST['mot_de_passe'];
 }
@@ -44,6 +52,12 @@ if (isset($PSEUDO) && isset($MDP)) {
                 <label class="control-label col-sm-2">Mot de passe: </label><br>
                 <input class="form-control" type="password" name="mot_de_passe"/>
             </div>
+
+            <?php if (isset($erreurs['mot_de_passe'])) {
+                echo '<br>' . $erreurs['mot_de_passe'];
+            } ?>
+
+
             <input class="btn btn-default" type="submit" name="send" value="CONNEXION">
         </form>
     </fieldset>
@@ -80,9 +94,7 @@ function motDePasseJuste($motDePasseActuel, $MDP)
 
 
 if (($PSEUDO != null) && ($MDP != null)) {
-    ?>
-    Mot de passe incorrect
-    <?php
+    $erreurs['mot_de_passe'] = '<div class="alert alert-danger">Votre identifiant ou mot de passe est incorrect.</div>';
 }
 ?>
 

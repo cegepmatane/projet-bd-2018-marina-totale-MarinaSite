@@ -10,6 +10,7 @@ include '../modele/Reservation.php';
 $bateauDAO = new BateauDAO();
 $donneesBateaux = $bateauDAO->listerBateau($_SESSION['id']);
 
+$erreurs = array();
 $dejaPost = 0;
 if (!empty($_POST)) {
     $dejaPost = 1;
@@ -23,7 +24,7 @@ $electricite = null;
 $vidange = null;
 $essence = null;
 
-$erreurs = array();
+
 
 if ((isset($_POST['dateDebut']))) {
     $dateDebut = $_POST['dateDebut'];
