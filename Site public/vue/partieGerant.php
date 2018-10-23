@@ -22,6 +22,10 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
     <h1> Gestion de la marina</h1>
 
+    <form action="../fonctions/supprimerReservation.php?id=<?php echo $_SESSION['id'] ?>&page=<?php echo "supprimerReservation" ?>" method="post">
+
+
+
     Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
     <br>
     <div style="text-align: center;">
