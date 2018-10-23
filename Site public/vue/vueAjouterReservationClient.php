@@ -169,6 +169,19 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
 
 
 ?>
+    <script>
+        $(function() {
+
+            // page is now ready, initialize the calendar...
+
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+            })
+
+        });
+
+
+    </script>
     <h2>Effectuer une nouvelle demande de réservation :</h2>
 
     <div class="ajouterreservation">
@@ -254,6 +267,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
             </form>
 
         </fieldset>
+        <div id='calendar'></div>
     </div>
 
 <?php include 'footer.php';
