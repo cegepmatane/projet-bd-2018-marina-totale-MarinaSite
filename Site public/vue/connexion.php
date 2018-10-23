@@ -11,11 +11,6 @@ $PSEUDO = null;
 $MDP = null;
 
 $erreurs = array();
-$dejaPost = 0;
-if (!empty($_POST)) {
-    $dejaPost = 1;
-}
-
 
 if (isset($_SESSION['id'])) {
     if ($ClientDAO->trouverClientId($_SESSION['id'])->bool_gerant) {
@@ -37,35 +32,6 @@ if ((isset($_POST['pseudo']))) {
 if (isset($PSEUDO) && isset($MDP)) {
     connexion($PSEUDO, $MDP);
 }
-?>
-
-<div class="formulaireClient">
-    <fieldset>
-        <legend>Connexion à MarinaConnect</legend>
-
-        <form class="form-horizontal" action="connexion.php" method="post">
-            <div class="form-group">
-                <label class="control-label col-sm-2">Mail: </label><br>
-                <input class="form-control" type="email" name="pseudo"/>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">Mot de passe: </label><br>
-                <input class="form-control" type="password" name="mot_de_passe"/>
-            </div>
-
-            <?php if (isset($erreurs['mot_de_passe'])) {
-                echo '<br>' . $erreurs['mot_de_passe'];
-            } ?>
-
-
-            <input class="btn btn-default" type="submit" name="send" value="CONNEXION">
-        </form>
-    </fieldset>
-
-    <a href="creerCompte.php">Creer un compte...</a>
-</div>
-
-<?php
 function connexion($PSEUDO, $MDP)
 {
     $ClientDAO = new ClientDAO();
@@ -96,7 +62,34 @@ function motDePasseJuste($motDePasseActuel, $MDP)
 if (($PSEUDO != null) && ($MDP != null)) {
     $erreurs['mot_de_passe'] = '<div class="alert alert-danger">Votre identifiant ou mot de passe est incorrect.</div>';
 }
+
 ?>
+
+<div class="formulaireClient">
+    <fieldset>
+        <legend>Connexion à MarinaConnect</legend>
+
+        <form class="form-horizontal" action="connexion.php" method="post">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Mail: </label><br>
+                <input class="form-control" type="email" name="pseudo"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Mot de passe: </label><br>
+                <input class="form-control" type="password" name="mot_de_passe"/>
+            </div>
+
+            <?php if (isset($erreurs['mot_de_passe'])) {
+                echo $erreurs['mot_de_passe'];
+            } ?>
+
+
+            <input class="btn btn-default" type="submit" name="send" value="CONNEXION">
+        </form>
+    </fieldset>
+
+    <a href="creerCompte.php">Creer un compte...</a>
+</div>
 
 <?php include 'footer.php'; ?>
 
