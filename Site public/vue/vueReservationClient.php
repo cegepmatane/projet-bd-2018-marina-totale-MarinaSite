@@ -103,14 +103,17 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         </div>
 
         <?php if (isset($_GET['success'])) {
-            if ($_GET['success'] == 1) echo
-            "<script type='text/javascript'>
+            if ($_GET['success'] == 1){
+                echo "prout";
+                ?> <script type='text/javascript'>
                $(document).ready(function () {
             
                 $('#success').modal('show');
             
             });
-            </script>";
+            </script> <?php
+            }
+
         else
             echo "Il y a eu un problème avec l'envoi du mail de confirmation.";
 
