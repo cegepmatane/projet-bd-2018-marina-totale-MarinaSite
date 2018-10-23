@@ -67,4 +67,20 @@ Class BateauDAO
         $requeteSupprimerBateau->bindValue(':id', $id);
         $requeteSupprimerBateau->execute();
     }
+
+    public function possedeBateau($id)
+    {
+        global $basededonnees;
+        $CLIENT_POSSEDE_BATEAU = 'SELECT * FROM bateau WHERE id_client = :id';
+        $requeteClientPossedeBateau = $basededonnees->prepare($CLIENT_POSSEDE_BATEAU);
+        $requeteClientPossedeBateau->bindValue(':id', $id);
+        $requeteClientPossedeBateau->execute();
+
+        $res =  $requeteClientPossedeBateau->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            return true;
+        }
+        return false;
+    }
 }

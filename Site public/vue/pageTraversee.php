@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100%;">
 <title>Traversée du St-Laurent</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../img/marina.ico">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -17,7 +18,7 @@
         height: inherit;
     }
 </style>
-<body>
+<body style="height:100%;">
 
 <!-- Navbar -->
 <div class="w3-top">
@@ -43,8 +44,8 @@
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
-
+<div class="w3-main" style="margin-left:250px; height:100%;">
+    <div style="min-height:92.8%;">
     <div class="w3-row w3-padding-64">
         <div class="w3-twothird w3-container">
             <h1 class="w3-text-teal">Traversée du St-Laurent</h1>
@@ -59,7 +60,7 @@
             </p>
         </div>
         <div class="w3-third w3-container">
-            <img class="w3-border w3-padding-large w3-padding-32 w3-center" src="../img/bato.png">
+            <img class="w3-border w3-padding-32 w3-center" src="../img/bato.png">
         </div>
     </div>
     <div class="w3-row w3-padding-64 w3-margin-bottom">
@@ -74,9 +75,9 @@
 
 
 
-
+</div>
     <footer id="myFooter">
-        <div class="w3-container w3-theme-l2 w3-padding-25">
+        <div class="w3-container w3-theme-l2 w3-padding-25" >
             <h4>La Marina de Matane, un espace de détente fort en couleurs!</h4>
         </div>
     </footer>

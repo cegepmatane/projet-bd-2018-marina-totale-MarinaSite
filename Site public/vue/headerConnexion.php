@@ -3,11 +3,14 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100" >
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
-    <link rel="stylesheet" href="cssMarinaConnect.css">
+
+    <link rel="icon" href="../img/marina.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
@@ -16,11 +19,11 @@ session_start();
 </head>
 <div class="w3-top">
     <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
         <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Marina Connect&trade;</a>
     </div>
 </div>
 
-<body>
-<div class="container w3-padding-64">
+<body class="h-100" style="background-color: #E1F5FE; font-family: 'Roboto', sans-serif;">
+
+<div class="container w3-padding-64 shadow w3-mobile" style="min-height: 95.2%; background-color: white;">
 

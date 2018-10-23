@@ -53,11 +53,11 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
             <legend>Modifier mes informations</legend>
 
             <form action="vueModifierClient.php" method="post">
-                <label>Nom:
+                <label>Prénom:
                     <input type="text" name="nom" value="<?php echo $clientAModifier->nom ?>"/>
                 </label>
                 </br>
-                <label>Prenom:
+                <label>Nom:
                     <input type="text" name="prenom" value="<?php echo $clientAModifier->prenom ?>"/>
                 </label>
                 </br>

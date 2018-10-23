@@ -1,20 +1,14 @@
 <?php
-include 'header.php';
+include 'headerAdmin.php';
 
-include '../accesseur/ServiceDAO.php';
 include '../accesseur/EmplacementDAO.php';
 include '../accesseur/ReservationDAO.php';
 
 include '../modele/Reservation.php';
-include '../modele/Service.php';
 
 
 $dateDebut = null;
 $dateFin = null;
-$electricite = null;
-$vidange = null;
-$essence = null;
-$id_service = null;
 
 $erreurs = array();
 
@@ -24,21 +18,6 @@ if ((isset($_POST['dateDebut']))) {
 if ((isset($_POST['dateFin']))) {
     $dateFin = $_POST['dateFin'];
 }
-if ((isset($_POST['electricite']))) {
-    $electricite = true;
-} else {
-    $electricite = false;
-}
-if ((isset($_POST['vidange']))) {
-    $vidange = true;
-} else {
-    $vidange = false;
-}
-if ((isset($_POST['essence']))) {
-    $essence = true;
-} else {
-    $essence = false;
-}
 
 //TODO gestion erreurs
 
@@ -47,30 +26,20 @@ if ((isset($dateDebut)) && (isset($dateFin)) && checkDateAAAAMMDD($dateDebut) &&
 
 
     if (empty($erreurs)) {
-        $id_service = creerService($electricite, $vidange, $essence);
-
         $id_emplacement = emplacementValide($dateDebut, $dateFin);
 
        if ($id_emplacement != 0) {
            // id_bateau à 0 : le gerant peut reserver sans bateau, donc id spécial
-            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], 0, $id_service, $id_emplacement);
+            $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], null,0,0,0, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: partieGerant.php?id=' . $_SESSION['id'] . '');
+            header('Location: partieGerant.php');
             exit();
         }
     }
 }else{
     $erreurs['oui']='oui';
-}
-
-
-function creerService($electricite, $vidange, $essence)
-{
-    $service = new Service($essence, $electricite, $vidange);
-    $serviceDAO = new ServiceDAO();
-    return $serviceDAO->ajouterService($service);
 }
 
 function checkDateAAAAMMDD($date){
@@ -102,40 +71,41 @@ function emplacementValide($dateDebut, $dateFin)
 
 
 ?>
-    <h1>Ajouter une réservation :</h1>
+    <h1>Fermer un emplacement :</h1>
     <div class="ajouterreservation">
         <fieldset>
-            <legend>Effectuer une nouvelle réservation</legend>
 
             <form action="vueAjouterReservationGerant.php" method="post">
-                <label>Date d'arrivée:
-                    <input type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
+                <label>Date de début:
+                    <input class="form-control" type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>
                 </br>
-                <label>Date de départ:
-                    <input type="date" name="dateFin"
+                <label>Date de fin:
+                    <input class="form-control" type="date" name="dateFin"
                            value="<?php if (isset($_POST['dateFin'])) echo $_POST['dateFin'] ?>"/>
                 </label>
 
                 </br>
 
                 </br>
-                <label><u>Services</u></label><br>
+               <!-- <label><u>Services</u></label><br>
 
                 <label>Electricité:
-                    <input type="checkbox" name="electricite" <?php if ($electricite) echo ' checked' ?>/>
+                    <input type="checkbox" name="electricite" <?php /*if ($electricite) echo ' checked' */?>/>
                 </label>
                 </br>
                 <label>Vidange:
-                    <input type="checkbox" name="vidange" <?php if ($vidange) echo ' checked' ?>/>
+                    <input type="checkbox" name="vidange" <?php /*if ($vidange) echo ' checked' */?>/>
                 </label>
                 </br>
                 <label>Essence:
-                    <input type="checkbox" name="essence" <?php if ($essence) echo ' checked' ?>/>
+                    <input type="checkbox" name="essence" <?php /*if ($essence) echo ' checked' */?>/>
                 </label>
-                </br>
+                </br>-->
 
-                <input type="submit" name="ajouterReservation" value="Effectuer une demande de réservation"/>
+                <input class="btn btn-primary" type="submit" name="ajouterReservation" value="Fermer l'emplacement"/>
+                <a class="btn btn-outline-secondary" href="partieGerant.php">Retour</a>
+
 
             </form>
 

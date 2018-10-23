@@ -1,9 +1,29 @@
 //TODO
 
-- TOUTE LES VERIFS ET AFFICHAGE DES ERREURS DE FORMULAIRES
+- TOUTES LES VERIFS ET AFFICHAGE DES ERREURS DE FORMULAIRES (FLO)
 -Redirection partie client/gerant quand connecté sur page connexion
--3 pages explicatives (securité, pêche, traversée )
+
 marinaquebec.qc.ca
 
--Logo
 -lien contact dans footer avec page contact
+
+
+issue securite doc
+bouton retour en arrier
+PHP filters (FLO)
+facture(MARC)
+otification par mail a la modification d'une reservation
+proposition d'alternative au client quand suppression reservation
+
+    barre de recherche réservation avec nom personne
+	Details reservation page
+	ameillorer css
+	embellir fomulaires
+	Taille des bateaux unité
+
+Envoie mail avec bonne info quand
+ - créer un compte
+ - modifie mot de passe
+ - supprime reservation
+ - fait une reservation
+ - modifier un reservation
