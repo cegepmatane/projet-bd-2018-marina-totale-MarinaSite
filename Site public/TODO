@@ -24,8 +24,8 @@ proposition d'alternative au client quand suppression reservation
 Envoie mail avec bonne info quand
  - créer un compte
  - modifie mot de passe
- - supprime reservation
- - fait une reservation
+ - supprime reservation     done!
+ - fait une reservation     done!
  - modifier un reservation
 
  STRIPE : Paypal

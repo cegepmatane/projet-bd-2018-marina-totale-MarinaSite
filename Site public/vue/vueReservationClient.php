@@ -104,7 +104,6 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
         <?php if (isset($_GET['success'])) {
             if ($_GET['success'] == 1){
-                echo "prout";
                 ?> <script type='text/javascript'>
                $(document).ready(function () {
             

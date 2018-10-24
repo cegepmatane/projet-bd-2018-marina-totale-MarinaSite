@@ -18,6 +18,28 @@ $emplacementDAO = new EmplacementDAO();
 $donneesEmplacements = $emplacementDAO->listerEmplacement();
 ?>
 
+<!-- Modal -->
+<div class="modal fade" id="success" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Un mail de confirmation vous a été envoyé!
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="partieGerant p-lg-5 p-md-3">
 
     <h1> Gestion de la marina</h1>
@@ -104,6 +126,21 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         <?php endif; ?>
                     </table>
                 </div>
+
+                <?php if (isset($_GET['success'])) {
+                    if ($_GET['success'] == 1){
+                        ?> <script type='text/javascript'>
+                            $(document).ready(function () {
+
+                                $('#success').modal('show');
+
+                            });
+                        </script> <?php
+                    }
+                    else
+                        echo "Il y a eu un problème avec l'envoi du mail de confirmation.";
+
+                } ?>
 
             </details>
 
