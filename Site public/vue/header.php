@@ -14,7 +14,7 @@ if (!(isset($_SESSION['pseudo']))){
 
 
 <!DOCTYPE html>
-<html lang="en" class="h-100" style="font-family: 'Roboto', sans-serif;">
+<html lang="en" class="h-100" style="font-family: 'Roboto', sans-serif; overflow-x: visible;">
 <head>
     <meta charset="UTF-8">
     <title>MarinaConnect</title>
@@ -33,6 +33,8 @@ if (!(isset($_SESSION['pseudo']))){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='../lib/FullCalendar/fullcalendar.css' />
+
+
 
 
 </head>

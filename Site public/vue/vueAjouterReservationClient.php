@@ -25,7 +25,6 @@ $vidange = null;
 $essence = null;
 
 
-
 if ((isset($_POST['dateDebut']))) {
     $dateDebut = $_POST['dateDebut'];
 }
@@ -170,31 +169,32 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
 
 ?>
     <script>
-        $(function() {
+        $(function () {
 
             // page is now ready, initialize the calendar...
 
             $('#calendar').fullCalendar({
-
+                eventBackgroundColor: "red",
+                buttonText:
+                    {
+                        today: "Aujourd'hui"
+                    },
                 events: [
                     {
-                        title  : 'event2',
-                        start  : '2018-10-23',
-                        end    : '2018-10-30',
+                        title: 'event2',
+                        start: '2018-10-23',
+                        end: '2018-10-30',
                         rendering: 'background'
                     }
                 ],
                 selectable: true,
-                header: {
-                    center: 'title',
-                },
-                dayClick: function(date) {
+                dayClick: function (date) {
                     // alert('clicked ' + date.format());
                 },
-                select: function(startDate, endDate) {
-                    alert('selected ' + startDate.format() + ' to ' + endDate.format());
+                select: function (startDate, endDate) {
+                    // alert('selected ' + startDate.format() + ' to ' + endDate.format());
                 },
-                selectOverlap: function(event) {
+                selectOverlap: function (event) {
                     return !(event.rendering === 'background');
                 }
             });
@@ -288,7 +288,7 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
             </form>
 
         </fieldset>
-        <div id='calendar'></div>
+        <div id='calendar' class="p-5"></div>
     </div>
 
 <?php include 'footer.php';
