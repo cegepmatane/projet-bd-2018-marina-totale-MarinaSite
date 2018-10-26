@@ -33,13 +33,14 @@ function envoyerMailDepuisGerant($subject, $body, $id){
     $nom = $client->nom;
 
     echo $nom;
+    echo $subject;
 
     // ajouter les infos de la réservation
 
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
-    $adresse = $client->mail;   //refactor
+    $adresse = $client->mail;
 
     $mail->AddAddress($adresse);
 
