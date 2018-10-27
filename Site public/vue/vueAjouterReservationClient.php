@@ -111,7 +111,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             $reservationDAO->ajouterReservation($reservation);
 
             include '../fonctions/envoyerMail.php';
-            $mail_envoye = envoyerMail("Reservation ajoutee", "Votre réservation a bien été ajoutée sur notre site marina connect !");
+            $mail_envoye = envoyerMail("Reservation ajoutee", "Votre réservation a bien été ajoutée sur notre site marina connect ! Elle aura lieu du ".$reservation->datedebut. " au ". $reservation->datefin.".");
             ?>
 
             <?php
