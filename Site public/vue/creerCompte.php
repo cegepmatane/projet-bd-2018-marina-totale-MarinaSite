@@ -72,6 +72,9 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
         $client = new Client($nom, $prenom, md5($motDePasse), $mail, $numero, false);
         $clientDAO->ajouterClient($client);
 
+        include '../fonctions/envoyerMailCompte.php';
+        $mail_envoye = envoyerMail("Compte cree", "Votre compte a bien été ajouté sur notre site marina connect ! Votre identifiant : ". $client->getMail());
+
 
         header('Location: connexion.php');
         exit();

@@ -75,7 +75,7 @@ function emplacementValide($dateDebut, $dateFin)
     <div class="ajouterreservation">
         <fieldset>
 
-            <form action="vueAjouterReservationGerant.php" method="post">
+            <form action="vueFermerEmplacementGerant.php" method="post">
                 <label>Date de début:
                     <input class="form-control" type="date" name="dateDebut" value="<?php if (isset($_POST['dateDebut'])) echo $_POST['dateDebut'] ?>"/>
                 </label>

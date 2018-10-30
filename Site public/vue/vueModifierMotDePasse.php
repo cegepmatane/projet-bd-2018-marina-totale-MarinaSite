@@ -47,6 +47,9 @@ if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (i
             $clientDAO->modifierClient($client, $_SESSION['id_client_a_modifier']);
             $_SESSION['id_client_a_modifier'] = null;
 
+            include '../fonctions/envoyerMailCompte.php';
+            $mail_envoye = envoyerMail("Mot de passe modifie", "Votre mot de passe a bien été modifié sur notre site marina connect ! Votre identifiant : ". $client->getMail());
+
             header('Location: partieClient.php');
             exit();
         }

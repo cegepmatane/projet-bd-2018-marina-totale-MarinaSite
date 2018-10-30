@@ -1,12 +1,9 @@
 <?php
 
-include '../accesseur/ClientDAO.php';
-
-
 require '../lib/PHPMailer-5.2-stable/PHPMailerAutoload.php';
 
 
-function envoyerMailDepuisGerant($subject, $body, $id){
+function envoyerMail($subject, $body){
 
     $mail = new PHPMailer(); // create a new object
     $mail->IsSMTP(); // enable SMTP
@@ -20,28 +17,15 @@ function envoyerMailDepuisGerant($subject, $body, $id){
     $mail->Password = "sportextreme";
     $mail->SetFrom("marinaconnect@gmail.com");
 
-    $reservationDAO = new ReservationDAO();
-
-    $reservation = $reservationDAO->trouverReservation($id);
-
-    var_dump($reservation);
-
-
     $clientDAO = new ClientDAO();
-    $client = $clientDAO->trouverClientId($reservation->id_client);
-
-    $nom = $client->nom;
-
-    echo $nom;
-    echo $subject;
+    $nom = $clientDAO->trouverClientId($_SESSION['id'])->nom;
 
     // ajouter les infos de la réservation
 
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
-    $adresse = "aherkens@gmail.com";
-
+    $adresse = $_SESSION['pseudo'];
     $mail->AddAddress($adresse);
 
     if (!$mail->Send()) {

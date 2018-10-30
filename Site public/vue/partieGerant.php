@@ -31,7 +31,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 </button>
             </div>
             <div class="modal-body">
-                Un mail de confirmation vous a été envoyé!
+                Un mail de confirmation a été envoyé!
             </div>
             <div class="modal-footer">
             </div>
@@ -51,7 +51,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
     Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
     <br>
     <div style="text-align: center;">
-        <a class="btn btn-primary btn-lg m-1" href="vueAjouterReservationGerant.php">Fermer un emplacement</a> &nbsp;
+        <a class="btn btn-primary btn-lg m-1" href="vueFermerEmplacementGerant.php">Fermer un emplacement</a> &nbsp;
         <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
     </div>
     <div class="wb-tabs">
