@@ -93,8 +93,8 @@ Class EmplacementDAO
     public function checkTailleEmplacementSelonBateau($idbateau, $emplacement)
     {
         $LISTER_EMPLACEMENT_DISPONIBLE_SELON_BATEAU = "SELECT * FROM bateau WHERE id=:idbateau 
-                                                      AND largeur < :largeurEmplacement 
-                                                      AND longueur < :longueurEmplacement";
+                                                      AND largeur <= :largeurEmplacement 
+                                                      AND longueur <= :longueurEmplacement";
 
         global $basededonnees;
 
