@@ -40,7 +40,7 @@ function envoyerMailDepuisGerant($subject, $body, $id){
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
-    $adresse = $client->mail;
+    $adresse = "aherkens@gmail.com";
 
     $mail->AddAddress($adresse);
 

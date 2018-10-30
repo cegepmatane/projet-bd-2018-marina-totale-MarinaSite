@@ -117,8 +117,11 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             $reservationDAO = new ReservationDAO();
             $reservationDAO->modifierReservation($reservation, $id);
 
+            $nomBateau = $bateauDAO->trouverBateau($id_bateau)->nom;
+            $typeBateau = $bateauDAO->trouverBateau($id_bateau)->type_bateau;
+
             include '../fonctions/envoyerMailDepuisGerant.php';
-            $mail_envoye = envoyerMailDepuisGerant("Reservation modifiee", "Votre réservation a dû être modifiée! Elle aura lieu du ".$reservation->datedebut. " au ". $reservation->datefin.".", $id);
+            $mail_envoye = envoyerMailDepuisGerant("Reservation modifiee", "Votre réservation a dû être modifiée! Elle aura lieu du ".$reservation->datedebut. " au ". $reservation->datefin.". Le bateau lié à cette réservation est: ".$nomBateau." (type: ".$typeBateau.").", $id);
 
 
             header('Location: partieGerant.php?success='. $mail_envoye . '');
