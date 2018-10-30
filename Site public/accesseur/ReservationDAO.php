@@ -117,6 +117,22 @@ Class ReservationDAO
         $requeteSupprimerReservation->execute();
     }
 
+    public function listerReservationsSelonTaille($longueur, $largeur){
+        global $basededonnees;
+
+        $SELECT_COUNT_RESA= 'SELECT * FROM reservation
+        INNER JOIN emplacement ON reservation.id_emplacement = emplacement.id
+        WHERE emplacement.largeur >= :largeur AND emplacement.longueur >= :longueur;';
+
+        $requeteResaTaille = $basededonnees->prepare($SELECT_COUNT_RESA);
+
+        $requeteResaTaille->bindValue(':largeur', $largeur);
+        $requeteResaTaille->bindValue(':longueur', $longueur);
+
+        $requeteResaTaille->execute();
+        return $requeteResaTaille->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function checkBateauSelonDate($dateDebut, $dateFin, $id_bateau)
     {
         global $basededonnees;

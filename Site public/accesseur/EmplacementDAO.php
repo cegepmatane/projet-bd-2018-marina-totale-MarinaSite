@@ -131,4 +131,18 @@ Class EmplacementDAO
 
         return $requeteListerEmplacement->fetchAll(PDO::FETCH_OBJ);
     }
+    public function compterEmplacementSelonTaille($longueur, $largeur){
+        global $basededonnees;
+
+        $SELECT_COUNT_RESA= 'SELECT COUNT(id) AS nombre FROM emplacement
+        WHERE emplacement.largeur >= :largeur AND emplacement.longueur >= :longueur;';
+
+        $requeteResaTaille = $basededonnees->prepare($SELECT_COUNT_RESA);
+
+        $requeteResaTaille->bindValue(':largeur', $largeur);
+        $requeteResaTaille->bindValue(':longueur', $longueur);
+
+        $requeteResaTaille->execute();
+        return $requeteResaTaille->fetch(PDO::FETCH_OBJ);
+    }
 }

@@ -167,6 +167,28 @@ function bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)
 }
 
 
+//todo : recuperer array de toutes les reservations génantes par jour
+$reservationDAO = new ReservationDAO();
+$emplacementDAO = new EmplacementDAO();
+$tabJour = array();
+$nbEmplacementBonneTaille = $emplacementDAO->compterEmplacementSelonTaille(15, 15);
+$donneesReservations = $reservationDAO->listerReservationsSelonTaille(15, 15);
+$count = 0;
+$ajd = date('Y-m-d');
+for ($jour = 0; $jour < 365; $jour++) {
+    $dateJour = date('Y-m-d', strtotime($ajd . "+" . $jour . "days"));
+    foreach ($donneesReservations as $reservation) {
+        if ($reservation->datedebut <= $dateJour && $reservation->datefin >= $dateJour) {
+            $count++;
+        }
+    }
+    if ($count == $nbEmplacementBonneTaille->nombre){
+        $tabJour[]= $dateJour;
+    }
+    $count = 0;
+}
+var_dump($tabJour)
+
 ?>
     <script>
         $(function () {
