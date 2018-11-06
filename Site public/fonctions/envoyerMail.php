@@ -22,12 +22,11 @@ function envoyerMail($subject, $body){
     $clientDAO = new ClientDAO();
     $nom = $clientDAO->trouverClientId($_SESSION['id'])->nom;
 
-    // ajouter les infos de la réservation
 
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
-    $adresse = $_SESSION['pseudo'];
+    $adresse = $clientDAO->trouverClientId($_SESSION['id'])->mail;
     $mail->AddAddress($adresse);
 
     if (!$mail->Send()) {

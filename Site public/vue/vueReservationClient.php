@@ -37,7 +37,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
 
     <div class="p-lg-5 p-md-3">
-        <h1>Recapitulatifs de mes réservations :</h1>
+        <h1>Recapitulatif de mes réservations :</h1>
 
         <div class="table-responsive">
             <table border="2" class="table table-striped table-hover">

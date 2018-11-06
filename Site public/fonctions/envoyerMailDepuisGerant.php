@@ -21,10 +21,7 @@ function envoyerMailDepuisGerant($subject, $body, $id){
     $mail->SetFrom("marinaconnect@gmail.com");
 
     $reservationDAO = new ReservationDAO();
-
     $reservation = $reservationDAO->trouverReservation($id);
-
-    var_dump($reservation);
 
 
     $clientDAO = new ClientDAO();
@@ -32,17 +29,15 @@ function envoyerMailDepuisGerant($subject, $body, $id){
 
     $nom = $client->nom;
 
-    echo $nom;
-    echo $subject;
-
-    // ajouter les infos de la réservation
-
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
 
-    $adresse = "aherkens@gmail.com";
+    $adresse = $client->mail;
+    $adresseGerant = $_SESSION['pseudo'];
 
     $mail->AddAddress($adresse);
+    $mail->AddCC($adresseGerant);
+
 
     if (!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
@@ -52,6 +47,4 @@ function envoyerMailDepuisGerant($subject, $body, $id){
     }
 
     return $mail_envoye;
-
-
 }

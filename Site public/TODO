@@ -1,7 +1,6 @@
 //TODO
 
 - TOUTES LES VERIFS ET AFFICHAGE DES ERREURS DE FORMULAIRES (FLO)
--Redirection partie client/gerant quand connecté sur page connexion
 
 marinaquebec.qc.ca
 
@@ -12,18 +11,17 @@ issue securite doc
 bouton retour en arrier
 PHP filters (FLO)
 facture(MARC)
-notification par mail a la modification d'une reservation
+
 proposition d'alternative au client quand suppression reservation
 
     barre de recherche réservation avec nom personne
 	Details reservation page
-	ameillorer css
-	embellir fomulaires
 	Taille des bateaux unité
 
+
 Envoie mail avec bonne info quand
- - créer un compte
- - modifie mot de passe
+ - créer un compte          done!
+ - modifie mot de passe     done!
  - supprime reservation     done!
  - fait une reservation     done!
  - modifier un reservation  done!
