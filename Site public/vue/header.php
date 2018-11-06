@@ -39,7 +39,7 @@ if (!(isset($_SESSION['pseudo']))){
 
 </head>
 <body class="h-100" style="background-color: #E1F5FE;font-family: 'Roboto', sans-serif;">
-<div class="w3-top">
+<div class="w3-top" style="z-index: 10;">
     <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
         <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Marina Connect&trade;</a>
         <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small">Se déconnecter

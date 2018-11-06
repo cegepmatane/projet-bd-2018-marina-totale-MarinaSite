@@ -289,7 +289,7 @@ if (isset($_POST["select_bateau"])) {
 
         <?php if (isset($_POST["select_bateau"])) {
             ?>
-            <div id='calendar' class="p-5"></div><?php
+            <div id='calendar' class="p-5" style="z-index: 1;"></div><?php
         } ?>
 
     </div>
