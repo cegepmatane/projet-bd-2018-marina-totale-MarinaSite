@@ -59,6 +59,34 @@ if ($dejaPost == 1) {
     if (!isset($_POST['select_bateau'])) {
         $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
     }
+    /*if (!isset($dateFin) || !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
+       $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer une date d\'arrivé valide au format YYYY-MM-DD</div>';
+   }
+   if (!isset($dateDebut) || !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateDebut)) {
+       $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer une date de départ valide au format YYYY-MM-DD</div>';
+   }*/
+
+    /* if (isset($dateFin) && isset($dateDebut) && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateDebut)
+         && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
+         if (!dateCompareAujourdhui($dateDebut)) {
+             $erreurs['dateCompareAujourdhui'] = "<div class=\"alert alert-danger\">La date ne peu pas etre avant la date d'aujourdhui</div>";
+         }
+         if (!dateCompare($dateDebut, $dateFin)) {
+             $erreurs['date_compare'] = "<div class=\"alert alert-danger\">La date d'arrivé doit être posterieur de la date de départ</div>";
+         }
+         if (!checkDateAAAAMMDD($dateDebut)) {
+             $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer une date d\'arrivé valide au format YYYY-MM-DD</div>';
+         }
+         if (!checkDateAAAAMMDD($dateFin)) {
+             $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer une date de départ valide au format YYYY-MM-DD</div>';
+         }
+
+         if (isset($id_bateau)) {
+             if (bateauEstDejaReserverSelonDate($dateDebut, $dateFin, $id_bateau)) {
+                 $erreurs['bateau_indisponible'] = "<div class=\"alert alert-danger\">Votre bateau est deja réserver sur un emplacement entre ces dates là</div>";
+             }
+         }
+     }*/
 }
 
 if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))

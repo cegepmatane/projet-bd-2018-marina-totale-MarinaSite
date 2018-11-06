@@ -21,6 +21,11 @@ $donneesReservationSelonDate = null;
 $emplacementDAO = new EmplacementDAO();
 $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
+$dejaPost = 0;
+if (!empty($_POST)) {
+    $dejaPost = 1;
+}
+
 if ((isset($_POST['label']))) {
     $label = $_POST['label'];
 }
@@ -37,6 +42,22 @@ if ((isset($_POST['lng']))) {
     $longitude = $_POST['lng'];
 }
 
+if ($dejaPost == 1){
+    //PHP FILTERS
+    $label =   filter_var($label, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $longueur =   filter_var($longueur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $largeur =   filter_var($largeur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $latitude =   filter_var($latitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $longitude =   filter_var($longitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+
+    if (empty($_POST['lat']) || empty($_POST['lng'])) {
+        $erreurs['coord'] = "<div class=\"alert alert-danger\">Veuillez placer une pinouche sur la carte pour donner la position de votre nouvel emplacement.</div>";
+    }
+
+    if (!preg_match("/^[A-Za-z0-9]{2,}/", $label)) $erreurs['label'] = "<div class=\"alert alert-danger\">Votre label doit faire plus que 2 caractere minimum.</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $longueur)) $erreurs['longueur'] = "<div class=\"alert alert-danger\">Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum.</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $largeur)) $erreurs['largeur'] = "<div class=\"alert alert-danger\">Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum.</div>";
+}
 
 if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST['largeur'])) && (!empty($_POST['lat'])) && (!empty($_POST['lng']))) {
 
@@ -60,16 +81,25 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     <input class="form-control" type="text" name="label"
                            value="<?php if (isset($_POST['label'])) echo $_POST['label'] ?>"/>
                 </label>
+                <?php if (isset($erreurs['label'])) {
+                    echo $erreurs['label'];
+                } ?>
                 </br>
                 <label>Longueur:
                     <input class="form-control" type="text" name="longueur"
                            value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur'] ?>"/>
                 </label>
+                <?php if (isset($erreurs['longueur'])) {
+                    echo $erreurs['longueur'];
+                } ?>
                 </br>
                 <label>Largeur:
                     <input class="form-control" type="text" name="largeur"
                            value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
                 </label>
+                <?php if (isset($erreurs['largeur'])) {
+                    echo $erreurs['largeur'];
+                } ?>
                     <input type="hidden" id="lat" name="lat">
                     <input type="hidden" id="lng" name="lng">
                 </br>
@@ -79,6 +109,9 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
             </form>
 
         </fieldset>
+        <?php if (isset($erreurs['coord'])) {
+            echo $erreurs['coord'];
+        } ?>
         <div id="map" style="height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */">
             <script>
