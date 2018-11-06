@@ -44,7 +44,6 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
     <h1> Gestion de la marina</h1>
 
-    <form action="../fonctions/supprimerReservation.php?id=<?php echo $_SESSION['id'] ?>&page=<?php echo "supprimerReservation" ?>" method="post">
 
 
 
