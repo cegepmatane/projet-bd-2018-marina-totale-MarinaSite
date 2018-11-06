@@ -218,7 +218,12 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 <form action="partieGerant.php" method="post">
                     <div class="row justify-content-start">
                         <div class="col-sm-4">
-                            <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="date">
+                            <input class="form-control" type="date" value="<?php if (isset($_POST["date"])){
+                                echo $_POST["date"];
+                            }else{
+                                echo date('Y-m-d');
+
+                            } ?>" name="date">
                         </div>
                         <div class="col-sm-4">
                             <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit"
