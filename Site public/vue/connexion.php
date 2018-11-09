@@ -1,7 +1,6 @@
 <?php include 'headerConnexion.php';
 include '../modele/Client.php';
 include '../accesseur/ClientDAO.php';
-
 // REDIRECION SI DEJA CONNECTÉ
 
 $ClientDAO = new ClientDAO();
@@ -60,35 +59,37 @@ function motDePasseJuste($motDePasseActuel, $MDP)
 
 
 if (($PSEUDO != null) && ($MDP != null)) {
-    $erreurs['mot_de_passe'] = '<div class="alert alert-danger">Votre identifiant ou mot de passe est incorrect.</div>';
+    $erreurs['mot_de_passe'] = '<div class="alert alert-danger">Votre identifiant ou mot de passe est incorrect</div>';
 }
 
 ?>
 
 <div class="formulaireClient">
     <fieldset>
-        <legend>Connexion à MarinaConnect</legend>
+        <legend><?php echo _("Connexion à MarinaConnect");?></legend>
 
         <form class="form-horizontal" action="connexion.php" method="post">
             <div class="form-group">
-                <label class="control-label col-sm-2">Mail: </label><br>
+                <label class="control-label col-sm-2"><?php echo _("Mail:");?></label><br>
                 <input class="form-control" type="email" name="pseudo"/>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2">Mot de passe: </label><br>
+                <label class="control-label col-sm-2"><?php echo _("Mot de passe :");?> </label><br>
                 <input class="form-control" type="password" name="mot_de_passe"/>
             </div>
 
-            <?php if (isset($erreurs['mot_de_passe'])) {
+
+            <?php
+            if (isset($erreurs['mot_de_passe'])) {
                 echo $erreurs['mot_de_passe'];
             } ?>
 
 
-            <input class="btn btn-default" type="submit" name="send" value="CONNEXION">
+            <input class="btn btn-default" type="submit" name="send" value="<?php echo _("Connexion");?>">
         </form>
     </fieldset>
 
-    <a href="creerCompte.php">Creer un compte...</a>
+    <a href="creerCompte.php"><?php echo _("Creer un compte...");?></a>
 </div>
 
 <?php include 'footer.php'; ?>

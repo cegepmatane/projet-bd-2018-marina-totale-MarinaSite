@@ -1,5 +1,12 @@
 <?php
 session_start();
+$language = "en_US";
+putenv("LANG=".$language);
+setlocale(LC_ALL, $language);
+
+$domain = "messages";
+bindtextdomain($domain, "Locale");
+textdomain($domain);
 ?>
 
 <!DOCTYPE html>

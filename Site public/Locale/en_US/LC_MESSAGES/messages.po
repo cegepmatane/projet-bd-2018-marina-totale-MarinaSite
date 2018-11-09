@@ -1,0 +1,115 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-11-09 17:39-0500\n"
+"PO-Revision-Date: 2018-11-09 17:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: vue/connexion.php:69
+msgid "Connexion à MarinaConnect"
+msgstr "Connexion to MarinaConnect&trade;"
+
+#: vue/connexion.php:73
+msgid "Mail:"
+msgstr "Email:"
+
+#: vue/connexion.php:77
+msgid "Mot de passe :"
+msgstr "Password:"
+
+#: vue/connexion.php:88
+msgid "Connexion"
+msgstr "Connexion"
+
+#: vue/connexion.php:92
+msgid "Creer un compte..."
+msgstr "Create an account..."
+
+#: vue/creerCompte.php:46
+msgid "Votre nom doit faire plus que 2 lettres minimum."
+msgstr "Your name must be 2 letters long minimum."
+
+#: vue/creerCompte.php:47
+msgid "Votre prenom doit faire plus que 2 lettres minimum."
+msgstr "Your first name must be 2 letters long minimum."
+
+#: vue/creerCompte.php:48
+msgid "VVotre numeros doit faire 9 digit."
+msgstr "Your numbers must be 9 digits long minimum."
+
+#: vue/creerCompte.php:49
+msgid "Votre mot de passe doit faire plus que 2 charachteres minimum."
+msgstr "Your password must be 2 characters long minmum."
+
+#: vue/creerCompte.php:52
+msgid "Veuillez entrer un email valide"
+msgstr "Please enter a valid email"
+
+#: vue/creerCompte.php:56
+msgid "Veuillez entrer deux mots de passe identiques"
+msgstr "Please enter two identical passwords"
+
+#: vue/creerCompte.php:82
+msgid "Un compte existe déjà avec cet email"
+msgstr "An account already exists with this email"
+
+#: vue/creerCompte.php:87
+msgid "Creer mon compte"
+msgstr "Create your account"
+
+#: vue/creerCompte.php:95
+msgid "Mail: "
+msgstr "E-mail: "
+
+#: vue/creerCompte.php:104
+msgid "Nom: "
+msgstr "Last Name: "
+
+#: vue/creerCompte.php:113
+msgid "Prénom: "
+msgstr "First Name: "
+
+#: vue/creerCompte.php:122
+msgid "Mobile: "
+msgstr "Cell: "
+
+#: vue/creerCompte.php:131
+msgid "Mot de passe: "
+msgstr "Password: "
+
+#: vue/creerCompte.php:137
+msgid "Confirmation mot de passe: "
+msgstr "Re-type your password: "
+
+#: vue/creerCompte.php:150
+msgid "Creer un compte"
+msgstr "Create an account"
+
+#: vue/footer.php:8
+msgid "La marina de Matane, un espace de detente fort en couleurs!"
+msgstr "Matanes's marina, the place to be in Gaspesie!"
+
+#: vue/header.php:56 vue/header.php:69 vue/headerAdmin.php:52
+#: vue/headerAdmin.php:63
+msgid "Se deconnecter"
+msgstr "Disconnect"
+
+#: vue/header.php:57 vue/header.php:68
+msgid "Mon compte"
+msgstr "My account"
+
+#: vue/headerAdmin.php:62
+msgid "Menu"
+msgstr "Menu"
+
+#~ msgid "Sécurité"
+#~ msgstr "Security"

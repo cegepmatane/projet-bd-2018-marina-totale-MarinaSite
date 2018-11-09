@@ -10,6 +10,17 @@ if (!(isset($_SESSION['pseudo']))){
     header('Location: connexion.php');
     exit();
 }
+$locale='en_UK.utf8';
+
+// Domaine : nom du fichier 'mo', car vous pouvez en gérer plusieurs.
+// La traduction sera cherchée dans :
+// ./locale/en_US/LC_MESSAGES/traductions.mo
+$domaine = 'en';
+
+putenv('LC_ALL='.$locale);
+// Fixe la valeur d'une variable d'environnementsetlocale(LC_ALL, $locale); // Modifie les informations de localisation
+bindtextdomain($domaine, '../Locale'); // Fixe le chemin (relatif ou absolu) d'un domaine
+textdomain($domaine); // choix du domaine par défaut
 ?>
 
 
@@ -18,7 +29,7 @@ if (!(isset($_SESSION['pseudo']))){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MarinaConnect</title>
+    <title>MarinaConnect&trade;</title>
 
     <link rel="icon" href="../img/marina.ico">
 
@@ -38,7 +49,7 @@ if (!(isset($_SESSION['pseudo']))){
 <div class="w3-top" style="z-index: 10;">
     <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
         <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Marina Connect&trade;</a>
-        <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small">Se déconnecter</a>
+        <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small"><?php echo _("Se deconnecter");?></a>
         <a class="w3-bar-item w3-button w3-right w3-hide-large  w3-hide-medium w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 
     </div>
@@ -48,8 +59,8 @@ if (!(isset($_SESSION['pseudo']))){
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
             <i class="fa fa-remove"></i>
         </a>
-        <h4 class="w3-bar-item"><b>Menu</b></h4>
-        <a class="w3-bar-item w3-button w3-hover-black" href="deconnexion.php">Se déconnecter</a>
+        <h4 class="w3-bar-item"><b><?php echo _("Menu");?></b></h4>
+        <a class="w3-bar-item w3-button w3-hover-black" href="deconnexion.php"><?php echo _("Se deconnecter");?></a>
     </nav>
 </div>
 <div class=" w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

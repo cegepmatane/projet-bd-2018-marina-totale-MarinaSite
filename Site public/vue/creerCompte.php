@@ -43,17 +43,17 @@ if ($dejaPost == 1) {
 
 
     //Gestion des erreurs
-    if (!preg_match("/^[A-Za-z]{2,}/", $nom))           $erreurs['nom'] = "<div class=\"alert alert-danger\">Votre nom doit faire plus que 2 lettres minimum.</div>";
-    if (!preg_match("/^[A-Za-z]{2,}/", $prenom))        $erreurs['prenom'] = "<div class=\"alert alert-danger\">Votre prenom doit faire plus que 2 lettres minimum.</div>";
-    if (!preg_match("/^[0-9]{9}$/", $numero))           $erreurs['numero'] = "<div class=\"alert alert-danger\">Votre numeros doit faire 9 digit.</div>";
-    if (strlen($motDePasse) < 3)                               $erreurs['motdepasse'] = "<div class=\"alert alert-danger\">Votre mot de passe doit faire plus que 2 charachteres minimum.</div>";
+    if (!preg_match("/^[A-Za-z]{2,}/", $nom))           $erreurs['nom'] = "<div class=\"alert alert-danger\">"._("Votre nom doit faire plus que 2 lettres minimum.")."</div>";
+    if (!preg_match("/^[A-Za-z]{2,}/", $prenom))        $erreurs['prenom'] = "<div class=\"alert alert-danger\">"._("Votre prenom doit faire plus que 2 lettres minimum.")."</div>";
+    if (!preg_match("/^[0-9]{9}$/", $numero))           $erreurs['numero'] = "<div class=\"alert alert-danger\">"._("VVotre numeros doit faire 9 digit.")."</div>";
+    if (strlen($motDePasse) < 3)                               $erreurs['motdepasse'] = "<div class=\"alert alert-danger\">"._("Votre mot de passe doit faire plus que 2 charachteres minimum.")."</div>";
 
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        $erreurs['mail'] = "<div class=\"alert alert-danger\">Veuillez rentrer un mail valide.</div>";
+        $erreurs['mail'] = "<div class=\"alert alert-danger\">"._("Veuillez entrer un email valide")."</div>";
     }
 
     if (!verifMDP($motDePasse, $password2)) {
-        $erreurs['motdepasse_identique'] = "<div class=\"alert alert-danger\">Veuillez deux mots de passe identiques.</div>";
+        $erreurs['motdepasse_identique'] = "<div class=\"alert alert-danger\">"._("Veuillez entrer deux mots de passe identiques")."</div>";
     }
 }
 
@@ -79,12 +79,12 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
         header('Location: connexion.php');
         exit();
     } else {
-        echo 'Un compte existe deja avec cet email.';
+        echo _("Un compte existe déjà avec cet email");
     }
 }
 
 ?>
-    <h3>Créer mon compte :</h3>
+    <h3><?php echo _("Creer mon compte");?></h3>
 
     <div class="creerCompte w3-padding-24">
         <fieldset>
@@ -92,7 +92,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
             <form action="creerCompte.php" method="post">
 
                 <div class="form-group">
-                    <label>Mail:
+                    <label><?php echo _("Mail: ");?>
                         <input type="email" name="mail" value="<?php if (isset($_POST['mail'])) echo $_POST['mail']; ?>"/>
                     </label>
                 </div>
@@ -101,7 +101,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                 } ?>
 
                 <div class="form-group">
-                    <label>Nom :
+                    <label><?php echo _("Nom: ");?>
                         <input type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
                     </label>
                 </div>
@@ -110,7 +110,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                 } ?>
 
                 <div class="form-group">
-                    <label>Prenom:
+                    <label><?php echo _("Prénom: ");?>:
                         <input type="text" name="prenom" value="<?php if (isset($_POST['prenom'])) echo $_POST['prenom']; ?>"/>
                     </label>
                 </div>
@@ -119,7 +119,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                 } ?>
 
                 <div class="form-group">
-                    <label>Mobile :
+                    <label><?php echo _("Mobile: ");?>
                         <input type="number" name="numero" value="<?php if (isset($_POST['numero'])) echo $_POST['numero']; ?>"/>
                     </label>
                 </div>
@@ -128,13 +128,13 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                 } ?>
 
                 <div class="form-group">
-                    <label>Mot de passe:
-                        <input type="password" name="motDePasse" value="<?php if (isset($_POST['motDePasse'])) echo $_POST['motDePasse']; ?>"/>/>
+                    <label><?php echo _("Mot de passe: ");?>
+                        <input type="password" name="motDePasse" value="<?php if (isset($_POST['motDePasse'])) echo $_POST['motDePasse']; ?>"/>
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label>Confirmer mot de passe :
+                    <label><?php echo _("Confirmation mot de passe: ");?>
                         <input type="password" name="password2"/>
                     </label>
                 </div>
@@ -147,7 +147,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                     echo $erreurs['motdepasse_identique'];
                 } ?>
 
-                <input class="btn btn-primary" type="submit" name="creerCompte" value="Créer compte"/>
+                <input class="btn btn-primary" type="submit" name="creerCompte" value="<?php echo _("Creer un compte");?>"/>
 
             </form>
         </fieldset>

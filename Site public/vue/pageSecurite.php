@@ -49,6 +49,7 @@
     <div class="w3-row w3-padding-64">
         <div class="w3-twothird w3-container">
             <h1 class="w3-text-teal">Sécurité</h1>
+
             <p>Le clapotis de l’eau au contact de la coque et la caresse du vent du large ne sont que quelques-uns des nombreux plaisirs associés à la navigation de plaisance. Aussi agréable soit-elle, la pratique d’une activité nautique nécessite un minimum de sérieux et de préparation afin que chaque sortie sur l’eau soit couronnée de succès.
             </p>
             <p>Allez vérifier si vous avez tout l'équipement obligatoire sur votre embarcation. N'oubliez pas, c'est une amende de 250$ par pièce d'équipement manquante.
