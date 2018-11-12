@@ -11,7 +11,7 @@
   <img src="../img/pierre_morel_30_aout_2015_012.jpg" style="width:100%">
   <div class="w3-display-bottomleft w3-container w3-gray"
    style="bottom:10%;opacity:0.7;width:70%">
-  <h2><b>Bienvenue sur le site<br>de la marina de Matane!</b></h2>
+  <h2><b><?php echo _("Bienvenue sur le site<br>de la marina de Matane!")?></b></h2>
 </div>
 </div>
 

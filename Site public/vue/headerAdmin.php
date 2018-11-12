@@ -1,31 +1,18 @@
 <?php
 session_start();
-/**
- * Created by PhpStorm.
- * User: Florent
- * Date: 07/09/2018
- * Time: 14:33
- */
-if (!(isset($_SESSION['pseudo']))){
-    header('Location: connexion.php');
-    exit();
-}
-$locale='en_UK.utf8';
+$lang='en_US.utf8';
+$filename = 'messages';
+putenv("LC_ALL=$lang");
+setlocale(LC_ALL, $lang);
+bindtextdomain($filename, '../Locales');
 
-// Domaine : nom du fichier 'mo', car vous pouvez en gérer plusieurs.
-// La traduction sera cherchée dans :
-// ./locale/en_US/LC_MESSAGES/traductions.mo
-$domaine = 'en';
-
-putenv('LC_ALL='.$locale);
-// Fixe la valeur d'une variable d'environnementsetlocale(LC_ALL, $locale); // Modifie les informations de localisation
-bindtextdomain($domaine, '../Locale'); // Fixe le chemin (relatif ou absolu) d'un domaine
-textdomain($domaine); // choix du domaine par défaut
+bind_textdomain_codeset($filename, "UTF-8");
+textdomain($filename);
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en" class="h-100" style="font-family: 'Roboto', sans-serif;">
+<html class="h-100" style="font-family: 'Roboto', sans-serif;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

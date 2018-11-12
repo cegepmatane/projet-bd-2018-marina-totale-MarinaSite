@@ -1860,7 +1860,7 @@
             else {
                 if ((typeof console !==  'undefined') && console.warn) {
                     //warn user if arguments are passed but the locale could not be set
-                    console.warn('Locale ' + key +  ' not found. Did you forget to load it?');
+                    console.warn('Locales ' + key +  ' not found. Did you forget to load it?');
                 }
             }
         }

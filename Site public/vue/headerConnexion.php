@@ -1,19 +1,20 @@
 <?php
 session_start();
-$language = "en_US";
-putenv("LANG=".$language);
-setlocale(LC_ALL, $language);
+$lang='en_US.utf8';
+$filename = 'messages';
+putenv("LC_ALL=$lang");
+setlocale(LC_ALL, $lang);
+bindtextdomain($filename, '../Locales');
 
-$domain = "messages";
-bindtextdomain($domain, "Locale");
-textdomain($domain);
+bind_textdomain_codeset($filename, "UTF-8");
+textdomain($filename);
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="h-100" >
+<html class="h-100" >
 <head>
     <meta charset="UTF-8">
-    <title>MarinaConnect</title>
+    <title>MarinaConnect&trade;</title>
 
     <link rel="icon" href="../img/marina.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">

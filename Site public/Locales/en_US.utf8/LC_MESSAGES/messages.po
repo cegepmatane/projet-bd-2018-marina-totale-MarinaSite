@@ -1,18 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-11-09 17:39-0500\n"
-"PO-Revision-Date: 2018-11-09 17:44-0500\n"
-"Last-Translator: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-10 15:15+0100\n"
+"PO-Revision-Date: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
 "X-Generator: Poedit 2.2\n"
-"X-Poedit-Basepath: ../../..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: vue/connexion.php:69
 msgid "Connexion à MarinaConnect"
@@ -98,18 +96,26 @@ msgstr "Create an account"
 msgid "La marina de Matane, un espace de detente fort en couleurs!"
 msgstr "Matanes's marina, the place to be in Gaspesie!"
 
-#: vue/header.php:56 vue/header.php:69 vue/headerAdmin.php:52
-#: vue/headerAdmin.php:63
+#: vue/header.php:62 vue/header.php:75 vue/headerAdmin.php:58
+#: vue/headerAdmin.php:69
 msgid "Se deconnecter"
 msgstr "Disconnect"
 
-#: vue/header.php:57 vue/header.php:68
+#: vue/header.php:63 vue/header.php:74
 msgid "Mon compte"
 msgstr "My account"
 
-#: vue/headerAdmin.php:62
+#: vue/headerAdmin.php:68
 msgid "Menu"
 msgstr "Menu"
+
+#: vue/index.php:14
+msgid "Bienvenue sur le site<br>de la marina de Matane!"
+msgstr "Welcome to the<br>Matane's marina's website!"
+
+#: vue/pagePeche.php:67
+msgid "Pêche"
+msgstr "Fishing"
 
 #~ msgid "Sécurité"
 #~ msgstr "Security"
