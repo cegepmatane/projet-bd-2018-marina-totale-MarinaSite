@@ -15,7 +15,7 @@ textdomain($filename);
 <html class="h-100" style="font-family: 'Roboto', sans-serif; overflow-x: visible;">
 <head>
     <meta charset="UTF-8">
-    <title>MarinaConnect</title>
+    <title>MarinaConnect&trade;</title>
 
     <link rel="icon" href="../img/marina.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +51,7 @@ textdomain($filename);
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
         <i class="fa fa-remove"></i>
     </a>
-    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <h4 class="w3-bar-item"><b><?php echo _("Menu");?></b></h4>
     <a class="w3-bar-item w3-button w3-hover-black" href="partieClient.php"><?php echo _("Mon compte");?></a>
     <a class="w3-bar-item w3-button w3-hover-black" href="deconnexion.php"><?php echo _("Se deconnecter");?></a>
 </nav>

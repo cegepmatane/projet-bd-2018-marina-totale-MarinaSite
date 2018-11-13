@@ -7,13 +7,13 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
 
 ?>
 
-<h1>Récapitulatif des emplacements</h1>
+<h1><?php echo _("Récapitulatif des emplacements")?></h1>
 
 <div class="table-responsive">
     <table class="table table-striped table-hover"  border="2" style="text-align: center;">
         <?php if(isset($donneesEmplacement[0])): ?>
             <thead>
-            <tr><th>Label</th><th>Longueur</th><th>Largeur</th><th>Actions</th></tr>
+            <tr><th><?php echo _("Label")?></th><th><?php echo _("Longueur")?></th><th><?php echo _("Largeur")?></th><th><?php echo _("Longueur")?></th></tr>
             </thead>
             <tbody>
             <?php foreach ($donneesEmplacement as $emplacement) :?>
@@ -28,25 +28,25 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
                         <?php echo $emplacement->largeur; ?>
                     </td>
                     <td>
-                        <a class="btn btn-outline-secondary" href="vueModifierEmplacement.php?id=<?=$emplacement->id; ?>">Modifier</a>
+                        <a class="btn btn-outline-secondary" href="vueModifierEmplacement.php?id=<?=$emplacement->id; ?>"><?php echo _("Modifier")?></a>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal<?=$emplacement->id;?>" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Suppression")?></h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Êtes vous sur de vouloir supprimer?
+                                        <?php echo _("Êtes vous sur de vouloir supprimer?")?>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="../fonctions/supprimerEmplacement.php?id=<?= $emplacement->id; ?>"
-                                           class="btn btn-danger">Supprimer
+                                           class="btn btn-danger"><?php echo _("Supprimer")?>
                                         </a>
                                     </div>
                                 </div>
@@ -60,13 +60,13 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
             </tbody>
         <?php else: ?>
             <tr>
-                <td>Pas d'emplacements</td>
+                <td><?php echo _("Pas d'emplacements")?></td>
             </tr>
         <?php endif; ?>
     </table>
 
-    <a class="btn btn-primary btn-lg" style="text-align: center;" href="vueAjouterEmplacement.php">Ajouter un emplacement</a>
-    <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieGerant.php">Retour</a>
+    <a class="btn btn-primary btn-lg" style="text-align: center;" href="vueAjouterEmplacement.php"><?php echo _("Ajouter un emplacementl")?></a>
+    <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieGerant.php"><?php echo _("Retour")?></a>
 </div>
 
 <?php include "footer.php"; ?>

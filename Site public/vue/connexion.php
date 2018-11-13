@@ -64,32 +64,32 @@ if (($PSEUDO != null) && ($MDP != null)) {
 
 ?>
 
-<div class="formulaireClient">
+<div class="formulaireClient w3-padding-24">
     <fieldset>
-        <legend><?php echo _("Connexion à MarinaConnect");?></legend>
+        <legend><?php echo _("Connexion à MarinaConnect"); ?></legend>
 
         <form class="form-horizontal" action="connexion.php" method="post">
             <div class="form-group">
-                <label class="control-label col-sm-2"><?php echo _("Mail:");?></label><br>
+                <label class="control-label col-sm-2"><?php echo _("Mail:"); ?></label><br>
                 <input class="form-control" type="email" name="pseudo"/>
             </div>
+
             <div class="form-group">
-                <label class="control-label col-sm-2"><?php echo _("Mot de passe :");?> </label><br>
+                <label class="control-label col-sm-2"><?php echo _("Mot de passe :"); ?> </label><br>
                 <input class="form-control" type="password" name="mot_de_passe"/>
             </div>
-
-
             <?php
             if (isset($erreurs['mot_de_passe'])) {
                 echo $erreurs['mot_de_passe'];
             } ?>
 
-
-            <input class="btn btn-default" type="submit" name="send" value="<?php echo _("Connexion");?>">
+            <div class="form-group">
+                <input class="btn btn-default" type="submit" name="send" value="<?php echo _("Connexion"); ?>">
+            </div>
         </form>
     </fieldset>
 
-    <a href="creerCompte.php"><?php echo _("Creer un compte...");?></a>
+    <a href="creerCompte.php"><?php echo _("Creer un compte..."); ?></a>
 </div>
 
 <?php include 'footer.php'; ?>

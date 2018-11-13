@@ -1,121 +1,240 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 15:15+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2018-11-13 14:42-0500\n"
+"PO-Revision-Date: 2018-11-13 15:31-0500\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
 "X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ../../../vue\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: vue/connexion.php:69
+#: connexion.php:69
 msgid "Connexion à MarinaConnect"
-msgstr "Connexion to MarinaConnect&trade;"
+msgstr ""
 
-#: vue/connexion.php:73
+#: connexion.php:73
 msgid "Mail:"
-msgstr "Email:"
+msgstr ""
 
-#: vue/connexion.php:77
+#: connexion.php:77
 msgid "Mot de passe :"
-msgstr "Password:"
+msgstr ""
 
-#: vue/connexion.php:88
+#: connexion.php:88
 msgid "Connexion"
-msgstr "Connexion"
+msgstr ""
 
-#: vue/connexion.php:92
+#: connexion.php:92
 msgid "Creer un compte..."
-msgstr "Create an account..."
+msgstr ""
 
-#: vue/creerCompte.php:46
+#: creerCompte.php:46
 msgid "Votre nom doit faire plus que 2 lettres minimum."
-msgstr "Your name must be 2 letters long minimum."
+msgstr ""
 
-#: vue/creerCompte.php:47
+#: creerCompte.php:47
 msgid "Votre prenom doit faire plus que 2 lettres minimum."
-msgstr "Your first name must be 2 letters long minimum."
+msgstr ""
 
-#: vue/creerCompte.php:48
+#: creerCompte.php:48
 msgid "VVotre numeros doit faire 9 digit."
-msgstr "Your numbers must be 9 digits long minimum."
+msgstr ""
 
-#: vue/creerCompte.php:49
+#: creerCompte.php:49
 msgid "Votre mot de passe doit faire plus que 2 charachteres minimum."
-msgstr "Your password must be 2 characters long minmum."
+msgstr ""
 
-#: vue/creerCompte.php:52
+#: creerCompte.php:52
 msgid "Veuillez entrer un email valide"
-msgstr "Please enter a valid email"
+msgstr ""
 
-#: vue/creerCompte.php:56
+#: creerCompte.php:56
 msgid "Veuillez entrer deux mots de passe identiques"
-msgstr "Please enter two identical passwords"
+msgstr ""
 
-#: vue/creerCompte.php:82
+#: creerCompte.php:82
 msgid "Un compte existe déjà avec cet email"
-msgstr "An account already exists with this email"
+msgstr ""
 
-#: vue/creerCompte.php:87
+#: creerCompte.php:87
 msgid "Creer mon compte"
-msgstr "Create your account"
+msgstr ""
 
-#: vue/creerCompte.php:95
+#: creerCompte.php:95
 msgid "Mail: "
-msgstr "E-mail: "
+msgstr ""
 
-#: vue/creerCompte.php:104
+#: creerCompte.php:104
 msgid "Nom: "
-msgstr "Last Name: "
+msgstr ""
 
-#: vue/creerCompte.php:113
+#: creerCompte.php:113
 msgid "Prénom: "
-msgstr "First Name: "
+msgstr ""
 
-#: vue/creerCompte.php:122
+#: creerCompte.php:122
 msgid "Mobile: "
-msgstr "Cell: "
+msgstr ""
 
-#: vue/creerCompte.php:131
+#: creerCompte.php:131
 msgid "Mot de passe: "
-msgstr "Password: "
+msgstr ""
 
-#: vue/creerCompte.php:137
+#: creerCompte.php:137
 msgid "Confirmation mot de passe: "
-msgstr "Re-type your password: "
+msgstr ""
 
-#: vue/creerCompte.php:150
+#: creerCompte.php:150
 msgid "Creer un compte"
-msgstr "Create an account"
+msgstr ""
 
-#: vue/footer.php:8
+#: footer.php:8
 msgid "La marina de Matane, un espace de detente fort en couleurs!"
-msgstr "Matanes's marina, the place to be in Gaspesie!"
+msgstr ""
 
-#: vue/header.php:62 vue/header.php:75 vue/headerAdmin.php:58
-#: vue/headerAdmin.php:69
+#: header.php:43 header.php:56 headerAdmin.php:39 headerAdmin.php:50
 msgid "Se deconnecter"
-msgstr "Disconnect"
+msgstr ""
 
-#: vue/header.php:63 vue/header.php:74
+#: header.php:44 header.php:55
 msgid "Mon compte"
-msgstr "My account"
+msgstr ""
 
-#: vue/headerAdmin.php:68
+#: headerAdmin.php:49
 msgid "Menu"
-msgstr "Menu"
+msgstr ""
 
-#: vue/index.php:14
+#: index.php:14
 msgid "Bienvenue sur le site<br>de la marina de Matane!"
-msgstr "Welcome to the<br>Matane's marina's website!"
+msgstr ""
 
-#: vue/pagePeche.php:67
-msgid "Pêche"
-msgstr "Fishing"
+#: partieGerant.php:27 partieGerant.php:59
+msgid "Confirmation"
+msgstr ""
 
-#~ msgid "Sécurité"
-#~ msgstr "Security"
+#: partieGerant.php:34
+msgid "Un mail d'information voue a été envoyé ainsi qu'au client !"
+msgstr ""
+
+#: partieGerant.php:45
+msgid "Gestion de la Marina"
+msgstr ""
+
+#: partieGerant.php:50
+msgid "Bonjour,"
+msgstr ""
+
+#: partieGerant.php:53
+msgid "Fermer un emplacement"
+msgstr ""
+
+#: partieGerant.php:54
+msgid "Gerer les emplacements"
+msgstr ""
+
+#: partieGerant.php:67 partieGerant.php:154
+msgid "Prénom"
+msgstr ""
+
+#: partieGerant.php:68 partieGerant.php:155
+msgid "Nom"
+msgstr ""
+
+#: partieGerant.php:69 partieGerant.php:156
+msgid "Date de début"
+msgstr ""
+
+#: partieGerant.php:70 partieGerant.php:157
+msgid "Date de fin"
+msgstr ""
+
+#: partieGerant.php:71
+msgid "Actions"
+msgstr ""
+
+#: partieGerant.php:91
+msgid "Modifier"
+msgstr ""
+
+#: partieGerant.php:98 partieGerant.php:183
+msgid "Suppression"
+msgstr ""
+
+#: partieGerant.php:105 partieGerant.php:190
+msgid "Êtes vous sur de vouloir supprimer?"
+msgstr ""
+
+#: partieGerant.php:109 partieGerant.php:116 partieGerant.php:194
+#: partieGerant.php:201
+msgid "Supprimer"
+msgstr ""
+
+#: partieGerant.php:123
+msgid "Pas de reservation en cours"
+msgstr ""
+
+#: partieGerant.php:140
+msgid "Il y a eu un problème avec l'envoi du mail de confirmation."
+msgstr ""
+
+#: partieGerant.php:147
+msgid "Reservations archivées"
+msgstr ""
+
+#: partieGerant.php:158
+msgid "Action"
+msgstr ""
+
+#: partieGerant.php:208
+msgid "Pas de reservation dans la base de données"
+msgstr ""
+
+#: partieGerant.php:216
+msgid "Carte des reservations de la Marina"
+msgstr ""
+
+#: partieGerant.php:230
+msgid "Actualiser la carte"
+msgstr ""
+
+#: partieGerant.php:267
+msgid "Emplacement"
+msgstr ""
+
+#: partieGerant.php:268
+msgid "Reservé depuis: "
+msgstr ""
+
+#: partieGerant.php:269
+msgid "Jusqu'au: "
+msgstr ""
+
+#: partieGerant.php:270
+msgid "Electricité: "
+msgstr ""
+
+#: partieGerant.php:270 partieGerant.php:271 partieGerant.php:272
+msgid "Oui"
+msgstr ""
+
+#: partieGerant.php:270 partieGerant.php:271 partieGerant.php:272
+msgid "Non"
+msgstr ""
+
+#: partieGerant.php:271
+msgid "Vidange: "
+msgstr ""
+
+#: partieGerant.php:272
+msgid "Essence: "
+msgstr ""
+
+#: partieGerant.php:288
+msgid "Disponible! "
+msgstr ""

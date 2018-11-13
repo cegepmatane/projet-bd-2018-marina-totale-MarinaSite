@@ -24,16 +24,16 @@ if ((isset($_POST['type_bateau']))) {
 if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($largeur))) {
 
     if (!preg_match('/^[0-9]{1,2}/', $longueur) || $longueur == 0) {
-        $erreurs['longueur'] = '<div class="alert alert-danger">La longueur doit etre un nombre compris entre 1 et 99.</div>';
+        $erreurs['longueur'] = '<div class="alert alert-danger">'._("La longueur doit etre un nombre compris entre 1 et 99.").'</div>';
     }
     if (!preg_match('/^[0-9]{1,2}/', $largeur) || $largeur == 0) {
-        $erreurs['largeur'] = '<div class="alert alert-danger">La largeur doit etre un nombre compris entre 1 et 99.</div>';
+        $erreurs['largeur'] = '<div class="alert alert-danger">'._("La largeur doit etre un nombre compris entre 1 et 99.").'</div>';
     }
     if (!preg_match("/^[A-Za-z]{2,}/", $nom)) {
-        $erreurs['nom'] = '<div class="alert alert-danger">Le nom doit être composé de lettres uniquement.</div>';
+        $erreurs['nom'] = '<div class="alert alert-danger">'._("Le nom doit être composé de lettres uniquement.").'</div>';
     }
     if (!preg_match("/^[A-Za-z]{2,}/", $type_bateau)) {
-        $erreurs['type'] = '<div class="alert alert-danger">Le type doit être composé de lettres uniquement.</div>';
+        $erreurs['type'] = '<div class="alert alert-danger">'._("Le type doit être composé de lettres uniquement.").'</div>';
     }
 
 
@@ -51,7 +51,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 }
 
 ?>
-    <h1>Ajouter un bateau :</h1>
+    <h1><?php echo _("Ajouter un bateau :")?></h1>
 
     <div class="formulaireClient">
 
@@ -60,7 +60,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                 <form action="vueAjouterBateau.php" method="post">
 
                     <div class="form-group">
-                        <label>Nom:</label>
+                        <label><?php echo _("Nom: ")?></label>
                         <input type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
                     </div>
 
@@ -69,7 +69,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                     } ?>
 
                     <div class="form-group">
-                        <label>Type:</label>
+                        <label><?php echo _("Type: ")?></label>
                         <input type="text" name="type_bateau"
                                value="<?php if (isset($_POST['type_bateau'])) echo $_POST['type_bateau']; ?>"/>
                     </div>
@@ -79,7 +79,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                     } ?>
 
                     <div class="form-group">
-                        <label>Longueur: (en pieds)</label>
+                        <label><?php echo _("Longueur (en pieds): ")?></label>
                         <input type="text" name="longueur"
                                value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur']; ?>"/>
                     </div>
@@ -89,7 +89,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                     } ?>
 
                     <div class="form-group">
-                        <label>Largeur: (en pieds)</label>
+                        <label><?php echo _("Largeur (en pieds): ")?></label>
                         <input type="text" name="largeur"
                                value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur']; ?>"/>
                     </div>
@@ -99,7 +99,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                     } ?>
 
 
-                    <input type="submit" name="ajouterBateau" value="Ajouter bateau" class="btn btn-default"/>
+                    <input type="submit" name="ajouterBateau" value="<?php echo _("Ajouter bateau: ")?>" class="btn btn-default"/>
 
                 </form>
             </div>

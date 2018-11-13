@@ -57,7 +57,7 @@ if (isset($_POST['select_bateau'])) {
 
 if ($dejaPost == 1) {
     if (!isset($_POST['select_bateau'])) {
-        $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
+        $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">" . _("Veuillez selectionnez un bateau") . "</div>";
     }
     /*if (!isset($dateFin) || !preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
        $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer une date d\'arrivé valide au format YYYY-MM-DD</div>';
@@ -103,10 +103,10 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau);
 
         if ($id_emplacement == -1) {
-            $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">Votre bateau est trop grand pour les emplacements disponibles a cette date.</div>";
+            $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">" . _("Votre bateau est trop grand pour les emplacements disponibles a cette date.") . "</div>";
         }
         if ($id_emplacement == 0) {
-            $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">Aucun emplacement ne corespond a vos critères</div>";
+            $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">" . _("Aucun emplacement ne corespond a vos critères") . "</div>";
         }
 
         if (empty($erreurs)) {
@@ -247,7 +247,7 @@ if (isset($_POST["select_bateau"])) {
     <?php
 }
 ?>
-    <h2>Effectuer une nouvelle demande de réservation :</h2>
+    <h2><?php echo _("Effectuer une nouvelle demande de réservation :") ?></h2>
 
     <div class="ajouterreservation">
         <fieldset>
@@ -255,61 +255,64 @@ if (isset($_POST["select_bateau"])) {
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
 
 
-                    <div class="row justify-content-start">
-                        <label>Bateau : </label>
-                        <select name="select_bateau" required>
-                            <?php if (isset($donneesBateaux[0])): ?>
-                                <option value="0" disabled selected>- SELECTIONNEZ BATEAU -</option>
-                                <?php foreach ($donneesBateaux as $bateau) : ?>
-                                    <option <?php echo(isset($id_bateau) && ($id_bateau == $bateau->id) ? ' selected="selected"' : ''); ?>
-                                            value="<?php echo $bateau->id ?>"><?php echo $bateau->nom . ' (' . $bateau->type_bateau . ')' ?></option>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <option value="">Pas de bateaux...</option>
-                            <?php endif; ?>
-                        </select>
+                <div class="row justify-content-start">
+                    <label>Bateau : </label>
+                    <select name="select_bateau" required>
+                        <?php if (isset($donneesBateaux[0])): ?>
+                            <option value="0" disabled selected><?php echo _("- SELECTIONNEZ BATEAU -") ?></option>
+                            <?php foreach ($donneesBateaux as $bateau) : ?>
+                                <option <?php echo(isset($id_bateau) && ($id_bateau == $bateau->id) ? ' selected="selected"' : ''); ?>
+                                        value="<?php echo $bateau->id ?>"><?php echo $bateau->nom . ' (' . $bateau->type_bateau . ')' ?></option>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <option value=""><?php echo _("Pas de bateaux...") ?></option>
+                        <?php endif; ?>
+                    </select>
 
-                    </div>
-
-
-                    <?php if (isset($erreurs['bateau_indisponible'])) {
-                        echo $erreurs['bateau_indisponible'];
-                    } ?>
-
-                    <?php if (isset($erreurs['select_bateau'])) {
-                        echo $erreurs['select_bateau'];
-                    } ?>
-
-                    <?php if (isset($erreurs['bateau_taille'])) {
-                        echo $erreurs['bateau_taille'];
-                    } ?>
-
-                    <label><u><b>Services</b></u></label><br>
-
-                    <div class="form-group">
-                        <label>Electricité :</label>
-                        <input type="checkbox" name="electricite" <?php if ($electricite == 1) echo ' checked' ?>/>
-                    </div>
-                    <div class="form-group">
-                        <label>Vidange :</label>
-                        <input type="checkbox" name="vidange" <?php if ($vidange == 1) echo ' checked' ?>/>
-                    </div>
-                    <div class="form-group">
-                        <label>Essence :</label>
-                        <input type="checkbox" name="essence" <?php if ($essence == 1) echo ' checked' ?>/>
-                    </div>
-                    <input type="hidden" id="dateDebut" name="dateDebut">
-                    <input type="hidden" id="dateFin" name="dateFin">
-                <div class="col-sm-4">
-                    <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit"
-                           value="Actualiser le calendrier">
                 </div>
-                    <input type="submit" class="btn btn-primary" name="ajouterReservation"
-                           value="Effectuer une demande de réservation"/>
 
-                    <?php if (isset($erreurs['emplacement_indisponible'])) {
-                        echo '<br>' . $erreurs['emplacement_indisponible'];
-                    } ?>
+
+                <?php if (isset($erreurs['bateau_indisponible'])) {
+                    echo $erreurs['bateau_indisponible'];
+                } ?>
+
+                <?php if (isset($erreurs['select_bateau'])) {
+                    echo $erreurs['select_bateau'];
+                } ?>
+
+                <?php if (isset($erreurs['bateau_taille'])) {
+                    echo $erreurs['bateau_taille'];
+                } ?>
+
+                <label><u><b>Services</b></u></label><br>
+
+                <div class="form-group">
+                    <label><?php echo _("Electricité :") ?></label>
+                    <input type="checkbox" name="electricite" <?php if ($electricite == 1) echo ' checked' ?>/>
+                </div>
+                <div class="form-group">
+                    <label><?php echo _("Vidange :") ?></label>
+                    <input type="checkbox" name="vidange" <?php if ($vidange == 1) echo ' checked' ?>/>
+                </div>
+                <div class="form-group">
+                    <label><?php echo _("Essence :") ?></label>
+                    <input type="checkbox" name="essence" <?php if ($essence == 1) echo ' checked' ?>/>
+                </div>
+                
+                <input type="hidden" id="dateDebut" name="dateDebut">
+                <input type="hidden" id="dateFin" name="dateFin">
+
+                <div class="col-sm-4 span12 text-center w3-padding-16">
+                    <input type="submit" class="btn btn-primary" name="ajouterReservation"
+                           value="<?php echo _("Effectuer une demande de réservation") ?>"/>
+
+                    <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit"
+                           value="<?php echo _("Actualiser le calendrier") ?>">
+                </div>
+
+                <?php if (isset($erreurs['emplacement_indisponible'])) {
+                    echo '<br>' . $erreurs['emplacement_indisponible'];
+                } ?>
 
             </form>
 
