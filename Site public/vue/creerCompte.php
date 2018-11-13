@@ -100,6 +100,7 @@ if ((isset($mail)) && (isset($motDePasse)) && (isset($nom)) && (isset($prenom))
                     echo $erreurs['mail'];
                 } ?>
 
+
                 <div class="form-group">
                     <label><?php echo _("Nom: ");?>
                         <input type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
