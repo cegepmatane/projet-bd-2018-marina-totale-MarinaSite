@@ -14,7 +14,10 @@ if (!empty($_POST)) {
     $dejaPost = 1;
 }
 
-if (isset($_SESSION['id_client_a_modifier'])) {
+//<br /><b>Notice</b>:  Trying to get property 'prenom' of non-object in <b>/var/www/site/vue/vueModifierClient.php</b> on line <b>91</b><br />
+
+if (isset($_SESSION['id'])) {
+    $_SESSION['id_client_a_modifier'] = $_SESSION['id'];
     $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
 }
 
@@ -77,7 +80,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
     <h1>Modifier mes informations :</h1>
 
-    <div class="creerCompte w3-padding-24">
+    <div class="w3-padding-24">
         <fieldset>
             <legend>Modifier mes informations</legend>
 

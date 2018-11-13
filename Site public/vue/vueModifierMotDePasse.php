@@ -11,10 +11,9 @@ $confirmer_mot_de_passe = null;
 
 $clientDAO = new ClientDAO();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $_SESSION['id_client_a_modifier'] = $id;
-    $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
+if (isset($_SESSION['id_client_a_modifier'])) {
+    $id = $_SESSION['id_client_a_modifier'];
+    $clientAModifier = $clientDAO->trouverClientId($id);
     $ancien_mot_de_passe = $clientAModifier->mot_de_passe;
 }
 
@@ -48,7 +47,7 @@ if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (i
             $_SESSION['id_client_a_modifier'] = null;
 
             include '../fonctions/envoyerMailCompte.php';
-            $mail_envoye = envoyerMail("Mot de passe modifie", "Votre mot de passe a bien été modifié sur notre site marina connect ! Votre identifiant : ". $client->getMail());
+            $mail_envoye = envoyerMail("Mot de passe modifie", "Votre mot de passe a bien été modifié sur notre site marina connect ! Votre identifiant : " . $client->getMail());
 
             header('Location: partieClient.php');
             exit();
@@ -59,30 +58,33 @@ if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (i
 
 function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 {
-    echo 'Mot de passe hache :'.$motDePasseActuel.'<br>';
-    echo 'Mot de passe test hache :'.$mdpTest.'<br>';
+    echo 'Mot de passe hache :' . $motDePasseActuel . '<br>';
+    echo 'Mot de passe test hache :' . $mdpTest . '<br>';
     return $mdpTest === $motDePasseActuel;
 }
 
 ?>
     <h1>Modifier mon mot de passe :</h1>
 
-    <div class="modifiermotdepasse">
+    <div class="w3-padding-24">
         <fieldset>
             <legend>Modifier mon mot de passe</legend>
             <form action="vueModifierMotDePasse.php" method="post">
-                <label>Ancien mot de passe:
-                    <input type="password" name="ancien_mot_de_passe" value=""/>
-                </label>
-                </br>
-                <label>Nouveau mot de passe:
-                    <input type="password" name="nouveau_mot_de_passe" value=""/>
-                </label>
-                </br>
-                <label>Confirmer mot de passe:
-                    <input type="password" name="confirmer_mot_de_passe" value=""/>
-                </label>
-                </br>
+                <div class="form-group">
+                    <label>Ancien mot de passe:
+                        <input type="password" name="ancien_mot_de_passe" value=""/>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Nouveau mot de passe:
+                        <input type="password" name="nouveau_mot_de_passe" value=""/>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer mot de passe:
+                        <input type="password" name="confirmer_mot_de_passe" value=""/>
+                    </label>
+                </div>
                 <input type="submit" name="modiferMotDePasse" value="Modifier mon mot de passe"/>
             </form>
         </fieldset>
