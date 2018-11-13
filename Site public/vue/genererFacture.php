@@ -3,26 +3,48 @@ include 'header.php';
 include '../accesseur/FactureDAO.php';
 
 $factureDAO = new FactureDAO();
-$donneesFacture = $factureDAO->lireFacture(1);
-$date_debut = new DateTime($donneesFacture->date_debut);
-$date_fin = new DateTime($donneesFacture->date_fin);
-$duree = date_diff($date_debut, $date_fin)->days;
-$prix_emplacement = $donneesFacture->prix_emplacement_par_pied_carre *
-    $donneesFacture->longueur *
-    $donneesFacture->largeur *
-    $duree;
-$prix_electricite = $donneesFacture->prix_electricite_par_pied_carre *
-    $donneesFacture->longueur *
-    $donneesFacture->largeur*
-    $duree;
-$prix_reservation = $prix_emplacement + $prix_electricite;
+
+$statut = "var_nok";
+
+if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']))
+    if (isset($donneesFacture->prix_electricite_par_pied_carre) ||
+        isset($donneesFacture->prix_emplacement_par_pied_carre) ||
+        isset($donneesFacture->date_debut) ||
+        isset($donneesFacture->date_fin) ||
+        isset($donneesFacture->electricite) ||
+        isset($donneesFacture->essence) ||
+        isset($donneesFacture->vidange) ||
+        isset($donneesFacture->nom) ||
+        isset($donneesFacture->longueur) ||
+        isset($donneesFacture->largeur))
+    {
+        $date_debut = new DateTime($donneesFacture->date_debut);
+        $date_fin = new DateTime($donneesFacture->date_fin);
+        $duree = date_diff($date_debut, $date_fin)->days;
+
+        $prix_emplacement = $donneesFacture->prix_emplacement_par_pied_carre *
+            $donneesFacture->longueur *
+            $donneesFacture->largeur *
+            $duree;
+
+        $prix_reservation = $prix_emplacement;
+
+        if($donneesFacture->electricite === 1) {
+            $prix_electricite = $donneesFacture->prix_electricite_par_pied_carre *
+                $donneesFacture->longueur *
+                $donneesFacture->largeur*
+                $duree;
+            $prix_reservation += $prix_electricite;
+        }
+        $statut = "var_ok";
+    }
 ?>
 
     <h1>Votre facture</h1>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover"  border="2" style="text-align: center;">
-            <?php if(isset($donneesFacture)): ?>
+            <?php if($statut === "var_ok"): ?>
                 <thead>
                     <tr>
                         <th>Désignation</th>
@@ -63,19 +85,33 @@ $prix_reservation = $prix_emplacement + $prix_electricite;
                         <td></td>
                     </tr>
                     <tr>
-                        <td>- Avec électricité</td>
-                        <td><?php echo $donneesFacture->prix_electricite_par_pied_carre; ?>$</td>
-                        <td><?php echo $prix_electricite; ?>$</td>
+                        <?php if($donneesFacture->electricite === 1) {
+                            echo '<td>- Avec électricité</td>';
+                            echo '<td>' . $donneesFacture->prix_electricite_par_pied_carre . '$</td>';
+                            echo '<td>' . $prix_electricite . '$</td>';
+                        } else {
+                            echo '<td>- Sans électricité</td>';
+                            echo '<td>0$</td>';
+                            echo '<td>0$</td>';
+                        } ?>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>- Avec eau</td>
+                        <?php if($donneesFacture->essence === 1) {
+                            echo '<td>- Avec essence</td>';
+                        } else {
+                            echo '<td>- Sans essence</td>';
+                        } ?>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>- Avec vidange</td>
+                        <?php if($donneesFacture->essence === 1) {
+                            echo '<td>- Avec vidange</td>';
+                        } else {
+                            echo '<td>- Sans vidange</td>';
+                        } ?>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -83,7 +119,7 @@ $prix_reservation = $prix_emplacement + $prix_electricite;
                 </tbody>
             <?php else: ?>
                 <tr>
-                    <td>Aucune facture portant cet identifiant n'a été trouvée !</td>
+                    <td>Cette facture n'existe pas ou est incomplète.</td>
                 </tr>
             <?php endif; ?>
         </table>

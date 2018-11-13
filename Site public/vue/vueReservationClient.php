@@ -119,8 +119,8 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         } ?>
 
         <div class="span12">
-            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
-
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php">Retour</a>
+            <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>">Réserver</a>
         </div>
     </div>
 

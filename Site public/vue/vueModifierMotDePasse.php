@@ -38,7 +38,7 @@ if ($dejaPost == 1) {
     // gestion des erreurs
     if (!ancienMotDePasseCorrect($ancien_mot_de_passe, MD5($ancien_mot_de_passe_test))) {
         $erreurs['ancien_mot_de_passe'] = "<div class=\"alert alert-danger\">" . _("Votre mot de passe n'est pas correct") . "</div>";
-    }else{
+    } else {
         if (MD5($nouveau_mot_de_passe) === $ancien_mot_de_passe) {
             $erreurs['mot_passe_passe_precedent'] = "<div class=\"alert alert-danger\">" . _("Votre mot de passe ne peut être identique au mot de passe précédant.") . "</div>";
         }
@@ -46,7 +46,7 @@ if ($dejaPost == 1) {
     if ($nouveau_mot_de_passe !== $confirmer_mot_de_passe) {
         $erreurs['nouveau_mot_de_passe'] = "<div class=\"alert alert-danger\">" . _("Veuillez rentrer deux mot de passe identique") . "</div>";
     }
-    if (strlen($nouveau_mot_de_passe) < 4) $erreurs['motdepasse'] = "<div class=\"alert alert-danger\">"._("Votre mot de passe doit faire plus que 2 charachteres minimum.")."</div>";
+    if (strlen($nouveau_mot_de_passe) < 4) $erreurs['motdepasse'] = "<div class=\"alert alert-danger\">" . _("Votre mot de passe doit faire plus que 2 charachteres minimum.") . "</div>";
 }
 if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (isset($nouveau_mot_de_passe))) {
     $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
@@ -88,15 +88,17 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
             <legend><?php echo _("Modifier mon mot de passe")?></legend>
             <form action="vueModifierMotDePasse.php" method="post">
                 <div class="form-group">
-                    <label><?php echo _("Ancien mot de passe:")?>
-                        <input type="password" name="ancien_mot_de_passe" value="<?php if (isset($_POST['ancien_mot_de_passe'])) echo $_POST['ancien_mot_de_passe']?>"/>
+                    <label>Ancien mot de passe:
+                        <input type="password" name="ancien_mot_de_passe"
+                               value="<?php if (isset($_POST['ancien_mot_de_passe'])) echo $_POST['ancien_mot_de_passe'] ?>"/>
                     </label>
                     <?php if (isset($erreurs['ancien_mot_de_passe'])) echo $erreurs['ancien_mot_de_passe']; ?>
 
                 </div>
                 <div class="form-group">
-                    <label><?php echo _("Nouveau mot de passe:")?>
-                        <input type="password" name="nouveau_mot_de_passe" value="<?php if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe']?>"/>
+                    <label>Nouveau mot de passe:
+                        <input type="password" name="nouveau_mot_de_passe"
+                               value="<?php if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe'] ?>"/>
                     </label>
                 </div>
                 <div class="form-group">
@@ -107,7 +109,11 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
                     <?php if (isset($erreurs['motdepasse'])) echo $erreurs['motdepasse']; ?>
                     <?php if (isset($erreurs['mot_passe_passe_precedent'])) echo $erreurs['mot_passe_passe_precedent']; ?>
                 </div>
-                <input type="submit" name="modiferMotDePasse" value="<?php echo _("Modifier mon mot de passe")?>"/>
+
+                <div class="form-group span12 text-center w3-padding-16">
+                    <input class="btn btn-primary btn-medium" type="submit" name="modiferMotDePasse"
+                           value="Modifier mon mot de passe"/>
+                </div>
             </form>
         </fieldset>
     </div>
