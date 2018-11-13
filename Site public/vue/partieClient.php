@@ -45,8 +45,7 @@ function possedeBateau()
         </div>
         <br>
         <div class="span12 text-center w3-padding-16">
-            <a class="btn btn-primary btn-lg" href="vueModifierClient.php?id=<?php echo $_SESSION['id'] ?>">Modifier mes
-                informations</a>
+            <a class="btn btn-primary btn-lg" href="vueModifierClient.php">Modifier mes informations</a>
         </div>
 
         <h3>Gestion de mes bateaux :</h3>

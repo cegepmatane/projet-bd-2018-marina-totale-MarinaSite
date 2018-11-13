@@ -2,12 +2,19 @@
 include 'header.php';
 include '../accesseur/ClientDAO.php';
 
-$id;
+$id = null;
+$clientAModifier = null;
+
 $clientDAO = new ClientDAO();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $_SESSION['id_client_a_modifier'] = $id;
+$erreurs = array();
+
+$dejaPost = 0;
+if (!empty($_POST)) {
+    $dejaPost = 1;
+}
+
+if (isset($_SESSION['id_client_a_modifier'])) {
     $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
 }
 
@@ -29,51 +36,100 @@ if ((isset($_POST['prenom']))) {
     $prenom = $_POST['prenom'];
 }
 
+if ($dejaPost == 1) {
+
+    //php filters
+    $mail = filter_var($mail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_EMPTY_STRING_NULL);
+    $nom = filter_var($nom, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $prenom = filter_var($prenom, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $numero = filter_var($numero, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+
+
+    //Gestion des erreurs
+    if (!preg_match("/^[A-Za-z]{2,}/", $nom)) $erreurs['nom'] = "<div class=\"alert alert-danger\">" . _("Votre nom doit faire plus que 2 lettres minimum.") . "</div>";
+    if (!preg_match("/^[A-Za-z]{2,}/", $prenom)) $erreurs['prenom'] = "<div class=\"alert alert-danger\">" . _("Votre prenom doit faire plus que 2 lettres minimum.") . "</div>";
+    if (!preg_match("/^[0-9]{9}$/", $numero)) $erreurs['numero'] = "<div class=\"alert alert-danger\">" . _("VVotre numeros doit faire 9 digit.") . "</div>";
+
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        $erreurs['mail'] = "<div class=\"alert alert-danger\">" . _("Veuillez entrer un email valide") . "</div>";
+    }
+}
+
+
 if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
-    $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
-    $mot_de_passe = $clientAModifier->mot_de_passe;
+    if (empty($erreurs)) {
+        $clientAModifier = $clientDAO->trouverClientId($_SESSION['id_client_a_modifier']);
+        $mot_de_passe = $clientAModifier->mot_de_passe;
 
-    include '../modele/Client.php';
-    $client = new Client($nom, $prenom, $mot_de_passe,$mail, $numero,false);
+        include '../modele/Client.php';
+        $client = new Client($nom, $prenom, $mot_de_passe, $mail, $numero, false);
 
-    $clientDAO->modifierClient($client, $_SESSION['id_client_a_modifier']);
+        $clientDAO->modifierClient($client, $_SESSION['id_client_a_modifier']);
 
-    $_SESSION['id_client_a_modifier'] = null;
+        $_SESSION['id_client_a_modifier'] = null;
 
-    header('Location: partieClient.php');
-    exit();
+        header('Location: partieClient.php');
+        exit();
+    }
 }
 
 ?>
 
     <h1>Modifier mes informations :</h1>
 
-    <div class="modifierclient">
+    <div class="creerCompte w3-padding-24">
         <fieldset>
             <legend>Modifier mes informations</legend>
 
             <form action="vueModifierClient.php" method="post">
-                <label>Prénom:
-                    <input type="text" name="nom" value="<?php echo $clientAModifier->nom ?>"/>
-                </label>
-                </br>
-                <label>Nom:
-                    <input type="text" name="prenom" value="<?php echo $clientAModifier->prenom ?>"/>
-                </label>
-                </br>
-                <label>Numero:
-                    <input type="number" name="numero" value="<?php echo $clientAModifier->numero ?>"/>
-                </label>
-                </br>
-                <label>Mail:
-                    <input type="email" name="mail" value="<?php echo $clientAModifier->mail ?>"/>
-                </label>
-                </br>
-               <a href="vueModifierMotDePasse.php?id=<?php echo $_SESSION['id']?>">Modifier mon mot de passe</a>
-                </br>
 
-                <input type="submit" name="modiferClient" value="Modifier mes informations"/>
+                <div class="form-group">
+                    <label>Prénom:
+                        <input type="text" name="prenom"
+                               value="<?php if (isset($_POST['prenom'])) {
+                                   echo $_POST['prenom'];
+                               } else echo $clientAModifier->prenom ?>"/>
+                    </label>
+                    <?php if (isset($erreurs['prenom'])) echo $erreurs['prenom']; ?>
+                </div>
 
+                <div class="form-group">
+                    <label>Nom:
+                        <input type="text" name="nom"
+                               value="<?php if (isset($_POST['nom'])) {
+                                   echo $_POST['nom'];
+                               } else echo $clientAModifier->nom ?>"/>
+                    </label>
+                    <?php if (isset($erreurs['nom'])) echo $erreurs['nom']; ?>
+                </div>
+
+                <div class="form-group">
+                    <label>Numero:
+                        <input type="number" name="numero"
+                               value="<?php if (isset($_POST['numero'])) {
+                                   echo $_POST['numero'];
+                               } else echo $clientAModifier->numero ?>"/>
+                    </label>
+                    <?php if (isset($erreurs['numero'])) echo $erreurs['numero']; ?>
+                </div>
+
+                <div class="form-group">
+                    <label>Mail:
+                        <input type="text" name="mail"
+                               value="<?php if (isset($_POST['mail'])) {
+                                   echo $_POST['mail'];
+                               } else echo $clientAModifier->mail ?>"/>
+                    </label>
+                    <?php if (isset($erreurs['mail'])) echo $erreurs['mail']; ?>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-outline-secondary center" href="vueModifierMotDePasse.php"><?php echo _("Modifier mon mot de passe") ?></a>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-primary btn-medium center" type="submit" name="modiferClient" value="Modifier mes informations"/>
+                </div>
             </form>
 
         </fieldset>
