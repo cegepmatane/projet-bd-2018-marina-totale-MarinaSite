@@ -78,16 +78,16 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
 ?>
 
-    <h1>Modifier mes informations :</h1>
+    <h1><?php echo _("Modifier mes informations :")?></h1>
 
     <div class="w3-padding-24">
         <fieldset>
-            <legend>Modifier mes informations</legend>
+            <legend><?php echo _("Modifier mes informations")?></legend>
 
             <form action="vueModifierClient.php" method="post">
 
                 <div class="form-group">
-                    <label>Prénom:
+                    <label><?php echo ("Prénom:")?>
                         <input type="text" name="prenom"
                                value="<?php if (isset($_POST['prenom'])) {
                                    echo $_POST['prenom'];
@@ -97,7 +97,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                 </div>
 
                 <div class="form-group">
-                    <label>Nom:
+                    <label><?php echo _("Nom:")?>
                         <input type="text" name="nom"
                                value="<?php if (isset($_POST['nom'])) {
                                    echo $_POST['nom'];
@@ -107,7 +107,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                 </div>
 
                 <div class="form-group">
-                    <label>Numero:
+                    <label><?php echo ("Numero:")?>
                         <input type="number" name="numero"
                                value="<?php if (isset($_POST['numero'])) {
                                    echo $_POST['numero'];
@@ -117,7 +117,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                 </div>
 
                 <div class="form-group">
-                    <label>Mail:
+                    <label><?php echo _("Mail:")?>
                         <input type="text" name="mail"
                                value="<?php if (isset($_POST['mail'])) {
                                    echo $_POST['mail'];
@@ -131,7 +131,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-primary btn-medium center" type="submit" name="modiferClient" value="Modifier mes informations"/>
+                    <input class="btn btn-primary btn-medium center" type="submit" name="modiferClient" value="<?php echo _("Modifier mes informations")?>"/>
                 </div>
             </form>
 

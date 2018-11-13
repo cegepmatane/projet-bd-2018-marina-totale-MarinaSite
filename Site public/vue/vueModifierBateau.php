@@ -40,31 +40,31 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 }
 
 ?>
-    <h1>Modifier mon bateau :</h1>
+    <h1><?php echo _("Modifier mon bateau :")?></h1>
 
     <div class="modifierbateau">
         <fieldset>
-            <legend>Modifier bateau</legend>
+            <legend><?php echo _("Modifier bateau")?></legend>
 
             <form action="vueModifierBateau.php" method="post">
-                <label>Nom:
+                <label><?php echo _("Nom: ")?>
                     <input type="text" name="nom" value="<?php echo $bateauAModifier->nom ?>"/>
                 </label>
                 </br>
-                <label>Type:
+                <label><?php echo _("Type: ")?>
                     <input type="text" name="type_bateau" value="<?php echo $bateauAModifier->type_bateau ?>"/>
                 </label>
                 </br>
-                <label>Longueur:
+                <label><?php echo _("Longueur: ")?>
                     <input type="text" name="longueur" value="<?php echo $bateauAModifier->longueur ?>"/>
                 </label>
                 </br>
-                <label>Largeur:
+                <label><?php echo _("Largeur: ")?>
                     <input type="text" name="largeur" value="<?php echo $bateauAModifier->largeur ?>"/>
                 </label>
                 </br>
 
-                <input type="submit" name="modifierBateau" value="Modifier bateau"/>
+                <input type="submit" name="modifierBateau" value="<?php echo _("Modifier bateau")?>"/>
 
             </form>
 

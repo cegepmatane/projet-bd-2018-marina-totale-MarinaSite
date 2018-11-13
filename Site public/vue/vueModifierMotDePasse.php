@@ -81,33 +81,33 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 }
 
 ?>
-    <h1>Modifier mon mot de passe :</h1>
+    <h1><?php echo _("Modifier mon mot de passe :")?></h1>
 
     <div class="w3-padding-24">
         <fieldset>
-            <legend>Modifier mon mot de passe</legend>
+            <legend><?php echo _("Modifier mon mot de passe")?></legend>
             <form action="vueModifierMotDePasse.php" method="post">
                 <div class="form-group">
-                    <label>Ancien mot de passe:
+                    <label><?php echo _("Ancien mot de passe:")?>
                         <input type="password" name="ancien_mot_de_passe" value="<?php if (isset($_POST['ancien_mot_de_passe'])) echo $_POST['ancien_mot_de_passe']?>"/>
                     </label>
                     <?php if (isset($erreurs['ancien_mot_de_passe'])) echo $erreurs['ancien_mot_de_passe']; ?>
 
                 </div>
                 <div class="form-group">
-                    <label>Nouveau mot de passe:
+                    <label><?php echo _("Nouveau mot de passe:")?>
                         <input type="password" name="nouveau_mot_de_passe" value="<?php if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe']?>"/>
                     </label>
                 </div>
                 <div class="form-group">
-                    <label>Confirmer mot de passe:
+                    <label><?php echo _("Confirmer mot de passe:")?>
                         <input type="password" name="confirmer_mot_de_passe" value=""/>
                     </label>
                     <?php if (isset($erreurs['nouveau_mot_de_passe'])) echo $erreurs['nouveau_mot_de_passe']; ?>
                     <?php if (isset($erreurs['motdepasse'])) echo $erreurs['motdepasse']; ?>
                     <?php if (isset($erreurs['mot_passe_passe_precedent'])) echo $erreurs['mot_passe_passe_precedent']; ?>
                 </div>
-                <input type="submit" name="modiferMotDePasse" value="Modifier mon mot de passe"/>
+                <input type="submit" name="modiferMotDePasse" value="<?php echo _("Modifier mon mot de passe")?>"/>
             </form>
         </fieldset>
     </div>

@@ -39,25 +39,25 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
 ?>
 
 
-<h1>Modifier un emplacement</h1>
+<h1><?php echo _("Modifier un emplacement")?></h1>
 <div class="modifierEmplacement">
 
         <form action="vueModifierEmplacement.php" method="post">
-            <label>Label:
+            <label><?php echo _("Label:")?>
                 <input class="form-control" type="text" name="label" value="<?php echo $emplacementAModifier->label ?>"/>
             </label>
             </br>
-            <label>Longueur:
+            <label><?php echo _("Longueur:")?>
                 <input class="form-control" type="text" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
             </label>
             </br>
-            <label>Largeur:
+            <label><?php echo _("Largeur:")?>
                 <input class="form-control" type="text" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
             </label>
 
             </br>
 
-            <input class="btn btn-primary" type="submit" name="modifierEmplacement" value="Modifier emplacement"/>
+            <input class="btn btn-primary" type="submit" name="modifierEmplacement" value="<?php echo _("Modifier emplacement:")?>"/>
 
         </form>
 

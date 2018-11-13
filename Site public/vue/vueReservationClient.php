@@ -20,14 +20,14 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Confirmation")?></h5>
                     <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Un mail de confirmation vous a été envoyé!
+                    <?php echo _("Un mail de confirmation vous a été envoyé!")?>
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -37,22 +37,22 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
 
 
     <div class="p-lg-5 p-md-3">
-        <h1>Recapitulatif de mes réservations :</h1>
+        <h1><?php echo _("Recapitulatif de mes réservations :")?></h1>
 
         <div class="table-responsive">
             <table border="2" class="table table-striped table-hover">
                 <?php if (isset($donneesReservation[0])): ?>
                     <thead>
                     <tr>
-                        <th>Prénom</th>
-                        <th>Nom</th>
-                        <th>Date de début de réservation</th>
-                        <th>Date de fin de réservation</th>
-                        <th>Bateau</th>
-                        <th>Emplacement</th>
-                        <th>Electricité</th>
-                        <th>Essence</th>
-                        <th>Vidange</th>
+                        <th><?php echo _("Prénom")?></th>
+                        <th><?php echo _("Nom")?></th>
+                        <th><?php echo _("Date de début de réservation")?></th>
+                        <th><?php echo _("Date de fin de réservation")?></th>
+                        <th><?php echo _("Bateau")?></th>
+                        <th><?php echo _("Emplacement")?></th>
+                        <th><?php echo _("Electricité")?></th>
+                        <th><?php echo _("Essence")?></th>
+                        <th><?php echo _("Vidange")?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -114,12 +114,12 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
             }
 
         else
-            echo "Il y a eu un problème avec l'envoi du mail de confirmation.";
+            echo _("Il y a eu un problème avec l'envoi du mail de confirmation.");
 
         } ?>
 
         <div class="span12">
-            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php">Retour</a>
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
 
         </div>
     </div>

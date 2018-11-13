@@ -69,14 +69,14 @@ if ((isset($_POST['essence']))) {
 
 
 if (!isset($id_bateau)) {
-    $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">Veuillez selectionnez un bateau</div>";
+    $erreurs['select_bateau'] = "<div class=\"alert alert-danger\">"._("Veuillez selectionnez un bateau")."</div>";
 }
 
 if (isset($dateDebut) && !checkDateAAAAMMDD($dateDebut)) {
-    $erreurs['format_date_debut'] = '<div class="alert alert-danger">Veuillez rentrer une date d\'arrivé valide au format YYY-MM-DD</div>';
+    $erreurs['format_date_debut'] = '<div class="alert alert-danger">'._("Veuillez rentrer une date d\'arrivé valide au format YYY-MM-DD").'</div>';
 }
 if (isset($dateFin) && !checkDateAAAAMMDD($dateFin)) {
-    $erreurs['format_date_fin'] = '<div class="alert alert-danger">Veuillez rentrer une date de départ valide au format YYY-MM-DD</div>';
+    $erreurs['format_date_fin'] = '<div class="alert alert-danger">'._("Veuillez rentrer une date de départ valide au format YYY-MM-DD").'</div>';
 }
 
 if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)
@@ -84,11 +84,11 @@ if (isset($dateFin) && isset($dateDebut) && isset($id_bateau)
     && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateFin)) {
 
     if (!dateCompareAujourdhui($dateDebut)) {
-        $erreurs['dateCompareAujourdhui'] = "<div class=\"alert alert-danger\">La date ne peu pas etre avant la date d'aujourdhui</div>";
+        $erreurs['dateCompareAujourdhui'] = "<div class=\"alert alert-danger\">"._("La date ne peu pas etre avant la date d'aujourdhui")."</div>";
     }
 
     if (!dateCompare($dateDebut, $dateFin)) {
-        $erreurs['date_compare'] = "<div class=\"alert alert-danger\">La date d'arrivé doit être posterieur de la date de départ</div>";
+        $erreurs['date_compare'] = "<div class=\"alert alert-danger\">"._("La date d'arrivé doit être posterieur de la date de départ")."</div>";
     }
 }
 
@@ -106,10 +106,10 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
         $id_emplacement = emplacementValide($dateDebut, $dateFin, $id_bateau, $reservationAModifier->id);
 
         if ($id_emplacement == -1) {
-            $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">Votre bateau est trop grand pour les emplacements disponibles a cette date.</div>";
+            $erreurs['bateau_taille'] = "<div class=\"alert alert-danger\">"._("Votre bateau est trop grand pour les emplacements disponibles a cette date.")."</div>";
         }
         if ($id_emplacement == 0) {
-            $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">Aucun emplacement ne corespond a vos critères</div>";
+            $erreurs['emplacement_indisponible'] = "<div class=\"alert alert-danger\">"._("Aucun emplacement ne corespond a vos critères")."</div>";
         }
 
         if (empty($erreurs)) {
@@ -170,14 +170,14 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
 
 ?>
 
-    <h1>Modifier la réservation :</h1>
+    <h1><?php echo _("Modifier la réservation :")?></h1>
     <div class="modifierreservation">
         <fieldset>
 
             <form action="vueModifierReservation.php?id=<?php echo $id ?>" method="post">
 
                 <div class="form-group">
-                    <label>Date d'arrivée:
+                    <label><?php echo _("Date d'arrivée")?>
                         <input class="form-control" type="date" name="dateDebut"
                                value="<?php if (isset($_POST['dateDebut'])) {
                                    echo $_POST['dateDebut'];
@@ -192,7 +192,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                 } ?>
 
                 <div class="form-group">
-                    <label>Date de départ:
+                    <label><?php echo _("Date de départ :")?>
                         <input class="form-control" type="date" name="dateFin"
                                value="<?php if (isset($_POST['dateFin'])) {
                                    echo $_POST['dateFin'];
@@ -213,7 +213,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                 } ?>
 
                 <div class="form-group">
-                    <label>Bateau : </label>
+                    <label><?php echo _("Bateau :")?> </label>
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
                             <?php foreach ($donneesBateaux as $bateau) : ?>
@@ -222,7 +222,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                                         value="<?php echo $bateau->id ?>"><?php echo $bateau->nom . ' (' . $bateau->type_bateau . ')' ?></option>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <option value="">Pas de bateaux...</option>
+                            <option value=""><?php echo _("Pas de bateaux")?></option>
                         <?php endif; ?>
                     </select>
                 </div>
@@ -257,7 +257,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                 </div>
 
                 <div class="form-group">
-                    <label>Vidange:
+                    <label><?php echo _("Vidange :")?>
                         <input type="checkbox"
                                name="vidange" <?php
                         if ($dejaPost == 1) {
@@ -273,7 +273,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                 </div>
 
                 <div class="form-group">
-                    <label>Essence:
+                    <label><?php echo _("Essence :")?>
                         <input type="checkbox"
                                name="essence" <?php
                         if ($dejaPost == 1) {
@@ -293,7 +293,7 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                 } ?>
 
                 <input class="btn btn-primary" type="submit" name="modifierReservation"
-                       value="Modifier la réservation"/>
+                       value="<?php echo _("Modifier la reservation")?>"/>
 
             </form>
 
