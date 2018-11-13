@@ -1,6 +1,9 @@
 <?php
+  require_once('./lib/stripe/init.php');
+
   require_once('./config.php');
 
+  
   $token  = $_POST['stripeToken'];
   $email  = $_POST['stripeEmail'];
 
