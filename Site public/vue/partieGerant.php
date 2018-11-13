@@ -24,14 +24,14 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Confirmation");?></h5>
                 <button type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Un mail d'information a été envoyé à vous et au client !
+                <?php echo _("Un mail d'information voue a été envoyé ainsi qu'au client !");?>
             </div>
             <div class="modal-footer">
             </div>
@@ -42,21 +42,21 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
 <div class="partieGerant p-lg-5 p-md-3">
 
-    <h1> Gestion de la marina</h1>
+    <h1> <?php echo _("Gestion de la Marina");?></h1>
 
 
 
 
-    Bonjour, <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
+    <?php echo _("Bonjour,");?> <?php echo $clientDAO->trouverClientId($_SESSION['id'])->nom . ' ' . $clientDAO->trouverClientId($_SESSION['id'])->prenom ?>
     <br>
     <div style="text-align: center;">
-        <a class="btn btn-primary btn-lg m-1" href="vueFermerEmplacementGerant.php">Fermer un emplacement</a> &nbsp;
-        <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php">Gérer les emplacements</a>
+        <a class="btn btn-primary btn-lg m-1" href="vueFermerEmplacementGerant.php"><?php echo _("Fermer un emplacement");?></a> &nbsp;
+        <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php"><?php echo _("Gerer les emplacements");?></a>
     </div>
     <div class="wb-tabs">
         <div class="tabpanels">
             <details id="details-panel1" open="open">
-                <summary>Réservations en cours</summary>
+                <summary><?php echo _("Confirmation");?>Réservations en cours</summary>
 
 
                 <div class="table-responsive">
@@ -64,11 +64,11 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         <?php if (isset($donneesReservationEnCours[0])): ?>
                             <thead>
                             <tr>
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Date début</th>
-                                <th>Date fin</th>
-                                <th>Actions</th>
+                                <th><?php echo _("Prénom");?></th>
+                                <th><?php echo _("Nom");?></th>
+                                <th><?php echo _("Date de début");?></th>
+                                <th><?php echo _("Date de fin");?></th>
+                                <th><?php echo _("Actions");?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,39 +88,39 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                     </td>
                                     <td>
                                         <a class="btn btn-outline-secondary"
-                                           href="vueModifierReservation.php?id=<?= $reservation->id; ?>">Modifier</a>
+                                           href="vueModifierReservation.php?id=<?= $reservation->id; ?>"><?php echo _("Modifier");?></a>
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal<?=$reservation->id;?>" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Suppression");?></h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Êtes vous sur de vouloir supprimer?
+                                                        <?php echo _("Êtes vous sur de vouloir supprimer?");?>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
-                                                           class="btn btn-danger">Supprimer
+                                                           class="btn btn-danger"><?php echo _("Supprimer");?>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <a class="btn btn-outline-danger" data-toggle="modal"
-                                           data-target="#exampleModal<?=$reservation->id;?>">Supprimer</a>
+                                           data-target="#exampleModal<?=$reservation->id;?>"><?php echo _("Supprimer");?></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td>Pas de réservation en cours</td>
+                                <td><?php echo _("Pas de reservation en cours");?></td>
                             </tr>
                         <?php endif; ?>
                     </table>
@@ -137,25 +137,25 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         </script> <?php
                     }
                     else
-                        echo "Il y a eu un problème avec l'envoi du mail de confirmation.";
+                        echo _("Il y a eu un problème avec l'envoi du mail de confirmation.");
 
                 } ?>
 
             </details>
 
             <details id="details-panel2">
-                <summary>Réservations archivées</summary>
+                <summary><?php echo _("Reservations archivées");?></summary>
 
                 <div class="table-responsive">
                     <table class="table table-striped table-hover" border="2" style="text-align: center;">
                         <?php if (isset($donneesReservationArchivees[0])): ?>
                             <thead>
                             <tr>
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Date debut</th>
-                                <th>Date fin</th>
-                                <th>Action</th>
+                                <th><?php echo _("Prénom");?></th>
+                                <th><?php echo _("Nom");?></th>
+                                <th><?php echo _("Date de début");?></th>
+                                <th><?php echo _("Date de fin");?></th>
+                                <th><?php echo _("Action");?></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -180,32 +180,32 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Suppression");?></h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Êtes vous sur de vouloir supprimer?
+                                                        <?php echo _("Êtes vous sur de vouloir supprimer?");?>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
-                                                           class="btn btn-danger">Supprimer
+                                                           class="btn btn-danger"><?php echo _("Supprimer");?>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <a class="btn btn-outline-danger" data-toggle="modal"
-                                           data-target="#exampleModal<?=$reservation->id;?>">Supprimer</a>
+                                           data-target="#exampleModal<?=$reservation->id;?>"><?php echo _("Supprimer");?></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td>Pas de réservation dans la base de données</td>
+                                <td><?php echo _("Pas de reservation dans la base de données");?></td>
                             </tr>
                         <?php endif; ?>
                     </table>
@@ -213,7 +213,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 </div>
             </details>
             <br>
-            <h3>Carte des réservations de la marina:</h3>
+            <h3><?php echo _("Carte des reservations de la Marina");?></h3>
             <div class="container">
                 <form action="partieGerant.php" method="post">
                     <div class="row justify-content-start">
@@ -227,7 +227,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         </div>
                         <div class="col-sm-4">
                             <input class="btn btn-outline-primary btn-sm m-1" type="submit" name="submit"
-                                   value="Actualiser la carte">
+                                   value="<?php echo _("Actualiser la carte");?>">
                         </div>
                     </div>
                 </form>
@@ -264,12 +264,12 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         echo "var marina" . $emplacement->id . " = {lat: " . $lat . ", lng: " . $long . "};";
                         foreach ($donneesReservationSelonDate as $reservation) {
                             if ($reservation->id_emplacement == $emplacement->id) {
-                                echo "var contentString" . $emplacement->id . " = '<a href=" . 'VueDetailReservation.php?id=' . $reservation->id . "><h3>Emplacement " . $emplacement->label . "</h3></a>'+
-                                    '<p>Reservé depuis: " . $reservation->datedebut . "</p>'+
-                                    '<p>Jusqu au: " . $reservation->datefin . "</p>'+
-                                    '<p>Electricité: " . ($reservation->electricite == 1 ? "oui" : "non") . "</p>'+
-                                    '<p>Vidange: " . ($reservation->vidange == 1 ? "oui" : "non") . "</p>'+
-                                    '<p>Essence: " . ($reservation->essence == 1 ? "oui" : "non") . "</p>';
+                                echo "var contentString" . $emplacement->id . " = '<a href=" . 'VueDetailReservation.php?id=' . $reservation->id . "><h3>"._("Emplacement"). $emplacement->label . "</h3></a>'+
+                                    '<p>"._("Reservé depuis: "). $reservation->datedebut . "</p>'+
+                                    '<p>"._("Jusqu'au: "). $reservation->datefin . "</p>'+
+                                    '<p>"._("Electricité: "). ($reservation->electricite == 1 ? _("Oui") : _("Non")) . "</p>'+
+                                    '<p>"._("Vidange: "). ($reservation->vidange == 1 ?  _("Oui") : _("Non")) . "</p>'+
+                                    '<p>"._("Essence: "). ($reservation->essence == 1 ?  _("Oui") : _("Non")) . "</p>';
                                     var infowindow" . $emplacement->id . " = new google.maps.InfoWindow({
                                     content: contentString" . $emplacement->id . "
                                     });";
@@ -285,7 +285,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         }
                         if ($estReserve == false) {
                             echo "var contentString" . $emplacement->id . " = '<h3 >Emplacement " . $emplacement->label . "</h3>'+
-                                    '<p>Disponible!</p>';
+                                    '<p>"._("Disponible! ")."</p>';
                                     var infowindow" . $emplacement->id . " = new google.maps.InfoWindow({
                                     content: contentString" . $emplacement->id . "
                                     });";

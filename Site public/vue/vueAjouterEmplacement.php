@@ -51,12 +51,12 @@ if ($dejaPost == 1){
     $longitude =   filter_var($longitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
 
     if (empty($_POST['lat']) || empty($_POST['lng'])) {
-        $erreurs['coord'] = "<div class=\"alert alert-danger\">Veuillez placer une pinouche sur la carte pour donner la position de votre nouvel emplacement.</div>";
+        $erreurs['coord'] = "<div class=\"alert alert-danger\">"._("Veuillez placer une pinouche sur la carte pour donner la position de votre nouvel emplacement.")."</div>";
     }
 
-    if (!preg_match("/^[A-Za-z0-9]{2,}/", $label)) $erreurs['label'] = "<div class=\"alert alert-danger\">Votre label doit faire plus que 2 caractere minimum.</div>";
-    if (!preg_match("/^[0-9]{1,2}/", $longueur)) $erreurs['longueur'] = "<div class=\"alert alert-danger\">Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum.</div>";
-    if (!preg_match("/^[0-9]{1,2}/", $largeur)) $erreurs['largeur'] = "<div class=\"alert alert-danger\">Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum.</div>";
+    if (!preg_match("/^[A-Za-z0-9]{2,}/", $label)) $erreurs['label'] = "<div class=\"alert alert-danger\">"._("Votre label doit faire plus que 2 caractere minimum.")."</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $longueur)) $erreurs['longueur'] = "<div class=\"alert alert-danger\">"._("Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum.")."</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $largeur)) $erreurs['largeur'] = "<div class=\"alert alert-danger\">"._("Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum.")."</div>";
 }
 
 if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST['largeur'])) && (!empty($_POST['lat'])) && (!empty($_POST['lng']))) {
@@ -74,10 +74,10 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
     <div class="ajouterEmplacement p-lg-5 p-md-3">
 
         <fieldset>
-            <legend>Ajouter un nouvel emplacement</legend>
+            <legend><?php echo _("Ajouter un nouvel emplacement")?></legend>
 
             <form action="vueAjouterEmplacement.php" method="post">
-                <label>Label:
+                <label><?php echo _("Label: ")?>
                     <input class="form-control" type="text" name="label"
                            value="<?php if (isset($_POST['label'])) echo $_POST['label'] ?>"/>
                 </label>
@@ -85,7 +85,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     echo $erreurs['label'];
                 } ?>
                 </br>
-                <label>Longueur:
+                <label><?php echo _("Longueur: ")?>
                     <input class="form-control" type="text" name="longueur"
                            value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur'] ?>"/>
                 </label>
@@ -93,7 +93,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     echo $erreurs['longueur'];
                 } ?>
                 </br>
-                <label>Largeur:
+                <label><?php echo _("Largeur: ")?>
                     <input class="form-control" type="text" name="largeur"
                            value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
                 </label>
@@ -104,7 +104,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     <input type="hidden" id="lng" name="lng">
                 </br>
 
-                <input class="btn btn-primary" type="submit" name="ajouterEmplacement" value="Ajouter emplacement"/>
+                <input class="btn btn-primary" type="submit" name="ajouterEmplacement" value="<?php echo _("Ajouter un emplacement ")?>"/>
 
             </form>
 
@@ -156,7 +156,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     $long = $emplacement->longitude;
                     echo "var marina" . $emplacement->id . " = {lat: " . $lat . ", lng: " . $long . "};";
 
-                    echo "var contentString" . $emplacement->id . " = '<h3 >Emplacement " . $emplacement->label . "</h3>';
+                    echo "var contentString" . $emplacement->id . " = '<h3 >"._("Emplacement: "). $emplacement->label . "</h3>';
                                     var infowindow" . $emplacement->id . " = new google.maps.InfoWindow({
                                     content: contentString" . $emplacement->id . "
                                     });";
