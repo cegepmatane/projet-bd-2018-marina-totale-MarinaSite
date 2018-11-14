@@ -14,25 +14,29 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
         isset($donneesFacture->electricite) ||
         isset($donneesFacture->essence) ||
         isset($donneesFacture->vidange) ||
-        isset($donneesFacture->nom) ||
-        isset($donneesFacture->longueur) ||
-        isset($donneesFacture->largeur))
+        isset($donneesFacture->nom_bateau) ||
+        isset($donneesFacture->longueur_emplacement) ||
+        isset($donneesFacture->largeur_emplacement) ||
+        isset($donneesFacture->id_client) ||
+        isset($donneesFacture->nom_client) ||
+        isset($donneesFacture->prenom_client) ||
+        isset($donneesFacture->date_creation))
     {
         $date_debut = new DateTime($donneesFacture->date_debut);
         $date_fin = new DateTime($donneesFacture->date_fin);
         $duree = date_diff($date_debut, $date_fin)->days;
 
         $prix_emplacement = $donneesFacture->prix_emplacement_par_pied_carre *
-            $donneesFacture->longueur *
-            $donneesFacture->largeur *
+            $donneesFacture->longueur_emplacement *
+            $donneesFacture->largeur_emplacement *
             $duree;
 
         $prix_reservation = $prix_emplacement;
 
         if($donneesFacture->electricite === 1) {
             $prix_electricite = $donneesFacture->prix_electricite_par_pied_carre *
-                $donneesFacture->longueur *
-                $donneesFacture->largeur*
+                $donneesFacture->longueur_emplacement *
+                $donneesFacture->largeur_emplacement*
                 $duree;
             $prix_reservation += $prix_electricite;
         }
@@ -40,7 +44,39 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
     }
 ?>
 
-    <h1>Votre facture</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">Votre facture</h1>
+
+    <?php if($statut === "var_ok"): ?>
+    <div>
+        <div>
+            <p>Marina de Matane<br>
+                175 rue du Barachois<br>
+                CP122<br>
+                Matane (Québec)<br>
+                G4W 3N1</p>
+        </div>
+        <div>
+            <p><?php echo $donneesFacture->nom_client ?> <?php echo $donneesFacture->prenom_client ?><br>
+                Client n°<?php echo $donneesFacture->id_client ?></p>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover"  border="2" style="text-align: center;">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Facture n°</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><?php echo $donneesFacture->date_creation; ?></td>
+                <td>FAC<?php echo $donneesFacture->id_facture; ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <?php endif; ?>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover"  border="2" style="text-align: center;">
@@ -67,7 +103,7 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
                         <td></td>
                     </tr>
                     <tr>
-                        <td>- Bateau : <?php echo $donneesFacture->nom; ?></td>
+                        <td>- Bateau : <?php echo $donneesFacture->nom_bateau; ?></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -91,8 +127,8 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
                             echo '<td>' . $prix_electricite . '$</td>';
                         } else {
                             echo '<td>- Sans électricité</td>';
-                            echo '<td>0$</td>';
-                            echo '<td>0$</td>';
+                            echo '<td></td>';
+                            echo '<td></td>';
                         } ?>
                         <td></td>
                     </tr>
@@ -107,7 +143,7 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
                         <td></td>
                     </tr>
                     <tr>
-                        <?php if($donneesFacture->essence === 1) {
+                        <?php if($donneesFacture->vidange === 1) {
                             echo '<td>- Avec vidange</td>';
                         } else {
                             echo '<td>- Sans vidange</td>';
