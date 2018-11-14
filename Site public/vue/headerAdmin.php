@@ -41,7 +41,7 @@ textdomain($filename);
 <div class="w3-top" style="z-index: 10;">
     <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
         <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Marina Connect&trade;</a>
-        <a href="deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small"><?php echo _("Se deconnecter");?></a>
+        <a href="../fonctions/deconnexion.php" class="w3-bar-item w3-button w3-theme-l1 w3-right w3-hide-small"><?php echo _("Se deconnecter");?></a>
         <a class="w3-bar-item w3-button w3-right w3-hide-large  w3-hide-medium w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 
     </div>
@@ -52,7 +52,7 @@ textdomain($filename);
             <i class="fa fa-remove"></i>
         </a>
         <h4 class="w3-bar-item"><b><?php echo _("Menu");?></b></h4>
-        <a class="w3-bar-item w3-button w3-hover-black" href="deconnexion.php"><?php echo _("Se deconnecter");?></a>
+        <a class="w3-bar-item w3-button w3-hover-black" href="../fonctions/deconnexion.php"><?php echo _("Se deconnecter");?></a>
     </nav>
 </div>
 <div class=" w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

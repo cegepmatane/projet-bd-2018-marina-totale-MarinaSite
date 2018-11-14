@@ -9,7 +9,7 @@
             <h4><?php echo _("La marina de Matane, un espace de detente fort en couleurs!");?></h4>
         </div>
         <div class="float-right">
-            <a href="changerLangue.php" class="btn-secondary btn btn-lg"><?php echo _("English")?></a>
+            <a href="../fonctions/changerLangue.php" class="btn-secondary btn btn-lg"><?php echo _("English")?></a>
         </div>
     </div>
 </footer>
