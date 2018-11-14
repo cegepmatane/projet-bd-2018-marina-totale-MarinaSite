@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-11-13 18:58-0500\n"
-"PO-Revision-Date: 2018-11-13 18:58-0500\n"
+"POT-Creation-Date: 2018-11-13 21:07-0500\n"
+"PO-Revision-Date: 2018-11-13 21:08-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -94,19 +94,23 @@ msgstr "Retype your password: "
 msgid "Creer un compte"
 msgstr "Create an account"
 
-#: footer.php:8
+#: footer.php:9
 msgid "La marina de Matane, un espace de detente fort en couleurs!"
 msgstr "Matanes's marina, the place to be in Gaspesie!"
 
-#: header.php:43 header.php:56 headerAdmin.php:39 headerAdmin.php:50
+#: footer.php:12
+msgid "English"
+msgstr "Français"
+
+#: header.php:46 header.php:59 headerAdmin.php:44 headerAdmin.php:55
 msgid "Se deconnecter"
 msgstr "Disconnect"
 
-#: header.php:44 header.php:55
+#: header.php:47 header.php:58
 msgid "Mon compte"
 msgstr "My account"
 
-#: header.php:54 headerAdmin.php:49
+#: header.php:57 headerAdmin.php:54
 msgid "Menu"
 msgstr "Menu"
 

@@ -1,11 +1,14 @@
 <?php
 session_start();
-$lang='en_US.utf8';
+if ($_SESSION["lang"]==="fr" || empty($_SESSION["lang"])){
+    $lang= "fr_FR.utf8";
+}else{
+    $lang= "en_US.utf8";
+}
 $filename = 'messages';
 putenv("LC_ALL=$lang");
 setlocale(LC_ALL, $lang);
 bindtextdomain($filename, '../Locales');
-
 bind_textdomain_codeset($filename, "UTF-8");
 textdomain($filename);
 ?>
