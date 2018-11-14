@@ -239,9 +239,9 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                     echo $erreurs['bateau_taille'];
                 } ?>
 
-                <label><u>Services</u></label><br>
+                <label><u><?php echo _("Services")?></u></label><br>
                 <div class="form-group">
-                    <label>Electricité:
+                    <label><?php echo _("Electricité:")?>
                         <input type="checkbox"
                                name="electricite" <?php
                         if ($dejaPost == 1) {

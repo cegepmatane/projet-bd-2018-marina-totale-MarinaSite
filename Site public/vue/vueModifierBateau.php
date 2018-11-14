@@ -44,10 +44,9 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 
     <div class="modifierbateau">
         <fieldset>
-            <legend><?php echo _("Modifier bateau")?></legend>
 
             <form action="vueModifierBateau.php" method="post">
-                <label><?php echo _("Nom: ")?>
+                <label><?php echo _("Nom du bateau: ")?>
                     <input type="text" name="nom" value="<?php echo $bateauAModifier->nom ?>"/>
                 </label>
                 </br>

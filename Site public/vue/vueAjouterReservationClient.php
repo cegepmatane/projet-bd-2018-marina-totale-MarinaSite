@@ -256,7 +256,7 @@ if (isset($_POST["select_bateau"])) {
 
 
                 <div class="row justify-content-start">
-                    <label>Bateau : </label>
+                    <label><?php echo _("Bateau : ")?></label>
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
                             <option value="0" disabled selected><?php echo _("- SELECTIONNEZ BATEAU -") ?></option>
@@ -284,7 +284,7 @@ if (isset($_POST["select_bateau"])) {
                     echo $erreurs['bateau_taille'];
                 } ?>
 
-                <label><u><b>Services</b></u></label><br>
+                <label><u><b><?php echo _("Services")?></b></u></label><br>
 
                 <div class="form-group">
                     <label><?php echo _("Electricité :") ?></label>

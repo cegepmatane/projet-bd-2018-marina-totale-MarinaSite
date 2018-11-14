@@ -96,7 +96,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                     </tbody>
                 <?php else: ?>
                     <tr>
-                        <td>Pas de réservation</td>
+                        <td><?php echo _("Pas de réservation")?></td>
                     </tr>
                 <?php endif; ?>
             </table>
@@ -119,8 +119,8 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
         } ?>
 
         <div class="span12">
-            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php">Retour</a>
-            <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>">Réserver</a>
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
+            <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Réserver")?></a>
         </div>
     </div>
 

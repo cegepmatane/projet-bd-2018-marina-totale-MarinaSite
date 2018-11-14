@@ -13,7 +13,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
     <table class="table table-striped table-hover"  border="2" style="text-align: center;">
         <?php if(isset($donneesEmplacement[0])): ?>
             <thead>
-            <tr><th><?php echo _("Label")?></th><th><?php echo _("Longueur")?></th><th><?php echo _("Largeur")?></th><th><?php echo _("Longueur")?></th></tr>
+            <tr><th><?php echo _("Label")?></th><th><?php echo _("Longueur")?></th><th><?php echo _("Largeur")?></th><th><?php echo _("Actions")?></th></tr>
             </thead>
             <tbody>
             <?php foreach ($donneesEmplacement as $emplacement) :?>
@@ -53,7 +53,7 @@ $donneesEmplacement = $emplacementDAO->listerEmplacement();
                             </div>
                         </div>
                         <a class="btn btn-outline-danger" data-toggle="modal"
-                           data-target="#exampleModal<?=$emplacement->id;?>">Supprimer</a>
+                           data-target="#exampleModal<?=$emplacement->id;?>"><?php echo _("Supprimer")?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

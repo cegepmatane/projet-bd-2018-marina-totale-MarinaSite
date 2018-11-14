@@ -85,10 +85,9 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 
     <div class="w3-padding-24">
         <fieldset>
-            <legend><?php echo _("Modifier mon mot de passe")?></legend>
             <form action="vueModifierMotDePasse.php" method="post">
                 <div class="form-group">
-                    <label>Ancien mot de passe:
+                    <label><?php echo _("Ancien mot de passe:")?>
                         <input type="password" name="ancien_mot_de_passe"
                                value="<?php if (isset($_POST['ancien_mot_de_passe'])) echo $_POST['ancien_mot_de_passe'] ?>"/>
                     </label>
@@ -96,7 +95,7 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 
                 </div>
                 <div class="form-group">
-                    <label>Nouveau mot de passe:
+                    <label><?php echo _("Nouveau mot de passe:")?>
                         <input type="password" name="nouveau_mot_de_passe"
                                value="<?php if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe'] ?>"/>
                     </label>
@@ -112,7 +111,7 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 
                 <div class="form-group span12 text-center w3-padding-16">
                     <input class="btn btn-primary btn-medium" type="submit" name="modiferMotDePasse"
-                           value="Modifier mon mot de passe"/>
+                           value="<?php echo _("Modifier mon mot de passe")?>"/>
                 </div>
             </form>
         </fieldset>

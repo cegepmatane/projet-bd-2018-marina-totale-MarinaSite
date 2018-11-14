@@ -82,12 +82,11 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
     <div class="w3-padding-24">
         <fieldset>
-            <legend><?php echo _("Modifier mes informations")?></legend>
 
             <form action="vueModifierClient.php" method="post">
 
                 <div class="form-group">
-                    <label><?php echo ("Prénom:")?>
+                    <label><?php echo _("Prénom:")?>
                         <input type="text" name="prenom"
                                value="<?php if (isset($_POST['prenom'])) {
                                    echo $_POST['prenom'];
@@ -107,7 +106,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                 </div>
 
                 <div class="form-group">
-                    <label><?php echo ("Numero:")?>
+                    <label><?php echo _("Numero:")?>
                         <input type="number" name="numero"
                                value="<?php if (isset($_POST['numero'])) {
                                    echo $_POST['numero'];

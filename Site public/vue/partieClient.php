@@ -24,8 +24,8 @@ function possedeBateau()
 
         <div class="span12 text-center w3-padding-16">
             <?php if (possedeBateau()): ?>
-                <h4><a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter")?>
-                        mes reservations</a></h4>
+                <h4><a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations")?>
+                       </a></h4>
                 <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Reserver")?></a>
             <?php else: ?>
                 <span><i><?php echo _("Veuillez ajouter un bateau pour effectuer une nouvelle reservation...")?></i></span><br>
@@ -45,8 +45,7 @@ function possedeBateau()
         </div>
         <br>
         <div class="span12 text-center w3-padding-16">
-            <a class="btn btn-primary btn-lg" href="vueModifierClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Modifier mes
-                informations")?></a>
+            <a class="btn btn-primary btn-lg" href="vueModifierClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Modifier mes informations")?></a>
         </div>
 
         <h3><?php echo _("Gestion de mes bateaux :")?></h3>
@@ -57,11 +56,11 @@ function possedeBateau()
 
                     <thead>
                     <tr>
-                        <th><? echo _("Nom")?></th>
-                        <th><? echo _("Type")?></th>
-                        <th><? echo _("Longueur")?></th>
-                        <th><? echo _("Largeur")?></th>
-                        <th><? echo _("Action")?></th>
+                        <th><?php echo _("Nom du bateau")?></th>
+                        <th><?php echo _("Type")?></th>
+                        <th><?php echo _("Longueur")?></th>
+                        <th><?php echo _("Largeur")?></th>
+                        <th><?php echo _("Action")?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -82,44 +81,44 @@ function possedeBateau()
                             </td>
                             <td>
                                 <a class="btn btn-outline-secondary"
-                                   href="vueModifierBateau.php?id=<?= $bateau->id; ?>"><? echo _("Modifier")?></a>
+                                   href="vueModifierBateau.php?id=<?= $bateau->id; ?>"><?php echo _("Modifier")?></a>
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal<?=$bateau->id;?>" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel"><? echo _("Suppression")?></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel"><?php echo _("Suppression")?></h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <? echo _("Ëtes vous sur de vouloir supprimer?")?>
+                                                <?php echo _("Ëtes vous sur de vouloir supprimer?")?>
                                             </div>
                                             <div class="modal-footer">
                                                 <a href="../fonctions/supprimerBateau.php?id=<?= $bateau->id; ?>"
-                                                   class="btn btn-danger"><? echo _("Supprimer")?>
+                                                   class="btn btn-danger"><?php echo _("Supprimer")?>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <a class="btn btn-outline-danger" data-toggle="modal"
-                                   data-target="#exampleModal<?=$bateau->id;?>"><? echo _("Supprimer")?></a>
+                                   data-target="#exampleModal<?=$bateau->id;?>"><?php echo _("Supprimer")?></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
                 <?php else: ?>
                     <tr>
-                        <td><? echo _("Pas de bateau")?></td>
+                        <td><?php echo _("Pas de bateau")?></td>
                     </tr>
                 <?php endif; ?>
             </table>
             <div class="span12 text-center">
-                <a class="btn btn-primary btn-lg" href="vueAjouterBateau.php"><? echo _("Ajouter un bateau")?></a>
+                <a class="btn btn-primary btn-lg" href="vueAjouterBateau.php"><?php echo _("Ajouter un bateau")?></a>
             </div>
         </div>
     </div>

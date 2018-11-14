@@ -60,7 +60,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                 <form action="vueAjouterBateau.php" method="post">
 
                     <div class="form-group">
-                        <label><?php echo _("Nom: ")?></label>
+                        <label><?php echo _("Nom du bateau: ")?></label>
                         <input type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
                     </div>
 

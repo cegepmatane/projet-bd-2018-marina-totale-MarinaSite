@@ -56,7 +56,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
     <div class="wb-tabs">
         <div class="tabpanels">
             <details id="details-panel1" open="open">
-                <summary><?php echo _("Confirmation");?>Réservations en cours</summary>
+                <summary><?php echo _("Réservations en cours");?></summary>
 
 
                 <div class="table-responsive">
@@ -264,7 +264,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                         echo "var marina" . $emplacement->id . " = {lat: " . $lat . ", lng: " . $long . "};";
                         foreach ($donneesReservationSelonDate as $reservation) {
                             if ($reservation->id_emplacement == $emplacement->id) {
-                                echo "var contentString" . $emplacement->id . " = '<a href=" . 'VueDetailReservation.php?id=' . $reservation->id . "><h3>"._("Emplacement"). $emplacement->label . "</h3></a>'+
+                                echo "var contentString" . $emplacement->id . " = '<a href=" . 'VueDetailReservation.php?id=' . $reservation->id . "><h3>"._("Emplacement")." ". $emplacement->label . "</h3></a>'+
                                     '<p>"._("Reservé depuis: "). $reservation->datedebut . "</p>'+
                                     '<p>"._("Jusqu'au: "). $reservation->datefin . "</p>'+
                                     '<p>"._("Electricité: "). ($reservation->electricite == 1 ? _("Oui") : _("Non")) . "</p>'+
@@ -284,7 +284,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             }
                         }
                         if ($estReserve == false) {
-                            echo "var contentString" . $emplacement->id . " = '<h3 >Emplacement " . $emplacement->label . "</h3>'+
+                            echo "var contentString" . $emplacement->id . " = '<h3 >"._("Emplacement")." ". $emplacement->label . "</h3>'+
                                     '<p>"._("Disponible! ")."</p>';
                                     var infowindow" . $emplacement->id . " = new google.maps.InfoWindow({
                                     content: contentString" . $emplacement->id . "
