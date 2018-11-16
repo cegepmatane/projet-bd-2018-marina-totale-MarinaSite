@@ -115,13 +115,8 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             //var_dump($reservation);
             $reservationDAO->ajouterReservation($reservation);
 
-            include '../fonctions/envoyerMail.php';
-            $mail_envoye = envoyerMail("Reservation ajoutee", "Votre réservation a bien été ajoutée sur notre site marina connect ! Elle aura lieu du " . $reservation->datedebut . " au " . $reservation->datefin . ".");
-            ?>
+            header('Location: ../Stripe_manuel/index.php?datedebut=' . $reservation->datedebut . '&' . 'datefin=' . $reservation->datefin. '');
 
-            <?php
-
-            header('Location: vueReservationClient.php?id=' . $_SESSION['id'] . '&' . 'success=' . $mail_envoye . '');
             exit();
         }
     }

@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 //https://stackoverflow.com/questions/33775897/how-do-i-install-the-ext-curl-extension-with-php-7
 //sudo apt-get install php-curl
 //sudo service apache2 restart
@@ -14,9 +15,13 @@ require_once('./lib/stripe/init.php');
 require_once('./config.php'); ?>
 
 <form action="charge.php" method="post">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    <input type="hidden" name="datedebut" value="<?php $_GET['datedebut'] ?>">
+    <input type="hidden" name="datefin" value="<?php $_GET['datefin'] ?>">
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<?php echo $stripe['publishable_key']; ?>"
           data-description="Access for a year"
           data-amount="5000"
           data-locale="auto"></script>
 </form>
+
