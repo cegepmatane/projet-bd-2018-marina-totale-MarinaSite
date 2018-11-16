@@ -19,11 +19,4 @@ proposition d'alternative au client quand suppression reservation
 	Taille des bateaux unité
 
 
-Envoie mail avec bonne info quand
- - créer un compte          done!
- - modifie mot de passe     done!
- - supprime reservation     done!
- - fait une reservation     done!
- - modifier un reservation  done!
-
- STRIPE : Paypal
+Intégrer stripe au site
