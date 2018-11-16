@@ -298,7 +298,7 @@ if (isset($_POST["select_bateau"])) {
                     <label><?php echo _("Essence :") ?></label>
                     <input type="checkbox" name="essence" <?php if ($essence == 1) echo ' checked' ?>/>
                 </div>
-                
+
                 <input type="hidden" id="dateDebut" name="dateDebut">
                 <input type="hidden" id="dateFin" name="dateFin">
 
