@@ -24,8 +24,8 @@ function possedeBateau()
 
         <div class="span12 text-center w3-padding-16">
             <?php if (possedeBateau()): ?>
-                <h4><a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations")?>
-                       </a></h4>
+                <a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations")?>
+                       </a>
                 <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Reserver")?></a>
             <?php else: ?>
                 <span><i><?php echo _("Veuillez ajouter un bateau pour effectuer une nouvelle reservation...")?></i></span><br>
