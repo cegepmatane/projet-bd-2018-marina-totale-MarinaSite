@@ -23,7 +23,7 @@ function envoyerMail($subject, $body){
     // ajouter les infos de la réservation
 
     $mail->Subject = $subject;
-    $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> Au plaisir,<br> L'équipe Marina Connect";
+    $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> <a href='http://158.69.113.110/site/vue/connexion.php'>Connectez vous à notre site</a> <br><br> Au plaisir,<br> L'équipe Marina Connect";
 
     $adresse = $_SESSION['pseudo'];
     $mail->AddAddress($adresse);
