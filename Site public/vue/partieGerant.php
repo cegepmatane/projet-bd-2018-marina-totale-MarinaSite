@@ -266,7 +266,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             if ($reservation->id_emplacement == $emplacement->id) {
                                 echo "var contentString" . $emplacement->id . " = '<a href=" . 'VueDetailReservation.php?id=' . $reservation->id . "><h3>"._("Emplacement")." ". $emplacement->label . "</h3></a>'+
                                     '<p>"._("Reservé depuis: "). $reservation->datedebut . "</p>'+
-                                    '<p>"._("Jusqu'au: "). $reservation->datefin . "</p>'+
+                                    '<p>"._("Jusqu au: "). $reservation->datefin . "</p>'+
                                     '<p>"._("Electricité: "). ($reservation->electricite == 1 ? _("Oui") : _("Non")) . "</p>'+
                                     '<p>"._("Vidange: "). ($reservation->vidange == 1 ?  _("Oui") : _("Non")) . "</p>'+
                                     '<p>"._("Essence: "). ($reservation->essence == 1 ?  _("Oui") : _("Non")) . "</p>';
@@ -278,7 +278,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
 
                                 echo "marker" . $emplacement->id . ".addListener('click', function() {
                                     infowindow" . $emplacement->id . ".open(map, marker" . $emplacement->id . ");
-                                });";
+                                });";  
 
                                 $estReserve = true;
                             }
