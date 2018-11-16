@@ -155,4 +155,22 @@ Class ReservationDAO
         return false;
     }
 
+    public function bateauDejaDansReservation($idBateau){
+        global $basededonnees;
+
+        $CHECK_BATEAU_RESERVER = 'SELECT * FROM reservation WHERE id_bateau = :idbateau AND datefin >= current_date';
+
+        $requeteBateauDejaReserverSelondate = $basededonnees->prepare($CHECK_BATEAU_RESERVER);
+
+        $requeteBateauDejaReserverSelondate->bindValue(':idbateau', $idBateau);
+
+        $requeteBateauDejaReserverSelondate->execute();
+        $res = $requeteBateauDejaReserverSelondate->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            return true;
+        }
+        return false;
+    }
+
 }
