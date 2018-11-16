@@ -31,9 +31,11 @@ foreach ($donneesBateaux as $bateau) {
 
         <div class="span12 text-center w3-padding-16">
             <?php if (possedeBateau()): ?>
-                <a class="btn btn-primary btn-lg" href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations")?>
-                       </a>
-                <a class="btn btn-primary btn-lg" href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Reserver")?></a>
+                <a class="btn btn-primary btn-lg"
+                   href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations") ?>
+                </a>
+                <a class="btn btn-primary btn-lg"
+                   href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Reserver") ?></a>
             <?php else: ?>
                 <span><i><?php echo _("Veuillez ajouter un bateau pour effectuer une nouvelle reservation...") ?></i></span>
                 <br>
@@ -89,11 +91,42 @@ foreach ($donneesBateaux as $bateau) {
                                 <?php echo $bateau->largeur; ?>
                             </td>
                             <td>
-                                <a class="btn btn-outline-secondary"
-                                   href="vueModifierBateau.php?id=<?= $bateau->id; ?>"><?php echo _("Modifier") ?></a>
-
+                                <div class="modal fade" id="modificationModal<?= $bateau->id; ?>" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"
+                                                    id="exampleModalLabel"><?php echo _("Modifier") ?></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php echo _("Impossible de modifier le bateau:\n Votre bateau est possèe une reservation active."); ?>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    Annuler
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php if ($donneesBateauxDejaReserver[$bateau->id]) : ?>
+                                    <a class="btn btn-outline-secondary" data-toggle="modal"
+                                       data-target="#modificationModal<?= $bateau->id; ?>"><?php echo _("Modifier") ?></a>
+                                <?php else : ?>
+                                    <a class="btn btn-outline-secondary"
+                                       href="vueModifierBateau.php?id=<?= $bateau->id; ?>"><?php echo _("Modifier") ?></a>
+                                <?php endif; ?>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal<?= $bateau->id; ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="suppressionModal<?= $bateau->id; ?>" tabindex="-1"
+                                     role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
