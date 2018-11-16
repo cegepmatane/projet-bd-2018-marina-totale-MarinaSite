@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (is_null($_SESSION["lang"])){
+    $_SESSION["lang"] = "fr";
+}
 if ($_SESSION["lang"]==="fr"){
     $lang= "fr_FR.utf8";
 }else{
