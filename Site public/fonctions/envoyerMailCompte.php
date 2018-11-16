@@ -20,8 +20,6 @@ function envoyerMail($subject, $body){
     $clientDAO = new ClientDAO();
     $nom = $clientDAO->trouverClientId($_SESSION['id'])->nom;
 
-    // ajouter les infos de la réservation
-
     $mail->Subject = $subject;
     $mail->Body = "<html><body>Bonjour ".$nom.",<br><br> ".$body."<br><br> <a href='http://158.69.113.110/site/vue/connexion.php'>Connectez vous à notre site</a> <br><br> Au plaisir,<br> L'équipe Marina Connect";
 
