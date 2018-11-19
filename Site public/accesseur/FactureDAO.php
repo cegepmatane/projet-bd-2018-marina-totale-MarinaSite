@@ -1,6 +1,33 @@
 <?php
 include_once "baseDeDonnee.php";
 
+/*
+ * Trigger permettant de générer une facture à chaque création d'une réservation :
+ *
+ * CREATE OR REPLACE FUNCTION public.generer_facture()
+ *  RETURNS trigger
+ * AS $$
+ * DECLARE
+ * 	id_facture text;
+ * BEGIN
+ *   INSERT INTO facture(date_creation) VALUES(now());
+ *   INSERT INTO "factureReservation"("idReservation", "idFacture") VALUES(NEW.id, id_facture);
+ *   RETURN NULL;
+ * END
+ * $$
+ * LANGUAGE plpgsql;
+ *
+ * ALTER FUNCTION public.generer_facture() OWNER TO webmestre;
+ *
+ * GRANT EXECUTE ON FUNCTION public.generer_facture() TO PUBLIC;
+ * GRANT EXECUTE ON FUNCTION public.generer_facture() TO webmestre WITH GRANT OPTION;
+ *
+ * CREATE TRIGGER generation_facture
+ *   AFTER INSERT
+ *   ON reservation
+ * FOR EACH ROW EXECUTE PROCEDURE generer_facture();
+ */
+
 class FactureDAO
 {
     public function lireFacture(int $numero)
