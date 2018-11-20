@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include "../fonctions/verifUser.php";
+
 if ($_SESSION["lang"]==="fr" || empty($_SESSION["lang"])){
     $lang= "fr_FR.utf8";
 }else{
