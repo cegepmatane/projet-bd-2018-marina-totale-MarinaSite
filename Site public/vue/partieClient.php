@@ -143,14 +143,14 @@ foreach ($donneesBateaux as $bateau) {
                                                 if ($donneesBateauxDejaReserver[$bateau->id]) {
                                                     echo _("Impossible de supprimer le bateau:\n Votre bateau est possede une reservation active.");
                                                 } else {
-                                                    echo _("Ëtes vous sur de vouloir supprimer?");
+                                                    echo _("Êtes vous sur de vouloir supprimer?");
                                                 } ?>
                                             </div>
                                             <div class="modal-footer">
                                                 <?php if ($donneesBateauxDejaReserver[$bateau->id]) : ?>
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal"
                                                             aria-label="Close">
-                                                        Annuler
+                                                        <?php echo _("Annuler")?>
                                                     </button>
                                                 <?php else : ?>
                                                     <a href="../fonctions/supprimerBateau.php?id=<?= $bateau->id; ?>"
@@ -162,7 +162,7 @@ foreach ($donneesBateaux as $bateau) {
                                     </div>
                                 </div>
                                 <a class="btn btn-outline-danger" data-toggle="modal"
-                                   data-target="#exampleModal<?= $bateau->id; ?>"><?php echo _("Supprimer") ?></a>
+                                   data-target="#suppressionModal<?= $bateau->id; ?>"><?php echo _("Supprimer") ?></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

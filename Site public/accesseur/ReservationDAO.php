@@ -173,4 +173,22 @@ Class ReservationDAO
         return false;
     }
 
+    public function emplacementDejaDansReservation($idemplacement){
+        global $basededonnees;
+
+        $CHECK_EMPLACEMENT_RESERVER = 'SELECT * FROM reservation WHERE id_emplacement = :idemplacement AND datefin >= current_date';
+
+        $requeteBateauDejaReserverSelondate = $basededonnees->prepare($CHECK_EMPLACEMENT_RESERVER);
+
+        $requeteBateauDejaReserverSelondate->bindValue(':idemplacement', $idemplacement);
+
+        $requeteBateauDejaReserverSelondate->execute();
+        $res = $requeteBateauDejaReserverSelondate->fetch(PDO::FETCH_OBJ);
+
+        if($res !== false) {
+            return true;
+        }
+        return false;
+    }
+
 }
