@@ -23,6 +23,11 @@ foreach ($donneesBateaux as $bateau) {
     $donneesBateauxDejaReserver[$bateau->id] = $reservationDAO->bateauDejaDansReservation($bateau->id);
 }
 
+if (isset($_SERVER['REQUEST_URI'])){
+    echo $_SERVER['REQUEST_URI'];
+    $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
+}
+
 ?>
 
 

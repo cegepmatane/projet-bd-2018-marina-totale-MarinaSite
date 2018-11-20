@@ -45,8 +45,13 @@ function connexion($PSEUDO, $MDP)
                 header('Location: partieGerant.php');
                 exit();
             } else {
-                header('Location: partieClient.php');
-                exit();
+                if (isset($_SESSION['redirection'])){
+                    header('Location: '.$_SESSION['redirection'].'');
+                    exit();
+                }else {
+                    header('Location: partieClient.php');
+                    exit();
+                }
             }
         }
     }

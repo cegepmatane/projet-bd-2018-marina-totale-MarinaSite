@@ -9,6 +9,9 @@ if (!$client->bool_gerant) {
 }*/
 
 if (empty($_SESSION['pseudo'])){
+    if (isset($_SERVER['REQUEST_URI'])){
+        $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
+    }
     header('Location: connexion.php');
     exit();
 }
