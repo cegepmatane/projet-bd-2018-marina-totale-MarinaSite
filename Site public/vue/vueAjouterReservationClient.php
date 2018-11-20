@@ -113,7 +113,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             $reservation = new Reservation($dateDebut, $dateFin, $_SESSION['id'], $id_bateau, $electricite, $essence, $vidange, $id_emplacement);
             $reservationDAO = new ReservationDAO();
             //var_dump($reservation);
-            $reservationDAO->ajouterReservation($reservation);
+            $idFuturReservation = $reservationDAO->ajouterReservation($reservation);
 
             header('Location: ../Stripe_manuel/index.php?datedebut=' . $reservation->datedebut . '&' . 'datefin=' . $reservation->datefin. '');
 

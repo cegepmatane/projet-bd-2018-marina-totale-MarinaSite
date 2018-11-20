@@ -74,7 +74,7 @@ Class ReservationDAO
     public function ajouterReservation(Reservation $reservation)
     {
         $AJOUTER_RESERVATION = "INSERT INTO reservation(datedebut, datefin, id_client, id_bateau, id_emplacement, electricite, essence, vidange) 
-                                VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_emplacement,:electricite, :essence, :vidange)";
+                                VALUES (:datedebut, :datefin, :id_client ,:id_bateau, :id_emplacement,:electricite, :essence, :vidange) RETURNING id";
 
         global $basededonnees;
 
@@ -90,6 +90,8 @@ Class ReservationDAO
         $requeteAjouterReservation->bindValue(':vidange', $reservation->getVidange());
 
         $requeteAjouterReservation->execute();
+        return $basededonnees->lastInsertId('reservation_id_seq');
+
     }
 
     public function modifierReservation(Reservation $reservation, $idreservation)
