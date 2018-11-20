@@ -53,6 +53,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                         <th><?php echo _("Electricité")?></th>
                         <th><?php echo _("Essence")?></th>
                         <th><?php echo _("Vidange")?></th>
+                        <th><?php echo _("Détails")?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -90,6 +91,11 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                                 <?php if ($reservation->vidange) {
                                     echo 'X';
                                 } else echo 'O'; ?>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-lg"
+                                   href="vueReservationDetailClient.php?idreservation=<?php echo $reservation->id ?>"><?php echo _("Détails") ?>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
