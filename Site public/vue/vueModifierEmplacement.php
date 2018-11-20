@@ -47,12 +47,12 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
                 <input class="form-control" type="text" name="label" value="<?php echo $emplacementAModifier->label ?>"/>
             </label>
             </br>
-            <label><?php echo _("Longueur:")?>
-                <input class="form-control" type="text" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
+            <label><?php echo _("Longueur: (en pieds)")?>
+                <input class="form-control" type="number" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
             </label>
             </br>
-            <label><?php echo _("Largeur:")?>
-                <input class="form-control" type="text" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
+            <label><?php echo _("Largeur: (en pieds)")?>
+                <input class="form-control" type="number" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
             </label>
 
             </br>
