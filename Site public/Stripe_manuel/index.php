@@ -16,6 +16,8 @@ require_once('./config.php');
 
 $_SESSION['datedebut'] = $_GET['datedebut'];
 $_SESSION['datefin'] = $_GET['datefin'];
+$_SESSION['idreservation'] = $_GET['idreservation'];
+
 ?>
 
 <form action="charge.php" method="post">
