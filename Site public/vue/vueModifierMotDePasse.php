@@ -75,46 +75,67 @@ if ((isset($ancien_mot_de_passe_test)) && (isset($confirmer_mot_de_passe)) && (i
 
 function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 {
-    echo 'Mot de passe hache :' . $motDePasseActuel . '<br>';
-    echo 'Mot de passe test hache :' . $mdpTest . '<br>';
     return $mdpTest === $motDePasseActuel;
 }
 
 ?>
-    <h1><?php echo _("Modifier mon mot de passe :")?></h1>
+    <h1><?php echo _("Modifier mon mot de passe :") ?></h1>
 
-    <div class="w3-padding-24">
-        <fieldset>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
             <form action="vueModifierMotDePasse.php" method="post">
-                <div class="form-group">
-                    <label><?php echo _("Ancien mot de passe:")?>
-                        <input type="password" name="ancien_mot_de_passe"
-                               value="<?php if (isset($_POST['ancien_mot_de_passe'])) echo $_POST['ancien_mot_de_passe'] ?>"/>
-                    </label>
-                    <?php if (isset($erreurs['ancien_mot_de_passe'])) echo $erreurs['ancien_mot_de_passe']; ?>
 
+                <label><?php echo _("Ancien mot de passe") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Ancien mot de passe" aria-label="Ancien mot de passe"
+                           aria-describedby="basic-addon1" type="password" name="ancien_mot_de_passe"
+                           value="<?php if (isset($_POST['ancien_mot_de_passe'])) {
+                               echo $_POST['ancien_mot_de_passe'];
+                           } ?>"/>
                 </div>
-                <div class="form-group">
-                    <label><?php echo _("Nouveau mot de passe:")?>
+                <?php if (isset($erreurs['ancien_mot_de_passe'])) echo $erreurs['ancien_mot_de_passe']; ?>
+
+                <label><?php echo _("Nouveau mot de passe") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Nouveau mot de passe" aria-label="Nouveau mot de passe"
+                           aria-describedby="basic-addon1" type="password" name="nouveau_mot_de_passe"
+                           value="<?php if (isset($_POST['nouveau_mot_de_passe'])) {
+                               echo $_POST['nouveau_mot_de_passe'];
+                           } ?>"/>
+                </div>
+
+                <label><?php echo _("Confirmer mot de passe") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="confirmer mot de passe" aria-label="confirmer_mot_de_passe"
+                           aria-describedby="basic-addon1" type="password" name="confirmer_mot_de_passe"
+                           value=""/>
+                </div>
+                <?php if (isset($erreurs['nouveau_mot_de_passe'])) echo $erreurs['nouveau_mot_de_passe']; ?>
+                <?php if (isset($erreurs['motdepasse'])) echo $erreurs['motdepasse']; ?>
+                <?php if (isset($erreurs['mot_passe_passe_precedent'])) echo $erreurs['mot_passe_passe_precedent']; ?>
+
+
+                <!--<div class="form-group">
+                    <label><?php /*echo _("Nouveau mot de passe:") */ ?>
                         <input type="password" name="nouveau_mot_de_passe"
-                               value="<?php if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe'] ?>"/>
+                               value="<?php /*if (isset($_POST['nouveau_mot_de_passe'])) echo $_POST['nouveau_mot_de_passe'] */ ?>"/>
                     </label>
-                </div>
-                <div class="form-group">
-                    <label><?php echo _("Confirmer mot de passe:")?>
+                </div>-->
+                <!--<div class="form-group">
+                    <label><?php /*echo _("Confirmer mot de passe:") */ ?>
                         <input type="password" name="confirmer_mot_de_passe" value=""/>
                     </label>
-                    <?php if (isset($erreurs['nouveau_mot_de_passe'])) echo $erreurs['nouveau_mot_de_passe']; ?>
-                    <?php if (isset($erreurs['motdepasse'])) echo $erreurs['motdepasse']; ?>
-                    <?php if (isset($erreurs['mot_passe_passe_precedent'])) echo $erreurs['mot_passe_passe_precedent']; ?>
-                </div>
+                    <?php /*if (isset($erreurs['nouveau_mot_de_passe'])) echo $erreurs['nouveau_mot_de_passe']; */ ?>
+                    <?php /*if (isset($erreurs['motdepasse'])) echo $erreurs['motdepasse']; */ ?>
+                    <?php /*if (isset($erreurs['mot_passe_passe_precedent'])) echo $erreurs['mot_passe_passe_precedent']; */ ?>
+                </div>-->
 
                 <div class="form-group span12 text-center w3-padding-16">
                     <input class="btn btn-primary btn-medium" type="submit" name="modiferMotDePasse"
-                           value="<?php echo _("Modifier mon mot de passe")?>"/>
+                           value="<?php echo _("Modifier mon mot de passe") ?>"/>
                 </div>
             </form>
-        </fieldset>
+        </div>
     </div>
 
 <?php include 'footer.php';
