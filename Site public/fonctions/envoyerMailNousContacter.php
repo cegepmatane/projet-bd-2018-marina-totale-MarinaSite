@@ -17,7 +17,7 @@ function envoyerMailNousContacter($nom, $email, $body){
     $mail->Password = "sportextreme";
     $mail->SetFrom("marinaconnect@gmail.com");
 
-    $mail->Subject = "Commentaire laissé par un utilisateur";
+    $mail->Subject = "Commentaire d'un utilisateur";
     $mail->Body = $nom. " (" . $email . ") a laissé le message suivant : " . $body;
 
     $mail->AddAddress("florent.fli@gmail.com");
@@ -34,3 +34,5 @@ function envoyerMailNousContacter($nom, $email, $body){
     return $mail_envoye;
 
 }
+
+?>

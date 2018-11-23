@@ -4,8 +4,7 @@ include "header.php";
 include "../fonctions/envoyerMailNousContacter.php";
 ?>
 
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
 <div class="container">
     <h2 class="text-center">Formulaire de contact</h2>
     <div class="row justify-content-center">
@@ -72,9 +71,12 @@ include "../fonctions/envoyerMailNousContacter.php";
 
         $mail_envoye = envoyerMailNousContacter($_POST['nom'], $_POST['email'], $_POST['message']);
 
-        header('Location: index.php?success=' .  $mail_envoye.'');
+        ?> <script> location.replace("http://158.69.113.110/site/vue/index.php"); </script> <?php //header('Location: index.php?success=' .  $mail_envoye.'');
     }
 
     include 'footer.php';
 
 ?>
+
+
+<!--<meta http-equiv="Location" content="http://158.69.113.110/site/vue/index.php">-->
