@@ -78,63 +78,63 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
 ?>
 
-    <h1><?php echo _("Modifier mes informations :")?></h1>
+    <h1><?php echo _("Modifier mes informations :") ?></h1>
 
-    <div class="w3-padding-24">
-        <fieldset>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
 
             <form action="vueModifierClient.php" method="post">
 
+                <label><?php echo _("Prénom") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Prenom" aria-label="Prenom" aria-describedby="basic-addon1" type="text" name="prenom"
+                           value="<?php if (isset($_POST['prenom'])) {
+                               echo $_POST['prenom'];
+                           } else echo $clientAModifier->prenom ?>"/>
+                </div>
+                <?php if (isset($erreurs['prenom'])) echo $erreurs['prenom']; ?>
+
+
+                <label><?php echo _("Nom") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Nom" aria-label="Nom" aria-describedby="basic-addon1" type="text" name="nom"
+                           value="<?php if (isset($_POST['nom'])) {
+                               echo $_POST['nom'];
+                           } else echo $clientAModifier->nom ?>"/>
+                </div>
+                <?php if (isset($erreurs['nom'])) echo $erreurs['nom']; ?>
+
+
+                <label><?php echo _("Numero") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Numero" aria-label="Numero" aria-describedby="basic-addon1" type="text" name="numero"
+                           value="<?php if (isset($_POST['numero'])){
+                               echo $_POST['numero'];
+                           } else echo $clientAModifier->numero ?>"/>
+                </div>
+                <?php if (isset($erreurs['numero'])) echo $erreurs['numero']; ?>
+
+                <label><?php echo _("Mail") ?></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" placeholder="Mail" aria-label="Mail" aria-describedby="basic-addon1" type="email" name="text"
+                           value="<?php if (isset($_POST['mail'])) {
+                               echo $_POST['mail'];
+                           } else echo $clientAModifier->mail ?>"/>
+                </div>
+                <?php if (isset($erreurs['mail'])) echo $erreurs['mail']; ?>
+
+
                 <div class="form-group">
-                    <label><?php echo _("Prénom:")?>
-                        <input type="text" name="prenom"
-                               value="<?php if (isset($_POST['prenom'])) {
-                                   echo $_POST['prenom'];
-                               } else echo $clientAModifier->prenom ?>"/>
-                    </label>
-                    <?php if (isset($erreurs['prenom'])) echo $erreurs['prenom']; ?>
+                    <a class="btn btn-outline-secondary center"
+                       href="vueModifierMotDePasse.php"><?php echo _("Modifier mon mot de passe") ?></a>
                 </div>
 
                 <div class="form-group">
-                    <label><?php echo _("Nom:")?>
-                        <input type="text" name="nom"
-                               value="<?php if (isset($_POST['nom'])) {
-                                   echo $_POST['nom'];
-                               } else echo $clientAModifier->nom ?>"/>
-                    </label>
-                    <?php if (isset($erreurs['nom'])) echo $erreurs['nom']; ?>
-                </div>
-
-                <div class="form-group">
-                    <label><?php echo _("Numero:")?>
-                        <input type="number" name="numero"
-                               value="<?php if (isset($_POST['numero'])) {
-                                   echo $_POST['numero'];
-                               } else echo $clientAModifier->numero ?>"/>
-                    </label>
-                    <?php if (isset($erreurs['numero'])) echo $erreurs['numero']; ?>
-                </div>
-
-                <div class="form-group">
-                    <label><?php echo _("Mail:")?>
-                        <input type="text" name="mail"
-                               value="<?php if (isset($_POST['mail'])) {
-                                   echo $_POST['mail'];
-                               } else echo $clientAModifier->mail ?>"/>
-                    </label>
-                    <?php if (isset($erreurs['mail'])) echo $erreurs['mail']; ?>
-                </div>
-
-                <div class="form-group">
-                    <a class="btn btn-outline-secondary center" href="vueModifierMotDePasse.php"><?php echo _("Modifier mon mot de passe") ?></a>
-                </div>
-
-                <div class="form-group">
-                    <input class="btn btn-primary btn-medium center" type="submit" name="modiferClient" value="<?php echo _("Modifier mes informations")?>"/>
+                    <input class="btn btn-primary btn-medium center" type="submit" name="modiferClient"
+                           value="<?php echo _("Modifier mes informations") ?>"/>
                 </div>
             </form>
-
-        </fieldset>
+        </div>
     </div>
 
 <?php include 'footer.php';
