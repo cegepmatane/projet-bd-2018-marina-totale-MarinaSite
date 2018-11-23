@@ -93,7 +93,7 @@ $donneesReservation = $reservationDAO->listerReservationId($_SESSION['id']);
                                 } else echo 'O'; ?>
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-lg"
+                                <a class="btn btn-outline-info "
                                    href="vueReservationDetailClient.php?idreservation=<?php echo $reservation->id ?>"><?php echo _("Détails") ?>
                                 </a>
                             </td>
