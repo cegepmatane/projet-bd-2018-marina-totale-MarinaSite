@@ -1,6 +1,10 @@
 <?php
 include "header.php";
 
+if (isset($_SESSION['pseudo'])){
+    echo $_SESSION['pseudo'];
+}
+
 include "../fonctions/envoyerMailNousContacter.php";
 ?>
 
