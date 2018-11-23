@@ -24,7 +24,6 @@ foreach ($donneesBateaux as $bateau) {
 }
 
 if (isset($_SERVER['REQUEST_URI'])){
-    echo $_SERVER['REQUEST_URI'];
     $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
 }
 
