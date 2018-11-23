@@ -1,15 +1,25 @@
 <?php
-include "headerConnexion.php";
-include "../fonctions/envoyerMailNousContacter.php";
-include "../accesseur/ClientDAO.php";
-$clientDAO = new ClientDAO();
-$infoClient = null;
-if (isset($_SESSION['pseudo'])) {
-    $infoClient = $clientDAO->trouverClientMail($_SESSION['pseudo']);
-}
+    include "headerConnexion.php";
+    include "../fonctions/envoyerMailNousContacter.php";
+    include "../accesseur/ClientDAO.php";
+
+
+    $clientDAO = new ClientDAO();
+    $infoClient = null;
+
+    if (isset($_SESSION['pseudo'])) {
+        $infoClient = $clientDAO->trouverClientMail($_SESSION['pseudo']);
+    }
+
+
+    if (isset($_POST['nom'], $_POST['email'], $_POST['message'], $_POST['envoyer'])) {
+
+        $mail_envoye = envoyerMailNousContacter($_POST['nom'], $_POST['email'], $_POST['message']);
+
+         header('Location: index.php?success=' .  $mail_envoye.'');
+    }
 
 ?>
-
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -78,18 +88,4 @@ if (isset($_SESSION['pseudo'])) {
     </div>
 
 
-<?php
-
-if (isset($_POST['nom'], $_POST['email'], $_POST['message'], $_POST['envoyer'])) {
-
-    $mail_envoye = envoyerMailNousContacter($_POST['nom'], $_POST['email'], $_POST['message']);
-
-        ?> <script> location.replace("http://158.69.113.110/site/vue/index.php"); </script> <?php //header('Location: index.php?success=' .  $mail_envoye.'');
-    }
-
-include 'footer.php';
-
-?>
-
-
-<!--<meta http-equiv="Location" content="http://158.69.113.110/site/vue/index.php">-->
+<?php include 'footer.php'; ?>
