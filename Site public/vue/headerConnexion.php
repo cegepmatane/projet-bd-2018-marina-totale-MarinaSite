@@ -10,8 +10,6 @@ if ($_SESSION["lang"]==="fr"){
 
 }
 
-include "../fonctions/verifUser.php";
-
 $filename = 'messages';
 putenv("LC_ALL=$lang");
 setlocale(LC_ALL, $lang);

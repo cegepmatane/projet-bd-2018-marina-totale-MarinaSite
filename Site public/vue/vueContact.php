@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include "headerConnexion.php";
 include "../fonctions/envoyerMailNousContacter.php";
 include "../accesseur/ClientDAO.php";
 $clientDAO = new ClientDAO();
