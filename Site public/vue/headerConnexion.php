@@ -9,6 +9,7 @@ if ($_SESSION["lang"]==="fr"){
     $lang= "en_US.utf8";
 
 }
+
 $filename = 'messages';
 putenv("LC_ALL=$lang");
 setlocale(LC_ALL, $lang);
