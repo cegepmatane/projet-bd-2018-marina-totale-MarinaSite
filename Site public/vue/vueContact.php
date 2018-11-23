@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Florent
- * Date: 23/11/2018
- * Time: 13:31
- */
 include "header.php";
+
+include "../fonctions/envoyerMailNousContacter.php";
 ?>
 
 
@@ -18,12 +14,12 @@ include "header.php";
 
             <!--Form with header-->
 
-            <form action="mail.php" method="post">
+            <form action="vueContact.php" method="post">
                 <div class="card border-primary rounded-0">
                     <div class="card-header p-0">
                         <div class="bg-info text-white text-center py-2">
                             <h3><i class="fa fa-envelope"></i> Nous écrire</h3>
-                            <p class="m-0">Faite nous part de votre demande ou de votre avis sur notre Marina</p>
+                            <p class="m-0">Faites nous part de votre demande ou de votre avis sur notre Marina</p>
                         </div>
                     </div>
                     <div class="card-body p-3">
@@ -34,7 +30,7 @@ include "header.php";
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
                                 </div>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nom" required>
+                                <input type="text" class="form-control" id="nombre" name="nom" placeholder="Nom" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,7 +38,7 @@ include "header.php";
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
                                 </div>
-                                <input type="email" class="form-control" id="nombre" name="email" placeholder="exemple@gmail.com" required>
+                                <input type="email" class="form-control" id="mail" name="email" placeholder="exemple@gmail.com" required>
                             </div>
                         </div>
 
@@ -51,12 +47,12 @@ include "header.php";
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
                                 </div>
-                                <textarea class="form-control" placeholder="Votre message ici..." required></textarea>
+                                <textarea name="message" class="form-control" placeholder="Votre message ici..." required></textarea>
                             </div>
                         </div>
 
                         <div class="text-center">
-                            <input type="submit" value="Envoyer" class="btn btn-info btn-block rounded-0 py-2">
+                            <input type="submit" name="envoyer" value="Envoyer" class="btn btn-info btn-block rounded-0 py-2">
                         </div>
                     </div>
 
@@ -69,4 +65,16 @@ include "header.php";
     </div>
 </div>
 
-<?php include 'footer.php';
+
+<?php
+
+    if (isset($_POST['nom'], $_POST['email'], $_POST['message'], $_POST['envoyer'])){
+
+        $mail_envoye = envoyerMailNousContacter($_POST['nom'], $_POST['email'], $_POST['message']);
+
+        header('Location: index.php?success=' .  $mail_envoye.'');
+    }
+
+    include 'footer.php';
+
+?>

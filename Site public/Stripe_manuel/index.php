@@ -9,7 +9,7 @@ session_start();
 //mbstring
 //phpenmod moduleName       enables a module to php7 (restart apache after that sudo service apache2 restart)
 
-error_reporting(E_ALL & ~E_NOTICE);
+//error_reporting(E_ALL & ~E_NOTICE);
 
 require_once('./lib/stripe/init.php');
 require_once('./config.php');
