@@ -5,7 +5,7 @@ session_start();
 include '../fonctions/envoyerMail.php';
 
 
-require_once('./lib/stripe/init.php');
+require_once('../lib/stripe/init.php');
 
 require_once('./config.php');
 

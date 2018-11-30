@@ -11,7 +11,7 @@ session_start();
 
 //error_reporting(E_ALL & ~E_NOTICE);
 
-require_once('./lib/stripe/init.php');
+require_once('../lib/stripe/init.php');
 require_once('./config.php');
 
 $_SESSION['datedebut'] = $_GET['datedebut'];
