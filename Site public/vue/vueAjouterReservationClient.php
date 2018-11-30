@@ -251,7 +251,7 @@ if (isset($_POST["select_bateau"])) {
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
 
 
-                <div class="row justify-content-start">
+                <div class="row justify-content-start ml-auto">
                     <label><?php echo _("Bateau : ")?></label>
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
