@@ -11,4 +11,5 @@ if ($_SESSION["lang"]==='fr'){
 }else{
     $_SESSION['lang'] = "fr";
 }
-header('Location: ../vue/connexion.php');
+header("Location: ".$_SESSION['pageActuelle']);
+exit;
