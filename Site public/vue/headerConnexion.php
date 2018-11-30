@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION["pageActuelle"] = $_SERVER['REQUEST_URI'];
+
 if (is_null($_SESSION["lang"])){
     $_SESSION["lang"] = "fr";
 }

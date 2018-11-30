@@ -8,10 +8,11 @@
     <div class="w3-container w3-theme-l2 w3-padding-25">
         <div class="float-left">
             <h4><?php echo _("La marina de Matane, un espace de detente fort en couleurs!");?></h4>
+        </div><div class="float-right" style="margin-left: 8px;">
+            <a href="vueContact.php" class="btn btn-outline-light btn-lg" style="border: none;">Nous contacter</a>
         </div>
-        <a href="vueContact.php">Nous contacter</a>
         <div class="float-right">
-            <a href="../fonctions/changerLangue.php" class="btn-secondary btn btn-lg"><?php echo _("English")?></a>
+            <a href="../fonctions/changerLangue.php" class="btn-outline-light btn btn-lg" style="border: none;"><?php echo _("English")?></a>
         </div>
     </div>
 </footer>

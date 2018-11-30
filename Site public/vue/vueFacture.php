@@ -43,19 +43,19 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
         $statut = "var_ok";
     }
 ?>
-
+<div id="corps" class="m-5">
     <h1 xmlns="http://www.w3.org/1999/html">Votre facture</h1>
 
     <?php if($statut === "var_ok"): ?>
     <div>
-        <div>
+        <div class="text-right">
             <p>Marina de Matane<br>
                 175 rue du Barachois<br>
                 CP122<br>
                 Matane (Québec)<br>
                 G4W 3N1</p>
         </div>
-        <div>
+        <div class="font-weight-bold">
             <p><?php echo $donneesFacture->nom_client ?> <?php echo $donneesFacture->prenom_client ?><br>
                 Client n°<?php echo $donneesFacture->id_client ?></p>
         </div>
@@ -162,5 +162,6 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
 
         <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php">Retour</a>
     </div>
+</div>
 
 <?php include "footer.php"; ?>

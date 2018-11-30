@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["pageActuelle"] = $_SERVER['REQUEST_URI'];
 
 include "../fonctions/verifUser.php";
 
