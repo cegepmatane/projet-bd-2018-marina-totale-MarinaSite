@@ -91,66 +91,25 @@ if (isset($_GET['id']) && $donneesFacture = $factureDAO->lireFacture($_GET['id']
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Emplacement de port</td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $prix_reservation; ?>$</td>
-                    </tr>
-                    <tr>
-                        <td>- Emplacement : <?php echo $donneesFacture->id_emplacement; ?></td>
+                        <td>
+                            <p>Emplacement de port</p>
+                            <ul>
+                                <li>Emplacement : <?php echo $donneesFacture->id_emplacement; ?></li>
+                                <li>Bateau : <?php echo $donneesFacture->nom_bateau; ?></li>
+                                <li>Date de début : <?php echo $date_debut->format("d/m/Y"); ?></li>
+                                <li>Date de fin : <?php echo $date_fin->format("d/m/Y"); ?></li>
+                                <li>Date de fin : <?php echo $date_fin->format("d/m/Y"); ?></li>
+                                <li><?php if($donneesFacture->electricite === 1) echo 'Avec électricité';
+                                    else echo 'Sans électricité';?></li>
+                                <li><?php if($donneesFacture->essence === 1) echo 'Avec essence';
+                                    else echo 'Sans essence';?></li>
+                                <li><?php if($donneesFacture->vidange === 1) echo 'Avec vidange';
+                                    else echo 'Sans vidange';?></li>
+                            </ul>
+                        </td>
                         <td><?php echo $donneesFacture->prix_emplacement_par_pied_carre; ?>$</td>
                         <td><?php echo $prix_emplacement; ?>$</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>- Bateau : <?php echo $donneesFacture->nom_bateau; ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>- Date de début : <?php echo $date_debut->format("d/m/Y"); ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>- Date de fin : <?php echo $date_fin->format("d/m/Y"); ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <?php if($donneesFacture->electricite === 1) {
-                            echo '<td>- Avec électricité</td>';
-                            echo '<td>' . $donneesFacture->prix_electricite_par_pied_carre . '$</td>';
-                            echo '<td>' . $prix_electricite . '$</td>';
-                        } else {
-                            echo '<td>- Sans électricité</td>';
-                            echo '<td></td>';
-                            echo '<td></td>';
-                        } ?>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <?php if($donneesFacture->essence === 1) {
-                            echo '<td>- Avec essence</td>';
-                        } else {
-                            echo '<td>- Sans essence</td>';
-                        } ?>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <?php if($donneesFacture->vidange === 1) {
-                            echo '<td>- Avec vidange</td>';
-                        } else {
-                            echo '<td>- Sans vidange</td>';
-                        } ?>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $prix_reservation; ?>$</td>
                     </tr>
                 </tbody>
             <?php else: ?>
