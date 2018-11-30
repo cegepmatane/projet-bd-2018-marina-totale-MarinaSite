@@ -45,10 +45,10 @@ function connexion($PSEUDO, $MDP)
                 header('Location: partieGerant.php');
                 exit();
             } else {
-                if (isset($_SESSION['redirection'])){
-                    header('Location: '.$_SESSION['redirection'].'');
+                if (isset($_SESSION['redirection'])) {
+                    header('Location: ' . $_SESSION['redirection'] . '');
                     exit();
-                }else {
+                } else {
                     header('Location: partieClient.php');
                     exit();
                 }
@@ -68,9 +68,8 @@ if (($PSEUDO != null) && ($MDP != null)) {
 }
 
 ?>
-
-<div class="formulaireClient w3-padding-24">
-    <fieldset>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 pb-5">
         <legend><?php echo _("Connexion à MarinaConnect"); ?></legend>
 
         <form class="form-horizontal" action="connexion.php" method="post">
@@ -92,9 +91,9 @@ if (($PSEUDO != null) && ($MDP != null)) {
                 <input class="btn btn-default" type="submit" name="send" value="<?php echo _("Connexion"); ?>">
             </div>
         </form>
-    </fieldset>
 
-    <a href="creerCompte.php"><?php echo _("Creer un compte..."); ?></a>
+        <a href="creerCompte.php"><?php echo _("Creer un compte..."); ?></a>
+    </div>
 </div>
 
 <?php include 'footer.php'; ?>

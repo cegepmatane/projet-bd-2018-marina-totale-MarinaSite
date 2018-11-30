@@ -116,6 +116,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             $idFuturReservation = $reservationDAO->ajouterReservation($reservation);
 
             header('Location: ../Stripe_manuel/index.php?datedebut=' . $reservation->datedebut . '&' . 'datefin=' . $reservation->datefin. '&' . 'idreservation=' . $idFuturReservation. '');
+            //header('Location: ../vue/vueFacture.php?id='.$idFuturReservation.'');
 
             exit();
         }
