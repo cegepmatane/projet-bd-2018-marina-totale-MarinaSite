@@ -60,6 +60,7 @@ if ($_SESSION['idreservation'] && $donneesFacture = $factureDAO->lireFacture($_S
             $prix_reservation += $prix_electricite;
         }
         $statut = "var_ok";
+        $_SESSION['montant'] = round($prix_reservation);
     }
 ?>
 
@@ -181,10 +182,11 @@ if ($_SESSION['idreservation'] && $donneesFacture = $factureDAO->lireFacture($_S
 
         <form action="charge.php" method="post">
 
+
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<?php echo $stripe['publishable_key']; ?>"
                     data-description="Access for a year"
-                    data-amount="5000"
+                    data-amount="<?php echo $prix_reservation * 100; ?>"
                     data-locale="auto">
 
             </script>

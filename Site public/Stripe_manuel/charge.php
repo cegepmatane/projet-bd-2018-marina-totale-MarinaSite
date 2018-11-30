@@ -20,8 +20,9 @@ $customer = \Stripe\Customer::create(array(
 
 $charge = \Stripe\Charge::create(array(
     'customer' => $customer->id,
-    'amount'   => 5000,
+    'amount'   => $_SESSION['montant'],
     'currency' => 'usd'
+
 ));
 
 include '../vue/header.php';
@@ -40,8 +41,13 @@ $_SESSION['idreservation'] = null;
 header( 'refresh:5;url=../vue/vueReservationClient.php?id=' . $_SESSION['id'] . '&' . 'success=' . $mail_envoye );
 ?>
 
-<h1 class="text-justify">Le payement de $50.0 a été effectué avec succès !</h1><br>
+<h1 class="text-justify">Le payement de <?php echo $_SESSION['montant'] ?>$ a été effectué avec succès !</h1><br>
 
 <h3 class="text-justify">Vous allez être redirigés dans 5 secondes vers votre page client</h3>
 
-<?php include '../vue/footer.php'; ?>
+<?php
+
+$_SESSION['montant'] = null;
+
+
+include '../vue/footer.php'; ?>
