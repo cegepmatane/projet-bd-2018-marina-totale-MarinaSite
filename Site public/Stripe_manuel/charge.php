@@ -24,9 +24,7 @@ $charge = \Stripe\Charge::create(array(
     'currency' => 'usd'
 ));
 
-echo '<h1>Le payement de $50.0 a été effectué avec succès !</h1><br>';
-echo '<h3>Vous allez être redirigés dans 5 secondes vers votre page client</h3>';
-
+include '../vue/header.php';
 
 $lien_vers_reservation = "<a href='http://158.69.113.110/site/vue/vueReservationDetailClient.php?idreservation=" . $_SESSION['idreservation'] . "'>Détails de votre réservation</a>";
 
@@ -41,3 +39,9 @@ $_SESSION['idreservation'] = null;
 
 header( 'refresh:5;url=../vue/vueReservationClient.php?id=' . $_SESSION['id'] . '&' . 'success=' . $mail_envoye );
 ?>
+
+<h1 class="text-justify">Le payement de $50.0 a été effectué avec succès !</h1><br>
+
+<h3 class="text-justify">Vous allez être redirigés dans 5 secondes vers votre page client</h3>
+
+<?php include '../vue/footer.php'; ?>
