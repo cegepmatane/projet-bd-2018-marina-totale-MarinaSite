@@ -139,6 +139,9 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
                     </div>
                 </div>
             </form>
+
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
+
         </div>
     </div>
 

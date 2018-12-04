@@ -53,24 +53,23 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 ?>
     <h1><?php echo _("Ajouter un bateau :")?></h1>
 
-    <div class="formulaireClient">
-
-            <div class="w3-padding-24 p-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
 
                 <form action="vueAjouterBateau.php" method="post">
 
-                    <div class="form-group">
-                        <label><?php echo _("Nom du bateau: ")?></label>
-                        <input type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
+                    <label><?php echo _("Nom du bateau")?></label>
+                    <div  class="input-group mb-3">
+                        <input class="form-control" type="text" name="nom" value="<?php if (isset($_POST['nom'])) echo $_POST['nom']; ?>"/>
                     </div>
 
                     <?php if (isset($erreurs['nom'])) {
                         echo $erreurs['nom'];
                     } ?>
 
-                    <div class="form-group">
-                        <label><?php echo _("Type: ")?></label>
-                        <input type="text" name="type_bateau"
+                    <label><?php echo _("Type")?></label>
+                    <div  class="input-group mb-3">
+                        <input class="form-control" type="text" name="type_bateau"
                                value="<?php if (isset($_POST['type_bateau'])) echo $_POST['type_bateau']; ?>"/>
                     </div>
 
@@ -78,9 +77,9 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                         echo $erreurs['type'];
                     } ?>
 
-                    <div class="form-group">
-                        <label><?php echo _("Longueur (en pieds): ")?></label>
-                        <input type="text" name="longueur"
+                    <label><?php echo _("Longueur (en pieds)")?></label>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="longueur"
                                value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur']; ?>"/>
                     </div>
 
@@ -88,9 +87,9 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                         echo $erreurs['longueur'];
                     } ?>
 
-                    <div class="form-group">
-                        <label><?php echo _("Largeur (en pieds): ")?></label>
-                        <input type="text" name="largeur"
+                    <label><?php echo _("Largeur (en pieds)")?></label>
+                    <div  class="input-group mb-3">
+                        <input class="form-control" type="text" name="largeur"
                                value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur']; ?>"/>
                     </div>
 
@@ -99,9 +98,11 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                     } ?>
 
 
-                    <input type="submit" name="ajouterBateau" value="<?php echo _("Ajouter bateau: ")?>" class="btn btn-default"/>
+                    <input type="submit" name="ajouterBateau" value="<?php echo _("Ajouter bateau")?>" class="btn btn-primary btn-lg"/>
 
                 </form>
+                <br>
+                <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
             </div>
     </div>
 

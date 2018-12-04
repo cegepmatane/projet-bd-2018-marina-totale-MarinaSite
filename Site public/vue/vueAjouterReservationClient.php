@@ -115,7 +115,7 @@ if ((isset($dateDebut)) && (isset($dateFin)) && (isset($id_bateau))
             //var_dump($reservation);
             $idFuturReservation = $reservationDAO->ajouterReservation($reservation);
 
-            header('Location: ../Stripe_manuel/index.php?datedebut=' . $reservation->datedebut . '&' . 'datefin=' . $reservation->datefin. '&' . 'idreservation=' . $idFuturReservation. '');
+            header('Location: ../Stripe_manuel/index.php?datedebut=' . $reservation->datedebut . '&' . 'datefin=' . $reservation->datefin . '&' . 'idreservation=' . $idFuturReservation . '');
             //header('Location: ../vue/vueFacture.php?id='.$idFuturReservation.'');
 
             exit();
@@ -245,14 +245,13 @@ if (isset($_POST["select_bateau"])) {
 ?>
     <h2><?php echo _("Effectuer une nouvelle demande de réservation :") ?></h2>
 
-    <div class="ajouterreservation">
-        <fieldset>
-
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
             <form action="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>" method="post">
 
 
                 <div class="row justify-content-start ml-3">
-                    <label><?php echo _("Bateau : ")?></label>
+                    <label><?php echo _("Bateau : ") ?></label>
                     <select name="select_bateau" required>
                         <?php if (isset($donneesBateaux[0])): ?>
                             <option value="0" disabled selected><?php echo _("- SELECTIONNEZ BATEAU -") ?></option>
@@ -280,7 +279,7 @@ if (isset($_POST["select_bateau"])) {
                     echo $erreurs['bateau_taille'];
                 } ?>
 
-                <label><u><b><?php echo _("Services")?></b></u></label><br>
+                <label><u><b><?php echo _("Services") ?></b></u></label><br>
 
                 <div class="form-group">
                     <label><?php echo _("Electricité :") ?></label>
@@ -311,13 +310,16 @@ if (isset($_POST["select_bateau"])) {
                 } ?>
 
             </form>
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
 
-        </fieldset>
+        </div>
 
         <?php if (isset($_POST["select_bateau"])) {
             ?>
             <div id='calendar' class="p-5" style="z-index: 1;"></div><?php
         } ?>
+
+
 
     </div>
 

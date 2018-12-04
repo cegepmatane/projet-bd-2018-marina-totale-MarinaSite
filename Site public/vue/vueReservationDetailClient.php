@@ -85,7 +85,7 @@ $donneesReservation = $reservationDAO->listerReservationSelonIdReservation($idre
     </div>
 
 
-    <a class="btn btn-primary btn-lg"
+    <a class="btn btn-secondary btn-lg"
        href="vueReservationClient.php?id=<?php echo $reservation->id_client ?>"><?php echo _("Retour") ?>
     </a>
 

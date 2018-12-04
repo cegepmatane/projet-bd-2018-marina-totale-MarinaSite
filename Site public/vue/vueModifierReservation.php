@@ -171,8 +171,8 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
 ?>
 
     <h1><?php echo _("Modifier la réservation :")?></h1>
-    <div class="modifierreservation">
-        <fieldset>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
 
             <form action="vueModifierReservation.php?id=<?php echo $id ?>" method="post">
 
@@ -296,8 +296,10 @@ function emplacementValide($dateDebut, $dateFin, $idbateau, $idreservation)
                        value="<?php echo _("Modifier la reservation")?>"/>
 
             </form>
+            <br>
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieGerant.php"><?php echo _("Retour")?></a>
 
-        </fieldset>
+        </div>
     </div>
 
 <?php include 'footer.php';

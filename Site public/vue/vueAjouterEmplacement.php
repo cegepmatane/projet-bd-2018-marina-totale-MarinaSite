@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'headerAdmin.php';
 include '../accesseur/ClientDAO.php';
 include '../accesseur/ReservationDAO.php';
 include '../accesseur/EmplacementDAO.php';
@@ -42,27 +42,27 @@ if ((isset($_POST['lng']))) {
     $longitude = $_POST['lng'];
 }
 
-if ($dejaPost == 1){
+if ($dejaPost == 1) {
     //PHP FILTERS
-    $label =   filter_var($label, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
-    $longueur =   filter_var($longueur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
-    $largeur =   filter_var($largeur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
-    $latitude =   filter_var($latitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
-    $longitude =   filter_var($longitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $label = filter_var($label, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $longueur = filter_var($longueur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $largeur = filter_var($largeur, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $latitude = filter_var($latitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
+    $longitude = filter_var($longitude, FILTER_SANITIZE_STRING, FILTER_FLAG_EMPTY_STRING_NULL);
 
     if (empty($_POST['lat']) || empty($_POST['lng'])) {
-        $erreurs['coord'] = "<div class=\"alert alert-danger\">"._("Veuillez placer une pinouche sur la carte pour donner la position de votre nouvel emplacement.")."</div>";
+        $erreurs['coord'] = "<div class=\"alert alert-danger\">" . _("Veuillez placer une pinouche sur la carte pour donner la position de votre nouvel emplacement.") . "</div>";
     }
 
-    if (!preg_match("/^[A-Za-z0-9]{2,}/", $label)) $erreurs['label'] = "<div class=\"alert alert-danger\">"._("Votre label doit faire plus que 2 caractere minimum.")."</div>";
-    if (!preg_match("/^[0-9]{1,2}/", $longueur)) $erreurs['longueur'] = "<div class=\"alert alert-danger\">"._("Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum.")."</div>";
-    if (!preg_match("/^[0-9]{1,2}/", $largeur)) $erreurs['largeur'] = "<div class=\"alert alert-danger\">"._("Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum.")."</div>";
+    if (!preg_match("/^[A-Za-z0-9]{2,}/", $label)) $erreurs['label'] = "<div class=\"alert alert-danger\">" . _("Votre label doit faire plus que 2 caractere minimum.") . "</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $longueur)) $erreurs['longueur'] = "<div class=\"alert alert-danger\">" . _("Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum.") . "</div>";
+    if (!preg_match("/^[0-9]{1,2}/", $largeur)) $erreurs['largeur'] = "<div class=\"alert alert-danger\">" . _("Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum.") . "</div>";
 }
 
 if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST['largeur'])) && (!empty($_POST['lat'])) && (!empty($_POST['lng']))) {
 
     include '../modele/Emplacement.php';
-    $emplacement = new Emplacement($longueur, $largeur,$latitude,$longitude,$label);
+    $emplacement = new Emplacement($longueur, $largeur, $latitude, $longitude, $label);
     $emplacementDAO = new EmplacementDAO();
 
     $emplacementDAO->ajouterEmplacement($emplacement);
@@ -71,13 +71,12 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
 }
 
 ?>
-    <div class="ajouterEmplacement p-lg-5 p-md-3">
-
-        <fieldset>
-            <legend><?php echo _("Ajouter un nouvel emplacement")?></legend>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <legend><?php echo _("Ajouter un nouvel emplacement") ?></legend>
 
             <form action="vueAjouterEmplacement.php" method="post">
-                <label><?php echo _("Label: ")?>
+                <label><?php echo _("Label: ") ?>
                     <input class="form-control" type="text" name="label"
                            value="<?php if (isset($_POST['label'])) echo $_POST['label'] ?>"/>
                 </label>
@@ -85,7 +84,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     echo $erreurs['label'];
                 } ?>
                 </br>
-                <label><?php echo _("Longueur: ")?>
+                <label><?php echo _("Longueur: ") ?>
                     <input class="form-control" type="text" name="longueur"
                            value="<?php if (isset($_POST['longueur'])) echo $_POST['longueur'] ?>"/>
                 </label>
@@ -93,22 +92,26 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
                     echo $erreurs['longueur'];
                 } ?>
                 </br>
-                <label><?php echo _("Largeur: ")?>
+                <label><?php echo _("Largeur: ") ?>
                     <input class="form-control" type="text" name="largeur"
                            value="<?php if (isset($_POST['largeur'])) echo $_POST['largeur'] ?>"/>
                 </label>
                 <?php if (isset($erreurs['largeur'])) {
                     echo $erreurs['largeur'];
                 } ?>
-                    <input type="hidden" id="lat" name="lat">
-                    <input type="hidden" id="lng" name="lng">
+                <input type="hidden" id="lat" name="lat">
+                <input type="hidden" id="lng" name="lng">
                 </br>
 
-                <input class="btn btn-primary" type="submit" name="ajouterEmplacement" value="<?php echo _("Ajouter un emplacement ")?>"/>
+                <input class="btn btn-primary" type="submit" name="ajouterEmplacement"
+                       value="<?php echo _("Ajouter un emplacement ") ?>"/>
 
             </form>
+            <br>
+            <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieGerant.php"><?php echo _("Retour")?></a>
 
-        </fieldset>
+        </div>
+    </div>
         <?php if (isset($erreurs['coord'])) {
             echo $erreurs['coord'];
         } ?>
@@ -151,12 +154,12 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
 
 
 
-            <?php foreach ($donneesEmplacements as $emplacement) {
+                    <?php foreach ($donneesEmplacements as $emplacement) {
                     $lat = $emplacement->latitude;
                     $long = $emplacement->longitude;
                     echo "var marina" . $emplacement->id . " = {lat: " . $lat . ", lng: " . $long . "};";
 
-                    echo "var contentString" . $emplacement->id . " = '<h3 >"._("Emplacement: "). $emplacement->label . "</h3>';
+                    echo "var contentString" . $emplacement->id . " = '<h3 >" . _("Emplacement: ") . $emplacement->label . "</h3>';
                                     var infowindow" . $emplacement->id . " = new google.maps.InfoWindow({
                                     content: contentString" . $emplacement->id . "
                                     });";
@@ -171,12 +174,8 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQCiTsS2QS1Brpn12EeiUmiNZZoxj60o&callback=initMap">
             </script>
+
         </div>
-    </div>
-
-
-
-    </fieldset>
 
 
 <?php include 'footer.php'; ?>
