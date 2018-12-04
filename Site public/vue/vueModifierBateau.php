@@ -40,6 +40,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 }
 
 ?>
+<div class="p-lg-5 p-md-3">
     <h1><?php echo _("Modifier mon bateau :") ?></h1>
 
     <div class="row justify-content-center">
@@ -71,5 +72,5 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 
         </div>
     </div>
-
+</div>
 <?php include 'footer.php';

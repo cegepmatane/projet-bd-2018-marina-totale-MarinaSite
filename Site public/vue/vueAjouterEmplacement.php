@@ -71,7 +71,7 @@ if ((!empty($_POST['label'])) && (!empty($_POST['longueur'])) && (!empty($_POST[
 }
 
 ?>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center p-lg-5 p-md-3">
         <div class="col-12 col-md-8 col-lg-6 pb-5">
             <legend><?php echo _("Ajouter un nouvel emplacement") ?></legend>
 

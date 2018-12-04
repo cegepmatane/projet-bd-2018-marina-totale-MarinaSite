@@ -37,30 +37,33 @@ if ((isset($label)) && (isset($longueur)) && (isset($largeur))) {
 }
 
 ?>
+    <div class="p-lg-5 p-md-3 row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <h1><?php echo _("Modifier un emplacement") ?></h1>
 
+            <form action="vueModifierEmplacement.php" method="post">
+                <label><?php echo _("Label:") ?>
+                    <input class="form-control" type="text" name="label"
+                           value="<?php echo $emplacementAModifier->label ?>"/>
+                </label>
+                </br>
+                <label><?php echo _("Longueur: (en pieds)") ?>
+                    <input class="form-control" type="number" name="longueur"
+                           value="<?php echo $emplacementAModifier->longueur ?>"/>
+                </label>
+                </br>
+                <label><?php echo _("Largeur: (en pieds)") ?>
+                    <input class="form-control" type="number" name="largeur"
+                           value="<?php echo $emplacementAModifier->largeur ?>"/>
+                </label>
 
-<h1><?php echo _("Modifier un emplacement")?></h1>
-<div class="modifierEmplacement">
+                </br>
 
-        <form action="vueModifierEmplacement.php" method="post">
-            <label><?php echo _("Label:")?>
-                <input class="form-control" type="text" name="label" value="<?php echo $emplacementAModifier->label ?>"/>
-            </label>
-            </br>
-            <label><?php echo _("Longueur: (en pieds)")?>
-                <input class="form-control" type="number" name="longueur" value="<?php echo $emplacementAModifier->longueur ?>"/>
-            </label>
-            </br>
-            <label><?php echo _("Largeur: (en pieds)")?>
-                <input class="form-control" type="number" name="largeur" value="<?php echo $emplacementAModifier->largeur ?>"/>
-            </label>
+                <input class="btn btn-primary" type="submit" name="modifierEmplacement"
+                       value="<?php echo _("Modifier emplacement:") ?>"/>
 
-            </br>
-
-            <input class="btn btn-primary" type="submit" name="modifierEmplacement" value="<?php echo _("Modifier emplacement:")?>"/>
-
-        </form>
-
-</div>
+            </form>
+        </div>
+    </div>
 
 <?php include 'footer.php';

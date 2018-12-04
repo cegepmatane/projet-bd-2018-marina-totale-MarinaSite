@@ -78,6 +78,7 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
 ?>
 
+<div class="p-lg-5 p-md-3">
     <h1><?php echo _("Modifier mes informations :") ?></h1>
 
     <div class="row justify-content-center">
@@ -144,5 +145,6 @@ if ((isset($nom)) && (isset($prenom)) && (isset($numero)) && (isset($mail))) {
 
         </div>
     </div>
+</div>
 
 <?php include 'footer.php';

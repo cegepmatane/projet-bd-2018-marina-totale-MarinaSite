@@ -243,6 +243,7 @@ if (isset($_POST["select_bateau"])) {
     <?php
 }
 ?>
+<div class="p-lg-5 p-md-3">
     <h2><?php echo _("Effectuer une nouvelle demande de réservation :") ?></h2>
 
     <div class="row justify-content-center">
@@ -322,5 +323,5 @@ if (isset($_POST["select_bateau"])) {
 
 
     </div>
-
+</div>
 <?php include 'footer.php'; ?>

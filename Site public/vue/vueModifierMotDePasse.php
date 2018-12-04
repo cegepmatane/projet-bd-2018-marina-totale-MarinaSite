@@ -79,6 +79,7 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
 }
 
 ?>
+<div class="p-lg-5 p-md-3">
     <h1><?php echo _("Modifier mon mot de passe :") ?></h1>
 
     <div class="row justify-content-center">
@@ -137,5 +138,6 @@ function ancienMotDePasseCorrect($motDePasseActuel, $mdpTest)
             </form>
         </div>
     </div>
+</div>
 
 <?php include 'footer.php';

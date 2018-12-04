@@ -72,10 +72,10 @@ function emplacementValide($dateDebut, $dateFin)
 
 
 ?>
-    <h1>Fermer un emplacement :</h1>
-    <div class="ajouterreservation">
-        <fieldset>
-
+    <div class="ajouterreservation row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <h1>Fermer un emplacement :</h1>
+            <
             <form action="vueFermerEmplacementGerant.php" method="post">
                 <label>Date de début:
                     <input class="form-control" type="date" name="dateDebut"
@@ -111,54 +111,52 @@ function emplacementValide($dateDebut, $dateFin)
 
             </form>
 
-        </fieldset>
-
-        <div id="map" style="height: 400px;  /* The height is 400 pixels */
+            <div id="map" style="height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */">
-            <script>
-                // Initialize and add the map
-                function initMap() {
-                    var marina = {lat: 48.852543, lng: -67.529140};
-                    var map = new google.maps.Map(
-                        document.getElementById('map'), {
-                            zoom: 18,
-                            center: marina,
-                            mapTypeControl: false,
-                            streetViewControl: false,
-                            mapTypeId: 'satellite',
+                <script>
+                    // Initialize and add the map
+                    function initMap() {
+                        var marina = {lat: 48.852543, lng: -67.529140};
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {
+                                zoom: 18,
+                                center: marina,
+                                mapTypeControl: false,
+                                streetViewControl: false,
+                                mapTypeId: 'satellite',
+                            });
+                        var pinColorVert = "009900";
+                        var pinImageVert = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorVert,
+                            new google.maps.Size(21, 34),
+                            new google.maps.Point(0, 0),
+                            new google.maps.Point(10, 34));
+                        var marker = new google.maps.Marker({
+                            position: null,
+                            map: map,
+                            title: 'Position choisie'
                         });
-                    var pinColorVert = "009900";
-                    var pinImageVert = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorVert,
-                        new google.maps.Size(21, 34),
-                        new google.maps.Point(0, 0),
-                        new google.maps.Point(10, 34));
-                    var marker = new google.maps.Marker({
-                        position: null,
-                        map: map,
-                        title: 'Position choisie'
-                    });
 
-                    google.maps.event.addListener(map, 'click', function (event) {
-                        marker.setPosition(event.latLng);
-                        var lat = event.latLng.lat();
-                        lat = lat.toFixed(4);
-                        var lng = event.latLng.lng();
-                        lng = lng.toFixed(4);
-                        console.log("Latitude: " + lat + "  Longitude: " + lng);
-                        document.getElementById('lat').value = lat;
-                        document.getElementById('lng').value = lng;
-                    });
+                        google.maps.event.addListener(map, 'click', function (event) {
+                            marker.setPosition(event.latLng);
+                            var lat = event.latLng.lat();
+                            lat = lat.toFixed(4);
+                            var lng = event.latLng.lng();
+                            lng = lng.toFixed(4);
+                            console.log("Latitude: " + lat + "  Longitude: " + lng);
+                            document.getElementById('lat').value = lat;
+                            document.getElementById('lng').value = lng;
+                        });
 
 
-                }
+                    }
 
 
-            </script>
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQCiTsS2QS1Brpn12EeiUmiNZZoxj60o&callback=initMap">
-            </script>
+                </script>
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQCiTsS2QS1Brpn12EeiUmiNZZoxj60o&callback=initMap">
+                </script>
+            </div>
         </div>
-    </div>
     </div>
 
 <?php include 'footer.php';

@@ -51,6 +51,7 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
 }
 
 ?>
+<div class="p-lg-5 p-md-3">
     <h1><?php echo _("Ajouter un bateau :")?></h1>
 
     <div class="row justify-content-center">
@@ -105,5 +106,6 @@ if ((isset($nom)) && (isset($type_bateau)) && (isset($longueur)) && (isset($larg
                 <a class="btn btn-outline-secondary btn-lg" style="text-align: center;" href="partieClient.php"><?php echo _("Retour")?></a>
             </div>
     </div>
+</div>
 
 <?php include 'footer.php';
