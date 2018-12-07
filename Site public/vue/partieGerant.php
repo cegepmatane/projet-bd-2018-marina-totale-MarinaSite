@@ -31,7 +31,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo _("Un mail d'information voue a été envoyé ainsi qu'au client !");?>
+                <?php echo _("Un mail d'information vous a été envoyé ainsi qu'au client !");?>
             </div>
             <div class="modal-footer">
             </div>
