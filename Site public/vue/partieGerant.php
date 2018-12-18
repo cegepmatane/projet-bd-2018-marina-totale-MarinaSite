@@ -31,7 +31,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo _("Un mail d'information voue a été envoyé ainsi qu'au client !");?>
+                <?php echo _("Un mail d'information vous a été envoyé ainsi qu'au client !");?>
             </div>
             <div class="modal-footer">
             </div>
@@ -51,7 +51,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
     <br>
     <div style="text-align: center;">
         <a class="btn btn-primary btn-lg m-1" href="vueFermerEmplacementGerant.php"><?php echo _("Fermer un emplacement");?></a> &nbsp;
-        <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php"><?php echo _("Gerer les emplacements");?></a>
+        <a class="btn btn-primary btn-lg m-1" href="vueEmplacement.php"><?php echo _("Gérer les emplacements");?></a>
     </div>
     <div class="wb-tabs">
         <div class="tabpanels">
@@ -102,7 +102,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <?php echo _("Êtes vous sur de vouloir supprimer?");?>
+                                                        <?php echo _("Êtes-vous sur de vouloir supprimer?");?>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
@@ -120,7 +120,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td><?php echo _("Pas de reservation en cours");?></td>
+                                <td><?php echo _("Pas de réservation en cours");?></td>
                             </tr>
                         <?php endif; ?>
                     </table>
@@ -144,7 +144,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
             </details>
 
             <details id="details-panel2">
-                <summary><?php echo _("Reservations archivées");?></summary>
+                <summary><?php echo _("Réservations archivées");?></summary>
 
                 <div class="table-responsive">
                     <table class="table table-striped table-hover" border="2" style="text-align: center;">
@@ -187,7 +187,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <?php echo _("Êtes vous sur de vouloir supprimer?");?>
+                                                        <?php echo _("Êtes-vous sur de vouloir supprimer?");?>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="../fonctions/supprimerReservation.php?id=<?= $reservation->id; ?>"
@@ -205,7 +205,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                             </tbody>
                         <?php else: ?>
                             <tr>
-                                <td><?php echo _("Pas de reservation dans la base de données");?></td>
+                                <td><?php echo _("Pas de réservation dans la base de données");?></td>
                             </tr>
                         <?php endif; ?>
                     </table>
@@ -213,7 +213,7 @@ $donneesEmplacements = $emplacementDAO->listerEmplacement();
                 </div>
             </details>
             <br>
-            <h3><?php echo _("Carte des reservations de la Marina");?></h3>
+            <h3><?php echo _("Carte des réservations de la Marina");?></h3>
             <div class="container">
                 <form action="partieGerant.php" method="post">
                     <div class="row justify-content-start">

@@ -39,9 +39,9 @@ if (isset($_SERVER['REQUEST_URI'])){
                    href="vueReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Consulter mes réservations") ?>
                 </a>
                 <a class="btn btn-primary btn-lg"
-                   href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Reserver") ?></a>
+                   href="vueAjouterReservationClient.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Réserver") ?></a>
             <?php else: ?>
-                <span><i><?php echo _("Veuillez ajouter un bateau pour effectuer une nouvelle reservation...") ?></i></span>
+                <span><i><?php echo _("Veuillez ajouter un bateau pour effectuer une nouvelle réservation...") ?></i></span>
                 <br>
                 <a href="vueAjouterBateau.php?id=<?php echo $_SESSION['id'] ?>"><?php echo _("Cliquer ici pour ajouter un
                     bateau...") ?></a>
@@ -109,7 +109,7 @@ if (isset($_SERVER['REQUEST_URI'])){
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <?php echo _("Impossible de modifier le bateau:\n Votre bateau est possèe une reservation active."); ?>
+                                                <?php echo _("Impossible de modifier le bateau:\n Votre bateau possède une réservation active."); ?>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger"
@@ -145,9 +145,9 @@ if (isset($_SERVER['REQUEST_URI'])){
                                             <div class="modal-body">
                                                 <?php
                                                 if ($donneesBateauxDejaReserver[$bateau->id]) {
-                                                    echo _("Impossible de supprimer le bateau:\n Votre bateau est possede une reservation active.");
+                                                    echo _("Impossible de supprimer le bateau:\n Votre bateau possède une reservation active.");
                                                 } else {
-                                                    echo _("Êtes vous sur de vouloir supprimer?");
+                                                    echo _("Êtes-vous sur de vouloir supprimer?");
                                                 } ?>
                                             </div>
                                             <div class="modal-footer">
