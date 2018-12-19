@@ -1,0 +1,677 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-11-13 21:07-0500\n"
+"PO-Revision-Date: 2018-11-13 21:08-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ../../../vue\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: connexion.php:69
+msgid "Connexion à MarinaConnect"
+msgstr "Connexion to MarinaConnect&trade;"
+
+#: connexion.php:73 vueModifierClient.php:119
+msgid "Mail:"
+msgstr "Email:"
+
+#: connexion.php:78
+msgid "Mot de passe :"
+msgstr "Password:"
+
+#: connexion.php:87
+msgid "Connexion"
+msgstr "Connexion"
+
+#: connexion.php:92
+msgid "Creer un compte..."
+msgstr "Create an account..."
+
+#: creerCompte.php:46 vueModifierClient.php:52
+msgid "Votre nom doit faire plus que 2 lettres minimum."
+msgstr "Your name must be 2 letters minimum."
+
+#: creerCompte.php:47 vueModifierClient.php:53
+msgid "Votre prenom doit faire plus que 2 lettres minimum."
+msgstr "Your first name must be 2 letters long minimum."
+
+#: creerCompte.php:48 vueModifierClient.php:54
+msgid "VVotre numeros doit faire 9 digit."
+msgstr "Your numbers must be 9 digits long minimum."
+
+#: creerCompte.php:49 vueModifierMotDePasse.php:49
+msgid "Votre mot de passe doit faire plus que 2 charachteres minimum."
+msgstr "Your password must be 2 characters long minmum."
+
+#: creerCompte.php:52 vueModifierClient.php:57
+msgid "Veuillez entrer un email valide"
+msgstr "Please enter a valid email"
+
+#: creerCompte.php:56
+msgid "Veuillez entrer deux mots de passe identiques"
+msgstr "Please enter two identical passwords"
+
+#: creerCompte.php:82
+msgid "Un compte existe déjà avec cet email"
+msgstr "An account already exists with this email"
+
+#: creerCompte.php:87
+msgid "Creer mon compte"
+msgstr "Create your account"
+
+#: creerCompte.php:95 partieClient.php:42
+msgid "Mail: "
+msgstr "E-mail: "
+
+#: creerCompte.php:105 partieClient.php:41
+msgid "Nom: "
+msgstr "Last Name: "
+
+#: creerCompte.php:114 partieClient.php:40
+msgid "Prénom: "
+msgstr "First Name: "
+
+#: creerCompte.php:123
+msgid "Mobile: "
+msgstr "Cell: "
+
+#: creerCompte.php:132
+msgid "Mot de passe: "
+msgstr "Password "
+
+#: creerCompte.php:138
+msgid "Confirmation mot de passe: "
+msgstr "Retype your password: "
+
+#: creerCompte.php:151
+msgid "Creer un compte"
+msgstr "Create an account"
+
+#: footer.php:9
+msgid "La marina de Matane, un espace de detente fort en couleurs!"
+msgstr "Matanes's marina, the place to be in Gaspesie!"
+
+#: footer.php:12
+msgid "English"
+msgstr "Français"
+
+#: header.php:46 header.php:59 headerAdmin.php:44 headerAdmin.php:55
+msgid "Se deconnecter"
+msgstr "Disconnect"
+
+#: header.php:47 header.php:58
+msgid "Mon compte"
+msgstr "My account"
+
+#: header.php:57 headerAdmin.php:54
+msgid "Menu"
+msgstr "Menu"
+
+#: index.php:14
+msgid "Bienvenue sur le site<br>de la marina de Matane!"
+msgstr "Welcome to the<br>Matane's marina's website!"
+
+#: partieClient.php:23
+msgid "Bienvenue sur votre compte !"
+msgstr "Welcome to your account!"
+
+#: partieClient.php:27
+msgid "Consulter mes réservations"
+msgstr "See my reservations"
+
+#: partieClient.php:29
+msgid "Reserver"
+msgstr "Book"
+
+#: partieClient.php:31
+msgid "Veuillez ajouter un bateau pour effectuer une nouvelle reservation..."
+msgstr "Please add a boat to make a new reservation..."
+
+#: partieClient.php:32
+msgid ""
+"Cliquer ici pour ajouter un\n"
+"                    bateau..."
+msgstr ""
+"Click here to add a\n"
+" boat..."
+
+#: partieClient.php:37
+msgid "Mes informations: "
+msgstr "My informations: "
+
+#: partieClient.php:43
+msgid "Numéro: "
+msgstr "Number: "
+
+#: partieClient.php:48 vueModifierClient.php:133
+msgid "Modifier mes informations"
+msgstr "Edit my informations"
+
+#: partieClient.php:51
+msgid "Gestion de mes bateaux :"
+msgstr "Management of my boats:"
+
+#: partieClient.php:59
+msgid "Nom du bateau"
+msgstr "Name of the boat"
+
+#: partieClient.php:60
+msgid "Type"
+msgstr "Type"
+
+#: partieClient.php:61 vueEmplacement.php:16
+msgid "Longueur"
+msgstr "Length"
+
+#: partieClient.php:62 vueEmplacement.php:16
+msgid "Largeur"
+msgstr "Width"
+
+#: partieClient.php:63 partieGerant.php:158
+msgid "Action"
+msgstr "Action"
+
+#: partieClient.php:84 partieGerant.php:91 vueEmplacement.php:31
+msgid "Modifier"
+msgstr "Edit"
+
+#: partieClient.php:91 partieGerant.php:98 partieGerant.php:183
+#: vueEmplacement.php:38
+msgid "Suppression"
+msgstr "Delete"
+
+#: partieClient.php:98
+msgid "Ëtes vous sur de vouloir supprimer?"
+msgstr "Are you sure you want to delete it?"
+
+#: partieClient.php:102 partieClient.php:109 partieGerant.php:109
+#: partieGerant.php:116 partieGerant.php:194 partieGerant.php:201
+#: vueEmplacement.php:49 vueEmplacement.php:56
+msgid "Supprimer"
+msgstr "Delete"
+
+#: partieClient.php:116
+msgid "Pas de bateau"
+msgstr "No boat"
+
+#: partieClient.php:121
+msgid "Ajouter un bateau"
+msgstr "Add a boat"
+
+#: partieGerant.php:27 vueReservationClient.php:23
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: partieGerant.php:34
+msgid "Un mail d'information voue a été envoyé ainsi qu'au client !"
+msgstr "An information mail had been sent to you and to your client!"
+
+#: partieGerant.php:45
+msgid "Gestion de la Marina"
+msgstr "Marina's management"
+
+#: partieGerant.php:50
+msgid "Bonjour,"
+msgstr "Hello,"
+
+#: partieGerant.php:53
+msgid "Fermer un emplacement"
+msgstr "Close a spot"
+
+#: partieGerant.php:54
+msgid "Gerer les emplacements"
+msgstr "Manage the spots"
+
+#: partieGerant.php:59
+msgid "Réservations en cours"
+msgstr "Current reservations"
+
+#: partieGerant.php:67 partieGerant.php:154 vueReservationClient.php:47
+msgid "Prénom"
+msgstr "First Name"
+
+#: partieGerant.php:68 partieGerant.php:155 vueReservationClient.php:48
+msgid "Nom"
+msgstr "Last Name"
+
+#: partieGerant.php:69 partieGerant.php:156
+msgid "Date de début"
+msgstr "Start date"
+
+#: partieGerant.php:70 partieGerant.php:157
+msgid "Date de fin"
+msgstr "End date"
+
+#: partieGerant.php:71 vueEmplacement.php:16
+msgid "Actions"
+msgstr "Actions"
+
+#: partieGerant.php:105 partieGerant.php:190 vueEmplacement.php:45
+msgid "Êtes vous sur de vouloir supprimer?"
+msgstr "Are you sure you want to delete it?"
+
+#: partieGerant.php:123
+msgid "Pas de reservation en cours"
+msgstr "No reservations at the moment"
+
+#: partieGerant.php:140 vueReservationClient.php:117
+msgid "Il y a eu un problème avec l'envoi du mail de confirmation."
+msgstr "There is a problem with the confirmation mail."
+
+#: partieGerant.php:147
+msgid "Reservations archivées"
+msgstr "Archived reservations"
+
+#: partieGerant.php:208
+msgid "Pas de reservation dans la base de données"
+msgstr "No reservations in the database"
+
+#: partieGerant.php:216
+msgid "Carte des reservations de la Marina"
+msgstr "Reservation's map"
+
+#: partieGerant.php:230
+msgid "Actualiser la carte"
+msgstr "Refresh the map"
+
+#: partieGerant.php:267 partieGerant.php:287 vueReservationClient.php:52
+msgid "Emplacement"
+msgstr "Spot"
+
+#: partieGerant.php:268
+msgid "Reservé depuis: "
+msgstr "Booked since: "
+
+#: partieGerant.php:269
+msgid "Jusqu'au: "
+msgstr "Until: "
+
+#: partieGerant.php:270
+msgid "Electricité: "
+msgstr "Electricity: "
+
+#: partieGerant.php:270 partieGerant.php:271 partieGerant.php:272
+msgid "Oui"
+msgstr "Yes"
+
+#: partieGerant.php:270 partieGerant.php:271 partieGerant.php:272
+msgid "Non"
+msgstr "No"
+
+#: partieGerant.php:271
+msgid "Vidange: "
+msgstr "Emptying: "
+
+#: partieGerant.php:272
+msgid "Essence: "
+msgstr "Gas: "
+
+#: partieGerant.php:288
+msgid "Disponible! "
+msgstr "Avalaible! "
+
+#: reserverEmplacement.php:6
+msgid "Effectuer une nouvelle reservation :"
+msgstr "Make a new reservation :"
+
+#: reserverEmplacement.php:11
+msgid "Réserver un emplacement"
+msgstr "Book a spot"
+
+#: reserverEmplacement.php:12
+msgid "Nom :"
+msgstr "Last Name:"
+
+#: reserverEmplacement.php:16
+msgid "Prénom :"
+msgstr "First Name:"
+
+#: reserverEmplacement.php:20
+msgid "Longueur bateau (en pieds) :"
+msgstr "Boat's length (ft) :"
+
+#: reserverEmplacement.php:24
+msgid "Largeur bateau (en pieds) :"
+msgstr "Boat's width (ft) :"
+
+#: reserverEmplacement.php:28
+msgid "Date d'arrivée :"
+msgstr "Date of arriving :"
+
+#: reserverEmplacement.php:32 vueModifierReservation.php:195
+msgid "Date de départ :"
+msgstr "Date of leaving :"
+
+#: reserverEmplacement.php:36 vueAjouterReservationClient.php:290
+msgid "Electricité :"
+msgstr "Electricity :"
+
+#: reserverEmplacement.php:40 vueAjouterReservationClient.php:298
+#: vueModifierReservation.php:276
+msgid "Essence :"
+msgstr "Gas :"
+
+#: reserverEmplacement.php:44 vueAjouterReservationClient.php:294
+#: vueModifierReservation.php:260
+msgid "Vidange :"
+msgstr "Emptying :"
+
+#: reserverEmplacement.php:50
+msgid "Enregistrer :"
+msgstr "Save :"
+
+#: vueAjouterBateau.php:27
+msgid "La longueur doit etre un nombre compris entre 1 et 99."
+msgstr "Length between 1 and 99."
+
+#: vueAjouterBateau.php:30
+msgid "La largeur doit etre un nombre compris entre 1 et 99."
+msgstr "Width between 1 and 99."
+
+#: vueAjouterBateau.php:33
+msgid "Le nom doit être composé de lettres uniquement."
+msgstr "Letters only."
+
+#: vueAjouterBateau.php:36
+msgid "Le type doit être composé de lettres uniquement."
+msgstr "Letters only."
+
+#: vueAjouterBateau.php:54
+msgid "Ajouter un bateau :"
+msgstr "Add a boat :"
+
+#: vueAjouterBateau.php:63 vueModifierBateau.php:49
+msgid "Nom du bateau: "
+msgstr "Name of the boat: "
+
+#: vueAjouterBateau.php:72 vueModifierBateau.php:53
+msgid "Type: "
+msgstr "Type: "
+
+#: vueAjouterBateau.php:82
+msgid "Longueur (en pieds): "
+msgstr "Length (ft): "
+
+#: vueAjouterBateau.php:92
+msgid "Largeur (en pieds): "
+msgstr "Width (ft): "
+
+#: vueAjouterBateau.php:102
+msgid "Ajouter bateau: "
+msgstr "Add a boat: "
+
+#: vueAjouterEmplacement.php:54
+msgid ""
+"Veuillez placer une pinouche sur la carte pour donner la position de votre "
+"nouvel emplacement."
+msgstr "Please place a pin on the map to select the location of your spot."
+
+#: vueAjouterEmplacement.php:57
+msgid "Votre label doit faire plus que 2 caractere minimum."
+msgstr "Your label name must be 2 letters long minimum."
+
+#: vueAjouterEmplacement.php:58
+msgid "Votre longueur doit faire plus que 2 chiffres maximum et 1 minimum."
+msgstr "Length must be 2 digits mas, 1 digit min."
+
+#: vueAjouterEmplacement.php:59
+msgid "Votre largueur doit faire plus que 2 chiffres maximum et 1 minimum."
+msgstr "Width must be 2 digits max, 1 digit min."
+
+#: vueAjouterEmplacement.php:77
+msgid "Ajouter un nouvel emplacement"
+msgstr "Add a new spot"
+
+#: vueAjouterEmplacement.php:80
+msgid "Label: "
+msgstr "Label: "
+
+#: vueAjouterEmplacement.php:88 vueModifierBateau.php:57
+msgid "Longueur: "
+msgstr "Length: "
+
+#: vueAjouterEmplacement.php:96 vueModifierBateau.php:61
+msgid "Largeur: "
+msgstr "Width: "
+
+#: vueAjouterEmplacement.php:107
+msgid "Ajouter un emplacement "
+msgstr "Add a spot "
+
+#: vueAjouterEmplacement.php:159
+msgid "Emplacement: "
+msgstr "Spot: "
+
+#: vueAjouterReservationClient.php:60 vueModifierReservation.php:72
+msgid "Veuillez selectionnez un bateau"
+msgstr "Please select a boat"
+
+#: vueAjouterReservationClient.php:106 vueModifierReservation.php:109
+msgid ""
+"Votre bateau est trop grand pour les emplacements disponibles a cette date."
+msgstr "Your boat is too big for the spots available in these dates."
+
+#: vueAjouterReservationClient.php:109 vueModifierReservation.php:112
+msgid "Aucun emplacement ne corespond a vos critères"
+msgstr "No spot is left with your parameters"
+
+#: vueAjouterReservationClient.php:250
+msgid "Effectuer une nouvelle demande de réservation :"
+msgstr "Make a new reservation :"
+
+#: vueAjouterReservationClient.php:259
+msgid "Bateau : "
+msgstr "Boat : "
+
+#: vueAjouterReservationClient.php:262
+msgid "- SELECTIONNEZ BATEAU -"
+msgstr "- SELECT A BOAT -"
+
+#: vueAjouterReservationClient.php:268
+msgid "Pas de bateaux..."
+msgstr "No boats..."
+
+#: vueAjouterReservationClient.php:287 vueModifierReservation.php:242
+msgid "Services"
+msgstr "Services"
+
+#: vueAjouterReservationClient.php:307
+msgid "Effectuer une demande de réservation"
+msgstr "Book"
+
+#: vueAjouterReservationClient.php:310
+msgid "Actualiser le calendrier"
+msgstr "Refresh the calendar"
+
+#: vueEmplacement.php:10
+msgid "Récapitulatif des emplacements"
+msgstr "Spot's summary"
+
+#: vueEmplacement.php:16
+msgid "Label"
+msgstr "Label"
+
+#: vueEmplacement.php:63
+msgid "Pas d'emplacements"
+msgstr "No spots"
+
+#: vueEmplacement.php:68
+msgid "Ajouter un emplacementl"
+msgstr "Add a spot"
+
+#: vueEmplacement.php:69 vueReservationClient.php:122
+msgid "Retour"
+msgstr "Back"
+
+#: vueModifierBateau.php:43
+msgid "Modifier mon bateau :"
+msgstr "Edit my boat :"
+
+#: vueModifierBateau.php:66
+msgid "Modifier bateau"
+msgstr "Edit this boat"
+
+#: vueModifierClient.php:81
+msgid "Modifier mes informations :"
+msgstr "Edit my informations :"
+
+#: vueModifierClient.php:89
+msgid "Prénom:"
+msgstr "First Name:"
+
+#: vueModifierClient.php:99
+msgid "Nom:"
+msgstr "Last Name:"
+
+#: vueModifierClient.php:109
+msgid "Numero:"
+msgstr "Number:"
+
+#: vueModifierClient.php:129 vueModifierMotDePasse.php:114
+msgid "Modifier mon mot de passe"
+msgstr "Edit your password"
+
+#: vueModifierEmplacement.php:42
+msgid "Modifier un emplacement"
+msgstr "Edit a spot"
+
+#: vueModifierEmplacement.php:46
+msgid "Label:"
+msgstr "Label:"
+
+#: vueModifierEmplacement.php:50
+msgid "Longueur:"
+msgstr "Length:"
+
+#: vueModifierEmplacement.php:54
+msgid "Largeur:"
+msgstr "Width:"
+
+#: vueModifierEmplacement.php:60
+msgid "Modifier emplacement:"
+msgstr "Edit a spot:"
+
+#: vueModifierMotDePasse.php:40
+msgid "Votre mot de passe n'est pas correct"
+msgstr "Incorrect password"
+
+#: vueModifierMotDePasse.php:43
+msgid "Votre mot de passe ne peut être identique au mot de passe précédant."
+msgstr "You already used this password."
+
+#: vueModifierMotDePasse.php:47
+msgid "Veuillez rentrer deux mot de passe identique"
+msgstr "Please enter two identical passwords"
+
+#: vueModifierMotDePasse.php:84
+msgid "Modifier mon mot de passe :"
+msgstr "Edit your password :"
+
+#: vueModifierMotDePasse.php:90
+msgid "Ancien mot de passe:"
+msgstr "Last password:"
+
+#: vueModifierMotDePasse.php:98
+msgid "Nouveau mot de passe:"
+msgstr "New password:"
+
+#: vueModifierMotDePasse.php:104
+msgid "Confirmer mot de passe:"
+msgstr "Retype your password:"
+
+#: vueModifierReservation.php:76
+msgid "Veuillez rentrer une date d\\'arrivé valide au format YYY-MM-DD"
+msgstr "The date must be YYYY-MM-DD"
+
+#: vueModifierReservation.php:79
+msgid "Veuillez rentrer une date de départ valide au format YYY-MM-DD"
+msgstr "The date must be YYYY-MM-DD"
+
+#: vueModifierReservation.php:87
+msgid "La date ne peu pas etre avant la date d'aujourdhui"
+msgstr "The date must be after today"
+
+#: vueModifierReservation.php:91
+msgid "La date d'arrivé doit être posterieur de la date de départ"
+msgstr "The arrival date must be before the end date"
+
+#: vueModifierReservation.php:173
+msgid "Modifier la réservation :"
+msgstr "Edit the reservation :"
+
+#: vueModifierReservation.php:180
+msgid "Date d'arrivée"
+msgstr "Date of arrival"
+
+#: vueModifierReservation.php:216
+msgid "Bateau :"
+msgstr "Boat :"
+
+#: vueModifierReservation.php:225
+msgid "Pas de bateaux"
+msgstr "No boats"
+
+#: vueModifierReservation.php:244
+msgid "Electricité:"
+msgstr "Electricity:"
+
+#: vueModifierReservation.php:296
+msgid "Modifier la reservation"
+msgstr "Edit the reservation"
+
+#: vueReservationClient.php:30
+msgid "Un mail de confirmation vous a été envoyé!"
+msgstr "A confirmation mail was sent to you!"
+
+#: vueReservationClient.php:40
+msgid "Recapitulatif de mes réservations :"
+msgstr "Booking summary :"
+
+#: vueReservationClient.php:49
+msgid "Date de début de réservation"
+msgstr "Start date"
+
+#: vueReservationClient.php:50
+msgid "Date de fin de réservation"
+msgstr "End date"
+
+#: vueReservationClient.php:51
+msgid "Bateau"
+msgstr "Boat"
+
+#: vueReservationClient.php:53
+msgid "Electricité"
+msgstr "Electricity"
+
+#: vueReservationClient.php:54
+msgid "Essence"
+msgstr "Gas"
+
+#: vueReservationClient.php:55
+msgid "Vidange"
+msgstr "Emptying"
+
+#: vueReservationClient.php:99
+msgid "Pas de réservation"
+msgstr "No reservations"
+
+#: vueReservationClient.php:123
+msgid "Réserver"
+msgstr "Book"
+
+#~ msgid "Consulter"
+#~ msgstr "View"
+
+#~ msgid ""
+#~ "Modifier mes\n"
+#~ "                informations"
+#~ msgstr ""
+#~ "Change my\n"
+#~ " informations"
