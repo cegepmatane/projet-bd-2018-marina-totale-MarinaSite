@@ -9,3 +9,5 @@ Site public/lib/google-api-php-client-2\.2\.2
 Stripe Tutorial/vendor/
 
 Stripe_manuel/lib/
+
+Site public/lib/PHPMailer-5\.2-stable/
