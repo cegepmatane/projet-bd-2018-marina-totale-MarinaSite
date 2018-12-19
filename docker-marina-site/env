@@ -1,0 +1,5 @@
+POSTGRES_USER=webmestre
+POSTGRES_PASSWORD=bdd2018Marina
+POSTGRES_DB=MarinaBateauDB
+DEFAULT_USER=pgadmin@mail.com
+DEFAULT_PASSWORD=mypassword
