@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-01-31 15:44+0100\n"
-"PO-Revision-Date: 2019-01-31 15:47+0100\n"
+"POT-Creation-Date: 2019-01-31 16:29+0100\n"
+"PO-Revision-Date: 2019-01-31 16:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -98,6 +98,10 @@ msgstr "Create an account"
 #: vue/footer.php:10
 msgid "La marina de Matane, un espace de détente fort en couleurs!"
 msgstr "Matanes's marina, the place to be in Gaspesie!"
+
+#: vue/footer.php:12
+msgid "Nous contacter"
+msgstr "Contact us"
 
 #: vue/footer.php:15
 msgid "English"

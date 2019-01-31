@@ -9,7 +9,7 @@
         <div class="float-left">
             <h4><?php echo _("La marina de Matane, un espace de détente fort en couleurs!");?></h4>
         </div><div class="float-right" style="margin-left: 8px;">
-            <a href="vueContact.php" class="btn btn-outline-light btn-lg" style="border: none;">Nous contacter</a>
+            <a href="vueContact.php" class="btn btn-outline-light btn-lg" style="border: none;"><?php echo _("Nous contacter")?></a>
         </div>
         <div class="float-right">
             <a href="../fonctions/changerLangue.php" class="btn-outline-light btn btn-lg" style="border: none;"><?php echo _("English")?></a>
